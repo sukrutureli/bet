@@ -4,31 +4,35 @@ import java.io.IOException;
 
 public class HelloWorldHtml {
     public static void main(String[] args) {
-        // Çıktı dosyası: public/index.html
-        File outputDir = new File("public");
-        if (!outputDir.exists()) {
-            outputDir.mkdirs();
-        }
+        try {
+            // public klasörünü oluştur
+            File dir = new File("public");
+            if (!dir.exists()) dir.mkdirs();
 
-        File outputFile = new File(outputDir, "index.html");
+            // index.html dosyasını oluştur / overwrite et
+            File file = new File(dir, "index.html");
 
-        String html = """
+            String html = """
                 <!DOCTYPE html>
                 <html lang="tr">
                 <head>
                     <meta charset="UTF-8">
-                    <title>Hello World</title>
+                    <title>Merhaba Dünya</title>
                 </head>
                 <body>
                     <h1>Merhaba Dünya!</h1>
                     <p>Bu sayfa Java tarafından üretildi 🚀</p>
+                    <p>Güncelleme zamanı: %s</p>
                 </body>
                 </html>
-                """;
+                """.formatted(java.time.LocalDateTime.now());
 
-        try (FileWriter writer = new FileWriter(outputFile)) {
-            writer.write(html);
-            System.out.println("index.html başarıyla oluşturuldu: " + outputFile.getAbsolutePath());
+            try (FileWriter fw = new FileWriter(file)) {
+                fw.write(html);
+            }
+
+            System.out.println("public/index.html başarıyla oluşturuldu!");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
