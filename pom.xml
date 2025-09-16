@@ -20,21 +20,18 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.5.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>3.1.0</version>
-        </dependency>
     </dependencies>
 
     <build>
-        <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>3.5.1</version>
-            <configuration>
-                <mainClass>com.example.Scraper</mainClass>
-            </configuration>
-        </plugin>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>com.example.Scraper</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
