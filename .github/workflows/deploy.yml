@@ -1,30 +1,41 @@
 name: Build and Deploy to Netlify
 
 on:
-  schedule:                   # zamanlı tetikleyici
-    - cron: "0 6 * * *"  # Her gün sabah 06:00 UTC’de çalışır
-  workflow_dispatch:           # Actions sekmesinden manuel tetikleme
+  schedule:
+    - cron: "0 6 * * *"  # Her gün 06:00 UTC’de çalışır
+  workflow_dispatch:      # İster manuel tetikleme için
 
 jobs:
-  build-deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      # Repo'yu checkout et
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Java
+      # Java ve Maven kur
+      - name: Set up Java 17
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
+          distribution: temurin
           java-version: '17'
 
-      - name: Build HTML with Java
-        run: |
-          mkdir -p public
-          javac src/HelloWorldHtml.java
-          java -cp src HelloWorldHtml
+      - name: Set up Maven
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: '17'
 
+      # ChromeDriver kurulumu (WebDriverManager ile de çalışabilir)
+      - name: Install dependencies
+        run: mvn dependency:resolve
+
+      # Java Scraper çalıştır
+      - name: Run Scraper
+        run: mvn clean compile exec:java -Dexec.mainClass="com.example.Scraper"
+
+      # Netlify deploy
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0.0
         with:
