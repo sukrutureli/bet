@@ -36,12 +36,12 @@ public class Scraper {
 
             for (WebElement event : events) {
                 // Maç ismi
-                WebElement nameEl = event.findElement(By.cssSelector("div.name > a"));
-                String matchName = nameEl.getText();
+                List<WebElement> nameEls = event.findElements(By.cssSelector("div.name > a"));
+                String matchName = nameEls.isEmpty() ? "Bilinmiyor" : nameEls.get(0).getText();
 
                 // Maç zamanı
-                WebElement timeEl = event.findElement(By.cssSelector("div.time > span.passive-time"));
-                String matchTime = timeEl.getText();
+                List<WebElement> timeEls = event.findElements(By.cssSelector("div.time > span.passive-time"));
+                String matchTime = timeEls.isEmpty() ? "Bilinmiyor" : timeEls.get(0).getText();
 
                 // 1-X-2 oranları
                 List<WebElement> odds = event.findElements(By.cssSelector("dd.col-03.event-row .cell .odd"));
@@ -54,6 +54,7 @@ public class Scraper {
                     .append("<p>1: ").append(odd1).append(" | X: ").append(oddX).append(" | 2: ").append(odd2).append("</p>")
                     .append("</div>");
             }
+
 
             html.append("<p>Güncelleme zamanı: ").append(java.time.LocalDateTime.now()).append("</p>");
             html.append("</body></html>");

@@ -33,7 +33,7 @@ jobs:
 
       # Java Scraper çalıştır
       - name: Run Scraper
-        run: mvn clean compile exec:java -Dexec.mainClass="com.example.Scraper"
+        run: mvn clean compile exec:java -Dexec.mainClass="com.example.Scraper" -X
 
       # Netlify deploy
       - name: Deploy to Netlify
