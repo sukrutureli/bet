@@ -1,0 +1,35 @@
+name: Build and Deploy to Netlify
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"  # her 6 saatte bir çalışır
+  workflow_dispatch:        # elle çalıştırma imkanı
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build HTML with Java
+        run: |
+          mkdir -p public
+          javac src/HelloWorldHtml.java
+          java -cp src HelloWorldHtml
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2.0.0
+        with:
+          publish-dir: ./public
+          production-deploy: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
