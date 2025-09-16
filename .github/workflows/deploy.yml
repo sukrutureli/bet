@@ -1,11 +1,8 @@
 name: Build and Deploy to Netlify
 
 on:
-  push:                       # kod push edilince çalışsın
-    branches:
-      - main
   schedule:                   # zamanlı tetikleyici
-    - cron: "0 */6 * * *"     # her 6 saatte bir
+    - cron: "0 6 * * *"  # Her gün sabah 06:00 UTC’de çalışır
   workflow_dispatch:           # Actions sekmesinden manuel tetikleme
 
 jobs:
