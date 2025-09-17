@@ -9,7 +9,8 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     container:
-      image: selenium/standalone-chrome:latest  # Chrome + Chromedriver uyumlu
+      image: selenium/standalone-chrome:latest
+      options: --user root
 
     steps:
       - name: Checkout repo
