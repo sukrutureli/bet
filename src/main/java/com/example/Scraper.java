@@ -22,6 +22,9 @@ public class Scraper {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless=new");
+        options.addArguments("--disable-blink-features=AutomationControlled"); 
+        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+        options.setExperimentalOption("useAutomationExtension", false);
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
 
@@ -38,17 +41,10 @@ public class Scraper {
 			
 			// --- SAYFAYI SCROLL İLE SONUNA KADAR YÜKLET ---
 			JavascriptExecutor js = (JavascriptExecutor) driver;
-			long lastHeight = (long) js.executeScript("return document.body.scrollHeight");
 
-			while (true) {
+			for (int i = 0; i < 20; i++) { // max 20 defa scroll
 				js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-				Thread.sleep(1500); // yeni maçların gelmesi için bekle
-
-				long newHeight = (long) js.executeScript("return document.body.scrollHeight");
-				if (newHeight == lastHeight) {
-					break; // artık yeni içerik yok
-				}
-				lastHeight = newHeight;
+				Thread.sleep(2000); // yeni maçların gelmesi için bekle
 			}
 
 			// --- TÜM MAÇ CONTAINER'LARINI AL ---
