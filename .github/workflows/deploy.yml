@@ -21,15 +21,11 @@ jobs:
           sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get -f install -y
           google-chrome --version
 
-      - name: Install Chromedriver matching Chrome
-        run: |
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+' | head -1)
-          echo "Detected Chrome version: $CHROME_VERSION"
-          DRIVER_VERSION=$(wget -qO- "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}")
-          echo "Downloading Chromedriver version: $DRIVER_VERSION"
-          wget -N "https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip"
-          unzip chromedriver_linux64.zip -d /usr/local/bin/
-          rm chromedriver_linux64.zip
+      - name: Setup Chromedriver
+        uses: nanasess/setup-chromedriver@v1
+        with:
+          chrome-version: 'latest'
+
 
       - name: Set up Java
         uses: actions/setup-java@v3
