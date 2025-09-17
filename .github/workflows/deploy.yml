@@ -1,4 +1,4 @@
-name: Build and Deploy to Netlify
+name: Build and Deploy to GitHub Pages
 
 on:
   schedule:
@@ -9,8 +9,8 @@ jobs:
   scraper:
     runs-on: ubuntu-latest
     container:
-      image: selenium/standalone-chrome:latest  # Chrome + Chromedriver uyumlu
-      options: --user root  # Root izni
+      image: selenium/standalone-chrome:latest
+      options: --user root
 
     steps:
       - name: Checkout repo
@@ -27,11 +27,6 @@ jobs:
           apt-get update
           apt-get install -y maven
 
-      - name: Debug Chrome & Chromedriver
-        run: |
-          google-chrome --version
-          chromedriver --version
-
       - name: Build and Run Scraper
         run: mvn clean compile exec:java
 
@@ -42,20 +37,12 @@ jobs:
           path: ./public
 
   deploy:
-    runs-on: ubuntu-latest   # **Host runner**
+    runs-on: ubuntu-latest
     needs: scraper
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-
-      - name: Debug Netlify secrets
-        run: |
-          echo "Token length: ${#NETLIFY_AUTH_TOKEN}"
-          echo "Site ID: $NETLIFY_SITE_ID"
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
       - name: Download public directory artifact
         uses: actions/download-artifact@v4
@@ -63,11 +50,8 @@ jobs:
           name: public-html
           path: ./public
 
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v2.0.0
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v7
         with:
-          publish-dir: ./public
-          production-deploy: true
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
