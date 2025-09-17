@@ -53,16 +53,22 @@ public class Scraper {
 
             for (WebElement event : events) {
                 try {
-                    WebElement nameEl = event.findElement(By.cssSelector("div.name > a"));
-                    String matchName = nameEl.getText();
+                    // 1️⃣ Maç adı
+                    String matchName = "-";
+                    List<WebElement> nameList = event.findElements(By.cssSelector("div.name > a"));
+                    if (!nameList.isEmpty()) matchName = nameList.get(0).getText();
 
-                    WebElement timeEl = event.findElement(By.cssSelector("div.time > span.passive-time"));
-                    String matchTime = timeEl.getText();
+                    // 2️⃣ Maç zamanı
+                    String matchTime = "-";
+                    List<WebElement> timeList = event.findElements(By.cssSelector("div.time > span.passive-time"));
+                    if (!timeList.isEmpty()) matchTime = timeList.get(0).getText();
 
-                    List<WebElement> odds = event.findElements(By.cssSelector("dd.col-03.event-row .cell .odd"));
-                    String odd1 = odds.size() > 0 ? odds.get(0).getText() : "-";
-                    String oddX = odds.size() > 1 ? odds.get(1).getText() : "-";
-                    String odd2 = odds.size() > 2 ? odds.get(2).getText() : "-";
+                    // 3️⃣ Oranlar
+                    List<WebElement> oddsList = event.findElements(By.cssSelector("dd.event-row .cell a.odd"));
+                    // İlk 3 oranı al, yoksa "-" ata
+                    String odd1 = oddsList.size() > 0 ? oddsList.get(0).getText() : "-";
+                    String oddX = oddsList.size() > 1 ? oddsList.get(1).getText() : "-";
+                    String odd2 = oddsList.size() > 2 ? oddsList.get(2).getText() : "-";
 
                     html.append("<div class='match'>")
                         .append("<h3>").append(matchTime).append(" - ").append(matchName).append("</h3>")
