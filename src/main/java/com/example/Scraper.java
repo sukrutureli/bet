@@ -14,6 +14,9 @@ import java.util.List;
 public class Scraper {
     public static void main(String[] args) {
 
+        // Docker container içinde chromedriver yolu
+        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
@@ -37,18 +40,22 @@ public class Scraper {
                     WebElement nameEl = event.findElement(By.cssSelector("div.name > a"));
                     String matchName = nameEl.getText();
 
-                    WebElement timeEl = event.findElement(By.cssSelector("div.time > span.passive-time"));
+                    /*WebElement timeEl = event.findElement(By.cssSelector("div.time > span.passive-time"));
                     String matchTime = timeEl.getText();
 
                     List<WebElement> odds = event.findElements(By.cssSelector("dd.col-03.event-row .cell .odd"));
                     String odd1 = odds.size() > 0 ? odds.get(0).getText() : "-";
                     String oddX = odds.size() > 1 ? odds.get(1).getText() : "-";
-                    String odd2 = odds.size() > 2 ? odds.get(2).getText() : "-";
+                    String odd2 = odds.size() > 2 ? odds.get(2).getText() : "-";*/
 
                     html.append("<div class='match'>")
+                        .append("<h3>").append(matchName).append("</h3>")
+                        .append("</div>");
+
+                    /*html.append("<div class='match'>")
                         .append("<h3>").append(matchTime).append(" - ").append(matchName).append("</h3>")
                         .append("<p>1: ").append(odd1).append(" | X: ").append(oddX).append(" | 2: ").append(odd2).append("</p>")
-                        .append("</div>");
+                        .append("</div>");*/
                 } catch (Exception inner) {
                     System.out.println("Bir maç parse edilirken hata: " + inner.getMessage());
                 }
