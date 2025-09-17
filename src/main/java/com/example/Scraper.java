@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chrome.ChromeDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -14,8 +13,6 @@ import java.util.List;
 
 public class Scraper {
     public static void main(String[] args) {
-        WebDriverManager.chromedriver().setup();
-
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
@@ -24,26 +21,21 @@ public class Scraper {
         WebDriver driver = new ChromeDriver(options);
 
         try {
-            String url = "https://www.nesine.com/iddaa?et=1&le=2&ocg=MS-2%2C5&gt=Pop%C3%BCler"; // gerçek URL
+            String url = "https://www.nesine.com/iddaa?et=1&le=2&ocg=MS-2%2C5&gt=Pop%C3%BCler";
             driver.get(url);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
-            List<WebElement> events = driver.findElements(By.cssSelector("#bulten-event-list-container > section:nth-child(1) > div.odd-col.event-list.pre-event"));
+            List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
             System.out.println("Toplam event sayısı: " + events.size());
+            
             StringBuilder html = new StringBuilder();
             html.append("<!DOCTYPE html><html><head><meta charset='UTF-8'><title>IDDAA Bülteni</title></head><body>");
             html.append("<h1>IDDAA Güncel Bülteni</h1>");
 
             for (WebElement event : events) {
-                // Maç ismi
-                List<WebElement> nameEls = event.findElements(By.cssSelector("div.name > a"));
-                String matchName = nameEls.isEmpty() ? "Bilinmiyor" : nameEls.get(0).getText();
+                String matchName = event.findElement(By.cssSelector("div.name > a")).getText();
+                String matchTime = event.findElement(By.cssSelector("div.time > span")).getText();
 
-                // Maç zamanı
-                List<WebElement> timeEls = event.findElements(By.cssSelector("div.time > span.passive-time"));
-                String matchTime = timeEls.isEmpty() ? "Bilinmiyor" : timeEls.get(0).getText();
-
-                // 1-X-2 oranları
                 List<WebElement> odds = event.findElements(By.cssSelector("dd.col-03.event-row .cell .odd"));
                 String odd1 = odds.size() > 0 ? odds.get(0).getText() : "-";
                 String oddX = odds.size() > 1 ? odds.get(1).getText() : "-";
@@ -55,7 +47,6 @@ public class Scraper {
                     .append("</div>");
             }
 
-
             html.append("<p>Güncelleme zamanı: ").append(java.time.LocalDateTime.now()).append("</p>");
             html.append("</body></html>");
 
@@ -66,7 +57,7 @@ public class Scraper {
                 fw.write(html.toString());
             }
 
-            System.out.println("public/index.html başarıyla oluşturuldu!");
+            System.out.println("✅ public/index.html başarıyla oluşturuldu!");
 
         } catch (Exception e) {
             e.printStackTrace();
