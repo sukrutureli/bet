@@ -2,8 +2,8 @@ name: Build and Deploy to Netlify
 
 on:
   schedule:
-    - cron: "0 6 * * *"   # Her gün sabah 06:00 UTC
-  workflow_dispatch:       # Manuel tetikleme
+    - cron: "0 6 * * *"   # Her gün 06:00 UTC
+  workflow_dispatch:
 
 jobs:
   build-deploy:
@@ -13,12 +13,18 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Install Chrome & Chromedriver
+      - name: Install Chrome
         run: |
           sudo apt-get update
-          sudo apt-get install -y chromium-browser chromium-chromedriver
-          which chromedriver
-          chromedriver --version
+          sudo apt-get install -y google-chrome-stable
+
+      - name: Install Chromedriver
+        run: |
+          sudo apt-get install -y unzip wget
+          LATEST=$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          wget -N https://chromedriver.storage.googleapis.com/$LATEST/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip -d /usr/local/bin/
+          rm chromedriver_linux64.zip
 
       - name: Set up Java
         uses: actions/setup-java@v3
@@ -26,11 +32,8 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Build with Maven
-        run: mvn clean compile
-
-      - name: Run Scraper
-        run: mvn exec:java -Dexec.mainClass="com.example.Scraper"
+      - name: Build and Run Scraper
+        run: mvn clean compile exec:java
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0.0
