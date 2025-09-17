@@ -37,11 +37,12 @@ jobs:
           path: ./public
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest   # Host runner
     needs: scraper
+
     steps:
       - name: Download public directory artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: public-html
           path: ./public
