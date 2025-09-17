@@ -31,9 +31,30 @@ public class Scraper {
 
             // Sayfanın tam yüklenmesini bekle
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-            wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div.odd-col.event-list.pre-event")));
+			// Ana maç container'ının yüklenmesini bekle
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.odd-col.event-list.pre-event")));
+			
+			// --- SAYFAYI SCROLL İLE SONUNA KADAR YÜKLET ---
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			long lastHeight = (long) js.executeScript("return document.body.scrollHeight");
 
-            List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
+			while (true) {
+				js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+				Thread.sleep(1500); // yeni maçların gelmesi için bekle
+
+				long newHeight = (long) js.executeScript("return document.body.scrollHeight");
+				if (newHeight == lastHeight) {
+					break; // artık yeni içerik yok
+				}
+				lastHeight = newHeight;
+			}
+
+			// --- TÜM MAÇ CONTAINER'LARINI AL ---
+			List<WebElement> events = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+                By.cssSelector("div.odd-col.event-list.pre-event")
+			));
+
+			System.out.println("Toplam maç sayısı: " + events.size());
 
             StringBuilder html = new StringBuilder();
             html.append("<!DOCTYPE html><html><head><meta charset='UTF-8'><title>IDDAA Bülteni</title></head><body>");
