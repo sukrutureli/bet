@@ -61,11 +61,11 @@ public class Scraper {
             for (WebElement event : events) {
                 try {
                     // Maç adı
-                    List<WebElement> nameList = event.findElements(By.cssSelector("div.name a"));
+                    List<WebElement> nameList = event.findElements(By.cssSelector("div.name > a"));
                     String matchName = !nameList.isEmpty() ? nameList.get(0).getText() : "-";
 
                     // Maç zamanı
-                    List<WebElement> timeList = event.findElements(By.cssSelector("div.time span.passive-time"));
+                    List<WebElement> timeList = event.findElements(By.cssSelector("div.time > span"));
                     String matchTime = !timeList.isEmpty() ? timeList.get(0).getText() : "-";
 
                     // Oranlar (tüm dd.event-row içindeki .cell a.odd)
