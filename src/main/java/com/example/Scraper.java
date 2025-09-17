@@ -53,13 +53,13 @@ public class Scraper {
 
             for (WebElement event : events) {
                 try {
-                    WebElement nameEl = event.findElement(By.cssSelector("div.code-time-name > div.name > a"));
+                    WebElement nameEl = event.findElement(By.cssSelector("div.name > a"));
                     String matchName = nameEl.getText();
 
-                    WebElement timeEl = event.findElement(By.cssSelector("div.code-time-name > div.time"));
+                    WebElement timeEl = event.findElement(By.cssSelector("div.time > span.passive-time"));
                     String matchTime = timeEl.getText();
 
-                    List<WebElement> odds = event.findElements(By.cssSelector("div.odds-content > dl > dd:nth-child(2)"));
+                    List<WebElement> odds = event.findElements(By.cssSelector("dd.col-03.event-row .cell .odd"));
                     String odd1 = odds.size() > 0 ? odds.get(0).getText() : "-";
                     String oddX = odds.size() > 1 ? odds.get(1).getText() : "-";
                     String odd2 = odds.size() > 2 ? odds.get(2).getText() : "-";
