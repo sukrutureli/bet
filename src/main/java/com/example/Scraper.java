@@ -9,6 +9,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.time.Duration;
@@ -38,9 +41,13 @@ public class Scraper {
         options.setExperimentalOption("useAutomationExtension", false);
 
         WebDriver driver = new ChromeDriver(options);
+        // Bugünün tarihi
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        String todayStr = today.format(formatter);
 
         try {
-            String url = "https://www.nesine.com/iddaa?et=1&le=2&ocg=MS-2%2C5&gt=Pop%C3%BCler";
+            String url = "https://www.nesine.com/iddaa?et=1&dt=" + todayStr + "&le=2&ocg=MS-2%2C5>=Pop%C3%BCler";
             driver.get(url);
             
             System.out.println("Sayfa yüklendi, URL: " + driver.getCurrentUrl());
