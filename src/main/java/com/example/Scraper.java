@@ -17,7 +17,7 @@ public class Scraper {
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
+        options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
 
@@ -28,8 +28,8 @@ public class Scraper {
             driver.get(url);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
-            List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
-
+            List<WebElement> events = driver.findElements(By.cssSelector("#bulten-event-list-container > section:nth-child(1) > div.odd-col.event-list.pre-event"));
+            System.out.println("Toplam event sayısı: " + events.size());
             StringBuilder html = new StringBuilder();
             html.append("<!DOCTYPE html><html><head><meta charset='UTF-8'><title>IDDAA Bülteni</title></head><body>");
             html.append("<h1>IDDAA Güncel Bülteni</h1>");
