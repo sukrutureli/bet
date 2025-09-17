@@ -9,8 +9,8 @@ jobs:
   scraper:
     runs-on: ubuntu-latest
     container:
-      image: selenium/standalone-chrome:latest
-      options: --user root
+      image: selenium/standalone-chrome:4.14.1-20231025
+      options: --user root --shm-size=2gb
 
     steps:
       - name: Checkout repo
