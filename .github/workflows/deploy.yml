@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: selenium/standalone-chrome:latest  # Chrome + Chromedriver uyumlu
-      options: --user root  # Root izni, checkout ve Maven için gerekli
+      options: --user root  # Root izni
 
     steps:
       - name: Checkout repo
@@ -27,6 +27,11 @@ jobs:
           apt-get update
           apt-get install -y maven
 
+      - name: Debug Chrome & Chromedriver
+        run: |
+          google-chrome --version
+          chromedriver --version
+
       - name: Build and Run Scraper
         run: mvn clean compile exec:java
 
@@ -37,10 +42,21 @@ jobs:
           path: ./public
 
   deploy:
-    runs-on: ubuntu-latest   # Host runner
+    runs-on: ubuntu-latest   # **Host runner**
     needs: scraper
 
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Debug Netlify secrets
+        run: |
+          echo "Token length: ${#NETLIFY_AUTH_TOKEN}"
+          echo "Site ID: $NETLIFY_SITE_ID"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
       - name: Download public directory artifact
         uses: actions/download-artifact@v4
         with:
