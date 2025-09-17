@@ -8,33 +8,12 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    container:
+      image: selenium/standalone-chrome:latest  # Chrome + Chromedriver uyumlu
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-
-      - name: Install Chrome
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install -y wget unzip
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get -f install -y
-          google-chrome --version
-
-      - name: Install Chromedriver
-        run: |
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+' | head -1)
-          echo "Chrome major version: $CHROME_VERSION"
-
-          # Eğer o sürüm yoksa fallback 'latest' kullan
-          DRIVER_VERSION=$(wget -qO- "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION}" || wget -qO- "https://chromedriver.storage.googleapis.com/LATEST_RELEASE")
-          echo "Installing Chromedriver version: $DRIVER_VERSION"
-
-          wget -N "https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip"
-          unzip chromedriver_linux64.zip -d /usr/local/bin/
-          rm chromedriver_linux64.zip
-          chmod +x /usr/local/bin/chromedriver
-
 
       - name: Set up Java
         uses: actions/setup-java@v3
@@ -43,7 +22,9 @@ jobs:
           java-version: '17'
 
       - name: Build and Run Scraper
-        run: mvn clean compile exec:java
+        run: |
+          # Chrome ve Chromedriver zaten container içinde var
+          mvn clean compile exec:java
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0.0

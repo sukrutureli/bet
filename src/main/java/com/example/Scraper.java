@@ -13,8 +13,6 @@ import java.util.List;
 
 public class Scraper {
     public static void main(String[] args) {
-        // GitHub Actions üzerinde ChromeDriver yolu ayarlanıyor
-        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
