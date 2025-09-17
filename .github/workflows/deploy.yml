@@ -9,8 +9,8 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     container:
-      image: selenium/standalone-chrome:latest
-      options: --user root
+      image: selenium/standalone-chrome:latest  # Chrome + ChromeDriver uyumlu
+      options: --user root  # Root izni, checkout ve Maven için gerekli
 
     steps:
       - name: Checkout repo
@@ -21,16 +21,14 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-          
+
       - name: Install Maven
         run: |
           apt-get update
           apt-get install -y maven
 
       - name: Build and Run Scraper
-        run: |
-          # Chrome ve Chromedriver zaten container içinde var
-          mvn clean compile exec:java
+        run: mvn clean compile exec:java
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0.0
