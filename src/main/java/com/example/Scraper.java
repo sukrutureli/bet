@@ -61,14 +61,14 @@ public class Scraper {
             List<WebElement> initialCheck = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
             System.out.println("İlk kontrol - bulunan element sayısı: " + initialCheck.size());
             
-            // Scroll stratejisi: Yavaş ve kontrollü
+            // Scroll stratejisi: Daha yavaş ve daha uzun
             int previousCount = 0;
             int stableCount = 0;
             
-            for (int i = 0; i < 25; i++) {
-                // Yavaş scroll
-                js.executeScript("window.scrollBy(0, 500);");
-                Thread.sleep(1500);
+            for (int i = 0; i < 40; i++) { // Daha fazla scroll
+                // Çok yavaş scroll
+                js.executeScript("window.scrollBy(0, 300);");
+                Thread.sleep(2500); // Daha uzun bekleme
                 
                 // Şu anki element sayısını kontrol et
                 List<WebElement> currentElements = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
@@ -76,33 +76,43 @@ public class Scraper {
                 
                 System.out.println("Scroll " + (i+1) + " - Element sayısı: " + currentCount);
                 
-                // Eğer element sayısı değişmiyorsa, biraz daha bekle
+                // Eğer element sayısı değişmiyorsa, daha fazla bekle
                 if (currentCount == previousCount) {
                     stableCount++;
-                    if (stableCount >= 3) {
-                        System.out.println("Element sayısı 3 adımdir sabit, scroll durduruluyor.");
-                        break;
+                    if (stableCount >= 5) { // Daha sabırlı ol
+                        System.out.println("Element sayısı 5 adımdir sabit, ekstra bekleme yapılıyor...");
+                        Thread.sleep(5000);
+                        
+                        // Bir kez daha kontrol et
+                        currentElements = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
+                        if (currentElements.size() == currentCount) {
+                            System.out.println("Hala aynı sayı, scroll durduruluyor.");
+                            break;
+                        } else {
+                            System.out.println("Yeni elementler yüklendi, devam ediliyor.");
+                            stableCount = 0;
+                        }
                     }
-                    Thread.sleep(2000); // Ekstra bekleme
+                    Thread.sleep(3000); // Ekstra bekleme
                 } else {
                     stableCount = 0; // Reset
                 }
                 
                 previousCount = currentCount;
-                
-                // Sayfa sonuna geldik mi kontrol et
-                Boolean isAtBottom = (Boolean) js.executeScript(
-                    "return (window.innerHeight + window.scrollY) >= document.body.offsetHeight;"
-                );
-                if (isAtBottom && i > 5) {
-                    System.out.println("Sayfa sonuna ulaşıldı.");
-                    break;
-                }
             }
             
-            // Son scroll'dan sonra elementlerin stabilize olması için ekstra bekleme
-            System.out.println("Scroll tamamlandı, elementlerin yüklenmesi için bekleniyor...");
-            Thread.sleep(8000);
+            // Son scroll'dan sonra elementlerin tamamen yüklenmesi için uzun bekleme
+            System.out.println("Scroll tamamlandı, elementlerin tamamen yüklenmesi için bekleniyor...");
+            Thread.sleep(15000); // 15 saniye bekle
+            
+            // Elementleri tekrar lazy-load için sayfayı baştan sona scroll et (hızlı)
+            System.out.println("Lazy loading için hızlı scroll yapılıyor...");
+            for (int i = 0; i < 5; i++) {
+                js.executeScript("window.scrollTo(0, 0);"); // Başa git
+                Thread.sleep(1000);
+                js.executeScript("window.scrollTo(0, document.body.scrollHeight);"); // Sona git
+                Thread.sleep(2000);
+            }
 
             // Final element kontrolü - farklı selector'lar dene
             List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
@@ -145,55 +155,127 @@ public class Scraper {
                             continue;
                         }
                         
-                        // Elemente scroll yap (lazy loading için)
-                        js.executeScript("arguments[0].scrollIntoView({block: 'center'});", event);
-                        Thread.sleep(500);
+                        // Elemente yavaşça scroll yap ve bekle
+                        js.executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", event);
+                        Thread.sleep(1500); // Daha uzun bekleme
                         
-                        // Maç adı - birden fazla selector dene
+                        // Element DOM'da tam yüklendi mi ekstra kontrol
+                        Boolean elementReady = (Boolean) js.executeScript(
+                            "return arguments[0].offsetHeight > 0 && arguments[0].offsetWidth > 0;", event
+                        );
+                        
+                        if (!elementReady) {
+                            System.out.println("Element " + idx + " henüz hazır değil, ekstra bekleme...");
+                            Thread.sleep(2000);
+                        }
+                        
+                        // Maç adı - daha fazla alternatif selector
                         String matchName = "İsim bulunamadı";
+                        
+                        // 1. Ana selector
                         List<WebElement> nameList = event.findElements(By.cssSelector("div.name > a"));
                         if (!nameList.isEmpty() && !nameList.get(0).getText().trim().isEmpty()) {
                             matchName = nameList.get(0).getText().trim();
                         } else {
-                            // Alternatif selector'lar dene
-                            nameList = event.findElements(By.cssSelector("a[href*='mac-detay']"));
-                            if (!nameList.isEmpty() && !nameList.get(0).getText().trim().isEmpty()) {
-                                matchName = nameList.get(0).getText().trim();
+                            // 2. Alternatif - herhangi bir link
+                            nameList = event.findElements(By.cssSelector("a"));
+                            for (WebElement link : nameList) {
+                                String linkText = link.getText().trim();
+                                if (!linkText.isEmpty() && linkText.contains("-")) { // Takım adları genelde - içerir
+                                    matchName = linkText;
+                                    break;
+                                }
+                            }
+                            
+                            // 3. Alternatif - title attribute'u kontrol et
+                            if (matchName.equals("İsim bulunamadı")) {
+                                nameList = event.findElements(By.cssSelector("[title]"));
+                                for (WebElement titled : nameList) {
+                                    String title = titled.getAttribute("title");
+                                    if (title != null && !title.trim().isEmpty() && title.contains("-")) {
+                                        matchName = title.trim();
+                                        break;
+                                    }
+                                }
                             }
                         }
 
-                        // Maç zamanı - birden fazla selector dene
+                        // Maç zamanı - daha fazla alternatif
                         String matchTime = "Zaman bulunamadı";
+                        
+                        // 1. Ana selector
                         List<WebElement> timeList = event.findElements(By.cssSelector("div.time > span"));
                         if (!timeList.isEmpty() && !timeList.get(0).getText().trim().isEmpty()) {
                             matchTime = timeList.get(0).getText().trim();
                         } else {
-                            // Alternatif time selector
-                            timeList = event.findElements(By.cssSelector("span[class*='time']"));
-                            if (!timeList.isEmpty() && !timeList.get(0).getText().trim().isEmpty()) {
-                                matchTime = timeList.get(0).getText().trim();
+                            // 2. Alternatif - herhangi bir time class'ı
+                            timeList = event.findElements(By.cssSelector("[class*='time']"));
+                            for (WebElement timeEl : timeList) {
+                                String timeText = timeEl.getText().trim();
+                                if (!timeText.isEmpty() && (timeText.contains(":") || timeText.contains("'"))) {
+                                    matchTime = timeText;
+                                    break;
+                                }
+                            }
+                            
+                            // 3. Alternatif - span içinde saat formatı ara
+                            if (matchTime.equals("Zaman bulunamadı")) {
+                                timeList = event.findElements(By.cssSelector("span"));
+                                for (WebElement span : timeList) {
+                                    String spanText = span.getText().trim();
+                                    if (spanText.matches("\\d{2}:\\d{2}") || spanText.matches("\\d{2}'")) {
+                                        matchTime = spanText;
+                                        break;
+                                    }
+                                }
                             }
                         }
 
-                        // Oranlar - birden fazla selector dene
+                        // Oranlar - çok daha agresif arama
+                        String odd1 = "-", oddX = "-", odd2 = "-";
+                        
+                        // 1. Ana selector
                         List<WebElement> oddsList = event.findElements(By.cssSelector("dd.event-row .cell a.odd"));
+                        
                         if (oddsList.isEmpty()) {
-                            // Alternatif odds selector
-                            oddsList = event.findElements(By.cssSelector("a.odd"));
+                            // 2. Alternatif - herhangi bir .odd class'ı
+                            oddsList = event.findElements(By.cssSelector(".odd"));
                         }
                         if (oddsList.isEmpty()) {
-                            // Bir başka alternatif
-                            oddsList = event.findElements(By.cssSelector("[class*='odd']"));
+                            // 3. Alternatif - a tag'i içinde sayı olan
+                            oddsList = event.findElements(By.cssSelector("a"));
+                            List<WebElement> filteredOdds = new java.util.ArrayList<>();
+                            for (WebElement link : oddsList) {
+                                String text = link.getText().trim();
+                                if (text.matches("\\d+\\.\\d+") || text.matches("\\d+,\\d+")) {
+                                    filteredOdds.add(link);
+                                }
+                            }
+                            oddsList = filteredOdds;
+                        }
+                        if (oddsList.isEmpty()) {
+                            // 4. Son alternatif - herhangi bir element içinde oran formatı ara
+                            List<WebElement> allElements = event.findElements(By.cssSelector("*"));
+                            for (WebElement el : allElements) {
+                                String text = el.getText().trim();
+                                if (text.matches("\\d+\\.\\d+") && text.length() < 6) { // Kısa oran formatı
+                                    oddsList.add(el);
+                                    if (oddsList.size() >= 3) break;
+                                }
+                            }
                         }
 
-                        String odd1 = oddsList.size() > 0 && !oddsList.get(0).getText().trim().isEmpty() ? oddsList.get(0).getText().trim() : "-";
-                        String oddX = oddsList.size() > 1 && !oddsList.get(1).getText().trim().isEmpty() ? oddsList.get(1).getText().trim() : "-";
-                        String odd2 = oddsList.size() > 2 && !oddsList.get(2).getText().trim().isEmpty() ? oddsList.get(2).getText().trim() : "-";
+                        // Oranları ata
+                        if (oddsList.size() > 0) odd1 = oddsList.get(0).getText().trim();
+                        if (oddsList.size() > 1) oddX = oddsList.get(1).getText().trim();
+                        if (oddsList.size() > 2) odd2 = oddsList.get(2).getText().trim();
 
-                        // Eğer maç adı ve zamanı boşsa, bu elementi atla
-                        if (matchName.equals("İsim bulunamadı") && matchTime.equals("Zaman bulunamadı")) {
+                        // Eğer hiçbir veri bulunamadıysa, elementin HTML'ini debug için yazdır
+                        if (matchName.equals("İsim bulunamadı") && matchTime.equals("Zaman bulunamadı") && odd1.equals("-")) {
+                            String elementHtml = event.getAttribute("outerHTML");
+                            System.out.println("Boş element " + idx + " HTML (ilk 200 karakter): " + 
+                                elementHtml.substring(0, Math.min(200, elementHtml.length())));
                             emptyCount++;
-                            System.out.println("Element " + idx + " boş, atlanıyor");
                             continue;
                         }
 
@@ -207,6 +289,7 @@ public class Scraper {
                         
                     } catch (Exception inner) {
                         System.out.println("Element " + idx + " parse edilirken hata: " + inner.getMessage());
+                        inner.printStackTrace(); // Stack trace'i de yazdır
                         html.append("<div class='match' style='color:red; border: 2px solid red;'>")
                             .append("<p><strong>Parse hatası - Element #").append(idx).append(":</strong></p>")
                             .append("<p>").append(inner.getMessage()).append("</p>")
