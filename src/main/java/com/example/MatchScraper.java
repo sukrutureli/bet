@@ -363,7 +363,7 @@ public class MatchScraper {
             clickShowMoreMatches();
             
             // Maç sonuçlarını çek
-            matches = extractMatchResults("rekabet-gecmisi", url);
+            matches = extractCompetitionHistoryResults("rekabet-gecmisi", url);
             
         } catch (Exception e) {
             System.out.println("Rekabet geçmişi çekme hatası: " + e.getMessage());
@@ -453,7 +453,8 @@ public class MatchScraper {
             // "Daha eski maçları göster" benzeri butonları ara
             String[] buttonTexts = {
                 "daha eski", "show more", "load more", "daha fazla", 
-                "eski maçlar", "more matches", "devamı", "tümünü göster"
+                "eski maçlar", "more matches", "devamı", "tümünü göster",
+                "Daha Eski Maçları Göster"
             };
             
             boolean clicked = false;
@@ -536,6 +537,71 @@ public class MatchScraper {
             System.out.println("'Daha fazla göster' butonu tıklama hatası: " + e.getMessage());
         }
     }
+    
+    private List<MatchResult> extractCompetitionHistoryResults(String matchType, String originalUrl) {
+        List<MatchResult> matches = new ArrayList<>();
+
+        try {
+            // Rekabet tablosunun yüklenmesini bekle
+            wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("div[data-test-id='CompitionHistoryTableItem']")));
+
+            List<WebElement> rows = driver.findElements(By.cssSelector("div[data-test-id='CompitionHistoryTableItem']"));
+
+            for (WebElement row : rows) {
+                try {
+                    String league = row.findElement(By.cssSelector("[data-test-id='CompitionTableItemLeague']")).getText().trim();
+                    String dateText = row.findElement(By.cssSelector("[data-test-id='CompitionTableItemSeason']")).getText().trim();
+
+                    String homeTeam = row.findElement(By.cssSelector("div[data-test-id='HomeTeam'] span")).getText().trim();
+                    String scoreText = row.findElement(By.cssSelector("button[data-testid='nsn-button'] span")).getText().trim();
+                    String awayTeam = row.findElement(By.cssSelector("div[data-test-id='AwayTeam'] span")).getText().trim();
+
+                    String halfTime = row.findElement(By.cssSelector("[data-test-id='CompitionTableItemFirstHalf']")).getText().trim();
+
+                    // Skoru ayır
+                    String[] parts = scoreText.split("-");
+                    int homeScore = Integer.parseInt(parts[0].trim());
+                    int awayScore = Integer.parseInt(parts[1].trim());
+
+                    // Tarihi parse etmek için şimdilik bugünün tarihi
+                    java.time.LocalDate matchDate = java.time.LocalDate.now();
+                    // TODO: dateText ("10.04.2025") -> LocalDate çevrilebilir
+
+                    MatchResult match = new MatchResult(
+                            homeTeam,
+                            awayTeam,
+                            homeScore,
+                            awayScore,
+                            matchDate,
+                            league,
+                            matchType,
+                            originalUrl
+                    );
+                    //match.setHalfTimeScore(halfTime);
+
+                    // oranlar
+                    List<WebElement> oddElements = row.findElements(By.cssSelector("[data-test-id='CompitionTableItemOdds'] span"));
+                    List<String> odds = new ArrayList<>();
+                    for (WebElement odd : oddElements) {
+                        odds.add(odd.getText().trim());
+                    }
+                    //match.setOdds(odds); // MatchResult içine odds eklediysen
+
+                    matches.add(match);
+
+                    System.out.println(homeTeam + " " + homeScore + "-" + awayScore + " " + awayTeam +
+                            " (İY: " + halfTime + ", Tarih: " + dateText + ", Lig: " + league + ")");
+                } catch (Exception e) {
+                    System.out.println("Satır işlenemedi: " + e.getMessage());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("extractCompetitionHistoryResults hatası: " + e.getMessage());
+        }
+
+        return matches;
+    }
 
     private List<MatchResult> extractMatchResults(String matchType, String originalUrl) {
         List<MatchResult> matches = new ArrayList<>();
@@ -573,7 +639,7 @@ public class MatchScraper {
                             matchType,
                             originalUrl
                     );
-                    match.setHalfTimeScore(halfTime); // Eğer MatchResult içine ekleyeceksen
+                    //match.setHalfTimeScore(halfTime); // Eğer MatchResult içine ekleyeceksen
 
                     matches.add(match);
 
