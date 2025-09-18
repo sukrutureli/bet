@@ -331,7 +331,7 @@ public class MatchScraper {
             
             // 2. Son Maçlar sayfası
             System.out.println("Son maçlar çekiliyor: " + teamName);
-            List<MatchResult> sonMaclar = scrapeSonMaclar(detailUrl + "/son-maclar");
+            List<MatchResult> sonMaclar = scrapeSonMaclar(detailUrl + "/son-maclari");
             for (MatchResult match : sonMaclar) {
                 teamHistory.addSonMacMatch(match);
             }
@@ -885,3 +885,4 @@ class MatchInfo {
     }
 
 }
+
