@@ -1,6 +1,9 @@
 package com.example;
 
 import java.io.File;
+import javapackage com.example;
+
+import java.io.File;
 import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -8,6 +11,7 @@ import java.util.List;
 public class Scraper {
     public static void main(String[] args) {
         MatchScraper scraper = null;
+        MatchHistoryManager historyManager = new MatchHistoryManager();
         
         try {
             System.out.println("=== İddaa Scraper Başlatılıyor ===");
@@ -78,34 +82,96 @@ public class Scraper {
                 html.append("2: ").append(match.getOdd2());
                 html.append("</div>");
                 
-                // Detay URL'si varsa detay sayfayı çek
+                // Detay URL'si varsa geçmiş verilerini çek
                 if (match.hasDetailUrl()) {
-                    System.out.println("Detay çekiliyor " + (i+1) + "/" + matches.size() + ": " + match.getName());
+                    System.out.println("Geçmiş çekiliyor " + (i+1) + "/" + matches.size() + ": " + match.getName());
                     
                     try {
-                        MatchDetails details = scraper.scrapeMatchDetails(match.getDetailUrl());
+                        TeamMatchHistory teamHistory = scraper.scrapeTeamHistory(match.getDetailUrl(), match.getName());
                         
-                        if (details != null) {
-                            html.append("<div class='details'>");
-                            html.append("<h4>Detay Bilgileri:</h4>");
-                            html.append("<p><strong>URL:</strong> <a href='").append(details.getUrl()).append("' target='_blank'>").append(details.getUrl()).append("</a></p>");
-                            html.append("<p><strong>Sayfa Başlığı:</strong> ").append(details.getTitle()).append("</p>");
-                            html.append("<p><strong>İçerik Özeti:</strong><br>").append(details.getContent()).append("...</p>");
+                        if (teamHistory != null && teamHistory.getTotalMatches() > 0) {
+                            historyManager.addTeamHistory(teamHistory);
+                            
+                            html.append("<div class='history'>");
+                            html.append("<h4>Geçmiş Maç Analizi:</h4>");
+                            
+                            // Takım istatistikleri
+                            html.append("<div class='team-stats'>");
+                            html.append("<strong>").append(teamHistory.getTeamName()).append("</strong><br>");
+                            html.append("Toplam Maç: ").append(teamHistory.getTotalMatches()).append(" | ");
+                            html.append("Galibiyet: ").append(teamHistory.getWinCount()).append(" | ");
+                            html.append("Beraberlik: ").append(teamHistory.getDrawCount()).append(" | ");
+                            html.append("Mağlubiyet: ").append(teamHistory.getLossCount()).append(" | ");
+                            html.append("Başarı Oranı: ").append(String.format("%.1f%%", teamHistory.getWinRate()));
                             html.append("</div>");
-                            processedDetailCount++;
+                            
+                            // Rekabet Geçmişi
+                            if (!teamHistory.getRekabetGecmisi().isEmpty()) {
+                                html.append("<div class='history-section'>");
+                                html.append("<h5>Rekabet Geçmişi (").append(teamHistory.getRekabetGecmisi().size()).append(" maç):</h5>");
+                                
+                                int count = 0;
+                                for (MatchResult matchResult : teamHistory.getRekabetGecmisi()) {
+                                    if (count >= 10) break; // İlk 10 maçı göster
+                                    
+                                    String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
+                                    html.append("<div class='match-result ").append(resultClass).append("'>");
+                                    html.append(matchResult.getMatchDate()).append(" - ");
+                                    html.append(matchResult.getHomeTeam()).append(" ");
+                                    html.append(matchResult.getScoreString()).append(" ");
+                                    html.append(matchResult.getAwayTeam());
+                                    html.append(" [").append(matchResult.getTournament()).append("]");
+                                    html.append("</div>");
+                                    count++;
+                                }
+                                
+                                if (teamHistory.getRekabetGecmisi().size() > 10) {
+                                    html.append("<p><em>... ve ").append(teamHistory.getRekabetGecmisi().size() - 10).append(" maç daha</em></p>");
+                                }
+                                html.append("</div>");
+                            }
+                            
+                            // Son Maçlar
+                            if (!teamHistory.getSonMaclar().isEmpty()) {
+                                html.append("<div class='history-section'>");
+                                html.append("<h5>Son Maçlar (").append(teamHistory.getSonMaclar().size()).append(" maç):</h5>");
+                                
+                                int count = 0;
+                                for (MatchResult matchResult : teamHistory.getSonMaclar()) {
+                                    if (count >= 10) break; // İlk 10 maçı göster
+                                    
+                                    String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
+                                    html.append("<div class='match-result ").append(resultClass).append("'>");
+                                    html.append(matchResult.getMatchDate()).append(" - ");
+                                    html.append(matchResult.getHomeTeam()).append(" ");
+                                    html.append(matchResult.getScoreString()).append(" ");
+                                    html.append(matchResult.getAwayTeam());
+                                    html.append(" [").append(matchResult.getTournament()).append("]");
+                                    html.append("</div>");
+                                    count++;
+                                }
+                                
+                                if (teamHistory.getSonMaclar().size() > 10) {
+                                    html.append("<p><em>... ve ").append(teamHistory.getSonMaclar().size() - 10).append(" maç daha</em></p>");
+                                }
+                                html.append("</div>");
+                            }
+                            
+                            html.append("</div>");
+                            processedTeamCount++;
                         } else {
-                            html.append("<div class='details no-details'>Detay bilgisi alınamadı</div>");
+                            html.append("<div class='no-data'>Bu maç için geçmiş veri bulunamadı</div>");
                         }
                         
-                        // Rate limiting - 2 saniye bekle
-                        Thread.sleep(2000);
+                        // Rate limiting - 3 saniye bekle
+                        Thread.sleep(3000);
                         
                     } catch (Exception e) {
-                        System.out.println("Detay çekme hatası: " + e.getMessage());
-                        html.append("<div class='details no-details'>Detay çekme hatası: ").append(e.getMessage()).append("</div>");
+                        System.out.println("Geçmiş çekme hatası: " + e.getMessage());
+                        html.append("<div class='no-data'>Geçmiş veri çekme hatası: ").append(e.getMessage()).append("</div>");
                     }
                 } else {
-                    html.append("<div class='details no-details'>Detay URL'si bulunamadı</div>");
+                    html.append("<div class='no-data'>Detay URL'si bulunamadı</div>");
                 }
                 
                 html.append("<p><small>Element #").append(match.getIndex()).append("</small></p>");
@@ -131,20 +197,41 @@ public class Scraper {
             html.append("</p>");
             html.append("</body></html>");
             
-            // HTML dosyasını kaydet
+            // Dosyaları kaydet
             File dir = new File("public");
             if (!dir.exists()) dir.mkdirs();
             
+            // HTML dosyasını kaydet
             try (FileWriter fw = new FileWriter(new File(dir, "index.html"))) {
                 fw.write(html.toString());
             }
             
+            // CSV dosyasını kaydet
+            try (FileWriter fw = new FileWriter(new File(dir, "match_results.csv"))) {
+                fw.write(historyManager.toCsvString());
+            }
+            
+            // JSON dosyasını kaydet
+            try (FileWriter fw = new FileWriter(new File(dir, "match_results.json"))) {
+                fw.write(historyManager.toJsonString());
+            }
+            
             System.out.println("\n=== Scraping Tamamlandı ===");
             System.out.println("✓ public/index.html başarıyla oluşturuldu!");
+            System.out.println("✓ public/match_results.csv başarıyla oluşturuldu!");
+            System.out.println("✓ public/match_results.json başarıyla oluşturuldu!");
             System.out.println("✓ Toplam maç sayısı: " + matches.size());
             System.out.println("✓ Detay URL'li maç sayısı: " + detailUrlCount);
-            System.out.println("✓ Başarıyla detayı çekilen: " + processedDetailCount);
+            System.out.println("✓ Başarıyla geçmişi çekilen: " + processedTeamCount);
+            System.out.println("✓ Toplam takım: " + historyManager.getTotalTeams());
+            System.out.println("✓ Toplam geçmiş maç: " + historyManager.getTotalMatches());
             System.out.println("✓ Bitiş zamanı: " + LocalDateTime.now());
+            
+            // Console'da özet bilgileri yazdır
+            System.out.println("\n=== Takım Geçmişi Özeti ===");
+            for (TeamMatchHistory teamHistory : historyManager.getTeamHistories()) {
+                System.out.println(teamHistory.toString());
+            }
             
         } catch (Exception e) {
             System.out.println("GENEL HATA: " + e.getMessage());
@@ -162,6 +249,16 @@ public class Scraper {
                     fw.write("<p>Zaman: " + LocalDateTime.now() + "</p>");
                     fw.write("</body></html>");
                 }
+                            // Kısmi veri varsa onu da kaydet
+                if (historyManager.getTotalMatches() > 0) {
+                    try (FileWriter fw = new FileWriter(new File(dir, "match_results.csv"))) {
+                        fw.write(historyManager.toCsvString());
+                    }
+                    try (FileWriter fw = new FileWriter(new File(dir, "match_results.json"))) {
+                        fw.write(historyManager.toJsonString());
+                    }
+                }
+                
             } catch (Exception writeError) {
                 System.out.println("HTML yazma hatası: " + writeError.getMessage());
             }
@@ -169,6 +266,21 @@ public class Scraper {
             if (scraper != null) {
                 scraper.close();
             }
+        }
+    }
+    
+    private static String getResultClass(MatchResult match, String teamName) {
+        String result = match.getResult();
+        
+        // Takımın ev sahibi mi deplasman mı olduğunu kontrol et
+        boolean isHome = match.getHomeTeam().contains(teamName) || teamName.contains(match.getHomeTeam());
+        
+        if (result.equals("D")) {
+            return "draw";
+        } else if ((isHome && result.equals("H")) || (!isHome && result.equals("A"))) {
+            return "win";
+        } else {
+            return "loss";
         }
     }
 }

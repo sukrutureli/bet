@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 // Tek maç sonucu
-public class MatchResult {
+class MatchResult {
     private String homeTeam;
     private String awayTeam;
     private int homeScore;
@@ -130,8 +130,8 @@ class TeamMatchHistory {
         return (int) getAllMatches().stream()
             .filter(match -> {
                 String result = match.getResult();
-                return (match.getHomeTeam().equals(teamName) && result.equals("H")) ||
-                       (match.getAwayTeam().equals(teamName) && result.equals("A"));
+                return (match.getHomeTeam().contains(teamName) && result.equals("H")) ||
+                       (match.getAwayTeam().contains(teamName) && result.equals("A"));
             })
             .count();
     }
