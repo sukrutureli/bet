@@ -536,8 +536,61 @@ public class MatchScraper {
             System.out.println("'Daha fazla göster' butonu tıklama hatası: " + e.getMessage());
         }
     }
-    
+
     private List<MatchResult> extractMatchResults(String matchType, String originalUrl) {
+        List<MatchResult> matches = new ArrayList<>();
+
+        try {
+            // Tablonun yüklenmesini bekle
+            wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("tr[data-test-id='LastMatchesTable']")));
+
+            List<WebElement> rows = driver.findElements(By.cssSelector("tr[data-test-id='LastMatchesTable']"));
+
+            for (WebElement row : rows) {
+                try {
+                    String homeTeam = row.findElement(By.cssSelector("div[data-test-id='HomeTeam'] span")).getText().trim();
+                    String scoreText = row.findElement(By.cssSelector("button[data-test-id='NsnButton'] span")).getText().trim();
+                    String awayTeam = row.findElement(By.cssSelector("div[data-test-id='AwayTeam'] span")).getText().trim();
+                    String halfTime = row.findElement(By.cssSelector("td[data-test-id='TableBodyFirstHalf']")).getText().trim();
+
+                    // Skoru ayır
+                    String[] parts = scoreText.split("-");
+                    int homeScore = Integer.parseInt(parts[0].trim());
+                    int awayScore = Integer.parseInt(parts[1].trim());
+
+                    // Tarih bilgisi (opsiyonel)
+                    String leagueAndDate = row.findElement(By.cssSelector("td[data-test-id='TableBodyLeague']")).getText();
+                    // Örn: "U19ŞL\n12 Mar" → buradan date parse edebilirsin
+
+                    MatchResult match = new MatchResult(
+                            homeTeam,
+                            awayTeam,
+                            homeScore,
+                            awayScore,
+                            java.time.LocalDate.now(), // TODO: leagueAndDate içinden tarihi parse et
+                            "İstatistik",
+                            matchType,
+                            originalUrl
+                    );
+                    match.setHalfTimeScore(halfTime); // Eğer MatchResult içine ekleyeceksen
+
+                    matches.add(match);
+
+                    System.out.println(homeTeam + " " + homeScore + "-" + awayScore + " " + awayTeam + " (İY: " + halfTime + ")");
+                } catch (Exception e) {
+                    System.out.println("Satır işlenemedi: " + e.getMessage());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("extractMatchResults hatası: " + e.getMessage());
+        }
+
+        return matches;
+    }
+
+    
+    /*private List<MatchResult> extractMatchResults(String matchType, String originalUrl) {
         List<MatchResult> matches = new ArrayList<>();
         
         try {
@@ -597,7 +650,7 @@ public class MatchScraper {
         }
         
         return matches;
-    }
+    }*/
     
     private MatchResult extractSingleMatchResult(WebElement row, String matchType, String originalUrl) {
         try {
