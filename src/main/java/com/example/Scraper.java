@@ -1,9 +1,6 @@
 package com.example;
 
 import java.io.File;
-import javapackage com.example;
-
-import java.io.File;
 import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -34,20 +31,27 @@ public class Scraper {
             html.append("body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }");
             html.append(".match { background: white; border: 1px solid #ddd; margin: 10px 0; padding: 15px; border-radius: 8px; }");
             html.append(".match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }");
-            html.append(".match-name { font-weight: bold; color: #333; }");
+            html.append(".match-name { font-weight: bold; color: #333; font-size: 1.1em; }");
             html.append(".match-time { color: #666; }");
-            html.append(".odds { background: #f8f9fa; padding: 10px; border-radius: 5px; }");
-            html.append(".details { margin-top: 15px; padding: 10px; background: #e9ecef; border-radius: 5px; font-size: 0.9em; }");
-            html.append(".no-details { color: #999; font-style: italic; }");
+            html.append(".odds { background: #f8f9fa; padding: 10px; border-radius: 5px; margin: 10px 0; }");
+            html.append(".history { margin-top: 15px; }");
+            html.append(".history-section { background: #e9ecef; margin: 10px 0; padding: 15px; border-radius: 5px; }");
+            html.append(".match-result { background: white; padding: 8px; margin: 5px 0; border-left: 4px solid #007bff; border-radius: 3px; font-size: 0.9em; }");
+            html.append(".win { border-left-color: #28a745; background-color: #d4edda; }");
+            html.append(".draw { border-left-color: #ffc107; background-color: #fff3cd; }");
+            html.append(".loss { border-left-color: #dc3545; background-color: #f8d7da; }");
+            html.append(".team-stats { background: #d1ecf1; color: #0c5460; padding: 10px; border-radius: 5px; margin: 10px 0; }");
+            html.append(".no-data { color: #999; font-style: italic; padding: 20px; text-align: center; }");
             html.append(".stats { background: #d1ecf1; color: #0c5460; padding: 15px; margin: 20px 0; border-radius: 8px; }");
+            html.append(".export-section { background: #fff; padding: 20px; margin: 20px 0; border: 1px solid #ddd; border-radius: 8px; }");
             html.append("</style>");
             html.append("</head><body>");
-            html.append("<h1>İddaa Güncel Bülteni</h1>");
+            html.append("<h1>İddaa Maç Geçmişi Analizi</h1>");
             html.append("<p>Son güncelleme: " + LocalDateTime.now() + "</p>");
             
             // İstatistik bilgileri
             int detailUrlCount = 0;
-            int processedDetailCount = 0;
+            int processedTeamCount = 0;
             
             // URL'li maçları say
             for (MatchInfo match : matches) {
@@ -60,11 +64,11 @@ public class Scraper {
             html.append("<h3>İstatistikler</h3>");
             html.append("<p>• Toplam maç: ").append(matches.size()).append("</p>");
             html.append("<p>• Detay URL'si olan: ").append(detailUrlCount).append("</p>");
-            html.append("<p>• Detay verisi çekilecek: ").append(detailUrlCount).append("</p>");
+            html.append("<p>• Geçmiş verisi çekilecek: ").append(detailUrlCount).append("</p>");
             html.append("</div>");
             
-            // Her maç için bilgileri işle
-            System.out.println("\n2. Detay sayfalar işleniyor...");
+            // Her maç için geçmiş bilgilerini işle
+            System.out.println("\n2. Takım geçmişleri çekiliyor...");
             
             for (int i = 0; i < matches.size(); i++) {
                 MatchInfo match = matches.get(i);
@@ -76,7 +80,7 @@ public class Scraper {
                 html.append("</div>");
                 
                 html.append("<div class='odds'>");
-                html.append("<strong>Oranlar:</strong> ");
+                html.append("<strong>Güncel Oranlar:</strong> ");
                 html.append("1: ").append(match.getOdd1()).append(" | ");
                 html.append("X: ").append(match.getOddX()).append(" | ");
                 html.append("2: ").append(match.getOdd2());
@@ -183,13 +187,23 @@ public class Scraper {
                 }
             }
             
-            // Final istatistikleri güncelle
+            // Final istatistikleri
             html.append("<div class='stats'>");
             html.append("<h3>Final İstatistikleri</h3>");
             html.append("<p>• Toplam maç: ").append(matches.size()).append("</p>");
             html.append("<p>• Detay URL'si olan: ").append(detailUrlCount).append("</p>");
-            html.append("<p>• Başarıyla detayı çekilen: ").append(processedDetailCount).append("</p>");
-            html.append("<p>• Başarı oranı: ").append(detailUrlCount > 0 ? String.format("%.1f%%", (processedDetailCount * 100.0 / detailUrlCount)) : "0%").append("</p>");
+            html.append("<p>• Başarıyla geçmişi çekilen: ").append(processedTeamCount).append("</p>");
+            html.append("<p>• Toplam takım: ").append(historyManager.getTotalTeams()).append("</p>");
+            html.append("<p>• Toplam geçmiş maç: ").append(historyManager.getTotalMatches()).append("</p>");
+            html.append("<p>• Başarı oranı: ").append(detailUrlCount > 0 ? String.format("%.1f%%", (processedTeamCount * 100.0 / detailUrlCount)) : "0%").append("</p>");
+            html.append("</div>");
+            
+            // Export bölümü
+            html.append("<div class='export-section'>");
+            html.append("<h3>Veri Export</h3>");
+            html.append("<p>Toplanan veriler aşağıdaki formatlarda kaydedildi:</p>");
+            html.append("<p>• <strong>CSV:</strong> public/match_results.csv</p>");
+            html.append("<p>• <strong>JSON:</strong> public/match_results.json</p>");
             html.append("</div>");
             
             html.append("<p style='text-align: center; color: #666; margin-top: 30px;'>");
@@ -247,9 +261,13 @@ public class Scraper {
                     fw.write("<h1>Scraper Hatası</h1>");
                     fw.write("<p>Hata: " + e.getMessage() + "</p>");
                     fw.write("<p>Zaman: " + LocalDateTime.now() + "</p>");
+                    if (historyManager.getTotalTeams() > 0) {
+                        fw.write("<p>Kısmi veri mevcut: " + historyManager.getTotalTeams() + " takım, " + historyManager.getTotalMatches() + " maç</p>");
+                    }
                     fw.write("</body></html>");
                 }
-                            // Kısmi veri varsa onu da kaydet
+                
+                // Kısmi veri varsa onu da kaydet
                 if (historyManager.getTotalMatches() > 0) {
                     try (FileWriter fw = new FileWriter(new File(dir, "match_results.csv"))) {
                         fw.write(historyManager.toCsvString());
