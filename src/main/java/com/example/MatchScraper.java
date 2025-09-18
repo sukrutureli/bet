@@ -389,7 +389,7 @@ public class MatchScraper {
             clickShowMoreMatches();
             
             // Maç sonuçlarını çek
-            matches = extractMatchResults("son-maclar", url);
+            matches = extractMatchResults("son-maclari", url);
             
         } catch (Exception e) {
             System.out.println("Son maçlar çekme hatası: " + e.getMessage());
@@ -883,4 +883,5 @@ class MatchInfo {
     public boolean hasDetailUrl() {
         return detailUrl != null && !detailUrl.isEmpty() && detailUrl.contains("istatistik.nesine.com");
     }
+
 }
