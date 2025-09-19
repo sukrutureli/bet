@@ -1,110 +1,4 @@
 HomeTeam,AwayTeam,HomeScore,AwayScore,MatchDate,Tournament,MatchType,Result
-Velez,San Martin,1,0,08.03.2025,ARJSL,rekabet-gecmisi,H
-San Martin,Velez,3,1,06.10.2018,ARJSL,rekabet-gecmisi,H
-San Martin,Velez,0,2,05.05.2018,ARJSL,rekabet-gecmisi,A
-San Martin,Velez,2,0,06.11.2016,ARJSL,rekabet-gecmisi,H
-San Martin,Velez,3,1,06.09.2015,ARJSL,rekabet-gecmisi,H
-Velez,San Martin,3,0,05.03.2013,ARJSL,rekabet-gecmisi,H
-San Martin,Velez,0,3,26.08.2012,ARJSL,rekabet-gecmisi,A
-Velez,San Martin,1,0,02.10.2011,ARJSL,rekabet-gecmisi,H
-Belgrano,San Martin,0,0,ARJSL
-12 Eyl,,son-maclari,D
-River Plate,San Martin,2,0,ARJSL
-1 Eyl,,son-maclari,H
-San Martin,Gimnasia,1,0,ARJSL
-24 Ağu,,son-maclari,H
-Talleres,San Martin,0,0,ARJSL
-19 Ağu,,son-maclari,D
-San Martin,CA Sarmiento,0,1,ARJSL
-9 Ağu,,son-maclari,A
-Rosario C.,San Martin,0,0,ARJSL
-26 Tem,,son-maclari,D
-San Martin,Dep. Riestra,3,2,ARJSL
-22 Tem,,son-maclari,H
-Atl. Tucuman,San Martin,2,1,ARJSL
-13 Tem,,son-maclari,H
-San Martin,CA Aldosivi,0,3,ARJSL
-4 May,,son-maclari,A
-Lanus,San Martin,1,0,ARJSL
-28 Nis,,son-maclari,H
-San Martin,Godoy Cruz,1,0,ARJSL
-20 Nis,,son-maclari,H
-Independient,San Martin,2,0,ARJSL
-14 Nis,,son-maclari,H
-San Martin,San Lorenzo,0,1,ARJSL
-5 Nis,,son-maclari,A
-I. Cordoba,San Martin,1,0,ARJSL
-29 Mar,,son-maclari,H
-San Martin,CA Platense,0,2,ARJSL
-18 Mar,,son-maclari,A
-Velez,San Martin,1,0,ARJSL
-8 Mar,,son-maclari,H
-San Martin,Belgrano,3,1,ARJSL
-1 Mar,,son-maclari,H
-San Martin,River Plate,0,2,ARJSL
-23 Şub,,son-maclari,A
-Gimnasia,San Martin,1,0,ARJSL
-17 Şub,,son-maclari,H
-San Martin,Talleres,0,1,ARJSL
-14 Şub,,son-maclari,A
-CA Sarmiento,San Martin,1,1,ARJSL
-7 Şub,,son-maclari,D
-San Martin,Rosario C.,0,0,ARJSL
-2 Şub,,son-maclari,D
-Dep. Riestra,San Martin,0,0,ARJSL
-28 Oca,,son-maclari,D
-San Martin,Atl. Tucuman,0,1,ARJSL
-25 Oca,,son-maclari,A
-Huracan,Velez,0,0,ARJSL
-13 Eyl,,son-maclari,D
-Velez,Lanus,3,0,ARJSL
-31 Ağu,,son-maclari,H
-Godoy Cruz,Velez,0,2,ARJSL
-25 Ağu,,son-maclari,A
-Velez,Independient,2,1,ARJSL
-17 Ağu,,son-maclari,H
-San Lorenzo,Velez,1,0,ARJSL
-8 Ağu,,son-maclari,H
-Velez,I. Cordoba,0,0,ARJSL
-27 Tem,,son-maclari,D
-CA Platense,Velez,0,0,ARJSL
-20 Tem,,son-maclari,D
-Velez,Tigre,2,1,ARJSL
-15 Tem,,son-maclari,H
-River Plate,Velez,4,1,ARJSL
-5 May,,son-maclari,H
-Velez,Gimnasia,1,0,ARJSL
-29 Nis,,son-maclari,H
-Talleres,Velez,0,1,ARJSL
-19 Nis,,son-maclari,A
-Velez,CA Sarmiento,0,1,ARJSL
-15 Nis,,son-maclari,A
-Rosario C.,Velez,2,1,ARJSL
-5 Nis,,son-maclari,H
-Velez,Dep. Riestra,0,1,ARJSL
-29 Mar,,son-maclari,A
-Atl. Tucuman,Velez,1,2,ARJSL
-18 Mar,,son-maclari,A
-Velez,San Martin,1,0,ARJSL
-8 Mar,,son-maclari,H
-Velez,Huracan,0,2,ARJSL
-3 Mar,,son-maclari,A
-Lanus,Velez,0,0,ARJSL
-22 Şub,,son-maclari,D
-Velez,Godoy Cruz,0,2,ARJSL
-18 Şub,,son-maclari,A
-Independient,Velez,3,0,ARJSL
-13 Şub,,son-maclari,H
-Velez,San Lorenzo,0,0,ARJSL
-9 Şub,,son-maclari,D
-I. Cordoba,Velez,2,0,ARJSL
-3 Şub,,son-maclari,H
-Velez,CA Platense,0,1,ARJSL
-29 Oca,,son-maclari,A
-Tigre,Velez,3,0,ARJSL
-24 Oca,,son-maclari,H
-Velez,Huracan,2,0,ARJSL
-16 Ara,,son-maclari,H
 Rhode Islan,Miami,0,1,08.06.2025,ABDŞL,rekabet-gecmisi,A
 Rhode Islan,Miami,8,1,27.10.2024,ABDŞL,rekabet-gecmisi,H
 Miami,Rhode Islan,2,3,14.07.2024,ABDŞL,rekabet-gecmisi,A
@@ -518,3 +412,157 @@ Correcaminos,Club Atletic,5,1,MEKAL
 9 Ağu,,son-maclari,H
 Tlaxcala,Correcaminos,3,2,MEKAL
 4 Ağu,,son-maclari,H
+Danubio,Defensor Sp.,1,1,27.03.2025,URU,rekabet-gecmisi,D
+Danubio,Defensor Sp.,1,1,05.10.2024,URU,rekabet-gecmisi,D
+Defensor Sp.,Danubio,1,0,31.03.2024,URU,rekabet-gecmisi,H
+Defensor Sp.,Danubio,0,2,07.12.2023,URU,rekabet-gecmisi,A
+Defensor Sp.,Danubio,2,1,15.07.2023,URU,rekabet-gecmisi,H
+Danubio,Defensor Sp.,1,1,14.05.2023,URU,rekabet-gecmisi,D
+Defensor Sp.,Danubio,1,1,13.10.2022,URU,rekabet-gecmisi,D
+Defensor Sp.,Danubio,2,1,18.07.2022,URU,rekabet-gecmisi,H
+Danubio,Defensor Sp.,1,2,22.05.2022,URU,rekabet-gecmisi,A
+Defensor Sp.,Danubio,1,1,01.03.2021,URU,rekabet-gecmisi,D
+Danubio,Defensor Sp.,0,0,18.10.2020,URU,rekabet-gecmisi,D
+Danubio,Defensor Sp.,0,0,06.09.2020,URU,rekabet-gecmisi,D
+Defensor Sp.,Danubio,1,2,02.11.2019,URU,rekabet-gecmisi,A
+Defensor Sp.,Danubio,3,1,25.08.2019,URU,rekabet-gecmisi,H
+Danubio,Defensor Sp.,1,1,13.04.2019,URU,rekabet-gecmisi,D
+Defensor Sp.,Danubio,1,2,28.07.2018,URU,rekabet-gecmisi,A
+Cerro Largo,Defensor Sp.,1,0,URU
+14 Eyl,,son-maclari,H
+Defensor Sp.,Juventud,1,0,URU
+6 Eyl,,son-maclari,H
+L.Montevideo,Defensor Sp.,2,0,URU
+30 Ağu,,son-maclari,H
+Defensor Sp.,Pla. Colonia,1,0,URU
+23 Ağu,,son-maclari,H
+R.Montevideo,Defensor Sp.,0,1,URU
+17 Ağu,,son-maclari,A
+Defensor Sp.,River PUru,1,0,URU
+12 Ağu,,son-maclari,H
+Boston River,Defensor Sp.,4,0,URU
+3 Ağu,,son-maclari,H
+Defensor Sp.,Pla. Colonia,1,1,URU
+28 Haz,,son-maclari,D
+Defensor Sp.,Ca Cerro,2,1,URU
+23 Haz,,son-maclari,H
+Montevideo,Defensor Sp.,0,0,URU
+18 Haz,,son-maclari,D
+Defensor Sp.,L.Montevideo,4,2,URU
+15 Haz,,son-maclari,H
+Penarol,Defensor Sp.,3,0,URU
+8 Haz,,son-maclari,H
+River PUru,Defensor Sp.,1,2,URU
+1 Haz,,son-maclari,A
+Defensor Sp.,Cerro Largo,3,2,URU
+25 May,,son-maclari,H
+Nacional,Defensor Sp.,2,1,URU
+18 May,,son-maclari,H
+Defensor Sp.,Penarol,0,1,URU
+3 May,,son-maclari,A
+Torque,Defensor Sp.,0,1,URU
+27 Nis,,son-maclari,A
+Defensor Sp.,Progreso,1,2,URU
+21 Nis,,son-maclari,A
+Defensor Sp.,Ca Cerro,3,2,URU
+15 Nis,,son-maclari,H
+Montevideo,Defensor Sp.,0,0,URU
+7 Nis,,son-maclari,D
+Defensor Sp.,Miramar,2,0,URU
+1 Nis,,son-maclari,H
+Danubio,Defensor Sp.,1,1,URU
+27 Mar,,son-maclari,D
+Defensor Sp.,Cerro Largo,0,0,URU
+23 Mar,,son-maclari,D
+Juventud,Defensor Sp.,2,1,URU
+16 Mar,,son-maclari,H
+Defensor Sp.,L.Montevideo,0,1,URU
+8 Mar,,son-maclari,A
+Pla. Colonia,Defensor Sp.,1,2,URU
+24 Şub,,son-maclari,A
+Defensor Sp.,R.Montevideo,2,0,URU
+16 Şub,,son-maclari,H
+River PUru,Defensor Sp.,0,1,URU
+9 Şub,,son-maclari,A
+Defensor Sp.,Boston River,2,0,URU
+1 Şub,,son-maclari,H
+Miramar,Defensor Sp.,0,0,URU
+30 Kas,,son-maclari,D
+Cerro Largo,Defensor Sp.,3,0,URU
+28 Kas,,son-maclari,H
+Danubio,Ca Cerro,5,1,URU
+14 Eyl,,son-maclari,H
+Montevideo,Danubio,0,2,URU
+6 Eyl,,son-maclari,A
+Danubio,Miramar,2,3,URU
+31 Ağu,,son-maclari,A
+Progreso,Danubio,1,0,URU
+24 Ağu,,son-maclari,H
+Cerro Largo,Danubio,1,0,URU
+19 Ağu,,son-maclari,H
+Danubio,Juventud,2,1,URU
+10 Ağu,,son-maclari,H
+L.Montevideo,Danubio,0,0,URU
+3 Ağu,,son-maclari,D
+Nacional,Danubio,3,2,URU
+30 Haz,,son-maclari,H
+Juventud,Danubio,3,1,URU
+21 Haz,,son-maclari,H
+Danubio,R.Montevideo,1,2,URU
+18 Haz,,son-maclari,A
+Boston River,Danubio,1,1,URU
+14 Haz,,son-maclari,D
+Danubio,Torque,3,2,URU
+7 Haz,,son-maclari,H
+Progreso,Danubio,0,1,URU
+31 May,,son-maclari,A
+Danubio,Miramar,2,0,URU
+25 May,,son-maclari,H
+Pla. Colonia,Danubio,1,2,URU
+20 May,,son-maclari,A
+Danubio,R.Montevideo,0,0,URU
+3 May,,son-maclari,D
+River PUru,Danubio,1,0,URU
+26 Nis,,son-maclari,H
+Danubio,Boston River,1,2,URU
+18 Nis,,son-maclari,A
+Nacional,Danubio,2,0,URU
+13 Nis,,son-maclari,H
+Danubio,Penarol,0,1,URU
+5 Nis,,son-maclari,A
+Torque,Danubio,1,1,URU
+31 Mar,,son-maclari,D
+Danubio,Defensor Sp.,1,1,URU
+27 Mar,,son-maclari,D
+Ca Cerro,Danubio,1,1,URU
+23 Mar,,son-maclari,D
+Danubio,Montevideo,2,2,URU
+16 Mar,,son-maclari,D
+Miramar,Danubio,1,0,URU
+10 Mar,,son-maclari,H
+Danubio,Progreso,1,1,URU
+23 Şub,,son-maclari,D
+Danubio,Cerro Largo,0,0,URU
+15 Şub,,son-maclari,D
+Juventud,Danubio,2,2,URU
+9 Şub,,son-maclari,D
+Danubio,L.Montevideo,1,1,URU
+1 Şub,,son-maclari,D
+D. Maldonado,Danubio,3,1,URU
+3 Ara,,son-maclari,H
+Danubio,Nacional,0,0,URU
+28 Kas,,son-maclari,D
+R.Montevideo,Danubio,0,0,URU
+17 Kas,,son-maclari,D
+Danubio,Ca Cerro,0,0,URU
+14 Kas,,son-maclari,D
+Rampla J.,Danubio,0,2,URU
+9 Kas,,son-maclari,A
+Danubio,Miramar,1,0,URU
+2 Kas,,son-maclari,H
+Cerro Largo,Danubio,0,0,URU
+20 Eki,,son-maclari,D
+Danubio,Penarol,0,1,URU
+16 Eki,,son-maclari,A
+Progreso,Danubio,0,0,URU
+12 Eki,,son-maclari,D

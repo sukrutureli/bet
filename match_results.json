@@ -1,121 +1,8 @@
 {
-  "createdAt": "2025-09-19T22:07:48.544086300",
+  "createdAt": "2025-09-19T22:33:28.851061182",
   "totalTeams": 5,
-  "totalMatches": 276,
+  "totalMatches": 304,
   "teams": [
-    {
-      "teamName": "San Martin - Velez",
-      "totalMatches": 57,
-      "winRate": 0.0,
-      "matches": [
-        {"homeTeam":"Velez","awayTeam":"San Martin","homeScore":1,"awayScore":0,"matchDate":"08.03.2025","tournament":"ARJSL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"San Martin","awayTeam":"Velez","homeScore":3,"awayScore":1,"matchDate":"06.10.2018","tournament":"ARJSL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"San Martin","awayTeam":"Velez","homeScore":0,"awayScore":2,"matchDate":"05.05.2018","tournament":"ARJSL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"San Martin","awayTeam":"Velez","homeScore":2,"awayScore":0,"matchDate":"06.11.2016","tournament":"ARJSL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"San Martin","awayTeam":"Velez","homeScore":3,"awayScore":1,"matchDate":"06.09.2015","tournament":"ARJSL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"Velez","awayTeam":"San Martin","homeScore":3,"awayScore":0,"matchDate":"05.03.2013","tournament":"ARJSL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"San Martin","awayTeam":"Velez","homeScore":0,"awayScore":3,"matchDate":"26.08.2012","tournament":"ARJSL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"Velez","awayTeam":"San Martin","homeScore":1,"awayScore":0,"matchDate":"02.10.2011","tournament":"ARJSL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"Belgrano","awayTeam":"San Martin","homeScore":0,"awayScore":0,"matchDate":"ARJSL
-12 Eyl","tournament":"","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"River Plate","awayTeam":"San Martin","homeScore":2,"awayScore":0,"matchDate":"ARJSL
-1 Eyl","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"San Martin","awayTeam":"Gimnasia","homeScore":1,"awayScore":0,"matchDate":"ARJSL
-24 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Talleres","awayTeam":"San Martin","homeScore":0,"awayScore":0,"matchDate":"ARJSL
-19 Ağu","tournament":"","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"San Martin","awayTeam":"CA Sarmiento","homeScore":0,"awayScore":1,"matchDate":"ARJSL
-9 Ağu","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Rosario C.","awayTeam":"San Martin","homeScore":0,"awayScore":0,"matchDate":"ARJSL
-26 Tem","tournament":"","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"San Martin","awayTeam":"Dep. Riestra","homeScore":3,"awayScore":2,"matchDate":"ARJSL
-22 Tem","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Atl. Tucuman","awayTeam":"San Martin","homeScore":2,"awayScore":1,"matchDate":"ARJSL
-13 Tem","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"San Martin","awayTeam":"CA Aldosivi","homeScore":0,"awayScore":3,"matchDate":"ARJSL
-4 May","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Lanus","awayTeam":"San Martin","homeScore":1,"awayScore":0,"matchDate":"ARJSL
-28 Nis","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"San Martin","awayTeam":"Godoy Cruz","homeScore":1,"awayScore":0,"matchDate":"ARJSL
-20 Nis","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Independient","awayTeam":"San Martin","homeScore":2,"awayScore":0,"matchDate":"ARJSL
-14 Nis","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"San Martin","awayTeam":"San Lorenzo","homeScore":0,"awayScore":1,"matchDate":"ARJSL
-5 Nis","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"I. Cordoba","awayTeam":"San Martin","homeScore":1,"awayScore":0,"matchDate":"ARJSL
-29 Mar","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"San Martin","awayTeam":"CA Platense","homeScore":0,"awayScore":2,"matchDate":"ARJSL
-18 Mar","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Velez","awayTeam":"San Martin","homeScore":1,"awayScore":0,"matchDate":"ARJSL
-8 Mar","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"San Martin","awayTeam":"Belgrano","homeScore":3,"awayScore":1,"matchDate":"ARJSL
-1 Mar","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"San Martin","awayTeam":"River Plate","homeScore":0,"awayScore":2,"matchDate":"ARJSL
-23 Şub","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Gimnasia","awayTeam":"San Martin","homeScore":1,"awayScore":0,"matchDate":"ARJSL
-17 Şub","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"San Martin","awayTeam":"Talleres","homeScore":0,"awayScore":1,"matchDate":"ARJSL
-14 Şub","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"CA Sarmiento","awayTeam":"San Martin","homeScore":1,"awayScore":1,"matchDate":"ARJSL
-7 Şub","tournament":"","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"San Martin","awayTeam":"Rosario C.","homeScore":0,"awayScore":0,"matchDate":"ARJSL
-2 Şub","tournament":"","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Dep. Riestra","awayTeam":"San Martin","homeScore":0,"awayScore":0,"matchDate":"ARJSL
-28 Oca","tournament":"","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"San Martin","awayTeam":"Atl. Tucuman","homeScore":0,"awayScore":1,"matchDate":"ARJSL
-25 Oca","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Huracan","awayTeam":"Velez","homeScore":0,"awayScore":0,"matchDate":"ARJSL
-13 Eyl","tournament":"","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Velez","awayTeam":"Lanus","homeScore":3,"awayScore":0,"matchDate":"ARJSL
-31 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Godoy Cruz","awayTeam":"Velez","homeScore":0,"awayScore":2,"matchDate":"ARJSL
-25 Ağu","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Velez","awayTeam":"Independient","homeScore":2,"awayScore":1,"matchDate":"ARJSL
-17 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"San Lorenzo","awayTeam":"Velez","homeScore":1,"awayScore":0,"matchDate":"ARJSL
-8 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Velez","awayTeam":"I. Cordoba","homeScore":0,"awayScore":0,"matchDate":"ARJSL
-27 Tem","tournament":"","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"CA Platense","awayTeam":"Velez","homeScore":0,"awayScore":0,"matchDate":"ARJSL
-20 Tem","tournament":"","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Velez","awayTeam":"Tigre","homeScore":2,"awayScore":1,"matchDate":"ARJSL
-15 Tem","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"River Plate","awayTeam":"Velez","homeScore":4,"awayScore":1,"matchDate":"ARJSL
-5 May","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Velez","awayTeam":"Gimnasia","homeScore":1,"awayScore":0,"matchDate":"ARJSL
-29 Nis","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Talleres","awayTeam":"Velez","homeScore":0,"awayScore":1,"matchDate":"ARJSL
-19 Nis","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Velez","awayTeam":"CA Sarmiento","homeScore":0,"awayScore":1,"matchDate":"ARJSL
-15 Nis","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Rosario C.","awayTeam":"Velez","homeScore":2,"awayScore":1,"matchDate":"ARJSL
-5 Nis","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Velez","awayTeam":"Dep. Riestra","homeScore":0,"awayScore":1,"matchDate":"ARJSL
-29 Mar","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Atl. Tucuman","awayTeam":"Velez","homeScore":1,"awayScore":2,"matchDate":"ARJSL
-18 Mar","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Velez","awayTeam":"San Martin","homeScore":1,"awayScore":0,"matchDate":"ARJSL
-8 Mar","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Velez","awayTeam":"Huracan","homeScore":0,"awayScore":2,"matchDate":"ARJSL
-3 Mar","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Lanus","awayTeam":"Velez","homeScore":0,"awayScore":0,"matchDate":"ARJSL
-22 Şub","tournament":"","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Velez","awayTeam":"Godoy Cruz","homeScore":0,"awayScore":2,"matchDate":"ARJSL
-18 Şub","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Independient","awayTeam":"Velez","homeScore":3,"awayScore":0,"matchDate":"ARJSL
-13 Şub","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Velez","awayTeam":"San Lorenzo","homeScore":0,"awayScore":0,"matchDate":"ARJSL
-9 Şub","tournament":"","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"I. Cordoba","awayTeam":"Velez","homeScore":2,"awayScore":0,"matchDate":"ARJSL
-3 Şub","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Velez","awayTeam":"CA Platense","homeScore":0,"awayScore":1,"matchDate":"ARJSL
-29 Oca","tournament":"","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Tigre","awayTeam":"Velez","homeScore":3,"awayScore":0,"matchDate":"ARJSL
-24 Oca","tournament":"","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Velez","awayTeam":"Huracan","homeScore":2,"awayScore":0,"matchDate":"ARJSL
-16 Ara","tournament":"","matchType":"son-maclari","result":"H"}
-      ]
-    },
     {
       "teamName": "Miami - Rhode Islan",
       "totalMatches": 68,
@@ -555,6 +442,167 @@
 9 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
         {"homeTeam":"Tlaxcala","awayTeam":"Correcaminos","homeScore":3,"awayScore":2,"matchDate":"MEKAL
 4 Ağu","tournament":"","matchType":"son-maclari","result":"H"}
+      ]
+    },
+    {
+      "teamName": "Defensor Sp. - Danubio",
+      "totalMatches": 85,
+      "winRate": 0.0,
+      "matches": [
+        {"homeTeam":"Danubio","awayTeam":"Defensor Sp.","homeScore":1,"awayScore":1,"matchDate":"27.03.2025","tournament":"URU","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Danubio","awayTeam":"Defensor Sp.","homeScore":1,"awayScore":1,"matchDate":"05.10.2024","tournament":"URU","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Danubio","homeScore":1,"awayScore":0,"matchDate":"31.03.2024","tournament":"URU","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Danubio","homeScore":0,"awayScore":2,"matchDate":"07.12.2023","tournament":"URU","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Danubio","homeScore":2,"awayScore":1,"matchDate":"15.07.2023","tournament":"URU","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Danubio","awayTeam":"Defensor Sp.","homeScore":1,"awayScore":1,"matchDate":"14.05.2023","tournament":"URU","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Danubio","homeScore":1,"awayScore":1,"matchDate":"13.10.2022","tournament":"URU","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Danubio","homeScore":2,"awayScore":1,"matchDate":"18.07.2022","tournament":"URU","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Danubio","awayTeam":"Defensor Sp.","homeScore":1,"awayScore":2,"matchDate":"22.05.2022","tournament":"URU","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Danubio","homeScore":1,"awayScore":1,"matchDate":"01.03.2021","tournament":"URU","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Danubio","awayTeam":"Defensor Sp.","homeScore":0,"awayScore":0,"matchDate":"18.10.2020","tournament":"URU","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Danubio","awayTeam":"Defensor Sp.","homeScore":0,"awayScore":0,"matchDate":"06.09.2020","tournament":"URU","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Danubio","homeScore":1,"awayScore":2,"matchDate":"02.11.2019","tournament":"URU","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Danubio","homeScore":3,"awayScore":1,"matchDate":"25.08.2019","tournament":"URU","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Danubio","awayTeam":"Defensor Sp.","homeScore":1,"awayScore":1,"matchDate":"13.04.2019","tournament":"URU","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Danubio","homeScore":1,"awayScore":2,"matchDate":"28.07.2018","tournament":"URU","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Cerro Largo","awayTeam":"Defensor Sp.","homeScore":1,"awayScore":0,"matchDate":"URU
+14 Eyl","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Juventud","homeScore":1,"awayScore":0,"matchDate":"URU
+6 Eyl","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"L.Montevideo","awayTeam":"Defensor Sp.","homeScore":2,"awayScore":0,"matchDate":"URU
+30 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Pla. Colonia","homeScore":1,"awayScore":0,"matchDate":"URU
+23 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"R.Montevideo","awayTeam":"Defensor Sp.","homeScore":0,"awayScore":1,"matchDate":"URU
+17 Ağu","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"River PUru","homeScore":1,"awayScore":0,"matchDate":"URU
+12 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Boston River","awayTeam":"Defensor Sp.","homeScore":4,"awayScore":0,"matchDate":"URU
+3 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Pla. Colonia","homeScore":1,"awayScore":1,"matchDate":"URU
+28 Haz","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Ca Cerro","homeScore":2,"awayScore":1,"matchDate":"URU
+23 Haz","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Montevideo","awayTeam":"Defensor Sp.","homeScore":0,"awayScore":0,"matchDate":"URU
+18 Haz","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"L.Montevideo","homeScore":4,"awayScore":2,"matchDate":"URU
+15 Haz","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Penarol","awayTeam":"Defensor Sp.","homeScore":3,"awayScore":0,"matchDate":"URU
+8 Haz","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"River PUru","awayTeam":"Defensor Sp.","homeScore":1,"awayScore":2,"matchDate":"URU
+1 Haz","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Cerro Largo","homeScore":3,"awayScore":2,"matchDate":"URU
+25 May","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Nacional","awayTeam":"Defensor Sp.","homeScore":2,"awayScore":1,"matchDate":"URU
+18 May","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Penarol","homeScore":0,"awayScore":1,"matchDate":"URU
+3 May","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Torque","awayTeam":"Defensor Sp.","homeScore":0,"awayScore":1,"matchDate":"URU
+27 Nis","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Progreso","homeScore":1,"awayScore":2,"matchDate":"URU
+21 Nis","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Ca Cerro","homeScore":3,"awayScore":2,"matchDate":"URU
+15 Nis","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Montevideo","awayTeam":"Defensor Sp.","homeScore":0,"awayScore":0,"matchDate":"URU
+7 Nis","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Miramar","homeScore":2,"awayScore":0,"matchDate":"URU
+1 Nis","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Danubio","awayTeam":"Defensor Sp.","homeScore":1,"awayScore":1,"matchDate":"URU
+27 Mar","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Cerro Largo","homeScore":0,"awayScore":0,"matchDate":"URU
+23 Mar","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Juventud","awayTeam":"Defensor Sp.","homeScore":2,"awayScore":1,"matchDate":"URU
+16 Mar","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"L.Montevideo","homeScore":0,"awayScore":1,"matchDate":"URU
+8 Mar","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Pla. Colonia","awayTeam":"Defensor Sp.","homeScore":1,"awayScore":2,"matchDate":"URU
+24 Şub","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"R.Montevideo","homeScore":2,"awayScore":0,"matchDate":"URU
+16 Şub","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"River PUru","awayTeam":"Defensor Sp.","homeScore":0,"awayScore":1,"matchDate":"URU
+9 Şub","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Defensor Sp.","awayTeam":"Boston River","homeScore":2,"awayScore":0,"matchDate":"URU
+1 Şub","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Miramar","awayTeam":"Defensor Sp.","homeScore":0,"awayScore":0,"matchDate":"URU
+30 Kas","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Cerro Largo","awayTeam":"Defensor Sp.","homeScore":3,"awayScore":0,"matchDate":"URU
+28 Kas","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Danubio","awayTeam":"Ca Cerro","homeScore":5,"awayScore":1,"matchDate":"URU
+14 Eyl","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Montevideo","awayTeam":"Danubio","homeScore":0,"awayScore":2,"matchDate":"URU
+6 Eyl","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Danubio","awayTeam":"Miramar","homeScore":2,"awayScore":3,"matchDate":"URU
+31 Ağu","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Progreso","awayTeam":"Danubio","homeScore":1,"awayScore":0,"matchDate":"URU
+24 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Cerro Largo","awayTeam":"Danubio","homeScore":1,"awayScore":0,"matchDate":"URU
+19 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Danubio","awayTeam":"Juventud","homeScore":2,"awayScore":1,"matchDate":"URU
+10 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"L.Montevideo","awayTeam":"Danubio","homeScore":0,"awayScore":0,"matchDate":"URU
+3 Ağu","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Nacional","awayTeam":"Danubio","homeScore":3,"awayScore":2,"matchDate":"URU
+30 Haz","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Juventud","awayTeam":"Danubio","homeScore":3,"awayScore":1,"matchDate":"URU
+21 Haz","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Danubio","awayTeam":"R.Montevideo","homeScore":1,"awayScore":2,"matchDate":"URU
+18 Haz","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Boston River","awayTeam":"Danubio","homeScore":1,"awayScore":1,"matchDate":"URU
+14 Haz","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Danubio","awayTeam":"Torque","homeScore":3,"awayScore":2,"matchDate":"URU
+7 Haz","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Progreso","awayTeam":"Danubio","homeScore":0,"awayScore":1,"matchDate":"URU
+31 May","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Danubio","awayTeam":"Miramar","homeScore":2,"awayScore":0,"matchDate":"URU
+25 May","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Pla. Colonia","awayTeam":"Danubio","homeScore":1,"awayScore":2,"matchDate":"URU
+20 May","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Danubio","awayTeam":"R.Montevideo","homeScore":0,"awayScore":0,"matchDate":"URU
+3 May","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"River PUru","awayTeam":"Danubio","homeScore":1,"awayScore":0,"matchDate":"URU
+26 Nis","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Danubio","awayTeam":"Boston River","homeScore":1,"awayScore":2,"matchDate":"URU
+18 Nis","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Nacional","awayTeam":"Danubio","homeScore":2,"awayScore":0,"matchDate":"URU
+13 Nis","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Danubio","awayTeam":"Penarol","homeScore":0,"awayScore":1,"matchDate":"URU
+5 Nis","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Torque","awayTeam":"Danubio","homeScore":1,"awayScore":1,"matchDate":"URU
+31 Mar","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Danubio","awayTeam":"Defensor Sp.","homeScore":1,"awayScore":1,"matchDate":"URU
+27 Mar","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Ca Cerro","awayTeam":"Danubio","homeScore":1,"awayScore":1,"matchDate":"URU
+23 Mar","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Danubio","awayTeam":"Montevideo","homeScore":2,"awayScore":2,"matchDate":"URU
+16 Mar","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Miramar","awayTeam":"Danubio","homeScore":1,"awayScore":0,"matchDate":"URU
+10 Mar","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Danubio","awayTeam":"Progreso","homeScore":1,"awayScore":1,"matchDate":"URU
+23 Şub","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Danubio","awayTeam":"Cerro Largo","homeScore":0,"awayScore":0,"matchDate":"URU
+15 Şub","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Juventud","awayTeam":"Danubio","homeScore":2,"awayScore":2,"matchDate":"URU
+9 Şub","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Danubio","awayTeam":"L.Montevideo","homeScore":1,"awayScore":1,"matchDate":"URU
+1 Şub","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"D. Maldonado","awayTeam":"Danubio","homeScore":3,"awayScore":1,"matchDate":"URU
+3 Ara","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Danubio","awayTeam":"Nacional","homeScore":0,"awayScore":0,"matchDate":"URU
+28 Kas","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"R.Montevideo","awayTeam":"Danubio","homeScore":0,"awayScore":0,"matchDate":"URU
+17 Kas","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Danubio","awayTeam":"Ca Cerro","homeScore":0,"awayScore":0,"matchDate":"URU
+14 Kas","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Rampla J.","awayTeam":"Danubio","homeScore":0,"awayScore":2,"matchDate":"URU
+9 Kas","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Danubio","awayTeam":"Miramar","homeScore":1,"awayScore":0,"matchDate":"URU
+2 Kas","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Cerro Largo","awayTeam":"Danubio","homeScore":0,"awayScore":0,"matchDate":"URU
+20 Eki","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Danubio","awayTeam":"Penarol","homeScore":0,"awayScore":1,"matchDate":"URU
+16 Eki","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Progreso","awayTeam":"Danubio","homeScore":0,"awayScore":0,"matchDate":"URU
+12 Eki","tournament":"","matchType":"son-maclari","result":"D"}
       ]
     }
   ]
