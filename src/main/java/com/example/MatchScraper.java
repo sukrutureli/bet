@@ -287,7 +287,7 @@ public class MatchScraper {
         List<MatchResult> matches = new ArrayList<>();
         try {
             driver.get(url);
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
             Thread.sleep(5000);
             selectTournament();
             clickShowMoreMatches();
@@ -302,7 +302,7 @@ public class MatchScraper {
         List<MatchResult> matches = new ArrayList<>();
         try {
             driver.get(url);
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
             Thread.sleep(5000);
             selectTournament();
             clickShowMoreMatches();
