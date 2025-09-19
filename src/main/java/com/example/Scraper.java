@@ -77,7 +77,7 @@ public class Scraper {
                 html.append("<div class='match-header'>");
                 html.append("<div class='match-name'>").append(match.getName()).append("</div>");
                 html.append("<div class='match-time'>").append(match.getTime()).append("</div>");
-                html.append("<button onclick="toggleHistory(this)">Göster/Gizle</button>");
+                html.append("<button onclick=\\\"toggleHistory(this)\\\">Göster/Gizle</button>");
                 html.append("</div>");
                 
                 html.append("<div class='odds'>");
@@ -241,25 +241,19 @@ public class Scraper {
             html.append("<p style='text-align: center; color: #666; margin-top: 30px;'>");
             html.append("Bu veriler otomatik olarak çekilmiştir • Son güncelleme: ").append(LocalDateTime.now());
             html.append("</p>");
-            html.append(`
-                <script>
-                function toggleHistory(button) {
-                const matchDiv = button.closest('.match');
-                const historySections = matchDiv.querySelectorAll('.history .history-section');
 
-                let isHidden = historySections[0].style.display === 'none';
-
-                historySections.forEach(section => {
-                    section.style.display = isHidden ? 'block' : 'none';
-                });
-
-                button.textContent = isHidden ? "Gizle" : "Göster";
-                }
-
-                // Başlangıçta tüm history-sectionları gizle
-                document.querySelectorAll('.history .history-section').forEach(s => s.style.display = 'none');
-                </script>
-                `);
+            html.append("<script>");
+            html.append("function toggleHistory(button) {");
+            html.append("  const matchDiv = button.closest('.match');");
+            html.append("  const historySections = matchDiv.querySelectorAll('.history .history-section');");
+            html.append("  let isHidden = historySections[0].style.display === 'none';");
+            html.append("  historySections.forEach(section => {");
+            html.append("    section.style.display = isHidden ? 'block' : 'none';");
+            html.append("  });");
+            html.append("  button.textContent = isHidden ? 'Gizle' : 'Göster';");
+            html.append("}");
+            html.append("document.querySelectorAll('.history .history-section').forEach(s => s.style.display = 'none');");
+            html.append("</script>");
 
             html.append("</body></html>");
             
