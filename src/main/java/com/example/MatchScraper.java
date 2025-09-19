@@ -318,13 +318,19 @@ public class MatchScraper {
         StringBuilder sb = new StringBuilder();
 
         for (WebElement span : spans) {
+            // Tarafsız saha ikonunu direkt atla
+            String cls = span.getAttribute("class");
+            if (cls != null && cls.contains("nsn-i-neutral-ground")) {
+                continue;
+            }
+
             String txt = span.getText();
             if (txt == null) continue;
 
             txt = txt.trim();
             if (txt.isEmpty()) continue;
 
-            // Tek başına sayı (örn. "1", "2") → muhtemelen kart sayısı, atla
+            // Tek başına sayı (örn. "1", "2") → kart sayısı, atla
             if (txt.matches("\\d+")) continue;
 
             // Sadece harf, rakam, boşluk, nokta ve tire kalsın
@@ -338,6 +344,7 @@ public class MatchScraper {
 
         return sb.toString().trim();
     }
+
 
 
 
