@@ -1,7 +1,7 @@
 {
-  "createdAt": "2025-09-19T21:24:51.868273507",
+  "createdAt": "2025-09-19T21:40:20.853741613",
   "totalTeams": 5,
-  "totalMatches": 268,
+  "totalMatches": 285,
   "teams": [
     {
       "teamName": "Huracan - Racing Club",
@@ -248,7 +248,7 @@
     },
     {
       "teamName": "Olimpia - Sportivo T.",
-      "totalMatches": 19,
+      "totalMatches": 36,
       "winRate": 0.0,
       "matches": [
         {"homeTeam":"Sportivo T.","awayTeam":"Olimpia","homeScore":4,"awayScore":3,"matchDate":"14.07.2025","tournament":"PAR","matchType":"rekabet-gecmisi","result":"H"},
@@ -281,7 +281,41 @@
         {"homeTeam":"Sportivo T.","awayTeam":"Olimpia","homeScore":4,"awayScore":3,"matchDate":"PAR
 14 Tem","tournament":"","matchType":"son-maclari","result":"H"},
         {"homeTeam":"Olimpia","awayTeam":"C. Nacional","homeScore":1,"awayScore":1,"matchDate":"PAR
-6 Tem","tournament":"","matchType":"son-maclari","result":"D"}
+6 Tem","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Sportivo T.","awayTeam":"CD Recoleta","homeScore":2,"awayScore":3,"matchDate":"PAR
+15 Eyl","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Sportivo T.","awayTeam":"Sportivo A.","homeScore":1,"awayScore":0,"matchDate":"PAR
+9 Eyl","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"CA Tembetary","awayTeam":"Sportivo T.","homeScore":3,"awayScore":0,"matchDate":"PAR
+29 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"C. Porteno","awayTeam":"Sportivo T.","homeScore":1,"awayScore":3,"matchDate":"PAR
+25 Ağu","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Sportivo T.","awayTeam":"C. Nacional","homeScore":0,"awayScore":2,"matchDate":"PAR
+18 Ağu","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"CS 2 de Mayo","awayTeam":"Sportivo T.","homeScore":0,"awayScore":2,"matchDate":"PAR
+8 Ağu","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Sportivo T.","awayTeam":"S. Luqueno","homeScore":2,"awayScore":0,"matchDate":"PAR
+2 Ağu","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Club General","awayTeam":"Sportivo T.","homeScore":0,"awayScore":0,"matchDate":"PAR
+29 Tem","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Sportivo T.","awayTeam":"Libertad","homeScore":0,"awayScore":2,"matchDate":"PAR
+26 Tem","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Guarani","awayTeam":"Sportivo T.","homeScore":0,"awayScore":0,"matchDate":"PAR
+21 Tem","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Sportivo T.","awayTeam":"Olimpia","homeScore":4,"awayScore":3,"matchDate":"PAR
+14 Tem","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"CD Recoleta","awayTeam":"Sportivo T.","homeScore":2,"awayScore":4,"matchDate":"PAR
+5 Tem","tournament":"","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Tacuary","awayTeam":"Sportivo T.","homeScore":1,"awayScore":1,"matchDate":"PAR
+29 Kas","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Sportivo T.","awayTeam":"C. Porteno","homeScore":3,"awayScore":2,"matchDate":"PAR
+22 Kas","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"S.D. America","awayTeam":"Sportivo T.","homeScore":2,"awayScore":2,"matchDate":"PAR
+16 Kas","tournament":"","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Sportivo T.","awayTeam":"Club General","homeScore":2,"awayScore":1,"matchDate":"PAR
+10 Kas","tournament":"","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"S. Luqueno","awayTeam":"Sportivo T.","homeScore":1,"awayScore":0,"matchDate":"PAR
+3 Kas","tournament":"","matchType":"son-maclari","result":"H"}
       ]
     },
     {
