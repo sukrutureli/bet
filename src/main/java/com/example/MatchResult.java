@@ -11,7 +11,7 @@ class MatchResult {
     private String awayTeam;
     private int homeScore;
     private int awayScore;
-    private LocalDate matchDate;
+    private String matchDate;
     private String tournament;
     private String season;
     private String matchType; // "rekabet-gecmisi" veya "son-maclar"
@@ -19,7 +19,7 @@ class MatchResult {
     private String status; // "finished", "cancelled", "postponed" etc.
     
     public MatchResult(String homeTeam, String awayTeam, int homeScore, int awayScore, 
-                      LocalDate matchDate, String tournament, String matchType, String originalUrl) {
+                      String matchDate, String tournament, String matchType, String originalUrl) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.homeScore = homeScore;
@@ -36,7 +36,7 @@ class MatchResult {
     public String getAwayTeam() { return awayTeam; }
     public int getHomeScore() { return homeScore; }
     public int getAwayScore() { return awayScore; }
-    public LocalDate getMatchDate() { return matchDate; }
+    public String getMatchDate() { return matchDate; }
     public String getTournament() { return tournament; }
     public String getSeason() { return season; }
     public String getMatchType() { return matchType; }
