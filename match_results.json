@@ -1,166 +1,8 @@
 {
-  "createdAt": "2025-09-19T08:42:52.272285061",
+  "createdAt": "2025-09-19T10:53:51.563940381",
   "totalTeams": 5,
-  "totalMatches": 303,
+  "totalMatches": 232,
   "teams": [
-    {
-      "teamName": "Osaka - G. Kitakyushu",
-      "totalMatches": 78,
-      "winRate": 0.0,
-      "matches": [
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Osaka","homeScore":1,"awayScore":0,"matchDate":"05.04.2025","tournament":"J.L","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"Osaka","awayTeam":"G.Kitakyushu","homeScore":3,"awayScore":2,"matchDate":"19.10.2024","tournament":"J.L","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Osaka","homeScore":0,"awayScore":0,"matchDate":"20.03.2024","tournament":"J.L","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Osaka","awayTeam":"G.Kitakyushu","homeScore":0,"awayScore":0,"matchDate":"24.09.2023","tournament":"J.L","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Osaka","homeScore":0,"awayScore":0,"matchDate":"16.07.2023","tournament":"J.L","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Osaka","awayTeam":"Tochigi City","homeScore":1,"awayScore":0,"matchDate":"J.L
-15 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Z. Kanazawa","awayTeam":"Osaka","homeScore":2,"awayScore":1,"matchDate":"J.L
-7 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Osaka","awayTeam":"Sagamihar","homeScore":0,"awayScore":2,"matchDate":"J.L
-30 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"V. Hachinohe","awayTeam":"Osaka","homeScore":1,"awayScore":1,"matchDate":"J.L
-23 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Kusatsu G.","awayTeam":"Osaka","homeScore":2,"awayScore":0,"matchDate":"J.L
-16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Osaka","awayTeam":"Kamatamare S","homeScore":2,"awayScore":1,"matchDate":"J.L
-26 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Kagoshima","awayTeam":"Osaka","homeScore":2,"awayScore":1,"matchDate":"J.L
-21 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Osaka","awayTeam":"Tegevajaro","homeScore":0,"awayScore":0,"matchDate":"J.L
-12 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Nagano P.","awayTeam":"Osaka","homeScore":0,"awayScore":0,"matchDate":"J.L
-6 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Osaka","awayTeam":"Nara Club","homeScore":1,"awayScore":1,"matchDate":"J.L
-30 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Osaka","awayTeam":"Fukushima","homeScore":7,"awayScore":1,"matchDate":"J.L
-22 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Tegevajaro","awayTeam":"Osaka","homeScore":0,"awayScore":0,"matchDate":"J.L
-14 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Kamatamare S","awayTeam":"Osaka","homeScore":0,"awayScore":3,"matchDate":"J.L
-7 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Osaka","awayTeam":"Kagoshima","homeScore":3,"awayScore":0,"matchDate":"J.L
-31 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Sagamihar","awayTeam":"Osaka","homeScore":1,"awayScore":2,"matchDate":"J.L
-18 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Osaka","awayTeam":"M. Yamaga","homeScore":1,"awayScore":0,"matchDate":"J.L
-7 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Tochigi City","awayTeam":"Osaka","homeScore":2,"awayScore":1,"matchDate":"J.L
-3 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Osaka","awayTeam":"Kusatsu G.","homeScore":4,"awayScore":3,"matchDate":"J.L
-18 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Osaka","awayTeam":"V. Hachinohe","homeScore":1,"awayScore":0,"matchDate":"J.L
-12 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Osaka","homeScore":1,"awayScore":0,"matchDate":"J.L
-5 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Osaka","awayTeam":"A. C. Numazu","homeScore":3,"awayScore":1,"matchDate":"J.L
-30 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Osaka","awayTeam":"Z. Kanazawa","homeScore":1,"awayScore":0,"matchDate":"J.L
-23 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Tochigi SC","awayTeam":"Osaka","homeScore":1,"awayScore":0,"matchDate":"J.L
-16 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Osaka","awayTeam":"G. Tottori","homeScore":1,"awayScore":0,"matchDate":"J.L
-8 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Kochi Utd","awayTeam":"Osaka","homeScore":1,"awayScore":2,"matchDate":"J.L
-2 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Ryukyu","awayTeam":"Osaka","homeScore":0,"awayScore":1,"matchDate":"J.L
-22 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Osaka","awayTeam":"Gifu","homeScore":1,"awayScore":1,"matchDate":"J.L
-16 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Kataller T.","awayTeam":"Osaka","homeScore":1,"awayScore":1,"matchDate":"J.L
-1 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"V. Hachinohe","awayTeam":"Osaka","homeScore":1,"awayScore":1,"matchDate":"J.L
-24 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Osaka","awayTeam":"Sagamihar","homeScore":1,"awayScore":0,"matchDate":"J.L
-15 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Osaka","awayTeam":"Yokohama","homeScore":5,"awayScore":0,"matchDate":"J.L
-9 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Gifu","awayTeam":"Osaka","homeScore":2,"awayScore":0,"matchDate":"J.L
-2 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Tegevajaro","awayTeam":"Osaka","homeScore":1,"awayScore":0,"matchDate":"J.L
-27 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Osaka","awayTeam":"G.Kitakyushu","homeScore":3,"awayScore":2,"matchDate":"J.L
-19 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Nara Club","awayTeam":"Osaka","homeScore":0,"awayScore":1,"matchDate":"J.L
-13 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Osaka","awayTeam":"G. Morioka","homeScore":1,"awayScore":0,"matchDate":"J.L
-4 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Ryukyu","awayTeam":"Osaka","homeScore":1,"awayScore":1,"matchDate":"J.L
-28 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Osaka","awayTeam":"Fukushima","homeScore":1,"awayScore":2,"matchDate":"J.L
-23 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Kusatsu G.","homeScore":1,"awayScore":0,"matchDate":"J.L
-13 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Gifu","homeScore":0,"awayScore":1,"matchDate":"J.L
-6 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Nagano P.","awayTeam":"G.Kitakyushu","homeScore":1,"awayScore":1,"matchDate":"J.L
-30 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Sagamihar","awayTeam":"G.Kitakyushu","homeScore":1,"awayScore":0,"matchDate":"J.L
-23 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Nara Club","homeScore":0,"awayScore":1,"matchDate":"J.L
-16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"A. C. Numazu","awayTeam":"G.Kitakyushu","homeScore":1,"awayScore":3,"matchDate":"J.L
-26 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Tegevajaro","awayTeam":"G.Kitakyushu","homeScore":1,"awayScore":3,"matchDate":"J.L
-21 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Tochigi City","homeScore":1,"awayScore":3,"matchDate":"J.L
-12 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Nara Club","awayTeam":"G.Kitakyushu","homeScore":4,"awayScore":0,"matchDate":"J.L
-5 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"G. Tottori","homeScore":1,"awayScore":2,"matchDate":"J.L
-28 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Kochi Utd","awayTeam":"G.Kitakyushu","homeScore":3,"awayScore":2,"matchDate":"J.L
-21 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"A. C. Numazu","homeScore":1,"awayScore":0,"matchDate":"J.L
-14 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Tochigi City","awayTeam":"G.Kitakyushu","homeScore":1,"awayScore":0,"matchDate":"J.L
-8 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Tegevajaro","homeScore":1,"awayScore":1,"matchDate":"J.L
-31 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Ryukyu","awayTeam":"G.Kitakyushu","homeScore":0,"awayScore":1,"matchDate":"J.L
-17 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Z. Kanazawa","awayTeam":"G.Kitakyushu","homeScore":0,"awayScore":1,"matchDate":"J.L
-6 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Tochigi SC","homeScore":0,"awayScore":0,"matchDate":"J.L
-3 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"M. Yamaga","homeScore":1,"awayScore":2,"matchDate":"J.L
-26 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Sagamihar","homeScore":1,"awayScore":1,"matchDate":"J.L
-20 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Fukushima","awayTeam":"G.Kitakyushu","homeScore":1,"awayScore":0,"matchDate":"J.L
-12 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Osaka","homeScore":1,"awayScore":0,"matchDate":"J.L
-5 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Kusatsu G.","awayTeam":"G.Kitakyushu","homeScore":0,"awayScore":2,"matchDate":"J.L
-30 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Kagoshima","awayTeam":"G.Kitakyushu","homeScore":1,"awayScore":0,"matchDate":"J.L
-23 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"V. Hachinohe","homeScore":1,"awayScore":0,"matchDate":"J.L
-15 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Kamatamare S","homeScore":2,"awayScore":0,"matchDate":"J.L
-8 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Gifu","awayTeam":"G.Kitakyushu","homeScore":2,"awayScore":1,"matchDate":"J.L
-1 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Nagano P.","homeScore":2,"awayScore":0,"matchDate":"J.L
-22 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yokohama","awayTeam":"G.Kitakyushu","homeScore":2,"awayScore":3,"matchDate":"J.L
-24 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Nagano P.","homeScore":1,"awayScore":1,"matchDate":"J.L
-16 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Kamatamare S","awayTeam":"G.Kitakyushu","homeScore":1,"awayScore":2,"matchDate":"J.L
-10 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"A. C. Numazu","homeScore":1,"awayScore":1,"matchDate":"J.L
-2 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"Z. Kanazawa","homeScore":1,"awayScore":2,"matchDate":"J.L
-26 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Osaka","awayTeam":"G.Kitakyushu","homeScore":3,"awayScore":2,"matchDate":"J.L
-19 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"G.Kitakyushu","awayTeam":"V. Hachinohe","homeScore":0,"awayScore":3,"matchDate":"J.L
-12 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Sagamihar","awayTeam":"G.Kitakyushu","homeScore":0,"awayScore":3,"matchDate":"J.L
-6 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"}
-      ]
-    },
     {
       "teamName": "Serik Spor - Bandırmaspor",
       "totalMatches": 44,
@@ -228,7 +70,7 @@
 9 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
         {"homeTeam":"Çorum F. K.","awayTeam":"Bandırmaspor","homeScore":4,"awayScore":0,"matchDate":"TUR1
 31 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"2","awayTeam":"Keçiörengücü","homeScore":1,"awayScore":2,"matchDate":"TUR1
+        {"homeTeam":"2 Bandırmaspor","awayTeam":"Keçiörengücü","homeScore":1,"awayScore":2,"matchDate":"TUR1
 26 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
         {"homeTeam":"Erzurumspor","awayTeam":"Bandırmaspor","homeScore":2,"awayScore":0,"matchDate":"TUR1
 18 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
@@ -293,7 +135,7 @@
 5 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
         {"homeTeam":"Hougang Utd.","awayTeam":"L.C. Sailors","homeScore":1,"awayScore":1,"matchDate":"SİN
 9 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"2","awayTeam":"Hougang Utd.","homeScore":2,"awayScore":1,"matchDate":"SİN
+        {"homeTeam":"2 Brunei DPMM","awayTeam":"Hougang Utd.","homeScore":2,"awayScore":1,"matchDate":"SİN
 26 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
         {"homeTeam":"Hougang Utd.","awayTeam":"Young Lions","homeScore":3,"awayScore":3,"matchDate":"SİN
 22 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
@@ -612,6 +454,27 @@
 15 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
         {"homeTeam":"Miracle Club","awayTeam":"Al Ittihad","homeScore":0,"awayScore":8,"matchDate":"CAF
 28 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"}
+      ]
+    },
+    {
+      "teamName": "FK Karvan Yevlakh - Imisli FK",
+      "totalMatches": 7,
+      "winRate": 0.0,
+      "matches": [
+        {"homeTeam":"Shamakhi FK","awayTeam":"Karvan Y.","homeScore":3,"awayScore":0,"matchDate":"AZE
+14 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Karvan Y.","awayTeam":"Karabağ","homeScore":0,"awayScore":2,"matchDate":"AZE
+31 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Kapaz","awayTeam":"Karvan Y.","homeScore":2,"awayScore":3,"matchDate":"AZE
+23 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Karvan Y.","awayTeam":"Kabala","homeScore":1,"awayScore":1,"matchDate":"AZE
+15 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Sabah","awayTeam":"Imisli FK","homeScore":0,"awayScore":1,"matchDate":"AZE
+31 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Imisli FK","awayTeam":"Neftçi Bakü","homeScore":0,"awayScore":0,"matchDate":"AZE
+22 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Imisli FK","awayTeam":"Turan Tovuz","homeScore":0,"awayScore":1,"matchDate":"AZE
+16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"}
       ]
     }
   ]
