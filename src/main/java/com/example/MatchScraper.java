@@ -236,7 +236,8 @@ public class MatchScraper {
 
     public TeamMatchHistory scrapeTeamHistory(String detailUrl, String teamName) {
         if (detailUrl == null || detailUrl.isEmpty()) return null;
-        TeamMatchHistory teamHistory = new TeamMatchHistory(teamName, detailUrl);
+        String teamNameShort = scrapeDetailUrl(detailUrl);
+        TeamMatchHistory teamHistory = new TeamMatchHistory(teamNameShort, detailUrl);
         try {
             List<MatchResult> rekabetGecmisi = scrapeRekabetGecmisi(detailUrl + "/rekabet-gecmisi");
             rekabetGecmisi.forEach(teamHistory::addRekabetGecmisiMatch);
@@ -251,6 +252,37 @@ public class MatchScraper {
             System.out.println("Takım geçmişi çekme hatası: " + e.getMessage());
         }
         return teamHistory;
+    }
+
+    private String scrapeDetailUrl(String url) {
+        String teamNameShort = "";
+        try {
+            driver.get(url);
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
+            Thread.sleep(2000);
+            // Tüm takım linklerini bul
+            List<WebElement> teamLinks = driver.findElements(By.cssSelector("a[data-test-id='TeamLink'] span[data-test-id='HeaderTeams']"));
+
+            // Takım isimlerini oku
+            for (WebElement team : teamLinks) {
+                System.out.println("Takım: " + team.getText().trim());
+            }
+
+            // İlk takım
+            String homeTeam = teamLinks.size() > 0 ? teamLinks.get(0).getText().trim() : "-";
+
+            // İkinci takım
+            String awayTeam = teamLinks.size() > 1 ? teamLinks.get(1).getText().trim() : "-";
+
+            System.out.println("Ev sahibi: " + homeTeam);
+            System.out.println("Deplasman: " + awayTeam);
+
+
+            teamNameShort = homeTeam + " - " + awayTeam;
+        } catch (Exception e) {
+            System.out.println("Rekabet geçmişi hatası: " + e.getMessage());
+        }
+        return teamNameShort;
     }
 
     private List<MatchResult> scrapeRekabetGecmisi(String url) {
