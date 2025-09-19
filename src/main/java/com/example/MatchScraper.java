@@ -398,32 +398,30 @@ public class MatchScraper {
         return matches;
     }
     
-    private void selectTournament() {
+    private void selectTournament(String tournamentName) {
         try {
             System.out.println("Turnuva seçimi deneniyor...");
-            
-            // Sayfada select elementlerini bul
-            List<WebElement> selects = driver.findElements(By.tagName("select"));
-            
-            for (WebElement select : selects) {
-                if (select.isDisplayed()) {
-                    List<WebElement> options = select.findElements(By.tagName("option"));
-                    if (options.size() > 1) {
-                        System.out.println("Dropdown bulundu, " + options.size() + " seçenek var");
-                        
-                        // İlk seçeneği (genelde "Tümü") değil, ikincisini seç
-                        js.executeScript("arguments[0].selectedIndex = 1; arguments[0].dispatchEvent(new Event('change'));", select);
-                        Thread.sleep(3000);
-                        System.out.println("Turnuva seçildi");
-                        return;
-                    }
-                }
-            }
-            System.out.println("Dropdown bulunamadı");
+
+            // Dropdown'u bul ve aç
+            WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(
+                By.cssSelector("div[data-test-id='CustomDropdown']")
+            ));
+            dropdown.click();
+            Thread.sleep(1000);
+
+            // İstenen turnuvayı menüden seç
+            WebElement option = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[@role='option']//span[contains(text(), '" + tournamentName + "')]")
+            ));
+            option.click();
+            Thread.sleep(2000);
+
+            System.out.println("Turnuva seçildi: " + tournamentName);
         } catch (Exception e) {
             System.out.println("Turnuva seçimi hatası: " + e.getMessage());
         }
     }
+
     
     private void clickShowMoreMatches() {
         try {
