@@ -325,6 +325,7 @@ public class MatchScraper {
             }
 
             String txt = span.getText();
+            System.out.println(txt + "--------------");
             if (txt == null) continue;
 
             txt = txt.trim();
