@@ -107,12 +107,12 @@ public class Scraper {
                             // Takım istatistikleri
                             html.append("<div class='team-stats'>");
                             html.append("<strong>").append(teamHistory.getTeamName()).append("</strong><br>");
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs1(), "MS1 |"));
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs0(), "MS0 |"));
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs2(), "MS2<br>"));
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getAlt(), "Alt |"));
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getUst(), "Üst<br>"));
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getVar(), "Var |"));
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs1(), "MS1")).append("|");
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs0(), "MS0")).append("|");
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs2(), "MS2")).append("<br>");
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getAlt(), "Alt")).append("|");
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getUst(), "Üst")).append("<br>");
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getVar(), "Var")).append("|");
                             html.append(teamHistory.toStringAsPercentage(teamHistory.getYok(), "Yok"));
                             html.append("</div>");
                             

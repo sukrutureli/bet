@@ -295,7 +295,7 @@ class TeamMatchHistory {
     }
 
     public String toStringAsPercentage(int value, String type) {
-        return type + ": %" + ((int)(((value * 1.0) / getTotalMatchesIn10()) * 100));
+        return type + " : %" + ((int)(((value * 1.0) / getTotalMatchesIn10()) * 100));
     }
     
     @Override
