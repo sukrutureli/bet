@@ -1,5 +1,5 @@
 {
-  "createdAt": "2025-09-19T10:53:51.563940381",
+  "createdAt": "2025-09-19T11:12:26.105095145",
   "totalTeams": 5,
   "totalMatches": 232,
   "teams": [
@@ -70,7 +70,7 @@
 9 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
         {"homeTeam":"Çorum F. K.","awayTeam":"Bandırmaspor","homeScore":4,"awayScore":0,"matchDate":"TUR1
 31 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"2 Bandırmaspor","awayTeam":"Keçiörengücü","homeScore":1,"awayScore":2,"matchDate":"TUR1
+        {"homeTeam":"Bandırmaspor","awayTeam":"Keçiörengücü","homeScore":1,"awayScore":2,"matchDate":"TUR1
 26 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
         {"homeTeam":"Erzurumspor","awayTeam":"Bandırmaspor","homeScore":2,"awayScore":0,"matchDate":"TUR1
 18 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
@@ -135,7 +135,7 @@
 5 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
         {"homeTeam":"Hougang Utd.","awayTeam":"L.C. Sailors","homeScore":1,"awayScore":1,"matchDate":"SİN
 9 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"2 Brunei DPMM","awayTeam":"Hougang Utd.","homeScore":2,"awayScore":1,"matchDate":"SİN
+        {"homeTeam":"Brunei DPMM","awayTeam":"Hougang Utd.","homeScore":2,"awayScore":1,"matchDate":"SİN
 26 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
         {"homeTeam":"Hougang Utd.","awayTeam":"Young Lions","homeScore":3,"awayScore":3,"matchDate":"SİN
 22 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
