@@ -255,7 +255,7 @@ public class MatchScraper {
         return teamHistory;
     }
 
-    private String scrapeDetailUrl(String url) {
+    private List<String> scrapeDetailUrl(String url) {
         List<String> names = new ArrayList<>();
         try {
             driver.get(url);
