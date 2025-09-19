@@ -201,18 +201,36 @@ public class MatchScraper {
     }
 
     private String[] extractOdds(WebElement event) {
-        String[] odds = {"-", "-", "-"};
+        // 1X2 + Alt/Üst + Var/Yok = toplam 7 oran
+        String[] odds = {"-", "-", "-", "-", "-", "-", "-"};
         try {
-            List<WebElement> oddsList = event.findElements(By.cssSelector("dd.event-row .cell a.odd"));
-            for (int i = 0; i < Math.min(oddsList.size(), 3); i++) {
-                String text = oddsList.get(i).getText().trim();
+            // 1X2 oranları
+            List<WebElement> mainOdds = event.findElements(By.cssSelector("dd.col-03.event-row .cell a.odd"));
+            for (int i = 0; i < Math.min(mainOdds.size(), 3); i++) {
+                String text = mainOdds.get(i).getText().trim();
                 if (!text.isEmpty()) odds[i] = text;
             }
+
+            // Alt/Üst oranları
+            List<WebElement> overUnderOdds = event.findElements(By.cssSelector("dd.col-02.event-row .cell a.odd"));
+            for (int i = 0; i < Math.min(overUnderOdds.size(), 2); i++) {
+                String text = overUnderOdds.get(i).getText().trim();
+                if (!text.isEmpty()) odds[3 + i] = text;  // odds[3], odds[4]
+            }
+
+            // Var/Yok oranları
+            List<WebElement> goalOdds = event.findElements(By.cssSelector("dd.col-04.event-row .cell a.odd"));
+            for (int i = 0; i < Math.min(goalOdds.size(), 2); i++) {
+                String text = goalOdds.get(i).getText().trim();
+                if (!text.isEmpty()) odds[5 + i] = text;  // odds[5], odds[6]
+            }
+
         } catch (Exception e) {
             System.out.println("Oran çekme hatası: " + e.getMessage());
         }
-        return odds;
+        return odds; // [1, X, 2, Alt, Üst, Var, Yok]
     }
+
 
     public TeamMatchHistory scrapeTeamHistory(String detailUrl, String teamName) {
         if (detailUrl == null || detailUrl.isEmpty()) return null;
@@ -295,23 +313,33 @@ public class MatchScraper {
 
     // Takım isimlerini güvenli şekilde çeken metod
     private String extractTeamName(WebElement teamElement) {
+        try {
+            // 1. Önce <a><span> yapısını kontrol et
+            WebElement span = teamElement.findElement(By.tagName("span"));
+            String txt = span.getText().trim();
+
+            // 2. Eğer boş değilse ve sadece görünür yazıysa kullan
+            if (!txt.isEmpty()) {
+                return txt;
+            }
+        } catch (Exception e) {
+            // span yoksa veya hata oldu → boş döner
+        }
+
+        // 3. Alternatif olarak tüm span'ları dolaş ve geçerli metinleri birleştir
         List<WebElement> spans = teamElement.findElements(By.tagName("span"));
-        StringBuilder sb = new StringBuilder();
         for (WebElement span : spans) {
             String txt = span.getText().trim();
             if (txt.isEmpty()) continue;
 
-            // Tarafsız saha ve diğer sembolleri kaldır (Unicode symbol)
-            txt = txt.replaceAll("\\p{So}", "");
-
-            // Nokta ve tireyi bırak, sadece harf, rakam, boşluk, nokta ve tire kabul et
-            if (!txt.matches("[\\p{L}0-9\\s\\.\\-]+")) continue;
-
-            if (sb.length() > 0) sb.append(" ");
-            sb.append(txt);
+            // Özel sembolleri kaldır, sadece harf, rakam, boşluk, nokta, tire bırak
+            txt = txt.replaceAll("[^\\p{L}0-9\\s\\.\\-]", "");
+            if (!txt.isEmpty()) return txt;
         }
-        return sb.toString().trim();
+
+        return "";
     }
+
 
     // Örnek: extractCompetitionHistoryResults içinde kullanımı
     private List<MatchResult> extractCompetitionHistoryResults(String matchType, String originalUrl) {
@@ -384,27 +412,37 @@ public class MatchScraper {
         if (driver != null) driver.quit();
     }
 }
-
-// Maç bilgilerini tutan data class
+// Maç bilgilerini tutan data class (güncellenmiş)
 class MatchInfo {
     private String name;
     private String time;
     private String detailUrl;
-    private String odd1;
-    private String oddX;
-    private String odd2;
+    private String odd1;   // 1
+    private String oddX;   // X
+    private String odd2;   // 2
+    private String oddAlt; // Alt
+    private String oddUst; // Üst
+    private String oddVar; // Var
+    private String oddYok; // Yok
     private int index;
-    
-    public MatchInfo(String name, String time, String detailUrl, String odd1, String oddX, String odd2, int index) {
+
+    public MatchInfo(String name, String time, String detailUrl,
+                     String odd1, String oddX, String odd2,
+                     String oddAlt, String oddUst, String oddVar, String oddYok,
+                     int index) {
         this.name = name;
         this.time = time;
         this.detailUrl = detailUrl;
         this.odd1 = odd1;
         this.oddX = oddX;
         this.odd2 = odd2;
+        this.oddAlt = oddAlt;
+        this.oddUst = oddUst;
+        this.oddVar = oddVar;
+        this.oddYok = oddYok;
         this.index = index;
     }
-    
+
     // Getters
     public String getName() { return name; }
     public String getTime() { return time; }
@@ -412,10 +450,13 @@ class MatchInfo {
     public String getOdd1() { return odd1; }
     public String getOddX() { return oddX; }
     public String getOdd2() { return odd2; }
+    public String getOddAlt() { return oddAlt; }
+    public String getOddUst() { return oddUst; }
+    public String getOddVar() { return oddVar; }
+    public String getOddYok() { return oddYok; }
     public int getIndex() { return index; }
-    
+
     public boolean hasDetailUrl() {
         return detailUrl != null && !detailUrl.isEmpty() && detailUrl.contains("istatistik.nesine.com");
     }
-
 }

@@ -83,8 +83,13 @@ public class Scraper {
                 html.append("<strong>Güncel Oranlar:</strong> ");
                 html.append("1: ").append(match.getOdd1()).append(" | ");
                 html.append("X: ").append(match.getOddX()).append(" | ");
-                html.append("2: ").append(match.getOdd2());
+                html.append("2: ").append(match.getOdd2()).append(" | ");
+                html.append("Alt: ").append(match.getOddAlt()).append(" | ");
+                html.append("Üst: ").append(match.getOddUst()).append(" | ");
+                html.append("Var: ").append(match.getOddVar()).append(" | ");
+                html.append("Yok: ").append(match.getOddYok());
                 html.append("</div>");
+
                 
                 // Detay URL'si varsa geçmiş verilerini çek
                 if (match.hasDetailUrl()) {
