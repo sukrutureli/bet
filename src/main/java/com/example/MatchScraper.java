@@ -182,7 +182,8 @@ public class MatchScraper {
                 return null;
             }
             
-            return new MatchInfo(matchName, matchTime, detailUrl, odds[0], odds[1], odds[2], idx);
+            return new MatchInfo(matchName, matchTime, detailUrl, odds[0], odds[1], odds[2],
+                                odds[3], odds[4], odds[5], odds[6], idx);
             
         } catch (Exception e) {
             System.out.println("Element " + idx + " extract hatası: " + e.getMessage());
