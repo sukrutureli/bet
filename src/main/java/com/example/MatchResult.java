@@ -123,6 +123,7 @@ class TeamMatchHistory {
         } else if (homeOrAway == 2) {
             return sonMaclarAway;
         }  
+        return null;
     }
     public LocalDateTime getLastUpdated() { return lastUpdated; }
     

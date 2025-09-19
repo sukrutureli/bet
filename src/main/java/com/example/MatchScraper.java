@@ -241,10 +241,10 @@ public class MatchScraper {
             rekabetGecmisi.forEach(teamHistory::addRekabetGecmisiMatch);
 
             List<MatchResult> sonMaclarHome = scrapeSonMaclar(detailUrl + "/son-maclari", 1);
-            teamHistory.addSonMacMatch(sonMaclarHome, 1);
+            sonMaclarHome.forEach(m -> teamHistory.addSonMacMatch(m, 1));
 
             List<MatchResult> sonMaclarAway = scrapeSonMaclar(detailUrl + "/son-maclari", 2);
-            teamHistory.addSonMacMatch(sonMaclarHome, 2);
+            sonMaclarAway.forEach(m -> teamHistory.addSonMacMatch(m, 2));
 
         } catch (Exception e) {
             System.out.println("Takım geçmişi çekme hatası: " + e.getMessage());
