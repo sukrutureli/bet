@@ -107,11 +107,13 @@ public class Scraper {
                             // Takım istatistikleri
                             html.append("<div class='team-stats'>");
                             html.append("<strong>").append(teamHistory.getTeamName()).append("</strong><br>");
-                            html.append("Toplam Maç: ").append(teamHistory.getTotalMatches()).append(" | ");
-                            html.append("Galibiyet: ").append(teamHistory.getWinCount()).append(" | ");
-                            html.append("Beraberlik: ").append(teamHistory.getDrawCount()).append(" | ");
-                            html.append("Mağlubiyet: ").append(teamHistory.getLossCount()).append(" | ");
-                            html.append("Başarı Oranı: ").append(String.format("%.1f%%", teamHistory.getWinRate()));
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs1(), "MS1 |"));
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs0(), "MS0 |"));
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs2(), "MS2<br>"));
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getAlt(), "Alt |"));
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getUst(), "Üst<br>"));
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getVar(), "Var |"));
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getYok(), "Yok"));
                             html.append("</div>");
                             
                             // Rekabet Geçmişi
@@ -155,7 +157,6 @@ public class Scraper {
                                     html.append(matchResult.getHomeTeam()).append(" ");
                                     html.append(matchResult.getScoreString()).append(" ");
                                     html.append(matchResult.getAwayTeam());
-                                    html.append(" [").append(matchResult.getTournament()).append("]");
                                     html.append("</div>");
                                     count++;
                                 }
@@ -181,7 +182,6 @@ public class Scraper {
                                     html.append(matchResult.getHomeTeam()).append(" ");
                                     html.append(matchResult.getScoreString()).append(" ");
                                     html.append(matchResult.getAwayTeam());
-                                    html.append(" [").append(matchResult.getTournament()).append("]");
                                     html.append("</div>");
                                     count++;
                                 }

@@ -236,8 +236,9 @@ public class MatchScraper {
 
     public TeamMatchHistory scrapeTeamHistory(String detailUrl, String teamName) {
         if (detailUrl == null || detailUrl.isEmpty()) return null;
-        String teamNameShort = scrapeDetailUrl(detailUrl);
-        TeamMatchHistory teamHistory = new TeamMatchHistory(teamNameShort, detailUrl);
+        List<String> names = scrapeDetailUrl(detailUrl);
+        TeamMatchHistory teamHistory = new TeamMatchHistory(names.get(0), 
+                                        names.get(1), names.get(2), detailUrl);
         try {
             List<MatchResult> rekabetGecmisi = scrapeRekabetGecmisi(detailUrl + "/rekabet-gecmisi");
             rekabetGecmisi.forEach(teamHistory::addRekabetGecmisiMatch);
@@ -255,7 +256,7 @@ public class MatchScraper {
     }
 
     private String scrapeDetailUrl(String url) {
-        String teamNameShort = "";
+        List<String> names = new ArrayList<>();
         try {
             driver.get(url);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
@@ -263,26 +264,22 @@ public class MatchScraper {
             // Tüm takım linklerini bul
             List<WebElement> teamLinks = driver.findElements(By.cssSelector("a[data-test-id='TeamLink'] span[data-test-id='HeaderTeams']"));
 
-            // Takım isimlerini oku
-            for (WebElement team : teamLinks) {
-                System.out.println("Takım: " + team.getText().trim());
-            }
-
             // İlk takım
             String homeTeam = teamLinks.size() > 0 ? teamLinks.get(0).getText().trim() : "-";
 
             // İkinci takım
             String awayTeam = teamLinks.size() > 1 ? teamLinks.get(1).getText().trim() : "-";
 
-            System.out.println("Ev sahibi: " + homeTeam);
-            System.out.println("Deplasman: " + awayTeam);
 
+            String teamNameShort = homeTeam + " - " + awayTeam;
 
-            teamNameShort = homeTeam + " - " + awayTeam;
+            names.add(teamNameShort);
+            names.add(homeTeam);
+            names.add(awayTeam);
         } catch (Exception e) {
             System.out.println("Rekabet geçmişi hatası: " + e.getMessage());
         }
-        return teamNameShort;
+        return names;
     }
 
     private List<MatchResult> scrapeRekabetGecmisi(String url) {
@@ -290,7 +287,7 @@ public class MatchScraper {
         try {
             driver.get(url);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
-            Thread.sleep(2000);
+            Thread.sleep(5000);
             selectTournament();
             clickShowMoreMatches();
             matches = extractCompetitionHistoryResults("rekabet-gecmisi", url);
@@ -305,7 +302,7 @@ public class MatchScraper {
         try {
             driver.get(url);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
-            Thread.sleep(2000);
+            Thread.sleep(5000);
             selectTournament();
             clickShowMoreMatches();
             matches = extractMatchResults("son-maclari", url, homeOrAway);
