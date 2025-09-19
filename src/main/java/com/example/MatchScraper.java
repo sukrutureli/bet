@@ -342,7 +342,8 @@ public class MatchScraper {
             if (sb.length() > 0) sb.append(" ");
             sb.append(txt);
         }
-
+    
+        System.out.println(txt + "--------------");
         return sb.toString().trim();
     }
 
