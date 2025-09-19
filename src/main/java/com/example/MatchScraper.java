@@ -293,6 +293,27 @@ public class MatchScraper {
         }
     }
 
+    // Takım isimlerini güvenli şekilde çeken metod
+    private String extractTeamName(WebElement teamElement) {
+        List<WebElement> spans = teamElement.findElements(By.tagName("span"));
+        StringBuilder sb = new StringBuilder();
+        for (WebElement span : spans) {
+            String txt = span.getText().trim();
+            if (txt.isEmpty()) continue;
+
+            // Tarafsız saha ve diğer sembolleri kaldır (Unicode symbol)
+            txt = txt.replaceAll("\\p{So}", "");
+
+            // Nokta ve tireyi bırak, sadece harf, rakam, boşluk, nokta ve tire kabul et
+            if (!txt.matches("[\\p{L}0-9\\s\\.\\-]+")) continue;
+
+            if (sb.length() > 0) sb.append(" ");
+            sb.append(txt);
+        }
+        return sb.toString().trim();
+    }
+
+    // Örnek: extractCompetitionHistoryResults içinde kullanımı
     private List<MatchResult> extractCompetitionHistoryResults(String matchType, String originalUrl) {
         List<MatchResult> matches = new ArrayList<>();
         try {
@@ -325,6 +346,7 @@ public class MatchScraper {
         return matches;
     }
 
+    // Örnek: extractMatchResults içinde kullanımı
     private List<MatchResult> extractMatchResults(String matchType, String originalUrl) {
         List<MatchResult> matches = new ArrayList<>();
         try {
@@ -355,19 +377,6 @@ public class MatchScraper {
             System.out.println("extractMatchResults hatası: " + e.getMessage());
         }
         return matches;
-    }
-
-    private String extractTeamName(WebElement teamElement) {
-        List<WebElement> spans = teamElement.findElements(By.tagName("span"));
-        StringBuilder sb = new StringBuilder();
-        for (WebElement span : spans) {
-            String txt = span.getText().trim();
-            if (txt.isEmpty()) continue;
-            if (!txt.matches("[\\p{L}0-9\\s]+")) continue; // sadece harf, rakam ve boşluk bırak
-            if (sb.length() > 0) sb.append(" ");
-            sb.append(txt);
-        }
-        return sb.toString().trim();
     }
 
 
