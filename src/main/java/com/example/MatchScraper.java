@@ -50,6 +50,7 @@ public class MatchScraper {
         LocalDate today = LocalDate.now(turkeyZone);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         String todayStr = today.format(formatter);
+        System.out.println(todayStr);
 
         try {
             String url = "https://www.nesine.com/iddaa?et=1&dt=" + todayStr + "&le=2&ocg=MS-2%2C5>=Pop%C3%BCler";
