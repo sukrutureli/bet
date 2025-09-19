@@ -398,7 +398,7 @@ public class MatchScraper {
         return matches;
     }
     
-    private void selectTournament(String tournamentName) {
+    private void selectTournament() {
         try {
             System.out.println("Turnuva seçimi deneniyor...");
 
@@ -411,12 +411,12 @@ public class MatchScraper {
 
             // İstenen turnuvayı menüden seç
             WebElement option = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//div[@role='option']//span[contains(text(), '" + tournamentName + "')]")
+                By.xpath("//div[@role='option']//span[contains(text(), '" + "Bu Turnuva" + "')]")
             ));
             option.click();
             Thread.sleep(2000);
 
-            System.out.println("Turnuva seçildi: " + tournamentName);
+            System.out.println("Turnuva seçildi: " + "Bu Turnuva");
         } catch (Exception e) {
             System.out.println("Turnuva seçimi hatası: " + e.getMessage());
         }
