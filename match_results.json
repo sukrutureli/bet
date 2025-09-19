@@ -1,48 +1,7 @@
 {
-  "createdAt": "2025-09-18T19:36:18.910247854",
-  "totalTeams": 2,
-  "totalMatches": 27,
+  "createdAt": "2025-09-19T05:53:41.777642693",
+  "totalTeams": 0,
+  "totalMatches": 0,
   "teams": [
-    {
-      "teamName": "Aurora - CD Mictlan",
-      "totalMatches": 12,
-      "winRate": 0.0,
-      "matches": [
-        {"homeTeam":"Xelaju","awayTeam":"Aurora","homeScore":2,"awayScore":2,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Aurora","awayTeam":"Malacateco","homeScore":1,"awayScore":0,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Comunicacion","awayTeam":"Aurora","homeScore":0,"awayScore":2,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Aurora","awayTeam":"CSD Coban","homeScore":1,"awayScore":1,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Aurora","awayTeam":"Antigua","homeScore":3,"awayScore":2,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"D. Achuapa","awayTeam":"Aurora","homeScore":1,"awayScore":2,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"CD Mictlan","awayTeam":"D. Achuapa","homeScore":1,"awayScore":0,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Marquense","awayTeam":"CD Mictlan","homeScore":1,"awayScore":0,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"CD Mictlan","awayTeam":"Municipal","homeScore":0,"awayScore":0,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Guastatoya","awayTeam":"CD Mictlan","homeScore":1,"awayScore":3,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"CD Mictlan","awayTeam":"Deportivo M.","homeScore":0,"awayScore":0,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Antigua","awayTeam":"CD Mictlan","homeScore":2,"awayScore":0,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"H"}
-      ]
-    },
-    {
-      "teamName": "Atl Grau - Alianza Huanuco",
-      "totalMatches": 15,
-      "winRate": 0.0,
-      "matches": [
-        {"homeTeam":"Huanuco","awayTeam":"Atl. Grau","homeScore":0,"awayScore":0,"matchDate":"2025-09-18","tournament":"PER","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"","awayTeam":"Huanuco","homeScore":1,"awayScore":1,"matchDate":"2025-09-18","tournament":"PER","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"","awayTeam":"Huanuco","homeScore":1,"awayScore":1,"matchDate":"2025-09-18","tournament":"PER","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Atl. Grau","awayTeam":"Asociacion","homeScore":2,"awayScore":0,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Cienciano","awayTeam":"Atl. Grau","homeScore":1,"awayScore":0,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Atl. Grau","awayTeam":"Comerciantes","homeScore":1,"awayScore":2,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Cultural","awayTeam":"Atl. Grau","homeScore":3,"awayScore":2,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"","awayTeam":"D. Garcilaso","homeScore":1,"awayScore":1,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Universitar.","awayTeam":"Atl. Grau","homeScore":3,"awayScore":1,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Huanuco","awayTeam":"Cienciano","homeScore":0,"awayScore":3,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Huanuco","awayTeam":"Cultural","homeScore":2,"awayScore":1,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Comerciantes","awayTeam":"Huanuco","homeScore":1,"awayScore":2,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"D. Garcilaso","awayTeam":"Huanuco","homeScore":1,"awayScore":1,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"","awayTeam":"Universitar.","homeScore":0,"awayScore":2,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Asociacion","awayTeam":"Huanuco","homeScore":0,"awayScore":3,"matchDate":"2025-09-18","tournament":"İstatistik","matchType":"son-maclari","result":"A"}
-      ]
-    }
   ]
 }
