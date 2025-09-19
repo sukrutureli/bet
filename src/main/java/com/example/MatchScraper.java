@@ -60,7 +60,7 @@ public class MatchScraper {
             performScrolling();
 
             List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
-            for (int idx = 0; idx < Math.min(events.size(), 5); idx++) {
+            for (int idx = 0; idx < events.size(); idx++) {
                 WebElement event = events.get(idx);
                 MatchInfo matchInfo = extractMatchInfo(event, idx);
                 if (matchInfo != null) matches.add(matchInfo);
