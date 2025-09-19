@@ -407,25 +407,26 @@ public class MatchScraper {
     // Maç sonuçlarını listeleyen metot
     private List<MatchResult> extractMatchResults(String matchType, String originalUrl, int homeOrAway) {
         List<MatchResult> matches = new ArrayList<>();
-        String selectorString = "";
-        if (homeOrAway == 1) {
-            selectorString = "tr[data-test-id='LastMatchesTableFirst']";
-        } else if (homeOrAway == 2) {
-            selectorString = "tr[data-test-id='LastMatchesTableSecond']";
-        }
         try {
-            wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.cssSelector(selectorString)));
-            List<WebElement> rows = driver.findElements(By.cssSelector(selectorString));
+            // Tablo elementlerinin DOM'da yüklenmesini bekle
+            wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+                    By.cssSelector("table[data-test-id='LastMatchesTable']")));
+
+            // Sayfadaki tüm son maç tablolarını al
+            List<WebElement> tables = driver.findElements(By.cssSelector("table[data-test-id='LastMatchesTable']"));
+            System.out.println("Son maç tabloları sayısı: " + tables.size());
+
+            // Tabloları sırayla işle
+            int tIndex = homeOrAway - 1;
+            WebElement table = tables.get(tIndex);
+            List<WebElement> rows = table.findElements(By.cssSelector("tr"));
+            System.out.println("Tablo " + tIndex + " satır sayısı: " + rows.size());
 
             for (WebElement row : rows) {
                 try {
-                    // Takım isimlerini çek
                     String homeTeam = extractTeamName(row.findElement(By.cssSelector("div[data-test-id='HomeTeam']")));
                     String awayTeam = extractTeamName(row.findElement(By.cssSelector("div[data-test-id='AwayTeam']")));
-
-                    // Skoru güvenli şekilde çek
-                    String scoreText = extractScore(row);
+                    String scoreText = extractScore(row); // Güvenli skor çekme metodu
                     int homeScore = -1;
                     int awayScore = -1;
                     if (!scoreText.equals("-")) {
@@ -440,15 +441,19 @@ public class MatchScraper {
                     String leagueAndDate = row.findElement(By.cssSelector("td[data-test-id='TableBodyLeague']")).getText();
 
                     MatchResult match = new MatchResult(
-                        homeTeam, awayTeam, homeScore, awayScore, leagueAndDate,
-                        "İstatistik", matchType, originalUrl
+                            homeTeam, awayTeam, homeScore, awayScore, leagueAndDate,
+                            "", matchType, originalUrl
                     );
+
                     matches.add(match);
 
                 } catch (Exception e) {
+                    // Satır işlenemediğinde hata consola yazılır, program devam eder
                     System.out.println("Satır işlenemedi: " + e.getMessage());
                 }
             }
+            
+
         } catch (Exception e) {
             System.out.println("extractMatchResults hatası: " + e.getMessage());
         }
