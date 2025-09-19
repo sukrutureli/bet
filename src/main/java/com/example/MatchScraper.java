@@ -85,27 +85,107 @@ public class MatchScraper {
 
     private MatchInfo extractMatchInfo(WebElement event, int idx) {
         try {
+            // Daha esnek görünürlük kontrolü
+            try {
+                Boolean elementExists = (Boolean) js.executeScript(
+                    "return arguments[0].offsetParent !== null || arguments[0].offsetWidth > 0 || arguments[0].offsetHeight > 0;", event
+                );
+                if (!elementExists) {
+                    System.out.println("Element " + idx + " DOM'da görünür değil");
+                }
+            } catch (Exception e) {
+                System.out.println("Element " + idx + " visibility check hatası: " + e.getMessage());
+            }
+            
+            // Elemente focus yap (lazy loading için)
+            try {
+                js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center'});", event);
+                Thread.sleep(800);
+                
+                // Force trigger lazy loading
+                js.executeScript("arguments[0].focus(); arguments[0].click();", event);
+                Thread.sleep(300);
+            } catch (Exception scrollEx) {
+                System.out.println("Element " + idx + " scroll hatası: " + scrollEx.getMessage());
+            }
+            
+            // Maç adı ve URL'i çek
             String matchName = "İsim bulunamadı";
             String detailUrl = null;
-
-            List<WebElement> nameLinks = event.findElements(By.cssSelector("div.name > a"));
-            if (!nameLinks.isEmpty()) {
-                WebElement nameLink = nameLinks.get(0);
-                matchName = nameLink.getText().trim();
-                detailUrl = nameLink.getAttribute("href");
+            
+            try {
+                // Name ve href'i aynı anda çek
+                List<WebElement> nameLinks = event.findElements(By.cssSelector("div.name > a"));
+                if (!nameLinks.isEmpty()) {
+                    WebElement nameLink = nameLinks.get(0);
+                    matchName = nameLink.getText().trim();
+                    detailUrl = nameLink.getAttribute("href");
+                    
+                    if (matchName.isEmpty()) {
+                        matchName = "İsim bulunamadı";
+                    }
+                }
+                
+                // Alternatif URL arama
+                if (detailUrl == null || detailUrl.isEmpty()) {
+                    List<WebElement> allLinks = event.findElements(By.tagName("a"));
+                    for (WebElement link : allLinks) {
+                        String href = link.getAttribute("href");
+                        if (href != null && href.contains("istatistik.nesine.com")) {
+                            detailUrl = href;
+                            if (matchName.equals("İsim bulunamadı")) {
+                                String linkText = link.getText().trim();
+                                if (!linkText.isEmpty()) {
+                                    matchName = linkText;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+                
+                // JavaScript ile text çekme
+                if (matchName.equals("İsim bulunamadı")) {
+                    String jsText = (String) js.executeScript("return arguments[0].textContent || arguments[0].innerText || '';", event);
+                    if (jsText != null && !jsText.trim().isEmpty()) {
+                        String[] lines = jsText.split("\n");
+                        for (String line : lines) {
+                            line = line.trim();
+                            if (line.length() > 5 && (line.contains("-") || line.contains(" vs ")) && !line.matches(".*\\d+.*")) {
+                                matchName = line;
+                                break;
+                            }
+                        }
+                    }
+                }
+            } catch (Exception nameEx) {
+                System.out.println("Element " + idx + " isim arama hatası: " + nameEx.getMessage());
             }
-
+            
+            // Maç zamanı
             String matchTime = extractMatchTime(event);
+            
+            // Oranlar
             String[] odds = extractOdds(event);
-
+            
+            // Debug: Element'in raw text'ini yazdır
+            try {
+                String elementText = (String) js.executeScript("return (arguments[0].textContent || arguments[0].innerText || '').substring(0, 100);", event);
+                System.out.println("Element " + idx + " text (ilk 100 kar): " + elementText);
+            } catch (Exception debugEx) {
+                // Ignore
+            }
+            
+            // Eğer minimum veri yoksa null döndür
             if (matchName.equals("İsim bulunamadı") && matchTime.equals("Zaman bulunamadı")) {
+                System.out.println("Element " + idx + " yeterli veri yok, atlanıyor");
                 return null;
             }
-
+            
             return new MatchInfo(matchName, matchTime, detailUrl, odds[0], odds[1], odds[2], idx);
-
+            
         } catch (Exception e) {
-            System.out.println("extractMatchInfo hatası: " + e.getMessage());
+            System.out.println("Element " + idx + " extract hatası: " + e.getMessage());
             return null;
         }
     }
@@ -283,13 +363,13 @@ public class MatchScraper {
         for (WebElement span : spans) {
             String txt = span.getText().trim();
             if (txt.isEmpty()) continue;
-            if (txt.equalsIgnoreCase("N")) continue;
-            if (txt.length() <= 2) continue; // kart ikonları
+            if (!txt.matches("[\\p{L}0-9\\s]+")) continue; // sadece harf, rakam ve boşluk bırak
             if (sb.length() > 0) sb.append(" ");
             sb.append(txt);
         }
         return sb.toString().trim();
     }
+
 
     public void close() {
         if (driver != null) driver.quit();
