@@ -384,20 +384,24 @@ public class MatchScraper {
         return matches;
     }
 
+    // Skor çekme metodu
     private String extractScore(WebElement row) {
-        List<WebElement> spans = row.findElements(By.cssSelector("button[data-testid='nsn-button'] span"));
-
-        for (WebElement span : spans) {
-            String txt = span.getText().trim();
-            // Skor formatı: sayı - sayı
-            if (txt.matches("\\d+\\s*-\\s*\\d+")) {
-                return txt;
+        try {
+            List<WebElement> spans = row.findElements(By.cssSelector("button[data-test-id='NsnButton'] span"));
+            for (WebElement span : spans) {
+                String txt = span.getText().trim();
+                // Skor formatı "X - Y" (ör. "2 - 1")
+                if (txt.matches("\\d+\\s*-\\s*\\d+")) {
+                    return txt;
+                }
             }
+        } catch (Exception e) {
+            System.out.println("Skor çekme hatası: " + e.getMessage());
         }
-        return "Skor bulunamadı";
+        return "-";
     }
 
-    // Örnek: extractMatchResults içinde kullanımı
+    // Maç sonuçlarını listeleyen metot
     private List<MatchResult> extractMatchResults(String matchType, String originalUrl) {
         List<MatchResult> matches = new ArrayList<>();
         try {
@@ -407,12 +411,23 @@ public class MatchScraper {
 
             for (WebElement row : rows) {
                 try {
+                    // Takım isimlerini çek
                     String homeTeam = extractTeamName(row.findElement(By.cssSelector("div[data-test-id='HomeTeam']")));
                     String awayTeam = extractTeamName(row.findElement(By.cssSelector("div[data-test-id='AwayTeam']")));
-                    String scoreText = row.findElement(By.cssSelector("button[data-test-id='NsnButton'] span")).getText().trim();
-                    String[] parts = scoreText.split("-");
-                    int homeScore = Integer.parseInt(parts[0].trim());
-                    int awayScore = Integer.parseInt(parts[1].trim());
+
+                    // Skoru güvenli şekilde çek
+                    String scoreText = extractScore(row);
+                    int homeScore = -1;
+                    int awayScore = -1;
+                    if (!scoreText.equals("-")) {
+                        String[] parts = scoreText.split("-");
+                        if (parts.length == 2) {
+                            homeScore = Integer.parseInt(parts[0].trim());
+                            awayScore = Integer.parseInt(parts[1].trim());
+                        }
+                    }
+
+                    // Lig + tarih bilgisini al
                     String leagueAndDate = row.findElement(By.cssSelector("td[data-test-id='TableBodyLeague']")).getText();
 
                     MatchResult match = new MatchResult(
@@ -420,6 +435,7 @@ public class MatchScraper {
                         "İstatistik", matchType, originalUrl
                     );
                     matches.add(match);
+
                 } catch (Exception e) {
                     System.out.println("Satır işlenemedi: " + e.getMessage());
                 }
@@ -429,6 +445,7 @@ public class MatchScraper {
         }
         return matches;
     }
+
 
 
     public void close() {
