@@ -407,7 +407,7 @@ public class MatchScraper {
     // Maç sonuçlarını listeleyen metot
     private List<MatchResult> extractMatchResults(String matchType, String originalUrl, int homeOrAway) {
         List<MatchResult> matches = new ArrayList<>();
-        String selectorString;
+        String selectorString = "";
         if (homeOrAway == 1) {
             selectorString = "tr[data-test-id='LastMatchesTableFirst']";
         } else if (homeOrAway == 2) {
