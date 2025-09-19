@@ -178,25 +178,25 @@ class TeamMatchHistory {
     public int getMs1() {
         int ms1 = 0;
         for (int i = 0; i < Math.min(10, rekabetGecmisi.size()); i++) {
-            if (teamEv == rekabetGecmisi.get(i).getHomeTeam() && rekabetGecmisi.get(i).getResult() == "H") {
+            if (rekabetGecmisi.get(i).getHomeTeam().contains(teamEv) && rekabetGecmisi.get(i).getResult() == "H") {
                 ms1++;
-            } else if (teamEv == rekabetGecmisi.get(i).getAwayTeam() && rekabetGecmisi.get(i).getResult() == "A") {
+            } else if (rekabetGecmisi.get(i).getAwayTeam().contains(teamEv) && rekabetGecmisi.get(i).getResult() == "A") {
                 ms1++;
             } 
         }
         
         for (int i = 0; i < Math.min(10, sonMaclarHome.size()); i++) {
-            if (teamEv == sonMaclarHome.get(i).getHomeTeam() && sonMaclarHome.get(i).getResult() == "H") {
+            if (sonMaclarHome.get(i).getHomeTeam().contains(teamEv) && sonMaclarHome.get(i).getResult() == "H") {
                 ms1++;
-            } else if (teamEv == sonMaclarHome.get(i).getAwayTeam() && sonMaclarHome.get(i).getResult() == "A") {
+            } else if (sonMaclarHome.get(i).getAwayTeam().contains(teamEv) && sonMaclarHome.get(i).getResult() == "A") {
                 ms1++;
             } 
         }
         
         for (int i = 0; i < Math.min(10, sonMaclarAway.size()); i++) {
-            if (teamDep == sonMaclarAway.get(i).getHomeTeam() && sonMaclarAway.get(i).getResult() == "A") {
+            if (sonMaclarAway.get(i).getHomeTeam().contains(teamDep) && sonMaclarAway.get(i).getResult() == "A") {
                 ms1++;
-            } else if (teamDep == sonMaclarAway.get(i).getAwayTeam() && sonMaclarAway.get(i).getResult() == "H") {
+            } else if (sonMaclarAway.get(i).getAwayTeam().contains(teamDep) && sonMaclarAway.get(i).getResult() == "H") {
                 ms1++;
             } 
         }
@@ -207,25 +207,25 @@ class TeamMatchHistory {
     public int getMs2() {
         int ms2 = 0;
         for (int i = 0; i < Math.min(10, rekabetGecmisi.size()); i++) {
-            if (teamDep == rekabetGecmisi.get(i).getHomeTeam() && rekabetGecmisi.get(i).getResult() == "H") {
+            if (rekabetGecmisi.get(i).getHomeTeam().contains(teamDep) && rekabetGecmisi.get(i).getResult() == "H") {
                 ms2++;
-            } else if (teamDep == rekabetGecmisi.get(i).getAwayTeam() && rekabetGecmisi.get(i).getResult() == "A") {
+            } else if (rekabetGecmisi.get(i).getAwayTeam().contains(teamDep) && rekabetGecmisi.get(i).getResult() == "A") {
                 ms2++;
             } 
         }
         
         for (int i = 0; i < Math.min(10, sonMaclarHome.size()); i++) {
-            if (teamEv == sonMaclarHome.get(i).getHomeTeam() && sonMaclarHome.get(i).getResult() == "A") {
+            if (sonMaclarHome.get(i).getHomeTeam().contains(teamEv) && sonMaclarHome.get(i).getResult() == "A") {
                 ms2++;
-            } else if (teamEv == sonMaclarHome.get(i).getAwayTeam() && sonMaclarHome.get(i).getResult() == "H") {
+            } else if (sonMaclarHome.get(i).getAwayTeam().contains(teamEv) && sonMaclarHome.get(i).getResult() == "H") {
                 ms2++;
             } 
         }
         
         for (int i = 0; i < Math.min(10, sonMaclarAway.size()); i++) {
-            if (teamDep == sonMaclarAway.get(i).getHomeTeam() && sonMaclarAway.get(i).getResult() == "H") {
+            if (sonMaclarAway.get(i).getHomeTeam().contains(teamDep) && sonMaclarAway.get(i).getResult() == "H") {
                 ms2++;
-            } else if (teamDep == sonMaclarAway.get(i).getAwayTeam() && sonMaclarAway.get(i).getResult() == "A") {
+            } else if (sonMaclarAway.get(i).getAwayTeam().contains(teamDep) && sonMaclarAway.get(i).getResult() == "A") {
                 ms2++;
             } 
         }
