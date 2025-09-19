@@ -121,7 +121,7 @@ public class Scraper {
                                 
                                 int count = 0;
                                 for (MatchResult matchResult : teamHistory.getRekabetGecmisi()) {
-                                    //if (count >= 10) break; // İlk 10 maçı göster
+                                    if (count >= 10) break; // İlk 10 maçı göster
                                     
                                     String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
                                     html.append("<div class='match-result ").append(resultClass).append("'>");
@@ -147,7 +147,7 @@ public class Scraper {
                                 
                                 int count = 0;
                                 for (MatchResult matchResult : teamHistory.getSonMaclar(1)) {
-                                    //if (count >= 10) break; // İlk 10 maçı göster
+                                    if (count >= 10) break; // İlk 10 maçı göster
                                     
                                     String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
                                     html.append("<div class='match-result ").append(resultClass).append("'>");
@@ -173,7 +173,7 @@ public class Scraper {
                                 
                                 int count = 0;
                                 for (MatchResult matchResult : teamHistory.getSonMaclar(2)) {
-                                    //if (count >= 10) break; // İlk 10 maçı göster
+                                    if (count >= 10) break; // İlk 10 maçı göster
                                     
                                     String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
                                     html.append("<div class='match-result ").append(resultClass).append("'>");
@@ -322,7 +322,7 @@ public class Scraper {
         String result = match.getResult();
         
         // Takımın ev sahibi mi deplasman mı olduğunu kontrol et
-        boolean isHome = match.getHomeTeam().contains(teamName) || teamName.contains(match.getHomeTeam());
+        boolean isHome = teamName.contains(match.getHomeTeam());
         
         if (result.equals("D")) {
             return "draw";

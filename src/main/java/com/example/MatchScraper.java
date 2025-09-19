@@ -171,7 +171,8 @@ public class MatchScraper {
             // Debug: Element'in raw text'ini yazdır
             try {
                 String elementText = (String) js.executeScript("return (arguments[0].textContent || arguments[0].innerText || '').substring(0, 100);", event);
-                System.out.println("Element " + idx + " text (ilk 100 kar): " + elementText);
+                //System.out.println("Element " + idx + " text (ilk 100 kar): " + elementText);
+                System.out.println(matchName);
             } catch (Exception debugEx) {
                 // Ignore
             }
@@ -328,7 +329,6 @@ public class MatchScraper {
             }
 
             String txt = span.getText();
-            System.out.println(txt + "--------------");
             if (txt == null) continue;
 
             txt = txt.trim();
@@ -346,13 +346,8 @@ public class MatchScraper {
             sb.append(txt);
         }
     
-        System.out.println(sb.toString().trim() + "--------------");
         return sb.toString().trim();
     }
-
-
-
-
 
     // Örnek: extractCompetitionHistoryResults içinde kullanımı
     private List<MatchResult> extractCompetitionHistoryResults(String matchType, String originalUrl) {
@@ -442,7 +437,7 @@ public class MatchScraper {
 
                     MatchResult match = new MatchResult(
                         homeTeam, awayTeam, homeScore, awayScore, leagueAndDate,
-                        "İstatistik", matchType, originalUrl
+                        "", matchType, originalUrl
                     );
                     matches.add(match);
 
