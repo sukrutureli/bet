@@ -121,7 +121,7 @@ public class Scraper {
                                 
                                 int count = 0;
                                 for (MatchResult matchResult : teamHistory.getRekabetGecmisi()) {
-                                    if (count >= 10) break; // İlk 10 maçı göster
+                                    //if (count >= 10) break; // İlk 10 maçı göster
                                     
                                     String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
                                     html.append("<div class='match-result ").append(resultClass).append("'>");
@@ -147,7 +147,7 @@ public class Scraper {
                                 
                                 int count = 0;
                                 for (MatchResult matchResult : teamHistory.getSonMaclar()) {
-                                    if (count >= 10) break; // İlk 10 maçı göster
+                                    //if (count >= 10) break; // İlk 10 maçı göster
                                     
                                     String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
                                     html.append("<div class='match-result ").append(resultClass).append("'>");
