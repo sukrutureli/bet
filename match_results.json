@@ -1,87 +1,100 @@
 {
-  "createdAt": "2025-09-19T13:27:31.097273845",
+  "createdAt": "2025-09-19T18:31:55.214503963",
   "totalTeams": 5,
-  "totalMatches": 46,
+  "totalMatches": 59,
   "teams": [
     {
-      "teamName": "AL Wahda - AL Dhafra Scc",
+      "teamName": "Lecce - Cagliari",
       "totalMatches": 18,
       "winRate": 0.0,
       "matches": [
-        {"homeTeam":"AL Dhafra","awayTeam":"Al Wahda","homeScore":1,"awayScore":3,"matchDate":"17.03.2023","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"Al Wahda","awayTeam":"AL Dhafra","homeScore":4,"awayScore":2,"matchDate":"25.10.2022","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"Al Wahda","awayTeam":"AL Dhafra","homeScore":3,"awayScore":2,"matchDate":"22.04.2022","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"AL Dhafra","awayTeam":"Al Wahda","homeScore":1,"awayScore":3,"matchDate":"29.10.2021","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"AL Dhafra","awayTeam":"Al Wahda","homeScore":0,"awayScore":3,"matchDate":"16.03.2021","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"Al Wahda","awayTeam":"AL Dhafra","homeScore":1,"awayScore":1,"matchDate":"01.12.2020","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"AL Dhafra","awayTeam":"Al Wahda","homeScore":1,"awayScore":2,"matchDate":"14.03.2020","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"Al Wahda","awayTeam":"AL Dhafra","homeScore":3,"awayScore":1,"matchDate":"01.11.2019","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"AL Dhafra","awayTeam":"Al Wahda","homeScore":1,"awayScore":1,"matchDate":"04.04.2019","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Al Wahda","awayTeam":"AL Dhafra","homeScore":2,"awayScore":4,"matchDate":"20.10.2018","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"AL Dhafra","awayTeam":"Al Wahda","homeScore":1,"awayScore":1,"matchDate":"28.01.2018","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Al Wahda","awayTeam":"AL Dhafra","homeScore":3,"awayScore":1,"matchDate":"29.09.2017","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"Al Wahda","awayTeam":"AL Dhafra","homeScore":0,"awayScore":0,"matchDate":"26.01.2017","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"AL Dhafra","awayTeam":"Al Wahda","homeScore":0,"awayScore":3,"matchDate":"15.10.2016","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"AL Dhafra","awayTeam":"Al Wahda","homeScore":2,"awayScore":1,"matchDate":"16.04.2016","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"Al Wahda","awayTeam":"AL Dhafra","homeScore":3,"awayScore":0,"matchDate":"04.12.2015","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"AL Dhafra","awayTeam":"Al Wahda","homeScore":1,"awayScore":2,"matchDate":"16.04.2015","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"Al Wahda","awayTeam":"AL Dhafra","homeScore":2,"awayScore":1,"matchDate":"04.12.2014","tournament":"BAEKL","matchType":"rekabet-gecmisi","result":"H"}
+        {"homeTeam":"Cagliari","awayTeam":"Lecce","homeScore":4,"awayScore":1,"matchDate":"19.01.2025","tournament":"İTA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Lecce","awayTeam":"Cagliari","homeScore":1,"awayScore":0,"matchDate":"31.08.2024","tournament":"İTA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Cagliari","awayTeam":"Lecce","homeScore":1,"awayScore":1,"matchDate":"05.05.2024","tournament":"İTA","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Lecce","awayTeam":"Cagliari","homeScore":1,"awayScore":1,"matchDate":"06.01.2024","tournament":"İTA","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Cagliari","awayTeam":"Lecce","homeScore":0,"awayScore":0,"matchDate":"12.07.2020","tournament":"İTA","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Lecce","awayTeam":"Cagliari","homeScore":2,"awayScore":2,"matchDate":"25.11.2019","tournament":"İTA","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Cagliari","awayTeam":"Lecce","homeScore":1,"awayScore":2,"matchDate":"26.02.2012","tournament":"İTA","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Lecce","awayTeam":"Cagliari","homeScore":0,"awayScore":2,"matchDate":"02.10.2011","tournament":"İTA","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Lecce","awayTeam":"Cagliari","homeScore":3,"awayScore":3,"matchDate":"17.04.2011","tournament":"İTA","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Cagliari","awayTeam":"Lecce","homeScore":3,"awayScore":2,"matchDate":"28.11.2010","tournament":"İTA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Cagliari","awayTeam":"Lecce","homeScore":2,"awayScore":0,"matchDate":"15.02.2009","tournament":"İTA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Lecce","awayTeam":"Cagliari","homeScore":2,"awayScore":0,"matchDate":"28.09.2008","tournament":"İTA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Cagliari","awayTeam":"Lecce","homeScore":0,"awayScore":0,"matchDate":"12.02.2006","tournament":"İTA","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Lecce","awayTeam":"Cagliari","homeScore":3,"awayScore":0,"matchDate":"02.10.2005","tournament":"İTA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Cagliari","awayTeam":"Lecce","homeScore":3,"awayScore":1,"matchDate":"06.02.2005","tournament":"İTA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Lecce","awayTeam":"Cagliari","homeScore":3,"awayScore":1,"matchDate":"26.09.2004","tournament":"İTA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Lecce","awayTeam":"Cagliari","homeScore":2,"awayScore":1,"matchDate":"22.04.2000","tournament":"İTA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Cagliari","awayTeam":"Lecce","homeScore":0,"awayScore":0,"matchDate":"19.12.1999","tournament":"İTA","matchType":"rekabet-gecmisi","result":"D"}
       ]
     },
     {
-      "teamName": "Al Hamriyah - Gulf Utd",
-      "totalMatches": 4,
-      "winRate": 0.0,
-      "matches": [
-        {"homeTeam":"Al Hamriyah","awayTeam":"Gulf United","homeScore":3,"awayScore":3,"matchDate":"28.02.2025","tournament":"DIV","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Gulf United","awayTeam":"Al Hamriyah","homeScore":1,"awayScore":4,"matchDate":"27.10.2024","tournament":"DIV","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"Al Hamriyah","awayTeam":"Gulf United","homeScore":3,"awayScore":0,"matchDate":"30.05.2024","tournament":"DIV","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"Gulf United","awayTeam":"Al Hamriyah","homeScore":1,"awayScore":1,"matchDate":"20.01.2024","tournament":"DIV","matchType":"rekabet-gecmisi","result":"D"}
-      ]
-    },
-    {
-      "teamName": "Naftan Novopolotsk - Molodechno",
-      "totalMatches": 1,
-      "winRate": 0.0,
-      "matches": [
-        {"homeTeam":"Molodechno","awayTeam":"Naftan","homeScore":0,"awayScore":2,"matchDate":"02.05.2025","tournament":"BLR","matchType":"rekabet-gecmisi","result":"A"}
-      ]
-    },
-    {
-      "teamName": "FK Agmk - Bunyodkor",
+      "teamName": "Lyon - Angers",
       "totalMatches": 19,
       "winRate": 0.0,
       "matches": [
-        {"homeTeam":"Bunyodkor","awayTeam":"FK Agmk","homeScore":1,"awayScore":0,"matchDate":"28.04.2025","tournament":"PFL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"Bunyodkor","awayTeam":"FK Agmk","homeScore":0,"awayScore":1,"matchDate":"27.08.2024","tournament":"PFL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"FK Agmk","awayTeam":"Bunyodkor","homeScore":1,"awayScore":0,"matchDate":"29.03.2024","tournament":"PFL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"Bunyodkor","awayTeam":"FK Agmk","homeScore":1,"awayScore":1,"matchDate":"06.08.2023","tournament":"PFL","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"FK Agmk","awayTeam":"Bunyodkor","homeScore":2,"awayScore":3,"matchDate":"13.03.2023","tournament":"PFL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"Bunyodkor","awayTeam":"FK Agmk","homeScore":0,"awayScore":1,"matchDate":"19.10.2022","tournament":"PFL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"FK Agmk","awayTeam":"Bunyodkor","homeScore":0,"awayScore":0,"matchDate":"16.05.2022","tournament":"PFL","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Bunyodkor","awayTeam":"FK Agmk","homeScore":1,"awayScore":1,"matchDate":"02.10.2021","tournament":"PFL","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"FK Agmk","awayTeam":"Bunyodkor","homeScore":3,"awayScore":1,"matchDate":"14.05.2021","tournament":"PFL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"Bunyodkor","awayTeam":"FK Agmk","homeScore":2,"awayScore":3,"matchDate":"22.09.2020","tournament":"PFL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"FK Agmk","awayTeam":"Bunyodkor","homeScore":2,"awayScore":0,"matchDate":"13.03.2020","tournament":"PFL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"Bunyodkor","awayTeam":"FK Agmk","homeScore":0,"awayScore":2,"matchDate":"18.10.2019","tournament":"PFL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"FK Agmk","awayTeam":"Bunyodkor","homeScore":0,"awayScore":1,"matchDate":"20.04.2019","tournament":"PFL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"FK Agmk","awayTeam":"Bunyodkor","homeScore":1,"awayScore":2,"matchDate":"15.05.2018","tournament":"PFL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"Bunyodkor","awayTeam":"FK Agmk","homeScore":1,"awayScore":1,"matchDate":"03.03.2018","tournament":"PFL","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Bunyodkor","awayTeam":"FK Agmk","homeScore":1,"awayScore":0,"matchDate":"11.08.2017","tournament":"PFL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"FK Agmk","awayTeam":"Bunyodkor","homeScore":0,"awayScore":0,"matchDate":"09.03.2017","tournament":"PFL","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"FK Agmk","awayTeam":"Bunyodkor","homeScore":0,"awayScore":2,"matchDate":"18.10.2016","tournament":"PFL","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"Bunyodkor","awayTeam":"FK Agmk","homeScore":4,"awayScore":2,"matchDate":"16.04.2016","tournament":"PFL","matchType":"rekabet-gecmisi","result":"H"}
+        {"homeTeam":"Lyon","awayTeam":"Angers","homeScore":2,"awayScore":0,"matchDate":"17.05.2025","tournament":"FRA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Angers","awayTeam":"Lyon","homeScore":0,"awayScore":3,"matchDate":"07.12.2024","tournament":"FRA","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Angers","awayTeam":"Lyon","homeScore":1,"awayScore":3,"matchDate":"25.02.2023","tournament":"FRA","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Lyon","awayTeam":"Angers","homeScore":5,"awayScore":0,"matchDate":"03.09.2022","tournament":"FRA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Lyon","awayTeam":"Angers","homeScore":3,"awayScore":2,"matchDate":"03.04.2022","tournament":"FRA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Angers","awayTeam":"Lyon","homeScore":3,"awayScore":0,"matchDate":"15.08.2021","tournament":"FRA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Lyon","awayTeam":"Angers","homeScore":3,"awayScore":0,"matchDate":"11.04.2021","tournament":"FRA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Angers","awayTeam":"Lyon","homeScore":0,"awayScore":1,"matchDate":"22.11.2020","tournament":"FRA","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Lyon","awayTeam":"Angers","homeScore":6,"awayScore":0,"matchDate":"16.08.2019","tournament":"FRA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Lyon","awayTeam":"Angers","homeScore":2,"awayScore":1,"matchDate":"19.04.2019","tournament":"FRA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Angers","awayTeam":"Lyon","homeScore":1,"awayScore":2,"matchDate":"27.10.2018","tournament":"FRA","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Lyon","awayTeam":"Angers","homeScore":1,"awayScore":1,"matchDate":"14.01.2018","tournament":"FRA","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Angers","awayTeam":"Lyon","homeScore":3,"awayScore":3,"matchDate":"01.10.2017","tournament":"FRA","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Angers","awayTeam":"Lyon","homeScore":1,"awayScore":2,"matchDate":"28.04.2017","tournament":"FRA","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Lyon","awayTeam":"Angers","homeScore":2,"awayScore":0,"matchDate":"21.12.2016","tournament":"FRA","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Angers","awayTeam":"Lyon","homeScore":0,"awayScore":3,"matchDate":"06.02.2016","tournament":"FRA","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Lyon","awayTeam":"Angers","homeScore":0,"awayScore":2,"matchDate":"05.12.2015","tournament":"FRA","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Lyon","awayTeam":"Angers","homeScore":1,"awayScore":1,"matchDate":"11.12.1993","tournament":"FRA","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Angers","awayTeam":"Lyon","homeScore":3,"awayScore":1,"matchDate":"07.08.1993","tournament":"FRA","matchType":"rekabet-gecmisi","result":"H"}
       ]
     },
     {
-      "teamName": "Povazska Bystric - OFK Malzenice",
-      "totalMatches": 4,
+      "teamName": "KAA Gent - FCV Dender EH",
+      "totalMatches": 2,
       "winRate": 0.0,
       "matches": [
-        {"homeTeam":"Malzenice","awayTeam":"Povazska B.","homeScore":0,"awayScore":2,"matchDate":"02.03.2025","tournament":"2.","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"Povazska B.","awayTeam":"Malzenice","homeScore":3,"awayScore":1,"matchDate":"03.08.2024","tournament":"2.","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"Malzenice","awayTeam":"Povazska B.","homeScore":0,"awayScore":0,"matchDate":"18.11.2023","tournament":"2.","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Povazska B.","awayTeam":"Malzenice","homeScore":4,"awayScore":1,"matchDate":"05.08.2023","tournament":"2.","matchType":"rekabet-gecmisi","result":"H"}
+        {"homeTeam":"Dender","awayTeam":"KAA Gent","homeScore":0,"awayScore":0,"matchDate":"12.01.2025","tournament":"BEL","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"KAA Gent","awayTeam":"Dender","homeScore":1,"awayScore":2,"matchDate":"04.08.2024","tournament":"BEL","matchType":"rekabet-gecmisi","result":"A"}
+      ]
+    },
+    {
+      "teamName": "Cardiff Metro. - TNS",
+      "totalMatches": 18,
+      "winRate": 0.0,
+      "matches": [
+        {"homeTeam":"Cardiff Met.","awayTeam":"New Saints","homeScore":0,"awayScore":6,"matchDate":"22.03.2025","tournament":"GALP","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"New Saints","awayTeam":"Cardiff Met.","homeScore":3,"awayScore":1,"matchDate":"01.02.2025","tournament":"GALP","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Cardiff Met.","awayTeam":"New Saints","homeScore":0,"awayScore":2,"matchDate":"14.01.2025","tournament":"GALP","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"New Saints","awayTeam":"Cardiff Met.","homeScore":3,"awayScore":0,"matchDate":"12.10.2024","tournament":"GALP","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Cardiff Met.","awayTeam":"New Saints","homeScore":0,"awayScore":5,"matchDate":"13.04.2024","tournament":"GALP","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"New Saints","awayTeam":"Cardiff Met.","homeScore":4,"awayScore":0,"matchDate":"02.03.2024","tournament":"GALP","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"New Saints","awayTeam":"Cardiff Met.","homeScore":8,"awayScore":0,"matchDate":"06.01.2024","tournament":"GALP","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Cardiff Met.","awayTeam":"New Saints","homeScore":1,"awayScore":5,"matchDate":"22.09.2023","tournament":"GALP","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"New Saints","awayTeam":"Cardiff Met.","homeScore":7,"awayScore":1,"matchDate":"25.03.2023","tournament":"GALP","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Cardiff Met.","awayTeam":"New Saints","homeScore":3,"awayScore":2,"matchDate":"11.02.2023","tournament":"GALP","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"New Saints","awayTeam":"Cardiff Met.","homeScore":4,"awayScore":0,"matchDate":"05.11.2022","tournament":"GALP","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Cardiff Met.","awayTeam":"New Saints","homeScore":0,"awayScore":7,"matchDate":"17.09.2022","tournament":"GALP","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Cardiff Met.","awayTeam":"New Saints","homeScore":1,"awayScore":1,"matchDate":"26.02.2022","tournament":"GALP","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"New Saints","awayTeam":"Cardiff Met.","homeScore":5,"awayScore":0,"matchDate":"30.10.2021","tournament":"GALP","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Cardiff Met.","awayTeam":"New Saints","homeScore":0,"awayScore":1,"matchDate":"21.11.2020","tournament":"GALP","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"New Saints","awayTeam":"Cardiff Met.","homeScore":2,"awayScore":0,"matchDate":"20.09.2020","tournament":"GALP","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"New Saints","awayTeam":"Cardiff Met.","homeScore":1,"awayScore":2,"matchDate":"20.12.2019","tournament":"GALP","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Cardiff Met.","awayTeam":"New Saints","homeScore":1,"awayScore":1,"matchDate":"16.09.2019","tournament":"GALP","matchType":"rekabet-gecmisi","result":"D"}
+      ]
+    },
+    {
+      "teamName": "Bala Town - Briton Ferry",
+      "totalMatches": 2,
+      "winRate": 0.0,
+      "matches": [
+        {"homeTeam":"Briton Ferry","awayTeam":"Bala Town","homeScore":2,"awayScore":2,"matchDate":"28.09.2024","tournament":"GALP","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Bala Town","awayTeam":"Briton Ferry","homeScore":2,"awayScore":0,"matchDate":"16.08.2024","tournament":"GALP","matchType":"rekabet-gecmisi","result":"H"}
       ]
     }
   ]
