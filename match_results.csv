@@ -1,682 +1,342 @@
 HomeTeam,AwayTeam,HomeScore,AwayScore,MatchDate,Tournament,MatchType,Result
-Cagliari,Lecce,4,1,19.01.2025,İTA,rekabet-gecmisi,H
-Lecce,Cagliari,1,0,31.08.2024,İTA,rekabet-gecmisi,H
-Cagliari,Lecce,1,1,05.05.2024,İTA,rekabet-gecmisi,D
-Lecce,Cagliari,1,1,06.01.2024,İTA,rekabet-gecmisi,D
-Cagliari,Lecce,0,0,12.07.2020,İTA,rekabet-gecmisi,D
-Lecce,Cagliari,2,2,25.11.2019,İTA,rekabet-gecmisi,D
-Cagliari,Lecce,1,2,26.02.2012,İTA,rekabet-gecmisi,A
-Lecce,Cagliari,0,2,02.10.2011,İTA,rekabet-gecmisi,A
-Lecce,Cagliari,3,3,17.04.2011,İTA,rekabet-gecmisi,D
-Cagliari,Lecce,3,2,28.11.2010,İTA,rekabet-gecmisi,H
-Cagliari,Lecce,2,0,15.02.2009,İTA,rekabet-gecmisi,H
-Lecce,Cagliari,2,0,28.09.2008,İTA,rekabet-gecmisi,H
-Cagliari,Lecce,0,0,12.02.2006,İTA,rekabet-gecmisi,D
-Lecce,Cagliari,3,0,02.10.2005,İTA,rekabet-gecmisi,H
-Cagliari,Lecce,3,1,06.02.2005,İTA,rekabet-gecmisi,H
-Lecce,Cagliari,3,1,26.09.2004,İTA,rekabet-gecmisi,H
-Lecce,Cagliari,2,1,22.04.2000,İTA,rekabet-gecmisi,H
-Cagliari,Lecce,0,0,19.12.1999,İTA,rekabet-gecmisi,D
-Atalanta,Lecce,4,1,İTA
-14 Eyl,İstatistik,son-maclari,H
-Lecce,AC Milan,0,2,İTA
-29 Ağu,İstatistik,son-maclari,A
-Genoa,Lecce,0,0,İTA
-23 Ağu,İstatistik,son-maclari,D
-Lazio,Lecce,0,1,İTA
-25 May,İstatistik,son-maclari,A
-Lecce,Torino,1,0,İTA
-18 May,İstatistik,son-maclari,H
-H. Verona,Lecce,1,1,İTA
-11 May,İstatistik,son-maclari,D
-Lecce,Napoli,0,1,İTA
-3 May,İstatistik,son-maclari,A
-Atalanta,Lecce,1,1,İTA
-27 Nis,İstatistik,son-maclari,D
-Lecce,Como 1907,0,3,İTA
-19 Nis,İstatistik,son-maclari,A
-Juventus,Lecce,2,1,İTA
-12 Nis,İstatistik,son-maclari,H
-Lecce,Venezia,1,1,İTA
-6 Nis,İstatistik,son-maclari,D
-Lecce,AS Roma,0,1,İTA
-29 Mar,İstatistik,son-maclari,A
-Genoa,Lecce,2,1,İTA
-14 Mar,İstatistik,son-maclari,H
-Lecce,AC Milan,2,3,İTA
-8 Mar,İstatistik,son-maclari,A
-Fiorentina,Lecce,1,0,İTA
-28 Şub,İstatistik,son-maclari,H
-Lecce,Udinese,0,1,İTA
-21 Şub,İstatistik,son-maclari,A
-AC Monza,Lecce,0,0,İTA
-16 Şub,İstatistik,son-maclari,D
-Lecce,Bologna,0,0,İTA
-9 Şub,İstatistik,son-maclari,D
-Parma,Lecce,1,3,İTA
-31 Oca,İstatistik,son-maclari,A
-Lecce,Inter,0,4,İTA
-26 Oca,İstatistik,son-maclari,A
-Cagliari,Lecce,4,1,İTA
-19 Oca,İstatistik,son-maclari,H
-Empoli,Lecce,1,3,İTA
-11 Oca,İstatistik,son-maclari,A
-Lecce,Genoa,0,0,İTA
-5 Oca,İstatistik,son-maclari,D
-Como 1907,Lecce,2,0,İTA
-30 Ara,İstatistik,son-maclari,H
-Lecce,Lazio,1,2,İTA
-21 Ara,İstatistik,son-maclari,A
-Lecce,AC Monza,2,1,İTA
-15 Ara,İstatistik,son-maclari,H
-AS Roma,Lecce,4,1,İTA
-7 Ara,İstatistik,son-maclari,H
-Lecce,Juventus,1,1,İTA
-1 Ara,İstatistik,son-maclari,D
-Venezia,Lecce,0,1,İTA
-25 Kas,İstatistik,son-maclari,A
-Lecce,Empoli,1,1,İTA
-8 Kas,İstatistik,son-maclari,D
-Bologna,Lecce,1,0,İTA
-2 Kas,İstatistik,son-maclari,H
-Lecce,H. Verona,1,0,İTA
-29 Eki,İstatistik,son-maclari,H
-Napoli,Lecce,1,0,İTA
-26 Eki,İstatistik,son-maclari,H
-Lecce,Fiorentina,0,6,İTA
-20 Eki,İstatistik,son-maclari,A
-Udinese,Lecce,1,0,İTA
-5 Eki,İstatistik,son-maclari,H
-Cagliari,Parma,2,0,İTA
-13 Eyl,İstatistik,son-maclari,H
-Napoli,Cagliari,1,0,İTA
-30 Ağu,İstatistik,son-maclari,H
-Cagliari,Fiorentina,1,1,İTA
-24 Ağu,İstatistik,son-maclari,D
-Napoli,Cagliari,2,0,İTA
-23 May,İstatistik,son-maclari,H
-Cagliari,Venezia,3,0,İTA
-18 May,İstatistik,son-maclari,H
-Como 1907,Cagliari,3,1,İTA
-10 May,İstatistik,son-maclari,H
-Cagliari,Udinese,1,2,İTA
-3 May,İstatistik,son-maclari,A
-H. Verona,Cagliari,0,2,İTA
-28 Nis,İstatistik,son-maclari,A
-Cagliari,Fiorentina,1,2,İTA
-23 Nis,İstatistik,son-maclari,A
-Inter,Cagliari,3,1,İTA
-12 Nis,İstatistik,son-maclari,H
-Empoli,Cagliari,0,0,İTA
-6 Nis,İstatistik,son-maclari,D
-Cagliari,AC Monza,3,0,İTA
-30 Mar,İstatistik,son-maclari,H
-AS Roma,Cagliari,1,0,İTA
-16 Mar,İstatistik,son-maclari,H
-Cagliari,Genoa,1,1,İTA
-7 Mar,İstatistik,son-maclari,D
-Bologna,Cagliari,2,1,İTA
-2 Mar,İstatistik,son-maclari,H
-Cagliari,Juventus,0,1,İTA
-23 Şub,İstatistik,son-maclari,A
-Atalanta,Cagliari,0,0,İTA
-15 Şub,İstatistik,son-maclari,D
-Cagliari,Parma,2,1,İTA
-9 Şub,İstatistik,son-maclari,H
-Cagliari,Lazio,1,2,İTA
-3 Şub,İstatistik,son-maclari,A
-Torino,Cagliari,2,0,İTA
-24 Oca,İstatistik,son-maclari,H
-Cagliari,Lecce,4,1,İTA
-19 Oca,İstatistik,son-maclari,H
-AC Milan,Cagliari,1,1,İTA
-11 Oca,İstatistik,son-maclari,D
-AC Monza,Cagliari,1,2,İTA
-5 Oca,İstatistik,son-maclari,A
-Cagliari,Inter,0,3,İTA
-28 Ara,İstatistik,son-maclari,A
-Venezia,Cagliari,2,1,İTA
-22 Ara,İstatistik,son-maclari,H
-Cagliari,Atalanta,0,1,İTA
-14 Ara,İstatistik,son-maclari,A
-Fiorentina,Cagliari,1,0,İTA
-8 Ara,İstatistik,son-maclari,H
-Cagliari,H. Verona,1,0,İTA
-29 Kas,İstatistik,son-maclari,H
-Genoa,Cagliari,2,2,İTA
-24 Kas,İstatistik,son-maclari,D
-Cagliari,AC Milan,3,3,İTA
-9 Kas,İstatistik,son-maclari,D
-Lazio,Cagliari,2,1,İTA
-4 Kas,İstatistik,son-maclari,H
-Cagliari,Bologna,0,2,İTA
-29 Eki,İstatistik,son-maclari,A
-Udinese,Cagliari,2,0,İTA
-25 Eki,İstatistik,son-maclari,H
-Lyon,Angers,2,0,17.05.2025,FRA,rekabet-gecmisi,H
-Angers,Lyon,0,3,07.12.2024,FRA,rekabet-gecmisi,A
-Angers,Lyon,1,3,25.02.2023,FRA,rekabet-gecmisi,A
-Lyon,Angers,5,0,03.09.2022,FRA,rekabet-gecmisi,H
-Lyon,Angers,3,2,03.04.2022,FRA,rekabet-gecmisi,H
-Angers,Lyon,3,0,15.08.2021,FRA,rekabet-gecmisi,H
-Lyon,Angers,3,0,11.04.2021,FRA,rekabet-gecmisi,H
-Angers,Lyon,0,1,22.11.2020,FRA,rekabet-gecmisi,A
-Lyon,Angers,6,0,16.08.2019,FRA,rekabet-gecmisi,H
-Lyon,Angers,2,1,19.04.2019,FRA,rekabet-gecmisi,H
-Angers,Lyon,1,2,27.10.2018,FRA,rekabet-gecmisi,A
-Lyon,Angers,1,1,14.01.2018,FRA,rekabet-gecmisi,D
-Angers,Lyon,3,3,01.10.2017,FRA,rekabet-gecmisi,D
-Angers,Lyon,1,2,28.04.2017,FRA,rekabet-gecmisi,A
-Lyon,Angers,2,0,21.12.2016,FRA,rekabet-gecmisi,H
-Angers,Lyon,0,3,06.02.2016,FRA,rekabet-gecmisi,A
-Lyon,Angers,0,2,05.12.2015,FRA,rekabet-gecmisi,A
-Lyon,Angers,1,1,11.12.1993,FRA,rekabet-gecmisi,D
-Angers,Lyon,3,1,07.08.1993,FRA,rekabet-gecmisi,H
-Rennes,Lyon,3,1,FRA
-14 Eyl,İstatistik,son-maclari,H
-Lyon,Marsilya,1,0,FRA
-31 Ağu,İstatistik,son-maclari,H
-Lyon,Metz,3,0,FRA
-23 Ağu,İstatistik,son-maclari,H
-Lens,Lyon,0,1,FRA
-16 Ağu,İstatistik,son-maclari,A
-Lyon,Angers,2,0,FRA
-17 May,İstatistik,son-maclari,H
-Monaco,Lyon,2,0,FRA
-10 May,İstatistik,son-maclari,H
-Lyon,Lens,1,2,FRA
-4 May,İstatistik,son-maclari,A
-Lyon,Rennes,4,1,FRA
-26 Nis,İstatistik,son-maclari,H
-St. Etienne,Lyon,2,1,FRA
-20 Nis,İstatistik,son-maclari,H
-Auxerre,Lyon,1,3,FRA
-13 Nis,İstatistik,son-maclari,A
-Lyon,Lille,2,1,FRA
-5 Nis,İstatistik,son-maclari,H
-Strasbourg,Lyon,4,2,FRA
-28 Mar,İstatistik,son-maclari,H
-Lyon,Le Havre,4,2,FRA
-16 Mar,İstatistik,son-maclari,H
-Nice,Lyon,0,2,FRA
-9 Mar,İstatistik,son-maclari,A
-Lyon,Brest,2,1,FRA
-2 Mar,İstatistik,son-maclari,H
-Lyon,PSG,2,3,FRA
-23 Şub,İstatistik,son-maclari,A
-Montpellier,Lyon,1,4,FRA
-16 Şub,İstatistik,son-maclari,A
-Lyon,Reims,4,0,FRA
-9 Şub,İstatistik,son-maclari,H
-Marsilya,Lyon,3,2,FRA
-2 Şub,İstatistik,son-maclari,H
-Nantes,Lyon,1,1,FRA
-26 Oca,İstatistik,son-maclari,D
-Lyon,Toulouse,0,0,FRA
-18 Oca,İstatistik,son-maclari,D
-Brest,Lyon,2,1,FRA
-11 Oca,İstatistik,son-maclari,H
-Lyon,Montpellier,1,0,FRA
-4 Oca,İstatistik,son-maclari,H
-PSG,Lyon,3,1,FRA
-15 Ara,İstatistik,son-maclari,H
-Angers,Lyon,0,3,FRA
-7 Ara,İstatistik,son-maclari,A
-Metz,Angers,1,1,FRA
-14 Eyl,İstatistik,son-maclari,D
-Angers,Rennes,1,1,FRA
-31 Ağu,İstatistik,son-maclari,D
-PSG,Angers,1,0,FRA
-22 Ağu,İstatistik,son-maclari,H
-Angers,Paris,1,0,FRA
-17 Ağu,İstatistik,son-maclari,H
-Lyon,Angers,2,0,FRA
-17 May,İstatistik,son-maclari,H
-Angers,Strasbourg,2,1,FRA
-10 May,İstatistik,son-maclari,H
-Nantes,Angers,0,1,FRA
-4 May,İstatistik,son-maclari,A
-Angers,Lille,0,2,FRA
-27 Nis,İstatistik,son-maclari,A
-Nice,Angers,2,1,FRA
-20 Nis,İstatistik,son-maclari,H
-Angers,Montpellier,2,0,FRA
-13 Nis,İstatistik,son-maclari,H
-PSG,Angers,1,0,FRA
-5 Nis,İstatistik,son-maclari,H
-Angers,Rennes,0,3,FRA
-30 Mar,İstatistik,son-maclari,A
-Angers,Monaco,0,2,FRA
-15 Mar,İstatistik,son-maclari,A
-Brest,Angers,2,0,FRA
-9 Mar,İstatistik,son-maclari,H
-Angers,Toulouse,0,4,FRA
-2 Mar,İstatistik,son-maclari,A
-St. Etienne,Angers,3,3,FRA
-22 Şub,İstatistik,son-maclari,D
-Reims,Angers,0,1,FRA
-16 Şub,İstatistik,son-maclari,A
-Angers,Marsilya,0,2,FRA
-9 Şub,İstatistik,son-maclari,A
-Angers,Le Havre,1,1,FRA
-2 Şub,İstatistik,son-maclari,D
-Lens,Angers,1,0,FRA
-26 Oca,İstatistik,son-maclari,H
-Angers,Auxerre,2,0,FRA
-19 Oca,İstatistik,son-maclari,H
-Montpellier,Angers,1,3,FRA
-12 Oca,İstatistik,son-maclari,A
-Angers,Brest,2,0,FRA
-5 Oca,İstatistik,son-maclari,H
-Rennes,Angers,2,0,FRA
-15 Ara,İstatistik,son-maclari,H
-Angers,Lyon,0,3,FRA
-7 Ara,İstatistik,son-maclari,A
-Le Havre,Angers,0,1,FRA
-1 Ara,İstatistik,son-maclari,A
-Auxerre,Angers,1,0,FRA
-24 Kas,İstatistik,son-maclari,H
-Angers,PSG,2,4,FRA
-9 Kas,İstatistik,son-maclari,A
-Monaco,Angers,0,1,FRA
-1 Kas,İstatistik,son-maclari,A
-Angers,St. Etienne,4,2,FRA
-26 Eki,İstatistik,son-maclari,H
-Dender,KAA Gent,0,0,12.01.2025,BEL,rekabet-gecmisi,D
-KAA Gent,Dender,1,2,04.08.2024,BEL,rekabet-gecmisi,A
-Antwerp,KAA Gent,1,2,BEL
-14 Eyl,İstatistik,son-maclari,A
-KAA Gent,Club Brugge,1,1,BEL
-31 Ağu,İstatistik,son-maclari,D
-Mechelen,KAA Gent,1,1,BEL
-16 Ağu,İstatistik,son-maclari,D
-KAA Gent,U.S Gilloise,2,3,BEL
-9 Ağu,İstatistik,son-maclari,A
-KAA Gent,Raal La L.,1,0,BEL
-2 Ağu,İstatistik,son-maclari,H
-St.Truidense,KAA Gent,3,1,BEL
-27 Tem,İstatistik,son-maclari,H
-U.S Gilloise,KAA Gent,3,1,BEL
-25 May,İstatistik,son-maclari,H
-KAA Gent,KRC Genk,1,4,BEL
-18 May,İstatistik,son-maclari,A
-KAA Gent,Antwerp,0,3,BEL
-11 May,İstatistik,son-maclari,A
-Club Brugge,KAA Gent,4,1,BEL
-1 May,İstatistik,son-maclari,H
-KAA Gent,Anderlecht,0,1,BEL
-27 Nis,İstatistik,son-maclari,A
-Anderlecht,KAA Gent,5,0,BEL
-23 Nis,İstatistik,son-maclari,H
-KAA Gent,Club Brugge,0,5,BEL
-20 Nis,İstatistik,son-maclari,A
-Antwerp,KAA Gent,0,1,BEL
-13 Nis,İstatistik,son-maclari,A
-KAA Gent,U.S Gilloise,0,3,BEL
-5 Nis,İstatistik,son-maclari,A
-KRC Genk,KAA Gent,4,0,BEL
-30 Mar,İstatistik,son-maclari,H
-KAA Gent,Kortrijk,1,2,BEL
-16 Mar,İstatistik,son-maclari,A
-Antwerp,KAA Gent,0,1,BEL
-9 Mar,İstatistik,son-maclari,A
-KAA Gent,Club Brugge,1,1,BEL
-1 Mar,İstatistik,son-maclari,D
-KRC Genk,KAA Gent,0,0,BEL
-23 Şub,İstatistik,son-maclari,D
-KAA Gent,Beerschot,3,2,BEL
-16 Şub,İstatistik,son-maclari,H
-Mechelen,KAA Gent,3,3,BEL
-7 Şub,İstatistik,son-maclari,D
-KAA Gent,Anderlecht,1,0,BEL
-2 Şub,İstatistik,son-maclari,H
-OH Leuven,KAA Gent,0,0,BEL
-26 Oca,İstatistik,son-maclari,D
-KAA Gent,Charleroi,1,1,BEL
-17 Oca,İstatistik,son-maclari,D
-Dender,KAA Gent,0,0,BEL
-12 Oca,İstatistik,son-maclari,D
-KAA Gent,U.S Gilloise,1,3,BEL
-26 Ara,İstatistik,son-maclari,A
-S. Liege,KAA Gent,0,1,BEL
-22 Ara,İstatistik,son-maclari,A
-KAA Gent,Cercle B.,1,1,BEL
-15 Ara,İstatistik,son-maclari,D
-KAA Gent,St.Truidense,2,0,BEL
-7 Ara,İstatistik,son-maclari,H
-KVC Westerlo,KAA Gent,2,2,BEL
-1 Ara,İstatistik,son-maclari,D
-Anderlecht,KAA Gent,6,0,BEL
-24 Kas,İstatistik,son-maclari,H
-Dender,U.S Gilloise,0,1,BEL
-13 Eyl,İstatistik,son-maclari,A
-Charleroi,Dender,3,1,BEL
-30 Ağu,İstatistik,son-maclari,H
-Dender,OH Leuven,0,1,BEL
-24 Ağu,İstatistik,son-maclari,A
-Dender,Anderlecht,0,2,BEL
-17 Ağu,İstatistik,son-maclari,A
-St.Truidense,Dender,2,0,BEL
-8 Ağu,İstatistik,son-maclari,H
-S. Liege,Dender,1,1,BEL
-2 Ağu,İstatistik,son-maclari,D
-Dender,Cercle B.,0,0,BEL
-26 Tem,İstatistik,son-maclari,D
-Dender,Mechelen,2,2,BEL
-24 May,İstatistik,son-maclari,D
-S. Liege,Dender,0,0,BEL
-17 May,İstatistik,son-maclari,D
-Dender,OH Leuven,5,0,BEL
-11 May,İstatistik,son-maclari,H
-KVC Westerlo,Dender,4,2,BEL
-2 May,İstatistik,son-maclari,H
-Charleroi,Dender,4,1,BEL
-26 Nis,İstatistik,son-maclari,H
-Dender,Charleroi,2,1,BEL
-22 Nis,İstatistik,son-maclari,H
-OH Leuven,Dender,4,4,BEL
-19 Nis,İstatistik,son-maclari,D
-Dender,S. Liege,1,1,BEL
-13 Nis,İstatistik,son-maclari,D
-Mechelen,Dender,5,2,BEL
-4 Nis,İstatistik,son-maclari,H
-Dender,KVC Westerlo,1,0,BEL
-30 Mar,İstatistik,son-maclari,H
-Mechelen,Dender,2,1,BEL
-16 Mar,İstatistik,son-maclari,H
-Dender,KRC Genk,0,1,BEL
-8 Mar,İstatistik,son-maclari,A
-U.S Gilloise,Dender,4,1,BEL
-1 Mar,İstatistik,son-maclari,H
-Dender,Beerschot,0,0,BEL
-22 Şub,İstatistik,son-maclari,D
-OH Leuven,Dender,3,2,BEL
-15 Şub,İstatistik,son-maclari,H
-Dender,St.Truidense,2,1,BEL
-8 Şub,İstatistik,son-maclari,H
-Charleroi,Dender,5,0,BEL
-1 Şub,İstatistik,son-maclari,H
-S. Liege,Dender,1,0,BEL
-26 Oca,İstatistik,son-maclari,H
-Dender,Cercle B.,0,1,BEL
-18 Oca,İstatistik,son-maclari,A
-Dender,KAA Gent,0,0,BEL
-12 Oca,İstatistik,son-maclari,D
-Anderlecht,Dender,2,3,BEL
-27 Ara,İstatistik,son-maclari,A
-Dender,Antwerp,1,3,BEL
-21 Ara,İstatistik,son-maclari,A
-Kortrijk,Dender,0,3,BEL
-14 Ara,İstatistik,son-maclari,A
-Dender,KVC Westerlo,1,0,BEL
-8 Ara,İstatistik,son-maclari,H
-Club Brugge,Dender,4,1,BEL
-30 Kas,İstatistik,son-maclari,H
-Antwerp,Dender,1,1,BEL
-22 Kas,İstatistik,son-maclari,D
-Dender,OH Leuven,1,1,BEL
-9 Kas,İstatistik,son-maclari,D
-KVC Westerlo,Dender,2,0,BEL
-1 Kas,İstatistik,son-maclari,H
-Cardiff Met.,New Saints,0,6,22.03.2025,GALP,rekabet-gecmisi,A
-New Saints,Cardiff Met.,3,1,01.02.2025,GALP,rekabet-gecmisi,H
-Cardiff Met.,New Saints,0,2,14.01.2025,GALP,rekabet-gecmisi,A
-New Saints,Cardiff Met.,3,0,12.10.2024,GALP,rekabet-gecmisi,H
-Cardiff Met.,New Saints,0,5,13.04.2024,GALP,rekabet-gecmisi,A
-New Saints,Cardiff Met.,4,0,02.03.2024,GALP,rekabet-gecmisi,H
-New Saints,Cardiff Met.,8,0,06.01.2024,GALP,rekabet-gecmisi,H
-Cardiff Met.,New Saints,1,5,22.09.2023,GALP,rekabet-gecmisi,A
-New Saints,Cardiff Met.,7,1,25.03.2023,GALP,rekabet-gecmisi,H
-Cardiff Met.,New Saints,3,2,11.02.2023,GALP,rekabet-gecmisi,H
-New Saints,Cardiff Met.,4,0,05.11.2022,GALP,rekabet-gecmisi,H
-Cardiff Met.,New Saints,0,7,17.09.2022,GALP,rekabet-gecmisi,A
-Cardiff Met.,New Saints,1,1,26.02.2022,GALP,rekabet-gecmisi,D
-New Saints,Cardiff Met.,5,0,30.10.2021,GALP,rekabet-gecmisi,H
-Cardiff Met.,New Saints,0,1,21.11.2020,GALP,rekabet-gecmisi,A
-New Saints,Cardiff Met.,2,0,20.09.2020,GALP,rekabet-gecmisi,H
-New Saints,Cardiff Met.,1,2,20.12.2019,GALP,rekabet-gecmisi,A
-Cardiff Met.,New Saints,1,1,16.09.2019,GALP,rekabet-gecmisi,D
-G Connahs Q,Cardiff Met.,1,1,GALP
-13 Eyl,İstatistik,son-maclari,D
-Cardiff Met.,Colwyn Bay,1,4,GALP
-6 Eyl,İstatistik,son-maclari,A
-Flint Town,Cardiff Met.,4,2,GALP
-30 Ağu,İstatistik,son-maclari,H
-Cardiff Met.,Barry Town,1,1,GALP
-25 Ağu,İstatistik,son-maclari,D
-Haverford.,Cardiff Met.,2,2,GALP
-22 Ağu,İstatistik,son-maclari,D
-Briton Ferry,Cardiff Met.,1,1,GALP
-15 Ağu,İstatistik,son-maclari,D
-Cardiff Met.,Caernarfon,2,2,GALP
-9 Ağu,İstatistik,son-maclari,D
-Caernarfon,Cardiff Met.,0,0,GALP
-11 May,İstatistik,son-maclari,D
-Cardiff Met.,Bala Town,1,0,GALP
-26 Nis,İstatistik,son-maclari,H
-Caernarfon,Cardiff Met.,2,1,GALP
-19 Nis,İstatistik,son-maclari,H
-Cardiff Met.,Haverford.,1,1,GALP
-11 Nis,İstatistik,son-maclari,D
-Bala Town,Cardiff Met.,0,0,GALP
-29 Mar,İstatistik,son-maclari,D
-Cardiff Met.,New Saints,0,6,GALP
-22 Mar,İstatistik,son-maclari,A
-Penybont,Cardiff Met.,0,0,GALP
-14 Mar,İstatistik,son-maclari,D
-Cardiff Met.,Caernarfon,4,2,GALP
-8 Mar,İstatistik,son-maclari,H
-Haverford.,Cardiff Met.,1,0,GALP
-21 Şub,İstatistik,son-maclari,H
-Cardiff Met.,Bala Town,2,1,GALP
-8 Şub,İstatistik,son-maclari,H
-New Saints,Cardiff Met.,3,1,GALP
-1 Şub,İstatistik,son-maclari,H
-Cardiff Met.,Penybont,2,1,GALP
-24 Oca,İstatistik,son-maclari,H
-Cardiff Met.,New Saints,0,2,GALP
-14 Oca,İstatistik,son-maclari,A
-Penybont,Cardiff Met.,2,2,GALP
-31 Ara,İstatistik,son-maclari,D
-Cardiff Met.,Briton Ferry,1,3,GALP
-26 Ara,İstatistik,son-maclari,A
-Cardiff Met.,Flint Town,2,0,GALP
-14 Ara,İstatistik,son-maclari,H
-Barry Town,Cardiff Met.,2,1,GALP
-10 Ara,İstatistik,son-maclari,H
-Cardiff Met.,Aberystwyth,3,0,GALP
-23 Kas,İstatistik,son-maclari,H
-Cardiff Met.,Bala Town,3,3,GALP
-9 Kas,İstatistik,son-maclari,D
-G Connahs Q,Cardiff Met.,1,0,GALP
-2 Kas,İstatistik,son-maclari,H
-Cardiff Met.,Newtown AFC,2,1,GALP
-25 Eki,İstatistik,son-maclari,H
-Cardiff Met.,Penybont,1,1,GALP
-15 Eki,İstatistik,son-maclari,D
-New Saints,Cardiff Met.,3,0,GALP
-12 Eki,İstatistik,son-maclari,H
-Cardiff Met.,Caernarfon,1,2,GALP
-5 Eki,İstatistik,son-maclari,A
-Haverford.,Cardiff Met.,1,0,GALP
-27 Eyl,İstatistik,son-maclari,H
-Aberystwyth,Cardiff Met.,1,2,GALP
-24 Eyl,İstatistik,son-maclari,A
-New Saints,Llanelli,6,0,GALP
-13 Eyl,İstatistik,son-maclari,H
-New Saints,Haverford.,5,0,GALP
-6 Eyl,İstatistik,son-maclari,H
-Barry Town,New Saints,0,0,GALP
-30 Ağu,İstatistik,son-maclari,D
-Colwyn Bay,New Saints,1,1,GALP
-25 Ağu,İstatistik,son-maclari,D
-New Saints,G Connahs Q,3,0,GALP
-22 Ağu,İstatistik,son-maclari,H
-Penybont,New Saints,0,2,GALP
-16 Ağu,İstatistik,son-maclari,A
-New Saints,Briton Ferry,0,3,GALP
-10 Ağu,İstatistik,son-maclari,A
-Haverford.,New Saints,1,3,GALP
-19 Nis,İstatistik,son-maclari,A
-New Saints,Bala Town,2,1,GALP
-11 Nis,İstatistik,son-maclari,H
-Penybont,New Saints,1,0,GALP
-29 Mar,İstatistik,son-maclari,H
-Cardiff Met.,New Saints,0,6,GALP
-22 Mar,İstatistik,son-maclari,A
-New Saints,Caernarfon,2,0,GALP
-11 Mar,İstatistik,son-maclari,H
-New Saints,Haverford.,5,1,GALP
-8 Mar,İstatistik,son-maclari,H
-Bala Town,New Saints,0,2,GALP
-21 Şub,İstatistik,son-maclari,A
-Caernarfon,New Saints,0,1,GALP
-11 Şub,İstatistik,son-maclari,A
-New Saints,Penybont,4,0,GALP
-8 Şub,İstatistik,son-maclari,H
-New Saints,Cardiff Met.,3,1,GALP
-1 Şub,İstatistik,son-maclari,H
-Cardiff Met.,New Saints,0,2,GALP
-14 Oca,İstatistik,son-maclari,A
-New Saints,Newtown AFC,2,1,GALP
-4 Oca,İstatistik,son-maclari,H
-New Saints,G Connahs Q,2,1,GALP
-31 Ara,İstatistik,son-maclari,H
-Caernarfon,New Saints,2,5,GALP
-26 Ara,İstatistik,son-maclari,A
-New Saints,Briton Ferry,5,2,GALP
-22 Ara,İstatistik,son-maclari,H
-Bala Town,New Saints,1,0,GALP
-4 Ara,İstatistik,son-maclari,H
-New Saints,Penybont,3,2,GALP
-23 Kas,İstatistik,son-maclari,H
-Briton Ferry,Bala Town,2,2,28.09.2024,GALP,rekabet-gecmisi,D
-Bala Town,Briton Ferry,2,0,16.08.2024,GALP,rekabet-gecmisi,H
-Barry Town,Bala Town,4,0,GALP
-13 Eyl,İstatistik,son-maclari,H
-Bala Town,Penybont,0,0,GALP
-6 Eyl,İstatistik,son-maclari,D
-G Connahs Q,Bala Town,1,3,GALP
-2 Eyl,İstatistik,son-maclari,A
-Llanelli,Bala Town,0,1,GALP
-30 Ağu,İstatistik,son-maclari,A
-Caernarfon,Bala Town,2,0,GALP
-25 Ağu,İstatistik,son-maclari,H
-Bala Town,Colwyn Bay,1,0,GALP
-22 Ağu,İstatistik,son-maclari,H
-Bala Town,Flint Town,1,1,GALP
-8 Ağu,İstatistik,son-maclari,D
-Cardiff Met.,Bala Town,1,0,GALP
-26 Nis,İstatistik,son-maclari,H
-Bala Town,Penybont,3,2,GALP
-19 Nis,İstatistik,son-maclari,H
-New Saints,Bala Town,2,1,GALP
-11 Nis,İstatistik,son-maclari,H
-Bala Town,Cardiff Met.,0,0,GALP
-29 Mar,İstatistik,son-maclari,D
-Caernarfon,Bala Town,5,0,GALP
-21 Mar,İstatistik,son-maclari,H
-Bala Town,Haverford.,0,0,GALP
-15 Mar,İstatistik,son-maclari,D
-Penybont,Bala Town,3,2,GALP
-8 Mar,İstatistik,son-maclari,H
-Bala Town,New Saints,0,2,GALP
-21 Şub,İstatistik,son-maclari,A
-Cardiff Met.,Bala Town,2,1,GALP
-8 Şub,İstatistik,son-maclari,H
-Bala Town,Caernarfon,1,3,GALP
-31 Oca,İstatistik,son-maclari,A
-Haverford.,Bala Town,3,2,GALP
-25 Oca,İstatistik,son-maclari,H
-G Connahs Q,Bala Town,0,2,GALP
-17 Oca,İstatistik,son-maclari,A
-Bala Town,Caernarfon,0,2,GALP
-11 Oca,İstatistik,son-maclari,A
-Aberystwyth,Bala Town,0,0,GALP
-26 Ara,İstatistik,son-maclari,D
-Bala Town,Barry Town,3,1,GALP
-21 Ara,İstatistik,son-maclari,H
-Bala Town,New Saints,1,0,GALP
-4 Ara,İstatistik,son-maclari,H
-Haverford.,Bala Town,0,0,GALP
-23 Kas,İstatistik,son-maclari,D
-Cardiff Met.,Bala Town,3,3,GALP
-9 Kas,İstatistik,son-maclari,D
-Newtown AFC,Bala Town,0,0,GALP
-2 Kas,İstatistik,son-maclari,D
-Penybont,Bala Town,1,1,GALP
-26 Eki,İstatistik,son-maclari,D
-Bala Town,G Connahs Q,0,0,GALP
-15 Eki,İstatistik,son-maclari,D
-Flint Town,Bala Town,2,2,GALP
-12 Eki,İstatistik,son-maclari,D
-Bala Town,Haverford.,0,2,GALP
-4 Eki,İstatistik,son-maclari,A
-Briton Ferry,Bala Town,2,2,GALP
-28 Eyl,İstatistik,son-maclari,D
-New Saints,Bala Town,2,3,GALP
-24 Eyl,İstatistik,son-maclari,A
-Bala Town,Newtown AFC,2,2,GALP
-20 Eyl,İstatistik,son-maclari,D
-Briton Ferry,Caernarfon,2,5,GALP
-13 Eyl,İstatistik,son-maclari,A
-Colwyn Bay,Briton Ferry,2,2,GALP
-30 Ağu,İstatistik,son-maclari,D
-Briton Ferry,Haverford.,0,1,GALP
-25 Ağu,İstatistik,son-maclari,A
-Llanelli,Briton Ferry,2,4,GALP
-22 Ağu,İstatistik,son-maclari,A
-Briton Ferry,Cardiff Met.,1,1,GALP
-15 Ağu,İstatistik,son-maclari,D
-New Saints,Briton Ferry,0,3,GALP
-10 Ağu,İstatistik,son-maclari,A
-Barry Town,Briton Ferry,5,0,GALP
-19 Nis,İstatistik,son-maclari,H
-Briton Ferry,Flint Town,1,2,GALP
-12 Nis,İstatistik,son-maclari,A
-Briton Ferry,G Connahs Q,1,0,GALP
-29 Mar,İstatistik,son-maclari,H
-Aberystwyth,Briton Ferry,0,1,GALP
-21 Mar,İstatistik,son-maclari,A
-Briton Ferry,Newtown AFC,1,1,GALP
-11 Mar,İstatistik,son-maclari,D
-Briton Ferry,Barry Town,3,4,GALP
-7 Mar,İstatistik,son-maclari,A
-Flint Town,Briton Ferry,3,1,GALP
-22 Şub,İstatistik,son-maclari,H
-G Connahs Q,Briton Ferry,0,1,GALP
-8 Şub,İstatistik,son-maclari,A
-Briton Ferry,Aberystwyth,2,3,GALP
-1 Şub,İstatistik,son-maclari,A
-Newtown AFC,Briton Ferry,2,2,GALP
-24 Oca,İstatistik,son-maclari,D
-Aberystwyth,Briton Ferry,1,6,GALP
-11 Oca,İstatistik,son-maclari,A
-Haverford.,Briton Ferry,5,1,GALP
-4 Oca,İstatistik,son-maclari,H
-Briton Ferry,Barry Town,0,0,GALP
-31 Ara,İstatistik,son-maclari,D
-Cardiff Met.,Briton Ferry,1,3,GALP
-26 Ara,İstatistik,son-maclari,A
-New Saints,Briton Ferry,5,2,GALP
-22 Ara,İstatistik,son-maclari,H
-Briton Ferry,Newtown AFC,2,1,GALP
-3 Ara,İstatistik,son-maclari,H
-Flint Town,Briton Ferry,2,1,GALP
-23 Kas,İstatistik,son-maclari,H
-Briton Ferry,New Saints,3,1,GALP
-20 Kas,İstatistik,son-maclari,H
-Briton Ferry,Caernarfon,0,1,GALP
-9 Kas,İstatistik,son-maclari,A
-Briton Ferry,Aberystwyth,4,0,GALP
-2 Kas,İstatistik,son-maclari,H
-G Connahs Q,Briton Ferry,2,1,GALP
-27 Eki,İstatistik,son-maclari,H
-Briton Ferry,Haverford.,1,2,GALP
-15 Eki,İstatistik,son-maclari,A
-Barry Town,Briton Ferry,3,1,GALP
-12 Eki,İstatistik,son-maclari,H
-Briton Ferry,Bala Town,2,2,GALP
-28 Eyl,İstatistik,son-maclari,D
-Penybont,Briton Ferry,0,1,GALP
-24 Eyl,İstatistik,son-maclari,A
+Murcia,Villarreal B,1,0,27.04.2025,PRI,rekabet-gecmisi,H
+Villarreal B,Murcia,0,1,27.10.2024,PRI,rekabet-gecmisi,A
+Atl. Madrid,Murcia,1,1,PRI
+14 Eyl,,son-maclari,D
+Murcia,Juventud T.,1,0,PRI
+7 Eyl,,son-maclari,H
+Marbella,Murcia,2,1,PRI
+1 Eyl,,son-maclari,H
+Murcia,Tarragona,0,1,PRI
+7 Haz,,son-maclari,A
+Tarragona,Murcia,1,1,PRI
+31 May,,son-maclari,D
+Murcia,Algeciras,2,1,PRI
+24 May,,son-maclari,H
+Atletico S.,Murcia,0,0,PRI
+17 May,,son-maclari,D
+Murcia,Antequera,0,0,PRI
+10 May,,son-maclari,D
+Intercity,Murcia,0,1,PRI
+4 May,,son-maclari,A
+Murcia,Villarreal B,1,0,PRI
+27 Nis,,son-maclari,H
+Alcorcon,Murcia,2,1,PRI
+20 Nis,,son-maclari,H
+Murcia,Ceuta,1,1,PRI
+12 Nis,,son-maclari,D
+Betis Depor.,Murcia,1,2,PRI
+6 Nis,,son-maclari,A
+Murcia,R. Huelva,3,0,PRI
+30 Mar,,son-maclari,H
+R. Madrid B,Murcia,0,0,PRI
+21 Mar,,son-maclari,D
+Murcia,Fuenlabrada,2,0,PRI
+16 Mar,,son-maclari,H
+Atl. Madrid,Murcia,2,1,PRI
+7 Mar,,son-maclari,H
+Murcia,Ibiza,0,2,PRI
+2 Mar,,son-maclari,A
+Merida,Murcia,1,4,PRI
+23 Şub,,son-maclari,A
+Murcia,Sevilla B,0,2,PRI
+16 Şub,,son-maclari,A
+Marbella,Murcia,1,4,PRI
+9 Şub,,son-maclari,A
+Murcia,Alcoyano,0,1,PRI
+1 Şub,,son-maclari,A
+Yeclano Dep.,Murcia,0,1,PRI
+25 Oca,,son-maclari,A
+Murcia,Hercules,1,0,PRI
+18 Oca,,son-maclari,H
+Antequera,Murcia,2,1,PRI
+12 Oca,,son-maclari,H
+Murcia,Intercity,1,1,PRI
+22 Ara,,son-maclari,D
+Fuenlabrada,Murcia,0,0,PRI
+15 Ara,,son-maclari,D
+Murcia,R. Madrid B,3,1,PRI
+6 Ara,,son-maclari,H
+Ibiza,Murcia,1,2,PRI
+30 Kas,,son-maclari,A
+Murcia,Atletico S.,0,0,PRI
+24 Kas,,son-maclari,D
+Algeciras,Murcia,1,1,PRI
+16 Kas,,son-maclari,D
+Murcia,Atl. Madrid,1,1,PRI
+9 Kas,,son-maclari,D
+Villarreal B,CE Europa,3,3,PRI
+13 Eyl,,son-maclari,D
+CD Eldense,Villarreal B,1,0,PRI
+6 Eyl,,son-maclari,H
+Villarreal B,Alcorcon,1,0,PRI
+1 Eyl,,son-maclari,H
+Betis Depor.,Villarreal B,0,3,PRI
+24 May,,son-maclari,A
+Villarreal B,Sevilla B,3,0,PRI
+17 May,,son-maclari,H
+Yeclano Dep.,Villarreal B,3,1,PRI
+10 May,,son-maclari,H
+Villarreal B,Hercules,2,1,PRI
+4 May,,son-maclari,H
+Murcia,Villarreal B,1,0,PRI
+27 Nis,,son-maclari,H
+Villarreal B,Intercity,0,0,PRI
+18 Nis,,son-maclari,D
+Atletico S.,Villarreal B,1,1,PRI
+13 Nis,,son-maclari,D
+Villarreal B,Algeciras,0,3,PRI
+6 Nis,,son-maclari,A
+Villarreal B,Fuenlabrada,1,1,PRI
+29 Mar,,son-maclari,D
+Alcorcon,Villarreal B,2,1,PRI
+23 Mar,,son-maclari,H
+Villarreal B,Merida,3,0,PRI
+14 Mar,,son-maclari,H
+Marbella,Villarreal B,0,2,PRI
+9 Mar,,son-maclari,A
+Villarreal B,Ceuta,0,1,PRI
+2 Mar,,son-maclari,A
+Atl. Madrid,Villarreal B,1,0,PRI
+21 Şub,,son-maclari,H
+Villarreal B,Alcoyano,3,0,PRI
+16 Şub,,son-maclari,H
+R. Huelva,Villarreal B,3,3,PRI
+9 Şub,,son-maclari,D
+Villarreal B,Ibiza,1,2,PRI
+2 Şub,,son-maclari,A
+R. Madrid B,Villarreal B,2,2,PRI
+26 Oca,,son-maclari,D
+Villarreal B,Antequera,1,1,PRI
+19 Oca,,son-maclari,D
+Fuenlabrada,Villarreal B,0,0,PRI
+12 Oca,,son-maclari,D
+Villarreal B,Yeclano Dep.,0,1,PRI
+21 Ara,,son-maclari,A
+Intercity,Villarreal B,2,2,PRI
+15 Ara,,son-maclari,D
+Villarreal B,Marbella,1,1,PRI
+8 Ara,,son-maclari,D
+Ceuta,Villarreal B,1,1,PRI
+1 Ara,,son-maclari,D
+Villarreal B,Atl. Madrid,3,2,PRI
+24 Kas,,son-maclari,H
+Hercules,Villarreal B,0,2,PRI
+17 Kas,,son-maclari,A
+Alcoyano,Villarreal B,0,2,PRI
+13 Kas,,son-maclari,A
+Villarreal B,Alcorcon,4,0,PRI
+10 Kas,,son-maclari,H
+Villarreal B,Murcia,0,1,PRI
+27 Eki,,son-maclari,A
+Sevilla B,Villarreal B,2,1,PRI
+18 Eki,,son-maclari,H
+S. Luqueno,Club General,2,0,11.07.2025,PAR,rekabet-gecmisi,H
+S. Luqueno,Club General,1,1,24.09.2024,PAR,rekabet-gecmisi,D
+Club General,S. Luqueno,0,0,21.07.2024,PAR,rekabet-gecmisi,D
+S. Luqueno,Club General,1,0,20.10.2023,PAR,rekabet-gecmisi,H
+Club General,S. Luqueno,1,0,29.07.2023,PAR,rekabet-gecmisi,H
+Club General,C. Porteno,2,1,PAR
+13 Eyl,,son-maclari,H
+Club General,Libertad,0,0,PAR
+7 Eyl,,son-maclari,D
+Guarani,Club General,4,0,PAR
+1 Eyl,,son-maclari,H
+Club General,Olimpia,2,0,PAR
+24 Ağu,,son-maclari,H
+CD Recoleta,Club General,0,0,PAR
+16 Ağu,,son-maclari,D
+Club General,Sportivo A.,3,2,PAR
+9 Ağu,,son-maclari,H
+CA Tembetary,Club General,0,1,PAR
+6 Ağu,,son-maclari,A
+Club General,Sportivo T.,0,0,PAR
+29 Tem,,son-maclari,D
+C. Nacional,Club General,3,0,PAR
+25 Tem,,son-maclari,H
+Club General,CS 2 de Mayo,0,1,PAR
+19 Tem,,son-maclari,A
+S. Luqueno,Club General,2,0,PAR
+11 Tem,,son-maclari,H
+C. Porteno,Club General,3,1,PAR
+5 Tem,,son-maclari,H
+Club General,CS 2 de Mayo,1,1,PAR
+30 Kas,,son-maclari,D
+Sportivo A.,Club General,0,1,PAR
+26 Kas,,son-maclari,A
+Club General,Libertad,3,1,PAR
+17 Kas,,son-maclari,H
+Sportivo T.,Club General,2,1,PAR
+10 Kas,,son-maclari,H
+Club General,Guarani,0,0,PAR
+2 Kas,,son-maclari,D
+S. Luqueno,Libertad,1,4,PAR
+14 Eyl,,son-maclari,A
+S. Luqueno,Guarani,2,3,PAR
+6 Eyl,,son-maclari,A
+Olimpia,S. Luqueno,2,0,PAR
+31 Ağu,,son-maclari,H
+S. Luqueno,CD Recoleta,0,0,PAR
+24 Ağu,,son-maclari,D
+Sportivo A.,S. Luqueno,0,1,PAR
+16 Ağu,,son-maclari,A
+S. Luqueno,CA Tembetary,5,1,PAR
+10 Ağu,,son-maclari,H
+Sportivo T.,S. Luqueno,2,0,PAR
+2 Ağu,,son-maclari,H
+S. Luqueno,C. Nacional,2,1,PAR
+30 Tem,,son-maclari,H
+CS 2 de Mayo,S. Luqueno,3,2,PAR
+26 Tem,,son-maclari,H
+C. Porteno,S. Luqueno,0,0,PAR
+20 Tem,,son-maclari,D
+S. Luqueno,Club General,2,0,PAR
+11 Tem,,son-maclari,H
+Libertad,S. Luqueno,0,1,PAR
+6 Tem,,son-maclari,A
+Gimnasia,Dep. Riestra,1,1,11.03.2025,ARJSL,rekabet-gecmisi,D
+Gimnasia,Dep. Riestra,0,0,20.09.2024,ARJSL,rekabet-gecmisi,D
+Dep. Riestra,C. Cordoba,2,0,ARJSL
+12 Eyl,,son-maclari,H
+Talleres,Dep. Riestra,0,1,ARJSL
+31 Ağu,,son-maclari,A
+Dep. Riestra,CA Sarmiento,3,0,ARJSL
+25 Ağu,,son-maclari,H
+Rosario C.,Dep. Riestra,1,1,ARJSL
+17 Ağu,,son-maclari,D
+D. Justicia,Dep. Riestra,1,0,ARJSL
+12 Ağu,,son-maclari,H
+Dep. Riestra,Atl. Tucuman,1,0,ARJSL
+28 Tem,,son-maclari,H
+San Martin,Dep. Riestra,3,2,ARJSL
+22 Tem,,son-maclari,H
+Dep. Riestra,Lanus,1,0,ARJSL
+14 Tem,,son-maclari,H
+Huracan,Dep. Riestra,3,2,ARJSL
+12 May,,son-maclari,H
+Dep. Riestra,Godoy Cruz,3,0,ARJSL
+3 May,,son-maclari,H
+Independient,Dep. Riestra,0,0,ARJSL
+28 Nis,,son-maclari,D
+Dep. Riestra,San Lorenzo,0,0,ARJSL
+20 Nis,,son-maclari,D
+I. Cordoba,Dep. Riestra,3,0,ARJSL
+13 Nis,,son-maclari,H
+Dep. Riestra,CA Platense,1,0,ARJSL
+7 Nis,,son-maclari,H
+Velez,Dep. Riestra,0,1,ARJSL
+29 Mar,,son-maclari,A
+Dep. Riestra,River Plate,0,0,ARJSL
+15 Mar,,son-maclari,D
+Gimnasia,Dep. Riestra,1,1,ARJSL
+11 Mar,,son-maclari,D
+C. Cordoba,Dep. Riestra,0,0,ARJSL
+1 Mar,,son-maclari,D
+Dep. Riestra,Talleres,0,0,ARJSL
+21 Şub,,son-maclari,D
+CA Sarmiento,Dep. Riestra,2,1,ARJSL
+17 Şub,,son-maclari,H
+Dep. Riestra,Rosario C.,0,0,ARJSL
+12 Şub,,son-maclari,D
+Dep. Riestra,D. Justicia,1,1,ARJSL
+9 Şub,,son-maclari,D
+Atl. Tucuman,Dep. Riestra,0,3,ARJSL
+5 Şub,,son-maclari,A
+Dep. Riestra,San Martin,0,0,ARJSL
+28 Oca,,son-maclari,D
+Lanus,Dep. Riestra,0,2,ARJSL
+24 Oca,,son-maclari,A
+Independient,Dep. Riestra,0,0,ARJSL
+17 Ara,,son-maclari,D
+Dep. Riestra,Barracas C.,0,0,ARJSL
+6 Ara,,son-maclari,D
+I. Cordoba,Dep. Riestra,2,1,ARJSL
+1 Ara,,son-maclari,H
+Dep. Riestra,Banfield,1,1,ARJSL
+24 Kas,,son-maclari,D
+D. Justicia,Dep. Riestra,1,1,ARJSL
+19 Kas,,son-maclari,D
+Dep. Riestra,Velez,1,1,ARJSL
+11 Kas,,son-maclari,D
+CA Platense,Dep. Riestra,0,0,ARJSL
+8 Kas,,son-maclari,D
+Dep. Riestra,Talleres,0,0,ARJSL
+2 Kas,,son-maclari,D
+Boca Juniors,Dep. Riestra,1,1,ARJSL
+28 Eki,,son-maclari,D
+Dep. Riestra,Atl. Tucuman,2,0,ARJSL
+18 Eki,,son-maclari,H
+Independient,Dep. Riestra,3,1,ARJSL
+6 Eki,,son-maclari,H
+Dep. Riestra,N. Old Boys,3,3,ARJSL
+27 Eyl,,son-maclari,D
+Gimnasia,CA Union S.F,1,3,ARJSL
+14 Eyl,,son-maclari,A
+Gimnasia,Atl. Tucuman,1,0,ARJSL
+1 Eyl,,son-maclari,H
+San Martin,Gimnasia,1,0,ARJSL
+24 Ağu,,son-maclari,H
+Gimnasia,Lanus,1,2,ARJSL
+17 Ağu,,son-maclari,A
+Godoy Cruz,Gimnasia,1,2,ARJSL
+7 Ağu,,son-maclari,A
+Gimnasia,Independient,1,0,ARJSL
+27 Tem,,son-maclari,H
+San Lorenzo,Gimnasia,0,0,ARJSL
+19 Tem,,son-maclari,D
+Gimnasia,I. Cordoba,0,1,ARJSL
+13 Tem,,son-maclari,A
+Gimnasia,CA Platense,1,0,ARJSL
+4 May,,son-maclari,H
+Velez,Gimnasia,1,0,ARJSL
+29 Nis,,son-maclari,H
+Gimnasia,River Plate,0,3,ARJSL
+18 Nis,,son-maclari,A
+Gimnasia,Estudiantes,1,1,ARJSL
+13 Nis,,son-maclari,D
+Talleres,Gimnasia,2,0,ARJSL
+6 Nis,,son-maclari,H
+Gimnasia,CA Sarmiento,0,0,ARJSL
+30 Mar,,son-maclari,D
+Rosario C.,Gimnasia,2,1,ARJSL
+16 Mar,,son-maclari,H
+Gimnasia,Dep. Riestra,1,1,ARJSL
+11 Mar,,son-maclari,D
+CA Union S.F,Gimnasia,1,0,ARJSL
+2 Mar,,son-maclari,H
+Atl. Tucuman,Gimnasia,0,1,ARJSL
+24 Şub,,son-maclari,A
+Gimnasia,San Martin,1,0,ARJSL
+17 Şub,,son-maclari,H
+Lanus,Gimnasia,0,0,ARJSL
+13 Şub,,son-maclari,D
+Gimnasia,Godoy Cruz,3,0,ARJSL
+10 Şub,,son-maclari,H
+Independient,Gimnasia,2,0,ARJSL
+3 Şub,,son-maclari,H
+Gimnasia,San Lorenzo,0,2,ARJSL
+29 Oca,,son-maclari,A
+I. Cordoba,Gimnasia,3,0,ARJSL
+26 Oca,,son-maclari,H
+CA Platense,Gimnasia,1,0,ARJSL
+15 Ara,,son-maclari,H
+Gimnasia,Talleres,0,1,ARJSL
+8 Ara,,son-maclari,A
+Boca Juniors,Gimnasia,1,0,ARJSL
+2 Ara,,son-maclari,H
+Gimnasia,Atl. Tucuman,1,0,ARJSL
+24 Kas,,son-maclari,H
+Independient,Gimnasia,1,0,ARJSL
+22 Kas,,son-maclari,H
+Gimnasia,N. Old Boys,1,0,ARJSL
+9 Kas,,son-maclari,H
+Gimnasia,C. Cordoba,0,0,ARJSL
+6 Kas,,son-maclari,D
+Huracan,Gimnasia,0,0,ARJSL
+2 Kas,,son-maclari,D
+Gimnasia,CA Union S.F,2,3,ARJSL
+29 Eki,,son-maclari,A
+CA Sarmiento,Gimnasia,1,1,ARJSL
+18 Eki,,son-maclari,D
+Gimnasia,Godoy Cruz,0,1,ARJSL
+5 Eki,,son-maclari,A
