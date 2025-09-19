@@ -1,812 +1,850 @@
 {
-  "createdAt": "2025-09-19T11:57:41.632787298",
+  "createdAt": "2025-09-19T12:42:52.326772210",
   "totalTeams": 5,
-  "totalMatches": 389,
+  "totalMatches": 413,
   "teams": [
     {
-      "teamName": "Wolaita Dicha SC - Al Ittihad Tripoli",
-      "totalMatches": 66,
-      "winRate": 0.0,
-      "matches": [
-        {"homeTeam":"Wolaita Dich","awayTeam":"Dire Dawa K.","homeScore":1,"awayScore":0,"matchDate":"PRE
-23 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Ethiopia N.","awayTeam":"Wolaita Dich","homeScore":3,"awayScore":2,"matchDate":"PRE
-15 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Bahir Dar","homeScore":0,"awayScore":4,"matchDate":"PRE
-12 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Fasil","awayTeam":"Wolaita Dich","homeScore":0,"awayScore":3,"matchDate":"PRE
-4 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Ethiopia Ele","homeScore":0,"awayScore":1,"matchDate":"PRE
-29 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Defence F.","homeScore":1,"awayScore":1,"matchDate":"PRE
-25 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Sidama Bunna","awayTeam":"Wolaita Dich","homeScore":1,"awayScore":0,"matchDate":"PRE
-16 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Ethiopian Co","awayTeam":"Wolaita Dich","homeScore":1,"awayScore":0,"matchDate":"PRE
-11 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Arba Minch","homeScore":2,"awayScore":1,"matchDate":"PRE
-7 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Shire Endase","awayTeam":"Wolaita Dich","homeScore":1,"awayScore":1,"matchDate":"PRE
-30 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Hadiya Hossa","homeScore":1,"awayScore":3,"matchDate":"PRE
-19 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Hawassa K.","awayTeam":"Wolaita Dich","homeScore":1,"awayScore":0,"matchDate":"PRE
-14 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Adama City","awayTeam":"Wolaita Dich","homeScore":0,"awayScore":0,"matchDate":"PRE
-8 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Mekelle 70","homeScore":1,"awayScore":0,"matchDate":"PRE
-3 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Welwalu Adig","homeScore":1,"awayScore":0,"matchDate":"PRE
-11 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Saint George","awayTeam":"Wolaita Dich","homeScore":0,"awayScore":1,"matchDate":"PRE
-6 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Ethiopian Me","awayTeam":"Wolaita Dich","homeScore":0,"awayScore":1,"matchDate":"PRE
-1 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Ethiopia N.","homeScore":1,"awayScore":1,"matchDate":"PRE
-9 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Mekelle 70","awayTeam":"Wolaita Dich","homeScore":0,"awayScore":1,"matchDate":"PRE
-4 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Saint George","homeScore":0,"awayScore":2,"matchDate":"PRE
-29 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Arba Minch","awayTeam":"Wolaita Dich","homeScore":2,"awayScore":1,"matchDate":"PRE
-23 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Sidama Bunna","homeScore":0,"awayScore":0,"matchDate":"PRE
-19 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Welwalu Adig","awayTeam":"Wolaita Dich","homeScore":0,"awayScore":2,"matchDate":"PRE
-15 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Ethiopian Me","homeScore":1,"awayScore":2,"matchDate":"PRE
-11 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Adama City","homeScore":2,"awayScore":2,"matchDate":"PRE
-10 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Hawassa K.","homeScore":1,"awayScore":1,"matchDate":"PRE
-1 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Fasil","homeScore":1,"awayScore":1,"matchDate":"PRE
-26 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Bahir Dar","awayTeam":"Wolaita Dich","homeScore":0,"awayScore":0,"matchDate":"PRE
-3 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Hadiya Hossa","awayTeam":"Wolaita Dich","homeScore":0,"awayScore":1,"matchDate":"PRE
-30 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Shire Endase","homeScore":1,"awayScore":0,"matchDate":"PRE
-27 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Ethiopian Co","homeScore":2,"awayScore":1,"matchDate":"PRE
-21 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Defence F.","awayTeam":"Wolaita Dich","homeScore":3,"awayScore":1,"matchDate":"PRE
-2 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Dire Dawa K.","awayTeam":"Wolaita Dich","homeScore":4,"awayScore":1,"matchDate":"PRE
-28 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Ethiopia Ele","awayTeam":"Wolaita Dich","homeScore":2,"awayScore":3,"matchDate":"PRE
-22 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Hawassa K.","awayTeam":"Wolaita Dich","homeScore":2,"awayScore":0,"matchDate":"PRE
-3 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Fasil","homeScore":0,"awayScore":0,"matchDate":"PRE
-29 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Hambericho D","awayTeam":"Wolaita Dich","homeScore":0,"awayScore":0,"matchDate":"PRE
-23 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Hadiya Hossa","homeScore":2,"awayScore":1,"matchDate":"PRE
-16 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Bahir Dar","awayTeam":"Wolaita Dich","homeScore":0,"awayScore":0,"matchDate":"PRE
-24 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Wolaita Dich","awayTeam":"Ethiopia N.","homeScore":0,"awayScore":5,"matchDate":"PRE
-16 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Al Ittihad","awayTeam":"Flambeau","homeScore":2,"awayScore":1,"matchDate":"CAF
-18 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Flambeau","awayTeam":"Al Ittihad","homeScore":1,"awayScore":0,"matchDate":"CAF
-11 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Al Ahli Tri.","awayTeam":"Al Ittihad","homeScore":1,"awayScore":0,"matchDate":"CAF
-24 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Al Ittihad","awayTeam":"Al Ahli Tri.","homeScore":0,"awayScore":0,"matchDate":"CAF
-17 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Orlando P.","awayTeam":"Al Ittihad","homeScore":0,"awayScore":0,"matchDate":"CAF
-3 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Al Ittihad","awayTeam":"Royal Leo.","homeScore":3,"awayScore":2,"matchDate":"CAF
-20 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"JS Saoura","awayTeam":"Al Ittihad","homeScore":1,"awayScore":0,"matchDate":"CAF
-13 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Royal Leo.","awayTeam":"Al Ittihad","homeScore":1,"awayScore":2,"matchDate":"CAF
-6 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Al Ittihad","awayTeam":"JS Saoura","homeScore":1,"awayScore":1,"matchDate":"CAF
-27 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Al Ittihad","awayTeam":"Orlando P.","homeScore":3,"awayScore":2,"matchDate":"CAF
-20 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Enyimba","awayTeam":"Al Ittihad","homeScore":2,"awayScore":0,"matchDate":"CAF
-5 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Esper. Tunis","awayTeam":"Al Ittihad","homeScore":1,"awayScore":0,"matchDate":"CAF
-24 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Al Ittihad","awayTeam":"Esper. Tunis","homeScore":0,"awayScore":0,"matchDate":"CAF
-17 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Al Ittihad","awayTeam":"Kmkm","homeScore":2,"awayScore":0,"matchDate":"CAF
-19 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Kmkm","awayTeam":"Al Ittihad","homeScore":0,"awayScore":2,"matchDate":"CAF
-12 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Pyramids","awayTeam":"Al Ittihad","homeScore":3,"awayScore":2,"matchDate":"CAF
-5 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Al Ittihad","awayTeam":"Pyramids","homeScore":0,"awayScore":1,"matchDate":"CAF
-22 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Horseed","awayTeam":"Al Ittihad","homeScore":0,"awayScore":3,"matchDate":"CAF
-6 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Al Ittihad","awayTeam":"Horseed","homeScore":4,"awayScore":1,"matchDate":"CAF
-28 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Hassania A.","awayTeam":"Al Ittihad","homeScore":0,"awayScore":0,"matchDate":"CAF
-28 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Al Ittihad","awayTeam":"Hassania A.","homeScore":1,"awayScore":1,"matchDate":"CAF
-14 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Al Ittihad","awayTeam":"Gendarmerie","homeScore":2,"awayScore":0,"matchDate":"CAF
-25 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Gendarmerie","awayTeam":"Al Ittihad","homeScore":1,"awayScore":1,"matchDate":"CAF
-11 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Al Ittihad","awayTeam":"RS Berkane","homeScore":0,"awayScore":1,"matchDate":"CAF
-22 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"RS Berkane","awayTeam":"Al Ittihad","homeScore":3,"awayScore":0,"matchDate":"CAF
-15 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Miracle Club","awayTeam":"Al Ittihad","homeScore":0,"awayScore":8,"matchDate":"CAF
-28 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"}
-      ]
-    },
-    {
-      "teamName": "FK Karvan Yevlakh - Imisli FK",
-      "totalMatches": 78,
-      "winRate": 0.0,
-      "matches": [
-        {"homeTeam":"Shamakhi FK","awayTeam":"Karvan Y.","homeScore":3,"awayScore":0,"matchDate":"AZE
-14 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Karabağ","homeScore":0,"awayScore":2,"matchDate":"AZE
-31 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Kapaz","awayTeam":"Karvan Y.","homeScore":2,"awayScore":3,"matchDate":"AZE
-23 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Kabala","homeScore":1,"awayScore":1,"matchDate":"AZE
-15 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"ENERGETIK MI","awayTeam":"Karvan Y.","homeScore":2,"awayScore":1,"matchDate":"BIR
-22 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Karvan Y.","awayTeam":"GARADAG L.","homeScore":2,"awayScore":2,"matchDate":"BIR
-16 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"S. Zakatala","awayTeam":"Karvan Y.","homeScore":3,"awayScore":0,"matchDate":"BIR
-9 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Kabala","homeScore":2,"awayScore":0,"matchDate":"BIR
-2 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Cabrayil","homeScore":2,"awayScore":0,"matchDate":"BIR
-25 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Moik Bakü","awayTeam":"Karvan Y.","homeScore":1,"awayScore":1,"matchDate":"BIR
-18 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Imisli FK","homeScore":1,"awayScore":1,"matchDate":"BIR
-11 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Difai Agsu","awayTeam":"Karvan Y.","homeScore":3,"awayScore":5,"matchDate":"BIR
-3 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Baku SC","homeScore":1,"awayScore":1,"matchDate":"BIR
-27 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"GARADAG L.","awayTeam":"Karvan Y.","homeScore":1,"awayScore":1,"matchDate":"BIR
-13 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Karvan Y.","awayTeam":"S. Zakatala","homeScore":3,"awayScore":2,"matchDate":"BIR
-7 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Kabala","awayTeam":"Karvan Y.","homeScore":2,"awayScore":0,"matchDate":"BIR
-28 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Cabrayil","awayTeam":"Karvan Y.","homeScore":1,"awayScore":1,"matchDate":"BIR
-19 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Moik Bakü","homeScore":3,"awayScore":1,"matchDate":"BIR
-13 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Imisli FK","awayTeam":"Karvan Y.","homeScore":2,"awayScore":0,"matchDate":"BIR
-6 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Difai Agsu","homeScore":3,"awayScore":3,"matchDate":"BIR
-30 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Baku SC","awayTeam":"Karvan Y.","homeScore":0,"awayScore":2,"matchDate":"BIR
-24 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Karvan Y.","awayTeam":"ENERGETIK MI","homeScore":5,"awayScore":0,"matchDate":"BIR
-19 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"S. Zakatala","awayTeam":"Karvan Y.","homeScore":2,"awayScore":2,"matchDate":"BIR
-13 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Kabala","homeScore":0,"awayScore":1,"matchDate":"BIR
-28 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Cabrayil","homeScore":1,"awayScore":2,"matchDate":"BIR
-7 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"GARADAG L.","awayTeam":"Karvan Y.","homeScore":3,"awayScore":0,"matchDate":"AZEK
-30 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Moik Bakü","awayTeam":"Karvan Y.","homeScore":2,"awayScore":3,"matchDate":"BIR
-24 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Imisli FK","homeScore":3,"awayScore":2,"matchDate":"BIR
-16 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Difai Agsu","awayTeam":"Karvan Y.","homeScore":1,"awayScore":4,"matchDate":"BIR
-3 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Baku SC","homeScore":3,"awayScore":1,"matchDate":"BIR
-26 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"ENERGETIK MI","awayTeam":"Karvan Y.","homeScore":1,"awayScore":3,"matchDate":"BIR
-18 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Karvan Y.","awayTeam":"GARADAG L.","homeScore":1,"awayScore":0,"matchDate":"BIR
-11 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Irevan","awayTeam":"Karvan Y.","homeScore":3,"awayScore":8,"matchDate":"BIR
-22 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Karvan Y.","awayTeam":"ENERGETIK MI","homeScore":1,"awayScore":0,"matchDate":"BIR
-15 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Shamakhi FK","awayTeam":"Karvan Y.","homeScore":3,"awayScore":0,"matchDate":"BIR
-9 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Imisli FK","homeScore":1,"awayScore":0,"matchDate":"BIR
-1 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Araz Saatli","awayTeam":"Karvan Y.","homeScore":2,"awayScore":4,"matchDate":"BIR
-25 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Karvan Y.","awayTeam":"GARADAG L.","homeScore":0,"awayScore":1,"matchDate":"BIR
-18 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Moik Bakü","homeScore":1,"awayScore":0,"matchDate":"BIR
-11 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"S. Zakatala","awayTeam":"Karvan Y.","homeScore":1,"awayScore":1,"matchDate":"BIR
-5 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Sabah","awayTeam":"Imisli FK","homeScore":0,"awayScore":1,"matchDate":"AZE
-31 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Imisli FK","awayTeam":"Neftçi Bakü","homeScore":0,"awayScore":0,"matchDate":"AZE
-22 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Imisli FK","awayTeam":"Turan Tovuz","homeScore":0,"awayScore":1,"matchDate":"AZE
-16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Imisli FK","awayTeam":"Baku SC","homeScore":0,"awayScore":0,"matchDate":"BIR
-16 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"ENERGETIK MI","awayTeam":"Imisli FK","homeScore":0,"awayScore":0,"matchDate":"BIR
-9 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Imisli FK","awayTeam":"GARADAG L.","homeScore":3,"awayScore":1,"matchDate":"BIR
-2 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"S. Zakatala","awayTeam":"Imisli FK","homeScore":0,"awayScore":2,"matchDate":"BIR
-25 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Imisli FK","awayTeam":"Kabala","homeScore":1,"awayScore":0,"matchDate":"BIR
-18 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Imisli FK","homeScore":1,"awayScore":1,"matchDate":"BIR
-11 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Imisli FK","awayTeam":"Moik Bakü","homeScore":2,"awayScore":1,"matchDate":"BIR
-4 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Imisli FK","awayTeam":"Cabrayil","homeScore":2,"awayScore":0,"matchDate":"BIR
-28 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Baku SC","awayTeam":"Imisli FK","homeScore":2,"awayScore":2,"matchDate":"BIR
-12 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Imisli FK","awayTeam":"ENERGETIK MI","homeScore":0,"awayScore":1,"matchDate":"BIR
-7 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"GARADAG L.","awayTeam":"Imisli FK","homeScore":0,"awayScore":1,"matchDate":"BIR
-28 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Imisli FK","awayTeam":"S. Zakatala","homeScore":1,"awayScore":0,"matchDate":"BIR
-19 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Imisli FK","awayTeam":"Kabala","homeScore":1,"awayScore":2,"matchDate":"BIR
-13 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Imisli FK","awayTeam":"Karvan Y.","homeScore":2,"awayScore":0,"matchDate":"BIR
-6 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Moik Bakü","awayTeam":"Imisli FK","homeScore":4,"awayScore":3,"matchDate":"BIR
-30 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Imisli FK","awayTeam":"Difai Agsu","homeScore":1,"awayScore":0,"matchDate":"BIR
-19 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"ENERGETIK MI","awayTeam":"Imisli FK","homeScore":0,"awayScore":0,"matchDate":"BIR
-13 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Kapaz","awayTeam":"Imisli FK","homeScore":1,"awayScore":0,"matchDate":"AZEK
-4 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Imisli FK","awayTeam":"GARADAG L.","homeScore":2,"awayScore":1,"matchDate":"BIR
-27 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"S. Zakatala","awayTeam":"Imisli FK","homeScore":1,"awayScore":4,"matchDate":"BIR
-8 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Imisli FK","awayTeam":"Cabrayil","homeScore":5,"awayScore":1,"matchDate":"AZEK
-31 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Kabala","awayTeam":"Imisli FK","homeScore":0,"awayScore":0,"matchDate":"BIR
-26 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Imisli FK","homeScore":3,"awayScore":2,"matchDate":"BIR
-16 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Imisli FK","awayTeam":"Moik Bakü","homeScore":3,"awayScore":0,"matchDate":"BIR
-3 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Cabrayil","awayTeam":"Imisli FK","homeScore":0,"awayScore":2,"matchDate":"BIR
-25 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Difai Agsu","awayTeam":"Imisli FK","homeScore":0,"awayScore":4,"matchDate":"BIR
-19 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Imisli FK","awayTeam":"Baku SC","homeScore":1,"awayScore":2,"matchDate":"BIR
-12 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Moik Bakü","awayTeam":"Imisli FK","homeScore":2,"awayScore":1,"matchDate":"BIR
-22 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Araz Saatli","awayTeam":"Imisli FK","homeScore":2,"awayScore":1,"matchDate":"BIR
-16 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Imisli FK","awayTeam":"GARADAG L.","homeScore":0,"awayScore":0,"matchDate":"BIR
-9 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Karvan Y.","awayTeam":"Imisli FK","homeScore":1,"awayScore":0,"matchDate":"BIR
-1 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Imisli FK","awayTeam":"S. Zakatala","homeScore":2,"awayScore":1,"matchDate":"BIR
-25 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Difai Agsu","awayTeam":"Imisli FK","homeScore":2,"awayScore":2,"matchDate":"BIR
-18 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Imisli FK","awayTeam":"Irevan","homeScore":3,"awayScore":2,"matchDate":"BIR
-10 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"ENERGETIK MI","awayTeam":"Imisli FK","homeScore":0,"awayScore":1,"matchDate":"BIR
-3 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"}
-      ]
-    },
-    {
-      "teamName": "Yunnan Yukun - Dalian Yingbo",
-      "totalMatches": 81,
-      "winRate": 0.0,
-      "matches": [
-        {"homeTeam":"Dalian Y.","awayTeam":"Yunnan Yukun","homeScore":3,"awayScore":2,"matchDate":"01.05.2025","tournament":"ÇSL","matchType":"rekabet-gecmisi","result":"H"},
-        {"homeTeam":"Shanghai S.","awayTeam":"Yunnan Yukun","homeScore":4,"awayScore":2,"matchDate":"ÇSL
-12 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Changchun Y.","homeScore":1,"awayScore":1,"matchDate":"ÇSL
-30 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Chengdu Qian","homeScore":1,"awayScore":5,"matchDate":"ÇSL
-23 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"B. Guoan","awayTeam":"Yunnan Yukun","homeScore":7,"awayScore":0,"matchDate":"ÇİNFK
-20 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Wuhan Three","homeScore":2,"awayScore":1,"matchDate":"ÇSL
-15 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Qingdao M.","awayTeam":"Yunnan Yukun","homeScore":5,"awayScore":1,"matchDate":"ÇSL
-9 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"S. Shenhua","homeScore":4,"awayScore":4,"matchDate":"ÇSL
-2 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Shenzhen Xi.","homeScore":3,"awayScore":1,"matchDate":"ÇSL
-26 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Guangzhou E","homeScore":3,"awayScore":0,"matchDate":"ÇİNFK
-22 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Hangzhou G.","awayTeam":"Yunnan Yukun","homeScore":3,"awayScore":1,"matchDate":"ÇSL
-18 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"B. Guoan","awayTeam":"Yunnan Yukun","homeScore":2,"awayScore":1,"matchDate":"ÇSL
-30 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Henan Jianye","homeScore":2,"awayScore":1,"matchDate":"ÇSL
-26 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Shaanxi Unio","awayTeam":"Yunnan Yukun","homeScore":1,"awayScore":2,"matchDate":"ÇİNFK
-21 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Qingdao","awayTeam":"Yunnan Yukun","homeScore":0,"awayScore":0,"matchDate":"ÇSL
-14 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Heilongjiang","awayTeam":"Yunnan Yukun","homeScore":1,"awayScore":2,"matchDate":"ÇİNFK
-21 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Meizhou H.","homeScore":2,"awayScore":0,"matchDate":"ÇSL
-16 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Tianjin Teda","awayTeam":"Yunnan Yukun","homeScore":0,"awayScore":1,"matchDate":"ÇSL
-11 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"S. Luneng","homeScore":3,"awayScore":2,"matchDate":"ÇSL
-5 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Yunnan Yukun","homeScore":3,"awayScore":2,"matchDate":"ÇSL
-1 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Shanghai S.","homeScore":2,"awayScore":3,"matchDate":"ÇSL
-25 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Changchun Y.","awayTeam":"Yunnan Yukun","homeScore":0,"awayScore":0,"matchDate":"ÇSL
-20 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Chengdu Qian","awayTeam":"Yunnan Yukun","homeScore":1,"awayScore":1,"matchDate":"ÇSL
-16 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Wuhan Three","awayTeam":"Yunnan Yukun","homeScore":3,"awayScore":1,"matchDate":"ÇSL
-12 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Qingdao M.","homeScore":1,"awayScore":0,"matchDate":"ÇSL
-6 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"S. Shenhua","awayTeam":"Yunnan Yukun","homeScore":3,"awayScore":1,"matchDate":"ÇSL
-2 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Shenzhen Xi.","awayTeam":"Yunnan Yukun","homeScore":3,"awayScore":4,"matchDate":"ÇSL
-28 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Hangzhou G.","homeScore":1,"awayScore":1,"matchDate":"ÇSL
-1 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"B. Guoan","homeScore":0,"awayScore":2,"matchDate":"ÇSL
-22 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Liaoning S.","awayTeam":"Yunnan Yukun","homeScore":2,"awayScore":1,"matchDate":"ÇİN1
-3 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Dalian Y.","homeScore":2,"awayScore":0,"matchDate":"ÇİN1
-26 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Hebei Kungfu","awayTeam":"Yunnan Yukun","homeScore":3,"awayScore":2,"matchDate":"ÇİN1
-19 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Suzhou Jinfu","homeScore":3,"awayScore":0,"matchDate":"ÇİN1
-12 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Shanghai J.","homeScore":2,"awayScore":0,"matchDate":"ÇİN1
-6 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yanbian L.","awayTeam":"Yunnan Yukun","homeScore":1,"awayScore":3,"matchDate":"ÇİN1
-28 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Qingdao Red","homeScore":5,"awayScore":0,"matchDate":"ÇİN1
-21 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Chongqing T.","awayTeam":"Yunnan Yukun","homeScore":3,"awayScore":2,"matchDate":"ÇİN1
-15 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Guangxi Bao","homeScore":0,"awayScore":0,"matchDate":"ÇİN1
-7 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Wuxi Wuguo","awayTeam":"Yunnan Yukun","homeScore":0,"awayScore":4,"matchDate":"ÇİN1
-1 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Jiangxi L.","homeScore":3,"awayScore":0,"matchDate":"ÇİN1
-24 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Guangzhou E.","homeScore":1,"awayScore":1,"matchDate":"ÇİN1
-17 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Shenzhen Xi.","homeScore":2,"awayScore":1,"matchDate":"ÇSL
-14 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Henan Jianye","awayTeam":"Dalian Y.","homeScore":4,"awayScore":0,"matchDate":"ÇSL
-24 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Tianjin Teda","awayTeam":"Dalian Y.","homeScore":2,"awayScore":0,"matchDate":"ÇSL
-16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Chengdu Qian","homeScore":0,"awayScore":2,"matchDate":"ÇSL
-8 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Qingdao M.","homeScore":2,"awayScore":0,"matchDate":"ÇSL
-3 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Changchun Y.","awayTeam":"Dalian Y.","homeScore":0,"awayScore":2,"matchDate":"ÇSL
-27 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Dalian Y.","awayTeam":"S. Luneng","homeScore":2,"awayScore":0,"matchDate":"ÇSL
-19 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Hangzhou G.","homeScore":1,"awayScore":0,"matchDate":"ÇSL
-30 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Shanghai S.","awayTeam":"Dalian Y.","homeScore":3,"awayScore":0,"matchDate":"ÇSL
-26 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Dalian Y.","awayTeam":"B. Guoan","homeScore":1,"awayScore":1,"matchDate":"ÇİNFK
-21 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Meizhou H.","homeScore":1,"awayScore":0,"matchDate":"ÇSL
-13 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Shenzhen J.","awayTeam":"Dalian Y.","homeScore":1,"awayScore":5,"matchDate":"ÇİNFK
-21 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Dalian Y.","awayTeam":"S. Shenhua","homeScore":0,"awayScore":3,"matchDate":"ÇSL
-17 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Wuhan Three","awayTeam":"Dalian Y.","homeScore":2,"awayScore":2,"matchDate":"ÇSL
-11 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Dalian Y.","awayTeam":"B. Guoan","homeScore":0,"awayScore":2,"matchDate":"ÇSL
-5 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Yunnan Yukun","homeScore":3,"awayScore":2,"matchDate":"ÇSL
-1 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Shenzhen Xi.","awayTeam":"Dalian Y.","homeScore":1,"awayScore":1,"matchDate":"ÇSL
-26 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Qingdao","awayTeam":"Dalian Y.","homeScore":2,"awayScore":0,"matchDate":"ÇSL
-20 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Henan Jianye","homeScore":1,"awayScore":0,"matchDate":"ÇSL
-16 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Tianjin Teda","homeScore":1,"awayScore":1,"matchDate":"ÇSL
-12 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Chengdu Qian","awayTeam":"Dalian Y.","homeScore":2,"awayScore":0,"matchDate":"ÇSL
-6 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Qingdao M.","awayTeam":"Dalian Y.","homeScore":1,"awayScore":1,"matchDate":"ÇSL
-2 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Changchun Y.","homeScore":2,"awayScore":0,"matchDate":"ÇSL
-29 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"S. Luneng","awayTeam":"Dalian Y.","homeScore":4,"awayScore":1,"matchDate":"ÇSL
-28 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Hangzhou G.","awayTeam":"Dalian Y.","homeScore":1,"awayScore":1,"matchDate":"ÇSL
-23 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Shanghai J.","homeScore":2,"awayScore":1,"matchDate":"ÇİN1
-3 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Yunnan Yukun","awayTeam":"Dalian Y.","homeScore":2,"awayScore":0,"matchDate":"ÇİN1
-26 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Wuxi Wuguo","awayTeam":"Dalian Y.","homeScore":1,"awayScore":2,"matchDate":"ÇİN1
-20 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Nanjing City","homeScore":2,"awayScore":0,"matchDate":"ÇİN1
-13 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Chongqing T.","awayTeam":"Dalian Y.","homeScore":3,"awayScore":0,"matchDate":"ÇİN1
-6 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Jiangxi L.","homeScore":3,"awayScore":0,"matchDate":"ÇİN1
-28 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Guangzhou E.","awayTeam":"Dalian Y.","homeScore":2,"awayScore":0,"matchDate":"ÇİN1
-21 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Hebei Kungfu","homeScore":1,"awayScore":1,"matchDate":"ÇİN1
-15 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Yanbian L.","awayTeam":"Dalian Y.","homeScore":2,"awayScore":2,"matchDate":"ÇİN1
-8 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Liaoning S.","awayTeam":"Dalian Y.","homeScore":2,"awayScore":1,"matchDate":"ÇİN1
-1 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Foshan N.","homeScore":3,"awayScore":1,"matchDate":"ÇİN1
-25 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Heilongjiang","awayTeam":"Dalian Y.","homeScore":1,"awayScore":2,"matchDate":"ÇİN1
-18 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Guangxi Bao","awayTeam":"Dalian Y.","homeScore":0,"awayScore":2,"matchDate":"ÇİN1
-20 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Suzhou Jinfu","homeScore":2,"awayScore":0,"matchDate":"ÇİN1
-13 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Dalian Y.","awayTeam":"Qingdao Red","homeScore":4,"awayScore":0,"matchDate":"ÇİN1
-7 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"}
-      ]
-    },
-    {
-      "teamName": "Persebaya - Semen Padang",
-      "totalMatches": 84,
-      "winRate": 0.0,
-      "matches": [
-        {"homeTeam":"Persebaya S.","awayTeam":"Semen Padang","homeScore":1,"awayScore":1,"matchDate":"11.05.2025","tournament":"END","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Semen Padang","awayTeam":"Persebaya S.","homeScore":0,"awayScore":0,"matchDate":"15.12.2024","tournament":"END","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Semen Padang","homeScore":1,"awayScore":1,"matchDate":"28.11.2019","tournament":"END","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Semen Padang","awayTeam":"Persebaya S.","homeScore":0,"awayScore":0,"matchDate":"28.07.2019","tournament":"END","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Persib B.","awayTeam":"Persebaya S.","homeScore":1,"awayScore":0,"matchDate":"END
-12 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Bali Utd","homeScore":5,"awayScore":2,"matchDate":"END
-23 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persita T.","awayTeam":"Persebaya S.","homeScore":0,"awayScore":1,"matchDate":"END
-16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Psim Yogyaka","homeScore":0,"awayScore":1,"matchDate":"END
-8 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Persebaya S.","awayTeam":"PSS Sleman","homeScore":1,"awayScore":0,"matchDate":"HAZ
-19 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Bali Utd","homeScore":1,"awayScore":3,"matchDate":"END
-23 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Borneo S.","awayTeam":"Persebaya S.","homeScore":1,"awayScore":1,"matchDate":"END
-18 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Semen Padang","homeScore":1,"awayScore":1,"matchDate":"END
-11 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persik Kedir","awayTeam":"Persebaya S.","homeScore":3,"awayScore":3,"matchDate":"END
-5 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Arema","awayTeam":"Persebaya S.","homeScore":1,"awayScore":1,"matchDate":"END
-28 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Madura Utd","homeScore":1,"awayScore":0,"matchDate":"END
-20 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"P. Jakarta","awayTeam":"Persebaya S.","homeScore":1,"awayScore":1,"matchDate":"END
-12 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Psis Semaran","homeScore":1,"awayScore":1,"matchDate":"END
-12 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Makassar","awayTeam":"Persebaya S.","homeScore":0,"awayScore":1,"matchDate":"END
-7 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Persib B.","homeScore":4,"awayScore":1,"matchDate":"END
-1 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Dewa Utd","awayTeam":"Persebaya S.","homeScore":2,"awayScore":0,"matchDate":"END
-21 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persebaya S.","awayTeam":"PSBS Biak","homeScore":1,"awayScore":0,"matchDate":"END
-15 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persis Solo","awayTeam":"Persebaya S.","homeScore":2,"awayScore":1,"matchDate":"END
-7 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Persita T.","homeScore":1,"awayScore":1,"matchDate":"END
-31 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Barito P.","awayTeam":"Persebaya S.","homeScore":3,"awayScore":0,"matchDate":"END
-25 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Malut Utd","homeScore":0,"awayScore":2,"matchDate":"END
-17 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"PSS Sleman","awayTeam":"Persebaya S.","homeScore":3,"awayScore":1,"matchDate":"END
-11 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Bali Utd","awayTeam":"Persebaya S.","homeScore":2,"awayScore":0,"matchDate":"END
-28 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Borneo S.","homeScore":2,"awayScore":1,"matchDate":"END
-20 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Semen Padang","awayTeam":"Persebaya S.","homeScore":0,"awayScore":0,"matchDate":"END
-15 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Persik Kedir","homeScore":4,"awayScore":1,"matchDate":"END
-11 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Arema","homeScore":3,"awayScore":2,"matchDate":"END
-7 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Madura Utd","awayTeam":"Persebaya S.","homeScore":1,"awayScore":2,"matchDate":"END
-2 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Persebaya S.","awayTeam":"P. Jakarta","homeScore":2,"awayScore":1,"matchDate":"END
-22 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Psis Semaran","awayTeam":"Persebaya S.","homeScore":0,"awayScore":1,"matchDate":"END
-2 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Makassar","homeScore":1,"awayScore":1,"matchDate":"END
-23 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persib B.","awayTeam":"Persebaya S.","homeScore":2,"awayScore":0,"matchDate":"END
-18 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Dewa Utd","homeScore":0,"awayScore":0,"matchDate":"END
-27 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"PSBS Biak","awayTeam":"Persebaya S.","homeScore":0,"awayScore":1,"matchDate":"END
-22 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Persis Solo","homeScore":2,"awayScore":1,"matchDate":"END
-18 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persita T.","awayTeam":"Persebaya S.","homeScore":0,"awayScore":1,"matchDate":"END
-14 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Barito P.","homeScore":2,"awayScore":1,"matchDate":"END
-23 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Malut Utd","awayTeam":"Persebaya S.","homeScore":0,"awayScore":0,"matchDate":"END
-16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persebaya S.","awayTeam":"PSS Sleman","homeScore":1,"awayScore":0,"matchDate":"END
-11 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Persibo Bojo","homeScore":2,"awayScore":0,"matchDate":"HAZ
-29 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Semen Padang","awayTeam":"PSBS Biak","homeScore":1,"awayScore":2,"matchDate":"END
-11 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Semen Padang","awayTeam":"Makassar","homeScore":1,"awayScore":1,"matchDate":"END
-22 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Semen Padang","awayTeam":"Dewa Utd","homeScore":2,"awayScore":0,"matchDate":"END
-15 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persib B.","awayTeam":"Semen Padang","homeScore":2,"awayScore":0,"matchDate":"END
-9 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Arema","awayTeam":"Semen Padang","homeScore":0,"awayScore":2,"matchDate":"END
-24 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Semen Padang","awayTeam":"Persik Kedir","homeScore":1,"awayScore":1,"matchDate":"END
-18 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Semen Padang","homeScore":1,"awayScore":1,"matchDate":"END
-11 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Semen Padang","awayTeam":"Madura Utd","homeScore":2,"awayScore":1,"matchDate":"END
-4 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"P. Jakarta","awayTeam":"Semen Padang","homeScore":0,"awayScore":2,"matchDate":"END
-27 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Semen Padang","awayTeam":"Psis Semaran","homeScore":3,"awayScore":2,"matchDate":"END
-17 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Makassar","awayTeam":"Semen Padang","homeScore":2,"awayScore":0,"matchDate":"END
-10 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Semen Padang","awayTeam":"Persib B.","homeScore":1,"awayScore":4,"matchDate":"END
-10 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Dewa Utd","awayTeam":"Semen Padang","homeScore":6,"awayScore":0,"matchDate":"END
-5 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Semen Padang","awayTeam":"PSBS Biak","homeScore":1,"awayScore":1,"matchDate":"END
-1 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persis Solo","awayTeam":"Semen Padang","homeScore":1,"awayScore":1,"matchDate":"END
-21 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Semen Padang","awayTeam":"Persita T.","homeScore":2,"awayScore":0,"matchDate":"END
-14 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Barito P.","awayTeam":"Semen Padang","homeScore":2,"awayScore":1,"matchDate":"END
-8 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Semen Padang","awayTeam":"Malut Utd","homeScore":1,"awayScore":1,"matchDate":"END
-2 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"PSS Sleman","awayTeam":"Semen Padang","homeScore":2,"awayScore":4,"matchDate":"END
-26 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Semen Padang","awayTeam":"Bali Utd","homeScore":1,"awayScore":5,"matchDate":"END
-20 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Borneo S.","awayTeam":"Semen Padang","homeScore":1,"awayScore":3,"matchDate":"END
-14 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Semen Padang","awayTeam":"Arema","homeScore":1,"awayScore":2,"matchDate":"END
-27 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Persik Kedir","awayTeam":"Semen Padang","homeScore":3,"awayScore":1,"matchDate":"END
-21 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Semen Padang","awayTeam":"Persebaya S.","homeScore":0,"awayScore":0,"matchDate":"END
-15 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Madura Utd","awayTeam":"Semen Padang","homeScore":0,"awayScore":1,"matchDate":"END
-10 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Semen Padang","awayTeam":"P. Jakarta","homeScore":0,"awayScore":1,"matchDate":"END
-6 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Psis Semaran","awayTeam":"Semen Padang","homeScore":1,"awayScore":0,"matchDate":"END
-1 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Semen Padang","awayTeam":"Makassar","homeScore":1,"awayScore":1,"matchDate":"END
-21 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persib B.","awayTeam":"Semen Padang","homeScore":1,"awayScore":1,"matchDate":"END
-1 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Semen Padang","awayTeam":"Dewa Utd","homeScore":1,"awayScore":8,"matchDate":"END
-25 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"PSBS Biak","awayTeam":"Semen Padang","homeScore":3,"awayScore":2,"matchDate":"END
-18 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Semen Padang","awayTeam":"Persis Solo","homeScore":0,"awayScore":0,"matchDate":"END
-29 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persita T.","awayTeam":"Semen Padang","homeScore":1,"awayScore":0,"matchDate":"END
-22 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Semen Padang","awayTeam":"Barito P.","homeScore":1,"awayScore":2,"matchDate":"END
-18 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Malut Utd","awayTeam":"Semen Padang","homeScore":2,"awayScore":1,"matchDate":"END
-13 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Semen Padang","awayTeam":"PSS Sleman","homeScore":1,"awayScore":0,"matchDate":"END
-26 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Bali Utd","awayTeam":"Semen Padang","homeScore":2,"awayScore":0,"matchDate":"END
-18 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Semen Padang","awayTeam":"Borneo S.","homeScore":1,"awayScore":3,"matchDate":"END
-12 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Persela L.","awayTeam":"Semen Padang","homeScore":2,"awayScore":0,"matchDate":"END
-21 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Semen Padang","awayTeam":"Borneo S.","homeScore":1,"awayScore":1,"matchDate":"END
-17 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"}
-      ]
-    },
-    {
-      "teamName": "Malut Utd - Madura Utd",
+      "teamName": "Aigle Royal - San Pedro",
       "totalMatches": 80,
       "winRate": 0.0,
       "matches": [
-        {"homeTeam":"Malut Utd","awayTeam":"Madura Utd","homeScore":0,"awayScore":1,"matchDate":"10.01.2025","tournament":"END","matchType":"rekabet-gecmisi","result":"A"},
-        {"homeTeam":"Madura Utd","awayTeam":"Malut Utd","homeScore":1,"awayScore":1,"matchDate":"10.08.2024","tournament":"END","matchType":"rekabet-gecmisi","result":"D"},
-        {"homeTeam":"Persik Kedir","awayTeam":"Malut Utd","homeScore":2,"awayScore":1,"matchDate":"END
-12 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Malut Utd","awayTeam":"Psim Yogyaka","homeScore":0,"awayScore":2,"matchDate":"END
-30 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"P. Jakarta","awayTeam":"Malut Utd","homeScore":1,"awayScore":1,"matchDate":"END
-23 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Malut Utd","awayTeam":"Bali Utd","homeScore":3,"awayScore":3,"matchDate":"END
-15 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Dewa Utd","awayTeam":"Malut Utd","homeScore":1,"awayScore":3,"matchDate":"END
-9 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"P. Jakarta","awayTeam":"Malut Utd","homeScore":0,"awayScore":0,"matchDate":"END
-23 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Malut Utd","awayTeam":"Psis Semaran","homeScore":5,"awayScore":1,"matchDate":"END
-16 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Makassar","awayTeam":"Malut Utd","homeScore":3,"awayScore":2,"matchDate":"END
-10 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Malut Utd","awayTeam":"Persib B.","homeScore":1,"awayScore":0,"matchDate":"END
-2 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Dewa Utd","awayTeam":"Malut Utd","homeScore":1,"awayScore":2,"matchDate":"END
-25 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Malut Utd","awayTeam":"PSBS Biak","homeScore":1,"awayScore":1,"matchDate":"END
-18 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persis Solo","awayTeam":"Malut Utd","homeScore":1,"awayScore":3,"matchDate":"END
-12 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Malut Utd","awayTeam":"Persita T.","homeScore":2,"awayScore":1,"matchDate":"END
-12 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Barito P.","awayTeam":"Malut Utd","homeScore":1,"awayScore":1,"matchDate":"END
-8 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Malut Utd","awayTeam":"Arema","homeScore":2,"awayScore":1,"matchDate":"END
-4 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Malut Utd","awayTeam":"PSS Sleman","homeScore":1,"awayScore":0,"matchDate":"END
-23 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Bali Utd","awayTeam":"Malut Utd","homeScore":1,"awayScore":1,"matchDate":"END
-17 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Malut Utd","awayTeam":"Borneo S.","homeScore":3,"awayScore":0,"matchDate":"END
-10 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Semen Padang","awayTeam":"Malut Utd","homeScore":1,"awayScore":1,"matchDate":"END
-2 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Malut Utd","awayTeam":"Persik Kedir","homeScore":2,"awayScore":1,"matchDate":"END
-25 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Malut Utd","homeScore":0,"awayScore":2,"matchDate":"END
-17 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Malut Utd","awayTeam":"Madura Utd","homeScore":0,"awayScore":1,"matchDate":"END
-10 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Malut Utd","awayTeam":"P. Jakarta","homeScore":0,"awayScore":1,"matchDate":"END
-28 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Psis Semaran","awayTeam":"Malut Utd","homeScore":1,"awayScore":3,"matchDate":"END
-22 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Malut Utd","awayTeam":"Makassar","homeScore":2,"awayScore":2,"matchDate":"END
-17 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persib B.","awayTeam":"Malut Utd","homeScore":2,"awayScore":0,"matchDate":"END
-13 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Malut Utd","awayTeam":"Dewa Utd","homeScore":1,"awayScore":1,"matchDate":"END
-7 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"PSBS Biak","awayTeam":"Malut Utd","homeScore":1,"awayScore":3,"matchDate":"END
-2 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Malut Utd","awayTeam":"Persis Solo","homeScore":3,"awayScore":0,"matchDate":"END
-21 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persita T.","awayTeam":"Malut Utd","homeScore":1,"awayScore":1,"matchDate":"END
-4 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Malut Utd","awayTeam":"Barito P.","homeScore":0,"awayScore":0,"matchDate":"END
-26 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Arema","awayTeam":"Malut Utd","homeScore":3,"awayScore":1,"matchDate":"END
-19 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"PSS Sleman","awayTeam":"Malut Utd","homeScore":0,"awayScore":1,"matchDate":"END
-26 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Malut Utd","awayTeam":"Bali Utd","homeScore":1,"awayScore":4,"matchDate":"END
-21 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Borneo S.","awayTeam":"Malut Utd","homeScore":1,"awayScore":0,"matchDate":"END
-17 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Malut Utd","awayTeam":"Semen Padang","homeScore":2,"awayScore":1,"matchDate":"END
-13 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persik Kedir","awayTeam":"Malut Utd","homeScore":0,"awayScore":0,"matchDate":"END
-25 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Malut Utd","awayTeam":"Persebaya S.","homeScore":0,"awayScore":0,"matchDate":"END
-16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Madura Utd","awayTeam":"Malut Utd","homeScore":1,"awayScore":1,"matchDate":"END
-10 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Madura Utd","awayTeam":"Bhayangkara","homeScore":0,"awayScore":0,"matchDate":"END
-12 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Bali Utd","awayTeam":"Madura Utd","homeScore":1,"awayScore":0,"matchDate":"END
-30 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Madura Utd","awayTeam":"Persita T.","homeScore":1,"awayScore":1,"matchDate":"END
-24 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Persik Kedir","awayTeam":"Madura Utd","homeScore":1,"awayScore":2,"matchDate":"END
-16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Madura Utd","awayTeam":"Persis Solo","homeScore":1,"awayScore":2,"matchDate":"END
-9 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Madura Utd","awayTeam":"PSS Sleman","homeScore":0,"awayScore":3,"matchDate":"END
-24 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Bali Utd","awayTeam":"Madura Utd","homeScore":0,"awayScore":2,"matchDate":"END
-17 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Madura Utd","awayTeam":"Borneo S.","homeScore":2,"awayScore":3,"matchDate":"END
-10 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Semen Padang","awayTeam":"Madura Utd","homeScore":2,"awayScore":1,"matchDate":"END
-4 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Madura Utd","awayTeam":"Persik Kedir","homeScore":2,"awayScore":1,"matchDate":"END
-28 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Arema","awayTeam":"Madura Utd","homeScore":0,"awayScore":1,"matchDate":"END
-24 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Persebaya S.","awayTeam":"Madura Utd","homeScore":1,"awayScore":0,"matchDate":"END
-20 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Madura Utd","awayTeam":"Preah Khan","homeScore":3,"awayScore":3,"matchDate":"AFC
-17 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Preah Khan","awayTeam":"Madura Utd","homeScore":3,"awayScore":0,"matchDate":"AFC
-10 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Madura Utd","awayTeam":"P. Jakarta","homeScore":1,"awayScore":0,"matchDate":"END
-6 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Psis Semaran","awayTeam":"Madura Utd","homeScore":1,"awayScore":2,"matchDate":"END
-16 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Madura Utd","awayTeam":"Tainan City","homeScore":3,"awayScore":0,"matchDate":"AFC
-13 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Tainan City","awayTeam":"Madura Utd","homeScore":0,"awayScore":0,"matchDate":"AFC
-6 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Madura Utd","awayTeam":"Makassar","homeScore":1,"awayScore":3,"matchDate":"END
-2 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Persib B.","awayTeam":"Madura Utd","homeScore":0,"awayScore":0,"matchDate":"END
-22 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Madura Utd","awayTeam":"Dewa Utd","homeScore":3,"awayScore":1,"matchDate":"END
-15 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Madura Utd","awayTeam":"PSBS Biak","homeScore":0,"awayScore":0,"matchDate":"END
-8 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Madura Utd","awayTeam":"Persis Solo","homeScore":2,"awayScore":0,"matchDate":"END
-1 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Persita T.","awayTeam":"Madura Utd","homeScore":1,"awayScore":1,"matchDate":"END
-24 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Madura Utd","awayTeam":"Barito P.","homeScore":2,"awayScore":4,"matchDate":"END
-18 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Malut Utd","awayTeam":"Madura Utd","homeScore":0,"awayScore":1,"matchDate":"END
-10 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"PSS Sleman","awayTeam":"Madura Utd","homeScore":4,"awayScore":0,"matchDate":"END
-27 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Madura Utd","awayTeam":"Bali Utd","homeScore":2,"awayScore":1,"matchDate":"END
-20 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Borneo S.","awayTeam":"Madura Utd","homeScore":5,"awayScore":0,"matchDate":"END
-14 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Madura Utd","awayTeam":"Semen Padang","homeScore":0,"awayScore":1,"matchDate":"END
+        {"homeTeam":"Ums De Loum","awayTeam":"Aigle Royal","homeScore":1,"awayScore":1,"matchDate":"ELI
+2 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Fauve Azur","awayTeam":"Aigle Royal","homeScore":2,"awayScore":0,"matchDate":"ELI
+24 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Aigle Royal","awayTeam":"AS Fortuna","homeScore":2,"awayScore":3,"matchDate":"ELI
+20 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Bamboutos","awayTeam":"Aigle Royal","homeScore":1,"awayScore":1,"matchDate":"ELI
+15 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Apejes","homeScore":4,"awayScore":2,"matchDate":"ELI
+11 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Pwd Bamenda","awayTeam":"Aigle Royal","homeScore":0,"awayScore":0,"matchDate":"ELI
+8 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Fovu de Baha","awayTeam":"Aigle Royal","homeScore":1,"awayScore":2,"matchDate":"ELI
+5 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Avion Academ","homeScore":0,"awayScore":2,"matchDate":"ELI
+1 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"S. Douala","awayTeam":"Aigle Royal","homeScore":1,"awayScore":0,"matchDate":"ELI
+28 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Astres","homeScore":2,"awayScore":2,"matchDate":"ELI
+22 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Colombe","awayTeam":"Aigle Royal","homeScore":0,"awayScore":0,"matchDate":"ELI
+3 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Canon Sporti","homeScore":1,"awayScore":2,"matchDate":"ELI
+25 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Pwd Bamenda","awayTeam":"Aigle Royal","homeScore":0,"awayScore":1,"matchDate":"ELI
+21 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Bamboutos","homeScore":1,"awayScore":0,"matchDate":"ELI
+18 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Gazelle FA d","awayTeam":"Aigle Royal","homeScore":0,"awayScore":2,"matchDate":"ELI
+7 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aigle Royal","awayTeam":"S. Douala","homeScore":4,"awayScore":1,"matchDate":"ELI
+30 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Dynamo de Do","homeScore":0,"awayScore":1,"matchDate":"ELI
+23 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"AS Fortuna","awayTeam":"Aigle Royal","homeScore":1,"awayScore":3,"matchDate":"ELI
 10 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Persik Kedir","awayTeam":"Madura Utd","homeScore":1,"awayScore":0,"matchDate":"END
+        {"homeTeam":"Aigle Royal","awayTeam":"Astres","homeScore":2,"awayScore":0,"matchDate":"ELI
 6 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Madura Utd","awayTeam":"Persebaya S.","homeScore":1,"awayScore":2,"matchDate":"END
+        {"homeTeam":"Aigle Royal","awayTeam":"Colombe","homeScore":1,"awayScore":0,"matchDate":"ELI
+26 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Canon Sporti","awayTeam":"Aigle Royal","homeScore":3,"awayScore":0,"matchDate":"ELI
+19 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Pwd Bamenda","homeScore":2,"awayScore":2,"matchDate":"ELI
+12 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Bamboutos","awayTeam":"Aigle Royal","homeScore":3,"awayScore":1,"matchDate":"ELI
+5 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Gazelle FA d","homeScore":1,"awayScore":1,"matchDate":"ELI
+22 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"S. Douala","awayTeam":"Aigle Royal","homeScore":0,"awayScore":0,"matchDate":"ELI
+18 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Dynamo de Do","awayTeam":"Aigle Royal","homeScore":2,"awayScore":1,"matchDate":"ELI
+14 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Aigle Royal","awayTeam":"AS Fortuna","homeScore":0,"awayScore":1,"matchDate":"ELI
+8 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Astres","awayTeam":"Aigle Royal","homeScore":2,"awayScore":1,"matchDate":"ELI
+4 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Avion Academ","homeScore":0,"awayScore":2,"matchDate":"ELI
+30 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Canon Sporti","awayTeam":"Aigle Royal","homeScore":2,"awayScore":0,"matchDate":"ELI
+22 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Stade Renard","homeScore":1,"awayScore":0,"matchDate":"ELI
+16 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"COTON SPORT","awayTeam":"Aigle Royal","homeScore":2,"awayScore":1,"matchDate":"ELI
+8 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"RENAISSANCE","awayTeam":"Aigle Royal","homeScore":1,"awayScore":0,"matchDate":"ELI
+25 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Pwd Bamenda","homeScore":0,"awayScore":1,"matchDate":"ELI
+18 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Eding Sport","awayTeam":"Aigle Royal","homeScore":0,"awayScore":1,"matchDate":"ELI
+11 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Djiko FC de","awayTeam":"Aigle Royal","homeScore":1,"awayScore":1,"matchDate":"ELI
+26 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Ums De Loum","homeScore":1,"awayScore":1,"matchDate":"ELI
+19 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Colombe","homeScore":0,"awayScore":0,"matchDate":"ELI
+12 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Avion Academ","awayTeam":"Aigle Royal","homeScore":2,"awayScore":4,"matchDate":"ELI
+31 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aigle Royal","awayTeam":"Canon Sporti","homeScore":1,"awayScore":1,"matchDate":"ELI
+28 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"San Pedro","awayTeam":"US Tchologo","homeScore":4,"awayScore":0,"matchDate":"LIG
+13 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"San Pedro","awayTeam":"Racing Club","homeScore":2,"awayScore":1,"matchDate":"LIG
+30 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"San Pedro","awayTeam":"Stade Dabid","homeScore":0,"awayScore":2,"matchDate":"LIG
+24 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"San Pedro","awayTeam":"Sol","homeScore":2,"awayScore":0,"matchDate":"LIG
+16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Osa","awayTeam":"San Pedro","homeScore":1,"awayScore":3,"matchDate":"LIG
+19 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"San Pedro","awayTeam":"Racing Club","homeScore":1,"awayScore":1,"matchDate":"LIG
+11 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Soa","awayTeam":"San Pedro","homeScore":0,"awayScore":0,"matchDate":"LIG
+4 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"San Pedro","awayTeam":"Bouake","homeScore":0,"awayScore":1,"matchDate":"LIG
+18 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Djekanou","awayTeam":"San Pedro","homeScore":2,"awayScore":1,"matchDate":"LIG
+12 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"San Pedro","awayTeam":"Denguele Spo","homeScore":2,"awayScore":0,"matchDate":"LIG
+28 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Asec Mimosas","awayTeam":"San Pedro","homeScore":3,"awayScore":0,"matchDate":"LIG
+23 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"San Pedro","awayTeam":"Zoman","homeScore":3,"awayScore":2,"matchDate":"LIG
+13 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Inova Sca","awayTeam":"San Pedro","homeScore":0,"awayScore":2,"matchDate":"LIG
+8 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"San Pedro","awayTeam":"Stella Club","homeScore":2,"awayScore":0,"matchDate":"LIG
+2 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"San Pedro","awayTeam":"Sol","homeScore":1,"awayScore":2,"matchDate":"LIG
+23 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Mouna","awayTeam":"San Pedro","homeScore":2,"awayScore":1,"matchDate":"LIG
+19 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Lys Sassandr","awayTeam":"San Pedro","homeScore":1,"awayScore":2,"matchDate":"LIG
+15 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"San Pedro","awayTeam":"C. Omnisport","homeScore":1,"awayScore":3,"matchDate":"LIG
+9 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Stade Dabid","awayTeam":"San Pedro","homeScore":1,"awayScore":0,"matchDate":"LIG
+1 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"San Pedro","awayTeam":"Osa","homeScore":2,"awayScore":1,"matchDate":"LIG
+30 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Racing Club","awayTeam":"San Pedro","homeScore":0,"awayScore":3,"matchDate":"LIG
+13 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"San Pedro","awayTeam":"Soa","homeScore":4,"awayScore":1,"matchDate":"LIG
+8 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Bouake","awayTeam":"San Pedro","homeScore":0,"awayScore":6,"matchDate":"LIG
+4 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"San Pedro","awayTeam":"Djekanou","homeScore":2,"awayScore":3,"matchDate":"LIG
+1 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Denguele Spo","awayTeam":"San Pedro","homeScore":0,"awayScore":1,"matchDate":"LIG
+22 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"San Pedro","awayTeam":"Asec Mimosas","homeScore":0,"awayScore":1,"matchDate":"LIG
+14 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Zoman","awayTeam":"San Pedro","homeScore":4,"awayScore":1,"matchDate":"LIG
+8 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"San Pedro","awayTeam":"Inova Sca","homeScore":0,"awayScore":0,"matchDate":"LIG
+2 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Stella Club","awayTeam":"San Pedro","homeScore":1,"awayScore":0,"matchDate":"LIG
+26 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Sol","awayTeam":"San Pedro","homeScore":0,"awayScore":1,"matchDate":"LIG
+20 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"San Pedro","awayTeam":"Mouna","homeScore":0,"awayScore":1,"matchDate":"LIG
+13 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"San Pedro","awayTeam":"Lys Sassandr","homeScore":1,"awayScore":2,"matchDate":"LIG
+6 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"San Pedro","awayTeam":"Stade Dabid","homeScore":4,"awayScore":0,"matchDate":"LIG
+3 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"C. Omnisport","awayTeam":"San Pedro","homeScore":0,"awayScore":5,"matchDate":"LIG
+29 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Al Hilal Omd","awayTeam":"San Pedro","homeScore":1,"awayScore":0,"matchDate":"CAF
+22 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"San Pedro","awayTeam":"Al Hilal Omd","homeScore":2,"awayScore":2,"matchDate":"CAF
+15 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"San Pedro","awayTeam":"BO Rangers","homeScore":1,"awayScore":0,"matchDate":"CAF
+25 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"BO Rangers","awayTeam":"San Pedro","homeScore":1,"awayScore":1,"matchDate":"CAF
+17 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Lys Sassandr","awayTeam":"San Pedro","homeScore":1,"awayScore":0,"matchDate":"LIG
+1 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"San Pedro","awayTeam":"Racing Club","homeScore":1,"awayScore":1,"matchDate":"LIG
+26 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"}
+      ]
+    },
+    {
+      "teamName": "Everton U21 - Aston Villa U21",
+      "totalMatches": 85,
+      "winRate": 0.0,
+      "matches": [
+        {"homeTeam":"Aston Villa","awayTeam":"Everton","homeScore":1,"awayScore":2,"matchDate":"28.02.2025","tournament":"PRE","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Aston Villa","awayTeam":"Everton","homeScore":2,"awayScore":1,"matchDate":"09.02.2024","tournament":"PRE","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Everton","awayTeam":"Aston Villa","homeScore":0,"awayScore":1,"matchDate":"20.01.2014","tournament":"PRE","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Aston Villa","awayTeam":"Everton","homeScore":0,"awayScore":0,"matchDate":"29.04.2013","tournament":"PRE","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Everton","awayTeam":"Aston Villa","homeScore":2,"awayScore":2,"matchDate":"17.03.2013","tournament":"PRE","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Tamworth","awayTeam":"Everton","homeScore":2,"awayScore":1,"matchDate":"NAT
+16 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Doncaster","awayTeam":"Everton","homeScore":2,"awayScore":1,"matchDate":"İNTK
+2 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Norwich","awayTeam":"Everton","homeScore":2,"awayScore":1,"matchDate":"PRE
+29 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Everton","awayTeam":"Fulham","homeScore":3,"awayScore":4,"matchDate":"PRE
+22 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Everton","awayTeam":"Blackburn R.","homeScore":1,"awayScore":0,"matchDate":"PRE
+18 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Solihull M.","awayTeam":"Everton","homeScore":1,"awayScore":2,"matchDate":"NAT
+12 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Manchester","awayTeam":"Everton","homeScore":4,"awayScore":2,"matchDate":"PRE
+25 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Tottenham","awayTeam":"Everton","homeScore":4,"awayScore":5,"matchDate":"PRE
+14 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Everton","awayTeam":"Norwich","homeScore":3,"awayScore":4,"matchDate":"PRE
+7 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Everton","awayTeam":"Arsenal","homeScore":1,"awayScore":2,"matchDate":"PRE
+14 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"West Bromwic","awayTeam":"Everton","homeScore":0,"awayScore":1,"matchDate":"PRE
+10 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aston Villa","awayTeam":"Everton","homeScore":1,"awayScore":2,"matchDate":"PRE
+28 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Fulham","awayTeam":"Everton","homeScore":2,"awayScore":2,"matchDate":"PRE
+21 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Everton","awayTeam":"Southampton","homeScore":1,"awayScore":2,"matchDate":"PRE
+14 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Everton","awayTeam":"Brighton and","homeScore":1,"awayScore":0,"matchDate":"PRE
+7 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Cardiff City","awayTeam":"Everton","homeScore":3,"awayScore":2,"matchDate":"PRE
+1 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Newcastle","awayTeam":"Everton","homeScore":2,"awayScore":2,"matchDate":"PRE
+27 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Everton","awayTeam":"Leeds Utd","homeScore":1,"awayScore":3,"matchDate":"PRE
+17 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Leicester","awayTeam":"Everton","homeScore":1,"awayScore":1,"matchDate":"PRE
+16 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Everton","awayTeam":"Ipswich Town","homeScore":0,"awayScore":0,"matchDate":"PRE
+6 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Everton","awayTeam":"Nottingham","homeScore":2,"awayScore":4,"matchDate":"PRE
+29 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Watford","awayTeam":"Everton","homeScore":1,"awayScore":0,"matchDate":"PRE
+25 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Everton","awayTeam":"Cardiff City","homeScore":2,"awayScore":2,"matchDate":"PRE
+8 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Everton","awayTeam":"Stoke City","homeScore":4,"awayScore":1,"matchDate":"PRE
+2 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Accrington","awayTeam":"Everton","homeScore":2,"awayScore":1,"matchDate":"İNTK
+29 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Liverpool","awayTeam":"Everton","homeScore":0,"awayScore":2,"matchDate":"PRE
+26 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Wolverhampt","awayTeam":"Everton","homeScore":4,"awayScore":2,"matchDate":"PRE
+4 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Everton","awayTeam":"Reading","homeScore":3,"awayScore":3,"matchDate":"PRE
+30 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Ipswich Town","awayTeam":"Everton","homeScore":3,"awayScore":3,"matchDate":"PRE
+26 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Everton","awayTeam":"Sunderland","homeScore":4,"awayScore":3,"matchDate":"PRE
+22 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Stockport","awayTeam":"Everton","homeScore":4,"awayScore":1,"matchDate":"İNTK
+17 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Everton","awayTeam":"Watford","homeScore":2,"awayScore":1,"matchDate":"PRE
+13 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Manchester","awayTeam":"Everton","homeScore":5,"awayScore":0,"matchDate":"PRE
+1 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Chelsea","awayTeam":"Everton","homeScore":1,"awayScore":1,"matchDate":"PRE
+23 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Tranmere","awayTeam":"Everton","homeScore":1,"awayScore":3,"matchDate":"İNTK
+20 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Everton","awayTeam":"Blackburn R.","homeScore":3,"awayScore":1,"matchDate":"PRE
+16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Everton","awayTeam":"Blackburn R.","homeScore":0,"awayScore":3,"matchDate":"HAZ
+10 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Derby County","awayTeam":"Everton","homeScore":3,"awayScore":0,"matchDate":"PRE
+29 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Leeds Utd","awayTeam":"Everton","homeScore":1,"awayScore":1,"matchDate":"PRE
+22 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Crystal P.","awayTeam":"Everton","homeScore":4,"awayScore":2,"matchDate":"U21
+16 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Crawley","awayTeam":"Aston Villa","homeScore":4,"awayScore":2,"matchDate":"İNTK
+16 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Aston Villa","awayTeam":"Chelsea","homeScore":1,"awayScore":2,"matchDate":"PRE
+29 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"West Bromwic","awayTeam":"Aston Villa","homeScore":1,"awayScore":3,"matchDate":"PRE
+25 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aston Villa","awayTeam":"Leeds Utd","homeScore":0,"awayScore":3,"matchDate":"PRE
+15 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aston Villa","awayTeam":"Liverpool","homeScore":2,"awayScore":2,"matchDate":"PRE
+18 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Aston Villa","awayTeam":"Sunderland","homeScore":2,"awayScore":2,"matchDate":"PRE
+11 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Chelsea","awayTeam":"Aston Villa","homeScore":4,"awayScore":1,"matchDate":"PRE
+4 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Stoke City","awayTeam":"Aston Villa","homeScore":1,"awayScore":1,"matchDate":"PRE
+8 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Aston Villa","awayTeam":"Everton","homeScore":1,"awayScore":2,"matchDate":"PRE
+28 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Brighton and","awayTeam":"Aston Villa","homeScore":1,"awayScore":1,"matchDate":"PRE
+23 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Crystal P.","awayTeam":"Aston Villa","homeScore":3,"awayScore":0,"matchDate":"PRE
+17 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Aston Villa","awayTeam":"Reading","homeScore":1,"awayScore":3,"matchDate":"PRE
+7 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aston Villa","awayTeam":"Fulham","homeScore":3,"awayScore":3,"matchDate":"PRE
+27 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Manchester","awayTeam":"Aston Villa","homeScore":2,"awayScore":1,"matchDate":"PRE
+18 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Aston Villa","awayTeam":"Bradford","homeScore":1,"awayScore":3,"matchDate":"İNTK
+14 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Blackpool","awayTeam":"Aston Villa","homeScore":1,"awayScore":1,"matchDate":"İNTK
+17 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Aston Villa","awayTeam":"Wolverhampt","homeScore":0,"awayScore":4,"matchDate":"PRE
+14 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aston Villa","awayTeam":"Norwich","homeScore":0,"awayScore":3,"matchDate":"PRE
 2 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"Madura Utd","awayTeam":"Arema","homeScore":2,"awayScore":4,"matchDate":"END
-21 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
-        {"homeTeam":"P. Jakarta","awayTeam":"Madura Utd","homeScore":4,"awayScore":1,"matchDate":"END
-6 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"SP Falcons F","awayTeam":"Madura Utd","homeScore":0,"awayScore":0,"matchDate":"AFC
-27 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Madura Utd","awayTeam":"Psis Semaran","homeScore":2,"awayScore":0,"matchDate":"END
-23 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Makassar","awayTeam":"Madura Utd","homeScore":2,"awayScore":0,"matchDate":"END
-18 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
-        {"homeTeam":"Madura Utd","awayTeam":"Persib B.","homeScore":2,"awayScore":2,"matchDate":"END
-28 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
-        {"homeTeam":"Dewa Utd","awayTeam":"Madura Utd","homeScore":3,"awayScore":3,"matchDate":"END
-21 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"}
+        {"homeTeam":"Barrow","awayTeam":"Aston Villa","homeScore":3,"awayScore":0,"matchDate":"İNTK
+12 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Leicester","awayTeam":"Aston Villa","homeScore":3,"awayScore":1,"matchDate":"PRE
+1 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Middlesbroug","awayTeam":"Aston Villa","homeScore":4,"awayScore":2,"matchDate":"PRE
+25 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Bolton","awayTeam":"Aston Villa","homeScore":1,"awayScore":1,"matchDate":"İNTK
+8 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Aston Villa","awayTeam":"Newcastle","homeScore":2,"awayScore":3,"matchDate":"PRE
+5 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Manchester","awayTeam":"Aston Villa","homeScore":4,"awayScore":1,"matchDate":"PRE
+27 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Aston Villa","awayTeam":"Blackburn R.","homeScore":2,"awayScore":1,"matchDate":"PRE
+21 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Fleetwood T.","awayTeam":"Aston Villa","homeScore":2,"awayScore":3,"matchDate":"İNTK
+3 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Arsenal","awayTeam":"Aston Villa","homeScore":4,"awayScore":1,"matchDate":"PRE
+30 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Leeds Utd","awayTeam":"Aston Villa","homeScore":1,"awayScore":1,"matchDate":"PRE
+23 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Aston Villa","awayTeam":"Derby County","homeScore":3,"awayScore":1,"matchDate":"PRE
+16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Tottenham","awayTeam":"Aston Villa","homeScore":3,"awayScore":3,"matchDate":"PRE
+6 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Newcastle","awayTeam":"Aston Villa","homeScore":0,"awayScore":1,"matchDate":"PRE
+29 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aston Villa","awayTeam":"Norwich","homeScore":1,"awayScore":4,"matchDate":"PRE
+26 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Nottingham","awayTeam":"Aston Villa","homeScore":3,"awayScore":0,"matchDate":"PRE
+19 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Arsenal","awayTeam":"Aston Villa","homeScore":3,"awayScore":5,"matchDate":"PRE
+15 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aston Villa","awayTeam":"Chelsea","homeScore":0,"awayScore":4,"matchDate":"PRE
+8 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aston Villa","awayTeam":"Tottenham","homeScore":1,"awayScore":3,"matchDate":"PRE
+2 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aston Villa","awayTeam":"Leicester","homeScore":2,"awayScore":2,"matchDate":"PRE
+15 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Crystal P.","awayTeam":"Aston Villa","homeScore":4,"awayScore":2,"matchDate":"PRE
+11 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Liverpool","awayTeam":"Aston Villa","homeScore":0,"awayScore":2,"matchDate":"PRE
+3 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aston Villa","awayTeam":"Blackburn R.","homeScore":6,"awayScore":2,"matchDate":"PRE
+27 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"}
+      ]
+    },
+    {
+      "teamName": "Watford U21 - Cardiff City U21",
+      "totalMatches": 90,
+      "winRate": 0.0,
+      "matches": [
+        {"homeTeam":"Cardiff City","awayTeam":"Watford","homeScore":3,"awayScore":1,"matchDate":"02.05.2025","tournament":"PRO","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Cardiff City","homeScore":2,"awayScore":1,"matchDate":"25.04.2025","tournament":"PRO","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Cardiff City","awayTeam":"Watford","homeScore":0,"awayScore":0,"matchDate":"08.01.2024","tournament":"PRO","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Watford","awayTeam":"Cardiff City","homeScore":2,"awayScore":2,"matchDate":"24.10.2023","tournament":"PRO","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Cardiff City","awayTeam":"Watford","homeScore":0,"awayScore":3,"matchDate":"24.01.2023","tournament":"PRO","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Watford","awayTeam":"Cardiff City","homeScore":0,"awayScore":1,"matchDate":"18.10.2022","tournament":"PRO","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Watford","awayTeam":"Cardiff City","homeScore":0,"awayScore":2,"matchDate":"11.03.2022","tournament":"PRO","matchType":"rekabet-gecmisi","result":"A"},
+        {"homeTeam":"Cardiff City","awayTeam":"Watford","homeScore":4,"awayScore":0,"matchDate":"06.12.2021","tournament":"PRO","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Cardiff City","awayTeam":"Watford","homeScore":3,"awayScore":1,"matchDate":"02.03.2020","tournament":"PRO","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Cardiff City","homeScore":1,"awayScore":1,"matchDate":"09.12.2019","tournament":"PRO","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"Barnsley","awayTeam":"Watford","homeScore":0,"awayScore":3,"matchDate":"PRO
+16 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Leyton Orien","awayTeam":"Watford","homeScore":3,"awayScore":2,"matchDate":"PRE
+9 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Sheffield U.","homeScore":0,"awayScore":5,"matchDate":"PRO
+5 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Crewe Alex.","awayTeam":"Watford","homeScore":2,"awayScore":3,"matchDate":"PRO
+1 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Watford","awayTeam":"Hull City","homeScore":2,"awayScore":2,"matchDate":"PRO
+22 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Sheffield W.","awayTeam":"Watford","homeScore":3,"awayScore":3,"matchDate":"PRO
+18 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Watford","awayTeam":"Fleetwood T.","homeScore":1,"awayScore":1,"matchDate":"PRO
+11 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Watford","awayTeam":"Sheffield W.","homeScore":1,"awayScore":1,"matchDate":"PRO
+5 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Cardiff City","awayTeam":"Watford","homeScore":3,"awayScore":1,"matchDate":"PRO
+2 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Cardiff City","homeScore":2,"awayScore":1,"matchDate":"PRO
+25 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Burnley","awayTeam":"Watford","homeScore":4,"awayScore":1,"matchDate":"PRO
+22 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Brentford","homeScore":2,"awayScore":1,"matchDate":"PRO
+18 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Peterborough","homeScore":1,"awayScore":2,"matchDate":"PRO
+11 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Barnsley","awayTeam":"Watford","homeScore":1,"awayScore":1,"matchDate":"PRO
+4 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Watford","awayTeam":"Coventry C.","homeScore":1,"awayScore":2,"matchDate":"PRO
+31 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Bristol City","awayTeam":"Watford","homeScore":3,"awayScore":2,"matchDate":"PRO
+25 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"QPR","awayTeam":"Watford","homeScore":0,"awayScore":0,"matchDate":"PRO
+20 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Watford","awayTeam":"Swansea","homeScore":1,"awayScore":3,"matchDate":"PRO
+17 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Millwall","awayTeam":"Watford","homeScore":4,"awayScore":2,"matchDate":"PRO
+11 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Charlton Ath","awayTeam":"Watford","homeScore":2,"awayScore":1,"matchDate":"PRO
+7 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Bournemouth","homeScore":1,"awayScore":1,"matchDate":"PRO
+3 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Brentford","awayTeam":"Watford","homeScore":2,"awayScore":2,"matchDate":"PRO
+12 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Colchester","awayTeam":"Watford","homeScore":0,"awayScore":3,"matchDate":"PRO
+7 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Ipswich Town","awayTeam":"Watford","homeScore":4,"awayScore":2,"matchDate":"PRE
+4 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Ipswich Town","homeScore":2,"awayScore":0,"matchDate":"PRO
+20 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Cardiff City","awayTeam":"Watford","homeScore":3,"awayScore":1,"matchDate":"PRE
+19 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Bristol City","homeScore":5,"awayScore":2,"matchDate":"PRO
+16 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Swansea","awayTeam":"Watford","homeScore":1,"awayScore":3,"matchDate":"PRO
+9 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Watford","awayTeam":"Millwall","homeScore":1,"awayScore":3,"matchDate":"PRO
+2 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Watford","awayTeam":"Everton","homeScore":1,"awayScore":0,"matchDate":"PRE
+25 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Bournemouth","awayTeam":"Watford","homeScore":4,"awayScore":1,"matchDate":"PRO
+19 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Ipswich Town","homeScore":2,"awayScore":0,"matchDate":"PRE
+9 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"QPR","homeScore":1,"awayScore":0,"matchDate":"PRO
+4 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Colchester","homeScore":7,"awayScore":0,"matchDate":"PRO
+28 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Cardiff City","homeScore":0,"awayScore":2,"matchDate":"PRE
+17 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Ipswich Town","awayTeam":"Watford","homeScore":2,"awayScore":1,"matchDate":"PRO
+8 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Charlton Ath","homeScore":2,"awayScore":3,"matchDate":"PRO
+20 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Crewe Alex.","awayTeam":"Watford","homeScore":3,"awayScore":0,"matchDate":"PRO
+16 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Everton","awayTeam":"Watford","homeScore":2,"awayScore":1,"matchDate":"PRE
+13 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Wigan Ath","homeScore":4,"awayScore":1,"matchDate":"PRO
+9 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Huddersfield","awayTeam":"Cardiff City","homeScore":2,"awayScore":2,"matchDate":"PRO
+16 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Peterborough","awayTeam":"Cardiff City","homeScore":1,"awayScore":4,"matchDate":"PRO
+2 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Cardiff City","awayTeam":"Wigan Ath","homeScore":1,"awayScore":2,"matchDate":"PRO
+26 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Crewe Alex.","awayTeam":"Cardiff City","homeScore":0,"awayScore":3,"matchDate":"PRO
+18 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Cardiff City","awayTeam":"Sheffield U.","homeScore":1,"awayScore":1,"matchDate":"PRO
+12 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Cambrian","awayTeam":"Cardiff City","homeScore":2,"awayScore":0,"matchDate":"GALLK
+1 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Ammanford","awayTeam":"Cardiff City","homeScore":0,"awayScore":0,"matchDate":"GALLK
+19 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Yeovil","awayTeam":"Cardiff City","homeScore":2,"awayScore":3,"matchDate":"HAZ
+15 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Cardiff City","awayTeam":"Burnley","homeScore":1,"awayScore":4,"matchDate":"PRO
+6 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Cardiff City","awayTeam":"Watford","homeScore":3,"awayScore":1,"matchDate":"PRO
+2 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Hull City","awayTeam":"Cardiff City","homeScore":2,"awayScore":0,"matchDate":"PRO
+29 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Cardiff City","homeScore":2,"awayScore":1,"matchDate":"PRO
+25 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"QPR","awayTeam":"Cardiff City","homeScore":2,"awayScore":1,"matchDate":"PRO
+22 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Cardiff City","awayTeam":"Barnsley","homeScore":1,"awayScore":0,"matchDate":"PRO
+15 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Crewe Alex.","awayTeam":"Cardiff City","homeScore":4,"awayScore":2,"matchDate":"PRO
+7 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Cardiff City","awayTeam":"Peterborough","homeScore":4,"awayScore":0,"matchDate":"PRO
+1 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Cardiff City","awayTeam":"Colchester","homeScore":1,"awayScore":1,"matchDate":"PRO
+15 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Bournemouth","awayTeam":"Cardiff City","homeScore":4,"awayScore":0,"matchDate":"PRO
+11 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Cardiff City","awayTeam":"West Bromwic","homeScore":1,"awayScore":1,"matchDate":"PRE
+7 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Cardiff City","awayTeam":"Millwall","homeScore":1,"awayScore":2,"matchDate":"PRO
+4 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Cardiff City","awayTeam":"Coventry C.","homeScore":1,"awayScore":1,"matchDate":"PRO
+28 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Bristol City","awayTeam":"Cardiff City","homeScore":1,"awayScore":1,"matchDate":"PRO
+25 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Cardiff City","awayTeam":"Swansea","homeScore":2,"awayScore":1,"matchDate":"PRO
+11 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Millwall","awayTeam":"Cardiff City","homeScore":2,"awayScore":0,"matchDate":"PRO
+7 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Cardiff City","awayTeam":"Everton","homeScore":3,"awayScore":2,"matchDate":"PRE
+1 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Charlton Ath","awayTeam":"Cardiff City","homeScore":6,"awayScore":1,"matchDate":"PRO
+24 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Cardiff City","awayTeam":"Brentford","homeScore":0,"awayScore":3,"matchDate":"PRO
+14 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Ipswich Town","awayTeam":"Cardiff City","homeScore":5,"awayScore":1,"matchDate":"PRO
+7 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Cardiff City","awayTeam":"Watford","homeScore":3,"awayScore":1,"matchDate":"PRE
+19 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Cardiff City","awayTeam":"QPR","homeScore":2,"awayScore":1,"matchDate":"PRO
+16 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Colchester","awayTeam":"Cardiff City","homeScore":0,"awayScore":1,"matchDate":"PRO
+6 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Cardiff City","awayTeam":"Bournemouth","homeScore":0,"awayScore":0,"matchDate":"PRO
+3 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Aberystwyth","awayTeam":"Cardiff City","homeScore":1,"awayScore":1,"matchDate":"GALLK
+30 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Cardiff City","awayTeam":"Ipswich Town","homeScore":0,"awayScore":2,"matchDate":"PRE
+23 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Everton","awayTeam":"Cardiff City","homeScore":2,"awayScore":2,"matchDate":"PRE
+8 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Cardiff City","awayTeam":"Bristol City","homeScore":4,"awayScore":1,"matchDate":"PRO
+4 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Swansea","awayTeam":"Cardiff City","homeScore":0,"awayScore":1,"matchDate":"PRO
+28 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Cardiff City","awayTeam":"Cardiff Met.","homeScore":3,"awayScore":2,"matchDate":"GALLK
+21 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Watford","awayTeam":"Cardiff City","homeScore":0,"awayScore":2,"matchDate":"PRE
+17 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Cardiff City","awayTeam":"Charlton Ath","homeScore":2,"awayScore":0,"matchDate":"PRO
+5 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"}
+      ]
+    },
+    {
+      "teamName": "Terengganu - Melaka",
+      "totalMatches": 76,
+      "winRate": 0.0,
+      "matches": [
+        {"homeTeam":"Terengganu","awayTeam":"Imigresen","homeScore":3,"awayScore":0,"matchDate":"FA
+13 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Selangor","awayTeam":"Terengganu","homeScore":5,"awayScore":2,"matchDate":"SÜP
+27 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Brunei DPMM","awayTeam":"Terengganu","homeScore":0,"awayScore":5,"matchDate":"SÜP
+22 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Imigresen","awayTeam":"Terengganu","homeScore":2,"awayScore":1,"matchDate":"FA
+17 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Terengganu","awayTeam":"PDRM","homeScore":2,"awayScore":2,"matchDate":"SÜP
+13 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Penang","awayTeam":"Terengganu","homeScore":0,"awayScore":3,"matchDate":"SÜP
+10 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"PDRM","awayTeam":"Terengganu","homeScore":1,"awayScore":0,"matchDate":"SÜP
+12 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Selangor","awayTeam":"Terengganu","homeScore":1,"awayScore":0,"matchDate":"SÜP
+5 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Terengganu","awayTeam":"Sabah","homeScore":2,"awayScore":2,"matchDate":"SÜP
+7 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Pahang FA","awayTeam":"Terengganu","homeScore":1,"awayScore":5,"matchDate":"SÜP
+27 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Terengganu","awayTeam":"Kuching FA","homeScore":2,"awayScore":2,"matchDate":"SÜP
+21 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Terengganu","awayTeam":"Kuala Lumpur","homeScore":1,"awayScore":2,"matchDate":"SÜP
+14 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Negeri Semb.","awayTeam":"Terengganu","homeScore":0,"awayScore":2,"matchDate":"SÜP
+9 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Johor Darul","awayTeam":"Terengganu","homeScore":2,"awayScore":1,"matchDate":"PIA
+1 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Terengganu","awayTeam":"Johor Darul","homeScore":0,"awayScore":1,"matchDate":"SÜP
+25 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Terengganu","awayTeam":"Johor Darul","homeScore":0,"awayScore":4,"matchDate":"PIA
+17 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Terengganu","awayTeam":"Negeri Semb.","homeScore":4,"awayScore":2,"matchDate":"PIA
+21 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Negeri Semb.","awayTeam":"Terengganu","homeScore":0,"awayScore":2,"matchDate":"PIA
+14 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Kelantan U.","awayTeam":"Terengganu","homeScore":1,"awayScore":2,"matchDate":"SÜP
+4 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Terengganu","awayTeam":"Melaka","homeScore":0,"awayScore":0,"matchDate":"PIA
+29 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Melaka","awayTeam":"Terengganu","homeScore":1,"awayScore":4,"matchDate":"PIA
+23 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Terengganu","awayTeam":"Penang","homeScore":1,"awayScore":0,"matchDate":"SÜP
+1 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Perak","awayTeam":"Terengganu","homeScore":2,"awayScore":2,"matchDate":"SÜP
+26 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Kedah Darul","awayTeam":"Terengganu","homeScore":1,"awayScore":0,"matchDate":"SÜP
+19 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Terengganu","awayTeam":"PDRM","homeScore":1,"awayScore":1,"matchDate":"SÜP
+4 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Terengganu","awayTeam":"Selangor","homeScore":0,"awayScore":1,"matchDate":"SÜP
+28 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Sabah","awayTeam":"Terengganu","homeScore":1,"awayScore":1,"matchDate":"SÜP
+15 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Terengganu","awayTeam":"Pahang FA","homeScore":1,"awayScore":1,"matchDate":"SÜP
+16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Kuala Lumpur","awayTeam":"Terengganu","homeScore":0,"awayScore":2,"matchDate":"SÜP
+10 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Selangor","awayTeam":"Terengganu","homeScore":4,"awayScore":1,"matchDate":"FA
+3 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Terengganu","awayTeam":"Negeri Semb.","homeScore":3,"awayScore":2,"matchDate":"SÜP
+30 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Johor Darul","awayTeam":"Terengganu","homeScore":4,"awayScore":0,"matchDate":"SÜP
+26 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Terengganu","awayTeam":"Selangor","homeScore":3,"awayScore":2,"matchDate":"FA
+19 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Sabah","awayTeam":"Terengganu","homeScore":0,"awayScore":3,"matchDate":"FA
+6 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Terengganu","awayTeam":"Sabah","homeScore":4,"awayScore":0,"matchDate":"FA
+28 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Kuching FA","awayTeam":"Terengganu","homeScore":1,"awayScore":1,"matchDate":"SÜP
+22 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Terengganu","awayTeam":"Perak","homeScore":2,"awayScore":1,"matchDate":"FA
+14 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Terengganu","awayTeam":"Kelantan U.","homeScore":3,"awayScore":0,"matchDate":"SÜP
+24 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Penang","awayTeam":"Terengganu","homeScore":0,"awayScore":0,"matchDate":"SÜP
+19 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Terengganu","awayTeam":"Perak","homeScore":3,"awayScore":1,"matchDate":"SÜP
+11 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Penang","awayTeam":"Melaka","homeScore":3,"awayScore":0,"matchDate":"FA
+15 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Sabah","awayTeam":"Melaka","homeScore":1,"awayScore":1,"matchDate":"SÜP
+29 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"PDRM","awayTeam":"Melaka","homeScore":0,"awayScore":0,"matchDate":"SÜP
+23 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Melaka","awayTeam":"Penang","homeScore":0,"awayScore":2,"matchDate":"FA
+17 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Melaka","awayTeam":"Penang","homeScore":1,"awayScore":1,"matchDate":"SÜP
+13 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Melaka","awayTeam":"Machan FC","homeScore":7,"awayScore":2,"matchDate":"LIG
+22 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Bunga Raya","awayTeam":"Melaka","homeScore":1,"awayScore":6,"matchDate":"LIG
+7 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Melaka","awayTeam":"Imigresen","homeScore":0,"awayScore":0,"matchDate":"LIG
+1 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Armed Forces","awayTeam":"Melaka","homeScore":0,"awayScore":1,"matchDate":"LIG
+26 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Melaka","awayTeam":"Kl Rovers","homeScore":3,"awayScore":1,"matchDate":"LIG
+18 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Malaysia U.","awayTeam":"Melaka","homeScore":0,"awayScore":4,"matchDate":"LIG
+12 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Melaka","awayTeam":"Putrajaya A.","homeScore":3,"awayScore":2,"matchDate":"LIG
+4 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"YPM","awayTeam":"Melaka","homeScore":1,"awayScore":2,"matchDate":"LIG
+27 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Melaka","awayTeam":"UITM Shah A.","homeScore":4,"awayScore":0,"matchDate":"LIG
+3 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Terengganu","awayTeam":"Melaka","homeScore":0,"awayScore":0,"matchDate":"PIA
+29 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Melaka","awayTeam":"Terengganu","homeScore":1,"awayScore":4,"matchDate":"PIA
+23 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Harini FC","awayTeam":"Melaka","homeScore":0,"awayScore":7,"matchDate":"LIG
+17 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Melaka","awayTeam":"Manjung City","homeScore":7,"awayScore":0,"matchDate":"LIG
+12 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Melaka","awayTeam":"Bukit Tambun","homeScore":4,"awayScore":0,"matchDate":"LIG
+26 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Gombak","awayTeam":"Melaka","homeScore":0,"awayScore":0,"matchDate":"LIG
+20 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Melaka","awayTeam":"Pib FC","homeScore":3,"awayScore":0,"matchDate":"LIG
+13 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Machan FC","awayTeam":"Melaka","homeScore":0,"awayScore":3,"matchDate":"LIG
+5 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Melaka","awayTeam":"Bunga Raya","homeScore":1,"awayScore":0,"matchDate":"LIG
+21 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Imigresen","awayTeam":"Melaka","homeScore":1,"awayScore":1,"matchDate":"LIG
+15 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Melaka","awayTeam":"Armed Forces","homeScore":5,"awayScore":1,"matchDate":"LIG
+7 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Kl Rovers","awayTeam":"Melaka","homeScore":1,"awayScore":1,"matchDate":"LIG
+25 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Melaka","awayTeam":"Malaysia U.","homeScore":2,"awayScore":0,"matchDate":"LIG
+16 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Melaka","awayTeam":"YPM","homeScore":3,"awayScore":0,"matchDate":"LIG
+10 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Putrajaya A.","awayTeam":"Melaka","homeScore":1,"awayScore":0,"matchDate":"LIG
+2 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"UITM Shah A.","awayTeam":"Melaka","homeScore":0,"awayScore":3,"matchDate":"LIG
+20 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Melaka","awayTeam":"Harini FC","homeScore":3,"awayScore":1,"matchDate":"LIG
+13 Tem","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Manjung City","awayTeam":"Melaka","homeScore":0,"awayScore":2,"matchDate":"LIG
+29 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Bukit Tambun","awayTeam":"Melaka","homeScore":0,"awayScore":1,"matchDate":"LIG
+22 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Melaka","awayTeam":"Gombak","homeScore":0,"awayScore":0,"matchDate":"LIG
+8 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Pib FC","awayTeam":"Melaka","homeScore":1,"awayScore":4,"matchDate":"LIG
+1 Haz","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Terengganu","awayTeam":"Melaka","homeScore":4,"awayScore":0,"matchDate":"FA
+14 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"}
+      ]
+    },
+    {
+      "teamName": "El Daklyeh - Gazl Kafr Eldwar",
+      "totalMatches": 82,
+      "winRate": 0.0,
+      "matches": [
+        {"homeTeam":"Gazl Kafr El","awayTeam":"El Daklyeh","homeScore":1,"awayScore":1,"matchDate":"21.03.2025","tournament":"2.","matchType":"rekabet-gecmisi","result":"D"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Gazl Kafr El","homeScore":1,"awayScore":0,"matchDate":"14.11.2024","tournament":"2.","matchType":"rekabet-gecmisi","result":"H"},
+        {"homeTeam":"El Terasanah","awayTeam":"El Daklyeh","homeScore":1,"awayScore":0,"matchDate":"2.
+11 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"El Daklyeh","awayTeam":"La Viena","homeScore":0,"awayScore":2,"matchDate":"2.
+4 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Telecom","awayTeam":"El Daklyeh","homeScore":0,"awayScore":1,"matchDate":"2.
+30 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Dayrout","homeScore":2,"awayScore":0,"matchDate":"2.
+23 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Asyut Pet.","homeScore":1,"awayScore":2,"matchDate":"2.
+31 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Telecom","awayTeam":"El Daklyeh","homeScore":1,"awayScore":2,"matchDate":"2.
+25 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Sporting Al.","homeScore":1,"awayScore":0,"matchDate":"2.
+16 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Proxy SC","homeScore":3,"awayScore":4,"matchDate":"2.
+11 May","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Alqana","awayTeam":"El Daklyeh","homeScore":1,"awayScore":1,"matchDate":"2.
+4 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"El Daklyeh","awayTeam":"El Terasanah","homeScore":1,"awayScore":2,"matchDate":"2.
+29 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Kahrabaa Is.","awayTeam":"El Daklyeh","homeScore":1,"awayScore":0,"matchDate":"2.
+25 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"El Daklyeh","awayTeam":"El Sekka El","homeScore":1,"awayScore":0,"matchDate":"2.
+20 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"ABO Qair Sem","awayTeam":"El Daklyeh","homeScore":1,"awayScore":0,"matchDate":"2.
+15 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"El Daklyeh","awayTeam":"La Viena","homeScore":1,"awayScore":0,"matchDate":"2.
+9 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Tanta","awayTeam":"El Daklyeh","homeScore":4,"awayScore":1,"matchDate":"2.
+3 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Wadi Degla","homeScore":1,"awayScore":2,"matchDate":"2.
+26 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"El Daklyeh","homeScore":1,"awayScore":1,"matchDate":"2.
+21 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"El Daklyeh","awayTeam":"El Mansurah","homeScore":0,"awayScore":3,"matchDate":"2.
+16 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aswan","awayTeam":"El Daklyeh","homeScore":2,"awayScore":1,"matchDate":"2.
+12 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Dayrout","homeScore":1,"awayScore":4,"matchDate":"2.
+21 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Montakhab","awayTeam":"El Daklyeh","homeScore":1,"awayScore":1,"matchDate":"2.
+16 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Al Mokawloon","homeScore":0,"awayScore":0,"matchDate":"2.
+9 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Baladiyyat","awayTeam":"El Daklyeh","homeScore":1,"awayScore":2,"matchDate":"2.
+3 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Asyut Pet.","awayTeam":"El Daklyeh","homeScore":0,"awayScore":0,"matchDate":"2.
+26 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Telecom","homeScore":2,"awayScore":1,"matchDate":"2.
+19 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Sporting Al.","awayTeam":"El Daklyeh","homeScore":0,"awayScore":0,"matchDate":"2.
+14 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Proxy SC","awayTeam":"El Daklyeh","homeScore":1,"awayScore":1,"matchDate":"2.
+5 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Alqana","homeScore":0,"awayScore":0,"matchDate":"2.
+29 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"El Terasanah","awayTeam":"El Daklyeh","homeScore":0,"awayScore":1,"matchDate":"2.
+22 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Kahrabaa Is.","homeScore":0,"awayScore":2,"matchDate":"2.
+15 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"El Sekka El","awayTeam":"El Daklyeh","homeScore":0,"awayScore":1,"matchDate":"2.
+12 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"El Daklyeh","awayTeam":"ABO Qair Sem","homeScore":1,"awayScore":2,"matchDate":"2.
+9 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"La Viena","awayTeam":"El Daklyeh","homeScore":2,"awayScore":3,"matchDate":"2.
+2 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Tanta","homeScore":0,"awayScore":1,"matchDate":"2.
+24 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Wadi Degla","awayTeam":"El Daklyeh","homeScore":2,"awayScore":0,"matchDate":"2.
+18 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Gazl Kafr El","homeScore":1,"awayScore":0,"matchDate":"2.
+14 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"El Mansurah","awayTeam":"El Daklyeh","homeScore":0,"awayScore":0,"matchDate":"2.
+10 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Aswan","homeScore":0,"awayScore":0,"matchDate":"2.
+4 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Dayrout","awayTeam":"El Daklyeh","homeScore":0,"awayScore":1,"matchDate":"2.
+28 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Montakhab","homeScore":0,"awayScore":1,"matchDate":"2.
+20 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Alqana","homeScore":0,"awayScore":3,"matchDate":"2.
+11 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Masar","awayTeam":"Gazl Kafr El","homeScore":0,"awayScore":0,"matchDate":"2.
+4 Eyl","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"El Sekka El","homeScore":1,"awayScore":0,"matchDate":"2.
+30 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"El Entag","awayTeam":"Gazl Kafr El","homeScore":2,"awayScore":0,"matchDate":"2.
+22 Ağu","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Tanta","awayTeam":"Gazl Kafr El","homeScore":0,"awayScore":0,"matchDate":"2.
+31 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Wadi Degla","homeScore":1,"awayScore":0,"matchDate":"2.
+24 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Proxy SC","awayTeam":"Gazl Kafr El","homeScore":2,"awayScore":1,"matchDate":"2.
+16 May","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"El Mansurah","awayTeam":"Gazl Kafr El","homeScore":0,"awayScore":0,"matchDate":"2.
+11 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Aswan","homeScore":1,"awayScore":1,"matchDate":"2.
+5 May","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Dayrout","awayTeam":"Gazl Kafr El","homeScore":1,"awayScore":1,"matchDate":"2.
+30 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Montakhab","homeScore":3,"awayScore":2,"matchDate":"2.
+25 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Al Mokawloon","awayTeam":"Gazl Kafr El","homeScore":1,"awayScore":1,"matchDate":"2.
+20 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Baladiyyat","homeScore":0,"awayScore":1,"matchDate":"2.
+14 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Asyut Pet.","awayTeam":"Gazl Kafr El","homeScore":1,"awayScore":1,"matchDate":"2.
+9 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Telecom","homeScore":1,"awayScore":1,"matchDate":"2.
+4 Nis","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Sporting Al.","awayTeam":"Gazl Kafr El","homeScore":0,"awayScore":0,"matchDate":"2.
+26 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"El Daklyeh","homeScore":1,"awayScore":1,"matchDate":"2.
+21 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Alqana","awayTeam":"Gazl Kafr El","homeScore":0,"awayScore":0,"matchDate":"2.
+16 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"El Terasanah","homeScore":1,"awayScore":0,"matchDate":"2.
+11 Mar","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Kahrabaa Is.","awayTeam":"Gazl Kafr El","homeScore":1,"awayScore":1,"matchDate":"2.
+21 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"El Sekka El","homeScore":0,"awayScore":2,"matchDate":"2.
+15 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"ABO Qair Sem","awayTeam":"Gazl Kafr El","homeScore":1,"awayScore":0,"matchDate":"2.
+9 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"La Viena","homeScore":0,"awayScore":0,"matchDate":"2.
+3 Şub","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Tanta","homeScore":1,"awayScore":1,"matchDate":"2.
+26 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Wadi Degla","awayTeam":"Gazl Kafr El","homeScore":2,"awayScore":0,"matchDate":"2.
+19 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Proxy SC","homeScore":1,"awayScore":1,"matchDate":"2.
+14 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"El Mansurah","homeScore":0,"awayScore":2,"matchDate":"2.
+5 Oca","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Aswan","awayTeam":"Gazl Kafr El","homeScore":1,"awayScore":1,"matchDate":"2.
+30 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Dayrout","homeScore":1,"awayScore":1,"matchDate":"2.
+23 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Montakhab","awayTeam":"Gazl Kafr El","homeScore":0,"awayScore":0,"matchDate":"2.
+15 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Al Mokawloon","homeScore":1,"awayScore":1,"matchDate":"2.
+12 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Baladiyyat","awayTeam":"Gazl Kafr El","homeScore":0,"awayScore":1,"matchDate":"2.
+8 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Asyut Pet.","homeScore":0,"awayScore":0,"matchDate":"2.
+2 Ara","tournament":"İstatistik","matchType":"son-maclari","result":"D"},
+        {"homeTeam":"Telecom","awayTeam":"Gazl Kafr El","homeScore":1,"awayScore":0,"matchDate":"2.
+24 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Sporting Al.","homeScore":1,"awayScore":0,"matchDate":"2.
+17 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"El Daklyeh","awayTeam":"Gazl Kafr El","homeScore":1,"awayScore":0,"matchDate":"2.
+14 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Alqana","homeScore":3,"awayScore":0,"matchDate":"2.
+10 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"El Terasanah","awayTeam":"Gazl Kafr El","homeScore":2,"awayScore":0,"matchDate":"2.
+4 Kas","tournament":"İstatistik","matchType":"son-maclari","result":"H"},
+        {"homeTeam":"Gazl Kafr El","awayTeam":"Kahrabaa Is.","homeScore":0,"awayScore":2,"matchDate":"2.
+27 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"A"},
+        {"homeTeam":"El Sekka El","awayTeam":"Gazl Kafr El","homeScore":0,"awayScore":0,"matchDate":"2.
+20 Eki","tournament":"İstatistik","matchType":"son-maclari","result":"D"}
       ]
     }
   ]
