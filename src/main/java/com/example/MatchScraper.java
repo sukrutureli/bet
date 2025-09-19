@@ -295,3 +295,38 @@ public class MatchScraper {
         if (driver != null) driver.quit();
     }
 }
+
+// Maç bilgilerini tutan data class
+class MatchInfo {
+    private String name;
+    private String time;
+    private String detailUrl;
+    private String odd1;
+    private String oddX;
+    private String odd2;
+    private int index;
+    
+    public MatchInfo(String name, String time, String detailUrl, String odd1, String oddX, String odd2, int index) {
+        this.name = name;
+        this.time = time;
+        this.detailUrl = detailUrl;
+        this.odd1 = odd1;
+        this.oddX = oddX;
+        this.odd2 = odd2;
+        this.index = index;
+    }
+    
+    // Getters
+    public String getName() { return name; }
+    public String getTime() { return time; }
+    public String getDetailUrl() { return detailUrl; }
+    public String getOdd1() { return odd1; }
+    public String getOddX() { return oddX; }
+    public String getOdd2() { return odd2; }
+    public int getIndex() { return index; }
+    
+    public boolean hasDetailUrl() {
+        return detailUrl != null && !detailUrl.isEmpty() && detailUrl.contains("istatistik.nesine.com");
+    }
+
+}
