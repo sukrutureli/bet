@@ -270,7 +270,7 @@ public class MatchScraper {
             driver.get(url);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
             Thread.sleep(2000);
-            selectTournament();
+            //selectTournament();
             clickShowMoreMatches();
             matches = extractMatchResults("son-maclari", url);
         } catch (Exception e) {
