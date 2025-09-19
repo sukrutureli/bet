@@ -200,7 +200,7 @@ class TeamMatchHistory {
                 ms1++;
             } 
         }
-
+        System.out.println(teamName + " -> " + ms1);
         return ms1;
     }
 
@@ -229,6 +229,7 @@ class TeamMatchHistory {
                 ms2++;
             } 
         }
+        System.out.println(teamName + " -> " + ms1);
 
         return ms2;
     }
