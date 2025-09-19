@@ -314,32 +314,45 @@ public class MatchScraper {
 
     // Takım isimlerini güvenli şekilde çeken metod
     private String extractTeamName(WebElement teamElement) {
+        System.out.println("---- TEAM ELEMENT HTML ----");
         try {
-            // 1. Önce <a><span> yapısını kontrol et
-            WebElement span = teamElement.findElement(By.tagName("span"));
-            String txt = span.getText().trim();
-
-            // 2. Eğer boş değilse ve sadece görünür yazıysa kullan
-            if (!txt.isEmpty()) {
-                return txt;
-            }
+            System.out.println(teamElement.getAttribute("outerHTML"));
         } catch (Exception e) {
-            // span yoksa veya hata oldu → boş döner
+            System.out.println("outerHTML alınamadı: " + e.getMessage());
         }
 
-        // 3. Alternatif olarak tüm span'ları dolaş ve geçerli metinleri birleştir
         List<WebElement> spans = teamElement.findElements(By.tagName("span"));
+        System.out.println("Toplam span: " + spans.size());
+
+        StringBuilder sb = new StringBuilder();
         for (WebElement span : spans) {
-            String txt = span.getText().trim();
+            String rawText = span.getText();
+            System.out.println("SPAN raw text: [" + rawText + "]");
+
+            if (rawText == null) continue;
+
+            String txt = rawText.trim();
             if (txt.isEmpty()) continue;
 
-            // Özel sembolleri kaldır, sadece harf, rakam, boşluk, nokta, tire bırak
+            // Burada sembolleri silmeden önce log basalım
+            System.out.println("SPAN cleaned before regex: [" + txt + "]");
+
+            // Sadece harf, rakam, boşluk, nokta, tire bırak
             txt = txt.replaceAll("[^\\p{L}0-9\\s\\.\\-]", "");
-            if (!txt.isEmpty()) return txt;
+
+            System.out.println("SPAN cleaned final: [" + txt + "]");
+
+            if (!txt.isEmpty()) {
+                if (sb.length() > 0) sb.append(" ");
+                sb.append(txt);
+            }
         }
 
-        return "";
+        String result = sb.toString().trim();
+        System.out.println("Extracted team name: [" + result + "]");
+        return result;
     }
+
 
 
     // Örnek: extractCompetitionHistoryResults içinde kullanımı
