@@ -87,14 +87,16 @@ class TeamMatchHistory {
     private String teamName;
     private String originalMatchUrl;
     private List<MatchResult> rekabetGecmisi;
-    private List<MatchResult> sonMaclar;
+    private List<MatchResult> sonMaclarHome;
+    private List<MatchResult> sonMaclarAway;
     private LocalDateTime lastUpdated;
     
     public TeamMatchHistory(String teamName, String originalMatchUrl) {
         this.teamName = teamName;
         this.originalMatchUrl = originalMatchUrl;
         this.rekabetGecmisi = new ArrayList<>();
-        this.sonMaclar = new ArrayList<>();
+        this.sonMaclarHome = new ArrayList<>();
+        this.sonMaclarAway = new ArrayList<>();
         this.lastUpdated = LocalDateTime.now();
     }
     
@@ -103,26 +105,37 @@ class TeamMatchHistory {
         rekabetGecmisi.add(match);
     }
     
-    public void addSonMacMatch(MatchResult match) {
-        sonMaclar.add(match);
+    public void addSonMacMatch(MatchResult match, int homeOrAway) {
+        if (homeOrAway == 1) {
+            sonMaclarHome.add(match);
+        } else if (homeOrAway == 2) {
+            sonMaclarAway.add(match);
+        } 
     }
     
     // Getters
     public String getTeamName() { return teamName; }
     public String getOriginalMatchUrl() { return originalMatchUrl; }
     public List<MatchResult> getRekabetGecmisi() { return rekabetGecmisi; }
-    public List<MatchResult> getSonMaclar() { return sonMaclar; }
+    public List<MatchResult> getSonMaclar(int homeOrAway) { 
+        if (homeOrAway == 1) {
+            return sonMaclarHome;
+        } else if (homeOrAway == 2) {
+            return sonMaclarAway;
+        }  
+    }
     public LocalDateTime getLastUpdated() { return lastUpdated; }
     
     // Utility methods
     public int getTotalMatches() {
-        return rekabetGecmisi.size() + sonMaclar.size();
+        return rekabetGecmisi.size() + sonMaclarHome.size() + sonMaclarAway.size();
     }
     
     public List<MatchResult> getAllMatches() {
         List<MatchResult> allMatches = new ArrayList<>();
         allMatches.addAll(rekabetGecmisi);
-        allMatches.addAll(sonMaclar);
+        allMatches.addAll(sonMaclarHome);
+        allMatches.addAll(sonMaclarAway);
         return allMatches;
     }
     
@@ -153,8 +166,8 @@ class TeamMatchHistory {
     
     @Override
     public String toString() {
-        return String.format("%s: %d maç (Rekabet: %d, Son Maçlar: %d) - G:%d B:%d M:%d (%.1f%%)",
-            teamName, getTotalMatches(), rekabetGecmisi.size(), sonMaclar.size(),
+        return String.format("%s: %d maç (Rekabet: %d, Son Maçlar Home: %d, Son Maçlar Away: %d) - G:%d B:%d M:%d (%.1f%%)",
+            teamName, getTotalMatches(), rekabetGecmisi.size(), sonMaclarHome.size(), sonMaclarAway.size(),
             getWinCount(), getDrawCount(), getLossCount(), getWinRate());
     }
 }

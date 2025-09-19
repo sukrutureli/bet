@@ -140,13 +140,13 @@ public class Scraper {
                                 html.append("</div>");
                             }
                             
-                            // Son Maçlar
-                            if (!teamHistory.getSonMaclar().isEmpty()) {
+                            // Son Maçlar Home
+                            if (!teamHistory.getSonMaclar(1).isEmpty()) {
                                 html.append("<div class='history-section'>");
-                                html.append("<h5>Son Maçlar (").append(teamHistory.getSonMaclar().size()).append(" maç):</h5>");
+                                html.append("<h5>Ev Sahibi Son Maçlar (").append(teamHistory.getSonMaclar(1).size()).append(" maç):</h5>");
                                 
                                 int count = 0;
-                                for (MatchResult matchResult : teamHistory.getSonMaclar()) {
+                                for (MatchResult matchResult : teamHistory.getSonMaclar(1)) {
                                     //if (count >= 10) break; // İlk 10 maçı göster
                                     
                                     String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
@@ -160,8 +160,34 @@ public class Scraper {
                                     count++;
                                 }
                                 
-                                if (teamHistory.getSonMaclar().size() > 10) {
-                                    html.append("<p><em>... ve ").append(teamHistory.getSonMaclar().size() - 10).append(" maç daha</em></p>");
+                                if (teamHistory.getSonMaclar(1).size() > 10) {
+                                    html.append("<p><em>... ve ").append(teamHistory.getSonMaclar(2).size() - 10).append(" maç daha</em></p>");
+                                }
+                                html.append("</div>");
+                            }
+
+                            // Son Maçlar Away
+                            if (!teamHistory.getSonMaclar(2).isEmpty()) {
+                                html.append("<div class='history-section'>");
+                                html.append("<h5>Deplasman Son Maçlar (").append(teamHistory.getSonMaclar(2).size()).append(" maç):</h5>");
+                                
+                                int count = 0;
+                                for (MatchResult matchResult : teamHistory.getSonMaclar(2)) {
+                                    //if (count >= 10) break; // İlk 10 maçı göster
+                                    
+                                    String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
+                                    html.append("<div class='match-result ").append(resultClass).append("'>");
+                                    html.append(matchResult.getMatchDate()).append(" - ");
+                                    html.append(matchResult.getHomeTeam()).append(" ");
+                                    html.append(matchResult.getScoreString()).append(" ");
+                                    html.append(matchResult.getAwayTeam());
+                                    html.append(" [").append(matchResult.getTournament()).append("]");
+                                    html.append("</div>");
+                                    count++;
+                                }
+                                
+                                if (teamHistory.getSonMaclar(2).size() > 10) {
+                                    html.append("<p><em>... ve ").append(teamHistory.getSonMaclar(2).size() - 10).append(" maç daha</em></p>");
                                 }
                                 html.append("</div>");
                             }

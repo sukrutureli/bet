@@ -240,8 +240,11 @@ public class MatchScraper {
             List<MatchResult> rekabetGecmisi = scrapeRekabetGecmisi(detailUrl + "/rekabet-gecmisi");
             rekabetGecmisi.forEach(teamHistory::addRekabetGecmisiMatch);
 
-            List<MatchResult> sonMaclar = scrapeSonMaclar(detailUrl + "/son-maclari");
-            sonMaclar.forEach(teamHistory::addSonMacMatch);
+            List<MatchResult> sonMaclarHome = scrapeSonMaclar(detailUrl + "/son-maclari", 1);
+            teamHistory.addSonMacMatch(sonMaclarHome, 1);
+
+            List<MatchResult> sonMaclarAway = scrapeSonMaclar(detailUrl + "/son-maclari", 2);
+            teamHistory.addSonMacMatch(sonMaclarHome, 2);
 
         } catch (Exception e) {
             System.out.println("Takım geçmişi çekme hatası: " + e.getMessage());
@@ -264,15 +267,15 @@ public class MatchScraper {
         return matches;
     }
 
-    private List<MatchResult> scrapeSonMaclar(String url) {
+    private List<MatchResult> scrapeSonMaclar(String url, int homeOrAway) {
         List<MatchResult> matches = new ArrayList<>();
         try {
             driver.get(url);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
             Thread.sleep(2000);
-            //selectTournament();
+            selectTournament();
             clickShowMoreMatches();
-            matches = extractMatchResults("son-maclari", url);
+            matches = extractMatchResults("son-maclari", url, homeOrAway);
         } catch (Exception e) {
             System.out.println("Son maçlar hatası: " + e.getMessage());
         }
@@ -402,12 +405,18 @@ public class MatchScraper {
     }
 
     // Maç sonuçlarını listeleyen metot
-    private List<MatchResult> extractMatchResults(String matchType, String originalUrl) {
+    private List<MatchResult> extractMatchResults(String matchType, String originalUrl, int homeOrAway) {
         List<MatchResult> matches = new ArrayList<>();
+        String selectorString;
+        if (homeOrAway == 1) {
+            selectorString = "tr[data-test-id='LastMatchesTableFirst']";
+        } else if (homeOrAway == 2) {
+            selectorString = "tr[data-test-id='LastMatchesTableSecond']";
+        }
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.cssSelector("tr[data-test-id='LastMatchesTable']")));
-            List<WebElement> rows = driver.findElements(By.cssSelector("tr[data-test-id='LastMatchesTable']"));
+                By.cssSelector(selectorString)));
+            List<WebElement> rows = driver.findElements(By.cssSelector(selectorString));
 
             for (WebElement row : rows) {
                 try {
