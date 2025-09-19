@@ -65,7 +65,7 @@ public class MatchScraper {
             List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
             System.out.println("Toplam bulunan element: " + events.size());
             
-            for (int idx = 0; idx < events.size(); idx++) {
+            for (int idx = 0; idx < 5; idx++) {
                 WebElement event = events.get(idx);
                 try {
                     MatchInfo matchInfo = extractMatchInfo(event, idx);
