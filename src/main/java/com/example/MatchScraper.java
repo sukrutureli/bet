@@ -8,12 +8,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.support.ui.Select;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+
+import java.time.Duration;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -29,6 +28,7 @@ public class MatchScraper {
     private void setupDriver() {
         ChromeOptions options = new ChromeOptions();
         
+        // Container için gerekli ayarlar
         options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
@@ -38,6 +38,7 @@ public class MatchScraper {
         options.addArguments("--disable-blink-features=AutomationControlled");
         options.addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
         
+        // Selenium container'da Chrome binary path
         options.setBinary("/usr/bin/google-chrome");
         
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
@@ -51,20 +52,29 @@ public class MatchScraper {
     public List<MatchInfo> scrapeMainPage() {
         List<MatchInfo> matches = new ArrayList<>();
         
+        // Bugünün tarihi
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        String todayStr = today.format(formatter);
+        
         try {
-            String url = "https://www.nesine.com/iddaa?et=1&le=2&ocg=MS-2%2C5&gt=Pop%C3%BCler";
+            String url = "https://www.nesine.com/iddaa?et=1&dt=" + todayStr + "&le=2&ocg=MS-2%2C5>=Pop%C3%BCler";
             driver.get(url);
             
             System.out.println("Ana sayfa yüklendi: " + driver.getCurrentUrl());
             
+            // Sayfa yüklenmesini bekle
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
             Thread.sleep(5000);
             
+            // Scroll işlemi
             performScrolling();
             
+            // Elementleri çek
             List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
             System.out.println("Toplam bulunan element: " + events.size());
             
+            // Her elementi işle
             for (int idx = 0; idx < 5; idx++) {
                 WebElement event = events.get(idx);
                 try {
@@ -118,6 +128,7 @@ public class MatchScraper {
             System.out.println("Scroll tamamlandı, final bekleme...");
             Thread.sleep(15000);
             
+            // Lazy loading için hızlı scroll
             for (int i = 0; i < 5; i++) {
                 js.executeScript("window.scrollTo(0, 0);");
                 Thread.sleep(1000);
@@ -131,57 +142,98 @@ public class MatchScraper {
     
     private MatchInfo extractMatchInfo(WebElement event, int idx) {
         try {
-            js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center'});", event);
-            Thread.sleep(800);
+            // Daha esnek görünürlük kontrolü
+            try {
+                Boolean elementExists = (Boolean) js.executeScript(
+                    "return arguments[0].offsetParent !== null || arguments[0].offsetWidth > 0 || arguments[0].offsetHeight > 0;", event
+                );
+                if (!elementExists) {
+                    System.out.println("Element " + idx + " DOM'da görünür değil");
+                }
+            } catch (Exception e) {
+                System.out.println("Element " + idx + " visibility check hatası: " + e.getMessage());
+            }
             
+            // Elemente focus yap (lazy loading için)
+            try {
+                js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center'});", event);
+                Thread.sleep(800);
+                
+                // Force trigger lazy loading
+                js.executeScript("arguments[0].focus(); arguments[0].click();", event);
+                Thread.sleep(300);
+            } catch (Exception scrollEx) {
+                System.out.println("Element " + idx + " scroll hatası: " + scrollEx.getMessage());
+            }
+            
+            // Maç adı ve URL'i çek
             String matchName = "İsim bulunamadı";
             String detailUrl = null;
             
-            List<WebElement> nameLinks = event.findElements(By.cssSelector("div.name > a"));
-            if (!nameLinks.isEmpty()) {
-                WebElement nameLink = nameLinks.get(0);
-                matchName = nameLink.getText().trim();
-                detailUrl = nameLink.getAttribute("href");
-                
-                if (matchName.isEmpty()) {
-                    matchName = "İsim bulunamadı";
-                }
-            }
-            
-            if (detailUrl == null || detailUrl.isEmpty()) {
-                List<WebElement> allLinks = event.findElements(By.tagName("a"));
-                for (WebElement link : allLinks) {
-                    String href = link.getAttribute("href");
-                    if (href != null && href.contains("istatistik.nesine.com")) {
-                        detailUrl = href;
-                        if (matchName.equals("İsim bulunamadı")) {
-                            String linkText = link.getText().trim();
-                            if (!linkText.isEmpty()) {
-                                matchName = linkText;
-                            }
-                        }
-                        break;
+            try {
+                // Name ve href'i aynı anda çek
+                List<WebElement> nameLinks = event.findElements(By.cssSelector("div.name > a"));
+                if (!nameLinks.isEmpty()) {
+                    WebElement nameLink = nameLinks.get(0);
+                    matchName = nameLink.getText().trim();
+                    detailUrl = nameLink.getAttribute("href");
+                    
+                    if (matchName.isEmpty()) {
+                        matchName = "İsim bulunamadı";
                     }
                 }
-            }
-            
-            if (matchName.equals("İsim bulunamadı")) {
-                String jsText = (String) js.executeScript("return arguments[0].textContent || arguments[0].innerText || '';", event);
-                if (jsText != null && !jsText.trim().isEmpty()) {
-                    String[] lines = jsText.split("\n");
-                    for (String line : lines) {
-                        line = line.trim();
-                        if (line.length() > 5 && (line.contains("-") || line.contains(" vs ")) && !line.matches(".*\\d+.*")) {
-                            matchName = line;
+                
+                // Alternatif URL arama
+                if (detailUrl == null || detailUrl.isEmpty()) {
+                    List<WebElement> allLinks = event.findElements(By.tagName("a"));
+                    for (WebElement link : allLinks) {
+                        String href = link.getAttribute("href");
+                        if (href != null && href.contains("istatistik.nesine.com")) {
+                            detailUrl = href;
+                            if (matchName.equals("İsim bulunamadı")) {
+                                String linkText = link.getText().trim();
+                                if (!linkText.isEmpty()) {
+                                    matchName = linkText;
+                                }
+                            }
                             break;
                         }
                     }
                 }
+                
+                // JavaScript ile text çekme
+                if (matchName.equals("İsim bulunamadı")) {
+                    String jsText = (String) js.executeScript("return arguments[0].textContent || arguments[0].innerText || '';", event);
+                    if (jsText != null && !jsText.trim().isEmpty()) {
+                        String[] lines = jsText.split("\n");
+                        for (String line : lines) {
+                            line = line.trim();
+                            if (line.length() > 5 && (line.contains("-") || line.contains(" vs ")) && !line.matches(".*\\d+.*")) {
+                                matchName = line;
+                                break;
+                            }
+                        }
+                    }
+                }
+            } catch (Exception nameEx) {
+                System.out.println("Element " + idx + " isim arama hatası: " + nameEx.getMessage());
             }
             
+            // Maç zamanı
             String matchTime = extractMatchTime(event);
+            
+            // Oranlar
             String[] odds = extractOdds(event);
             
+            // Debug: Element'in raw text'ini yazdır
+            try {
+                String elementText = (String) js.executeScript("return (arguments[0].textContent || arguments[0].innerText || '').substring(0, 100);", event);
+                System.out.println("Element " + idx + " text (ilk 100 kar): " + elementText);
+            } catch (Exception debugEx) {
+                // Ignore
+            }
+            
+            // Eğer minimum veri yoksa null döndür
             if (matchName.equals("İsim bulunamadı") && matchTime.equals("Zaman bulunamadı")) {
                 System.out.println("Element " + idx + " yeterli veri yok, atlanıyor");
                 return null;
@@ -197,12 +249,14 @@ public class MatchScraper {
     
     private String extractMatchTime(WebElement event) {
         try {
+            // Ana selector
             List<WebElement> timeList = event.findElements(By.cssSelector("div.time > span"));
             if (!timeList.isEmpty()) {
                 String text = timeList.get(0).getText().trim();
                 if (!text.isEmpty()) return text;
             }
             
+            // JavaScript ile zaman ara
             String jsText = (String) js.executeScript("return arguments[0].textContent || arguments[0].innerText || '';", event);
             if (jsText != null) {
                 java.util.regex.Pattern timePattern = java.util.regex.Pattern.compile("(\\d{2}:\\d{2})|(\\d{1,2}')");
@@ -222,13 +276,16 @@ public class MatchScraper {
         String[] odds = {"-", "-", "-"};
         
         try {
+            // Ana selector
             List<WebElement> oddsList = event.findElements(By.cssSelector("dd.event-row .cell a.odd"));
             
             if (oddsList.isEmpty()) {
+                // Alternatif selector
                 oddsList = event.findElements(By.cssSelector(".odd"));
             }
             
             if (oddsList.isEmpty()) {
+                // JavaScript ile oran formatı ara
                 String jsText = (String) js.executeScript("return arguments[0].textContent || arguments[0].innerText || '';", event);
                 if (jsText != null) {
                     java.util.regex.Pattern oddPattern = java.util.regex.Pattern.compile("\\b\\d{1,2}\\.\\d{2}\\b");
@@ -241,6 +298,7 @@ public class MatchScraper {
                     }
                 }
             } else {
+                // Normal elementlerden oranları al
                 for (int i = 0; i < Math.min(oddsList.size(), 3); i++) {
                     String text = oddsList.get(i).getText().trim();
                     if (!text.isEmpty()) {
@@ -264,14 +322,16 @@ public class MatchScraper {
         TeamMatchHistory teamHistory = new TeamMatchHistory(teamName, detailUrl);
         
         try {
+            // 1. Rekabet Geçmişi sayfası
             System.out.println("Rekabet geçmişi çekiliyor: " + teamName);
             List<MatchResult> rekabetGecmisi = scrapeRekabetGecmisi(detailUrl + "/rekabet-gecmisi");
             for (MatchResult match : rekabetGecmisi) {
                 teamHistory.addRekabetGecmisiMatch(match);
             }
             
+            // 2. Son Maçlar sayfası
             System.out.println("Son maçlar çekiliyor: " + teamName);
-            List<MatchResult> sonMaclar = scrapeSonMaclar(detailUrl + "/son-maclar");
+            List<MatchResult> sonMaclar = scrapeSonMaclar(detailUrl + "/son-maclari");
             for (MatchResult match : sonMaclar) {
                 teamHistory.addSonMacMatch(match);
             }
@@ -282,7 +342,7 @@ public class MatchScraper {
         } catch (Exception e) {
             System.out.println("Takım geçmişi çekme hatası: " + e.getMessage());
             e.printStackTrace();
-            return teamHistory;
+            return teamHistory; // Partial data döndür
         }
     }
     
@@ -292,17 +352,21 @@ public class MatchScraper {
         try {
             driver.get(url);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             
             System.out.println("Rekabet geçmişi sayfası yüklendi: " + url);
             
+            // Turnuva seçimi yap
             selectTournament();
+            
+            // "Daha eski maçları göster" butonuna bas
             clickShowMoreMatches();
-            matches = extractMatchResults("rekabet-gecmisi", url);
+            
+            // Maç sonuçlarını çek
+            matches = extractCompetitionHistoryResults("rekabet-gecmisi", url);
             
         } catch (Exception e) {
             System.out.println("Rekabet geçmişi çekme hatası: " + e.getMessage());
-            e.printStackTrace();
         }
         
         return matches;
@@ -314,17 +378,21 @@ public class MatchScraper {
         try {
             driver.get(url);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             
             System.out.println("Son maçlar sayfası yüklendi: " + url);
             
+            // Turnuva seçimi yap
             selectTournament();
+            
+            // "Daha eski maçları göster" butonuna bas
             clickShowMoreMatches();
-            matches = extractMatchResults("son-maclar", url);
+            
+            // Maç sonuçlarını çek
+            matches = extractMatchResults("son-maclari", url);
             
         } catch (Exception e) {
             System.out.println("Son maçlar çekme hatası: " + e.getMessage());
-            e.printStackTrace();
         }
         
         return matches;
@@ -334,59 +402,24 @@ public class MatchScraper {
         try {
             System.out.println("Turnuva seçimi deneniyor...");
             
-            String[] dropdownSelectors = {
-                "select[name='tournament']",
-                "select[id*='tournament']", 
-                "select[class*='tournament']",
-                "select[id*='turnuva']",
-                "select[class*='turnuva']",
-                "select[name='lig']",
-                ".tournament-dropdown select",
-                ".filter-select select",
-                "select"
-            };
+            // Sayfada select elementlerini bul
+            List<WebElement> selects = driver.findElements(By.tagName("select"));
             
-            WebElement dropdown = null;
-            
-            for (String selector : dropdownSelectors) {
-                try {
-                    List<WebElement> dropdowns = driver.findElements(By.cssSelector(selector));
-                    for (WebElement drop : dropdowns) {
-                        if (drop.isDisplayed() && drop.isEnabled()) {
-                            List<WebElement> options = drop.findElements(By.tagName("option"));
-                            if (options.size() > 1) {
-                                dropdown = drop;
-                                System.out.println("Turnuva dropdown bulundu: " + selector + " (" + options.size() + " seçenek)");
-                                break;
-                            }
-                        }
+            for (WebElement select : selects) {
+                if (select.isDisplayed()) {
+                    List<WebElement> options = select.findElements(By.tagName("option"));
+                    if (options.size() > 1) {
+                        System.out.println("Dropdown bulundu, " + options.size() + " seçenek var");
+                        
+                        // İlk seçeneği (genelde "Tümü") değil, ikincisini seç
+                        js.executeScript("arguments[0].selectedIndex = 1; arguments[0].dispatchEvent(new Event('change'));", select);
+                        Thread.sleep(3000);
+                        System.out.println("Turnuva seçildi");
+                        return;
                     }
-                    if (dropdown != null) break;
-                } catch (Exception e) {
-                    // Continue trying
                 }
             }
-            
-            if (dropdown != null) {
-                Select select = new Select(dropdown);
-                List<WebElement> options = select.getOptions();
-                
-                System.out.println("Mevcut turnuva seçenekleri:");
-                for (int i = 0; i < options.size(); i++) {
-                    System.out.println(i + ": " + options.get(i).getText());
-                }
-                
-                if (options.size() > 2) {
-                    select.selectByIndex(1);
-                    System.out.println("Turnuva seçildi: " + options.get(1).getText());
-                    Thread.sleep(3000);
-                    wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
-                    Thread.sleep(2000);
-                }
-            } else {
-                System.out.println("Turnuva dropdown bulunamadı");
-            }
-            
+            System.out.println("Dropdown bulunamadı");
         } catch (Exception e) {
             System.out.println("Turnuva seçimi hatası: " + e.getMessage());
         }
@@ -394,134 +427,171 @@ public class MatchScraper {
     
     private void clickShowMoreMatches() {
         try {
-            System.out.println("'Daha fazla göster' butonu aranıyor...");
+            System.out.println("Daha fazla göster butonu aranıyor...");
             
-            String[] buttonSelectors = {
-                "button[class*='load-more']",
-                "button[class*='show-more']", 
-                "a[class*='load-more']",
-                "a[class*='show-more']",
-                ".load-more-btn",
-                ".show-more-btn",
-                "button[id*='loadmore']",
-                "button[id*='more']"
-            };
+            // Tüm button ve a elementlerini kontrol et
+            List<WebElement> clickables = driver.findElements(By.cssSelector("button, a"));
             
-            String[] buttonTexts = {
-                "daha fazla", "load more", "show more", "daha eski", 
-                "more", "devamı", "tümünü göster", "eski maçlar"
-            };
-            
-            boolean clicked = false;
-            
-            for (String selector : buttonSelectors) {
+            for (WebElement element : clickables) {
                 try {
-                    List<WebElement> buttons = driver.findElements(By.cssSelector(selector));
-                    for (WebElement button : buttons) {
-                        if (button.isDisplayed() && button.isEnabled()) {
-                            js.executeScript("arguments[0].scrollIntoView({block: 'center'});", button);
-                            Thread.sleep(1000);
-                            
-                            js.executeScript("arguments[0].click();", button);
-                            System.out.println("CSS selector ile buton tıklandı: " + selector);
+                    String text = element.getText().toLowerCase();
+                    if (text.contains("daha") || text.contains("more") || text.contains("load")) {
+                        if (element.isDisplayed() && element.isEnabled()) {
+                            js.executeScript("arguments[0].click();", element);
+                            System.out.println("Buton tıklandı: " + text);
                             Thread.sleep(3000);
-                            
-                            clicked = true;
-                            break;
+                            return;
                         }
                     }
-                    if (clicked) break;
                 } catch (Exception e) {
-                    // Continue trying
+                    // Devam et
                 }
             }
             
-            if (!clicked) {
-                for (String buttonText : buttonTexts) {
-                    try {
-                        String xpath = "//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZĞÜŞIÖÇ', 'abcdefghijklmnopqrstuvwxyzğüşiöç'), '" + buttonText + "')]";
-                        List<WebElement> buttons = driver.findElements(By.xpath(xpath));
-                        
-                        for (WebElement button : buttons) {
-                            if (button.isDisplayed() && button.isEnabled()) {
-                                js.executeScript("arguments[0].scrollIntoView({block: 'center'});", button);
-                                Thread.sleep(1000);
-                                
-                                js.executeScript("arguments[0].click();", button);
-                                System.out.println("Text bazlı buton tıklandı: " + button.getText());
-                                Thread.sleep(3000);
-                                
-                                clicked = true;
-                                break;
-                            }
-                        }
-                        
-                        if (clicked) break;
-                    } catch (Exception e) {
-                        // Continue trying
-                    }
-                }
-            }
-            
-            if (!clicked) {
-                String jsScript = """
-                    var buttons = document.querySelectorAll('button, a, div[role="button"]');
-                    for (var i = 0; i < buttons.length; i++) {
-                        var btn = buttons[i];
-                        var text = (btn.textContent || btn.innerText || '').toLowerCase();
-                        if ((text.includes('daha') || text.includes('more') || text.includes('load')) && 
-                            btn.offsetParent !== null) {
-                            btn.click();
-                            return 'JS clicked: ' + text;
-                        }
-                    }
-                    return 'No suitable button found';
-                """;
-                
-                String result = (String) js.executeScript(jsScript);
-                System.out.println("JavaScript tıklama sonucu: " + result);
-                if (!result.equals("No suitable button found")) {
-                    clicked = true;
-                    Thread.sleep(3000);
-                }
-            }
-            
-            if (clicked) {
-                System.out.println("'Daha fazla göster' butonuna başarıyla tıklandı");
-            } else {
-                System.out.println("'Daha fazla göster' butonu bulunamadı");
-            }
-            
+            System.out.println("Daha fazla göster butonu bulunamadı");
         } catch (Exception e) {
-            System.out.println("'Daha fazla göster' butonu tıklama hatası: " + e.getMessage());
+            System.out.println("Buton tıklama hatası: " + e.getMessage());
         }
     }
     
+    private List<MatchResult> extractCompetitionHistoryResults(String matchType, String originalUrl) {
+        List<MatchResult> matches = new ArrayList<>();
+
+        try {
+            // Rekabet tablosunun yüklenmesini bekle
+            wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("div[data-test-id='CompitionHistoryTableItem']")));
+
+            List<WebElement> rows = driver.findElements(By.cssSelector("div[data-test-id='CompitionHistoryTableItem']"));
+
+            for (WebElement row : rows) {
+                try {
+                    String league = row.findElement(By.cssSelector("[data-test-id='CompitionTableItemLeague']")).getText().trim();
+                    String dateText = row.findElement(By.cssSelector("[data-test-id='CompitionTableItemSeason']")).getText().trim();
+
+                    String homeTeam = row.findElement(By.cssSelector("div[data-test-id='HomeTeam'] span")).getText().trim();
+                    String scoreText = row.findElement(By.cssSelector("button[data-testid='nsn-button'] span")).getText().trim();
+                    String awayTeam = row.findElement(By.cssSelector("div[data-test-id='AwayTeam'] span")).getText().trim();
+
+                    String halfTime = row.findElement(By.cssSelector("[data-test-id='CompitionTableItemFirstHalf']")).getText().trim();
+
+                    // Skoru ayır
+                    String[] parts = scoreText.split("-");
+                    int homeScore = Integer.parseInt(parts[0].trim());
+                    int awayScore = Integer.parseInt(parts[1].trim());
+
+                    // Tarihi parse etmek için şimdilik bugünün tarihi
+                    java.time.LocalDate matchDate = java.time.LocalDate.now();
+                    // TODO: dateText ("10.04.2025") -> LocalDate çevrilebilir
+
+                    MatchResult match = new MatchResult(
+                            homeTeam,
+                            awayTeam,
+                            homeScore,
+                            awayScore,
+                            matchDate,
+                            league,
+                            matchType,
+                            originalUrl
+                    );
+                    //match.setHalfTimeScore(halfTime);
+
+                    // oranlar
+                    List<WebElement> oddElements = row.findElements(By.cssSelector("[data-test-id='CompitionTableItemOdds'] span"));
+                    List<String> odds = new ArrayList<>();
+                    for (WebElement odd : oddElements) {
+                        odds.add(odd.getText().trim());
+                    }
+                    //match.setOdds(odds); // MatchResult içine odds eklediysen
+
+                    matches.add(match);
+
+                    System.out.println(homeTeam + " " + homeScore + "-" + awayScore + " " + awayTeam +
+                            " (İY: " + halfTime + ", Tarih: " + dateText + ", Lig: " + league + ")");
+                } catch (Exception e) {
+                    System.out.println("Satır işlenemedi: " + e.getMessage());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("extractCompetitionHistoryResults hatası: " + e.getMessage());
+        }
+
+        return matches;
+    }
+
     private List<MatchResult> extractMatchResults(String matchType, String originalUrl) {
+        List<MatchResult> matches = new ArrayList<>();
+
+        try {
+            // Tablonun yüklenmesini bekle
+            wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("tr[data-test-id='LastMatchesTable']")));
+
+            List<WebElement> rows = driver.findElements(By.cssSelector("tr[data-test-id='LastMatchesTable']"));
+
+            for (WebElement row : rows) {
+                try {
+                    String homeTeam = row.findElement(By.cssSelector("div[data-test-id='HomeTeam'] span")).getText().trim();
+                    String scoreText = row.findElement(By.cssSelector("button[data-test-id='NsnButton'] span")).getText().trim();
+                    String awayTeam = row.findElement(By.cssSelector("div[data-test-id='AwayTeam'] span")).getText().trim();
+                    String halfTime = row.findElement(By.cssSelector("td[data-test-id='TableBodyFirstHalf']")).getText().trim();
+
+                    // Skoru ayır
+                    String[] parts = scoreText.split("-");
+                    int homeScore = Integer.parseInt(parts[0].trim());
+                    int awayScore = Integer.parseInt(parts[1].trim());
+
+                    // Tarih bilgisi (opsiyonel)
+                    String leagueAndDate = row.findElement(By.cssSelector("td[data-test-id='TableBodyLeague']")).getText();
+                    // Örn: "U19ŞL\n12 Mar" → buradan date parse edebilirsin
+
+                    MatchResult match = new MatchResult(
+                            homeTeam,
+                            awayTeam,
+                            homeScore,
+                            awayScore,
+                            java.time.LocalDate.now(), // TODO: leagueAndDate içinden tarihi parse et
+                            "İstatistik",
+                            matchType,
+                            originalUrl
+                    );
+                    //match.setHalfTimeScore(halfTime); // Eğer MatchResult içine ekleyeceksen
+
+                    matches.add(match);
+
+                    System.out.println(homeTeam + " " + homeScore + "-" + awayScore + " " + awayTeam + " (İY: " + halfTime + ")");
+                } catch (Exception e) {
+                    System.out.println("Satır işlenemedi: " + e.getMessage());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("extractMatchResults hatası: " + e.getMessage());
+        }
+
+        return matches;
+    }
+
+    
+    /*private List<MatchResult> extractMatchResults(String matchType, String originalUrl) {
         List<MatchResult> matches = new ArrayList<>();
         
         try {
-            Thread.sleep(5000);
+            // Sayfanın tam yüklenmesi için bekle
+            Thread.sleep(3000);
             
+            // Farklı maç tablosu selector'ları dene
             String[] tableSelectors = {
-                "table tbody tr",
-                ".match-table tbody tr", 
-                ".result-table tbody tr",
-                ".match-row",
-                ".result-row",
-                "tr[class*='match']",
-                "tr[class*='result']",
-                ".statistics-table tbody tr"
+                "table[class*='match']", "table[class*='result']", "table[class*='score']",
+                ".match-table", ".result-table", ".score-table",
+                "tbody tr", ".match-row", ".result-row"
             };
             
             List<WebElement> matchRows = new ArrayList<>();
-            String usedSelector = "";
             
             for (String selector : tableSelectors) {
                 try {
                     matchRows = driver.findElements(By.cssSelector(selector));
                     if (!matchRows.isEmpty()) {
-                        usedSelector = selector;
                         System.out.println("Maç satırları bulundu: " + selector + " (" + matchRows.size() + " satır)");
                         break;
                     }
@@ -531,7 +601,8 @@ public class MatchScraper {
             }
             
             if (matchRows.isEmpty()) {
-                System.out.println("Hiçbir maç satırı bulunamadı, alternatif yöntem deneniyor...");
+                System.out.println("Maç tablosu bulunamadı, alternatif yöntem deneniyor...");
+                // Tüm div'lerde skor formatı ara
                 String pageContent = driver.getPageSource();
                 matches.addAll(extractMatchResultsFromText(pageContent, matchType, originalUrl));
                 return matches;
@@ -561,64 +632,72 @@ public class MatchScraper {
         }
         
         return matches;
-    }
+    }*/
     
     private MatchResult extractSingleMatchResult(WebElement row, String matchType, String originalUrl) {
         try {
-            String rowText = row.getText();
-            System.out.println("Satır metni: " + rowText);
-            
-            LocalDate matchDate = parseMatchDate(rowText);
-            
+            // Takım isimleri
             String homeTeam = "", awayTeam = "";
             int homeScore = 0, awayScore = 0;
+            java.time.LocalDate matchDate = null;
             String tournament = "";
             
-            java.util.regex.Pattern scorePattern = java.util.regex.Pattern.compile("(\\d+)\\s*[-:\\s]+\\s*(\\d+)");
+            String rowText = row.getText();
+            System.out.println("Row text: " + rowText);
+            
+            // Skor formatını bul (1-2, 3:1, 0 - 0 gibi)
+            java.util.regex.Pattern scorePattern = java.util.regex.Pattern.compile("(\\d+)[-:\\s]+(\\d+)");
             java.util.regex.Matcher scoreMatcher = scorePattern.matcher(rowText);
             
             if (scoreMatcher.find()) {
                 homeScore = Integer.parseInt(scoreMatcher.group(1));
                 awayScore = Integer.parseInt(scoreMatcher.group(2));
                 
+                // Takım isimlerini çıkar (skor öncesi ve sonrası)
                 String beforeScore = rowText.substring(0, scoreMatcher.start()).trim();
                 String afterScore = rowText.substring(scoreMatcher.end()).trim();
                 
+                // Takım isimlerini parse et
                 String[] beforeParts = beforeScore.split("\\s+");
                 String[] afterParts = afterScore.split("\\s+");
                 
-                if (beforeParts.length >= 2) {
-                    homeTeam = beforeParts[beforeParts.length - 2] + " " + beforeParts[beforeParts.length - 1];
-                } else if (beforeParts.length > 0) {
-                    homeTeam = beforeParts[beforeParts.length - 1];
+                if (beforeParts.length > 0) {
+                    homeTeam = beforeParts[beforeParts.length - 1]; // Son kelime home team
                 }
-                
-                if (afterParts.length >= 2) {
-                    awayTeam = afterParts[0] + " " + afterParts[1];
-                } else if (afterParts.length > 0) {
-                    awayTeam = afterParts[0];
+                if (afterParts.length > 0) {
+                    awayTeam = afterParts[0]; // İlk kelime away team
                 }
-                
-                homeTeam = cleanTeamName(homeTeam);
-                awayTeam = cleanTeamName(awayTeam);
             }
             
+            // Tarih çek (DD.MM.YYYY, DD/MM/YYYY formatları)
+            java.util.regex.Pattern datePattern = java.util.regex.Pattern.compile("(\\d{1,2})[./](\\d{1,2})[./](\\d{4})");
+            java.util.regex.Matcher dateMatcher = datePattern.matcher(rowText);
+            
+            if (dateMatcher.find()) {
+                try {
+                    int day = Integer.parseInt(dateMatcher.group(1));
+                    int month = Integer.parseInt(dateMatcher.group(2));
+                    int year = Integer.parseInt(dateMatcher.group(3));
+                    matchDate = java.time.LocalDate.of(year, month, day);
+                } catch (Exception e) {
+                    matchDate = java.time.LocalDate.now(); // Fallback
+                }
+            } else {
+                matchDate = java.time.LocalDate.now(); // Fallback
+            }
+            
+            // Turnuva ismini çıkarmaya çalış
             tournament = extractTournamentFromRow(row);
             
-            if (homeTeam.length() < 2 || awayTeam.length() < 2) {
-                System.out.println("Takım isimleri çok kısa: '" + homeTeam + "' vs '" + awayTeam + "'");
+            // Validation
+            if (homeTeam.isEmpty() || awayTeam.isEmpty()) {
+                System.out.println("Takım isimleri bulunamadı: " + rowText);
                 return null;
-            }
-            
-            if (matchDate == null) {
-                matchDate = LocalDate.now();
-                System.out.println("Tarih parse edilemedi, bugünün tarihi kullanılıyor");
             }
             
             MatchResult match = new MatchResult(homeTeam, awayTeam, homeScore, awayScore, 
                                               matchDate, tournament, matchType, originalUrl);
             
-            System.out.println("Maç oluşturuldu: " + match.toString());
             return match;
             
         } catch (Exception e) {
@@ -627,95 +706,21 @@ public class MatchScraper {
         }
     }
     
-    private LocalDate parseMatchDate(String text) {
-        try {
-            DateTimeFormatter[] formatters = {
-                DateTimeFormatter.ofPattern("dd.MM.yyyy"),
-                DateTimeFormatter.ofPattern("d.MM.yyyy"), 
-                DateTimeFormatter.ofPattern("dd.M.yyyy"),
-                DateTimeFormatter.ofPattern("d.M.yyyy"),
-                DateTimeFormatter.ofPattern("dd/MM/yyyy"),
-                DateTimeFormatter.ofPattern("d/MM/yyyy")
-            };
-            
-            String[] datePatterns = {
-                "(\\d{1,2})\\.(\\d{1,2})\\.(\\d{4})",
-                "(\\d{1,2})/(\\d{1,2})/(\\d{4})"
-            };
-            
-            for (String pattern : datePatterns) {
-                java.util.regex.Pattern dateRegex = java.util.regex.Pattern.compile(pattern);
-                java.util.regex.Matcher matcher = dateRegex.matcher(text);
-                
-                if (matcher.find()) {
-                    String dateStr = matcher.group();
-                    System.out.println("Tarih stringi bulundu: " + dateStr);
-                    
-                    for (DateTimeFormatter formatter : formatters) {
-                        try {
-                            LocalDate date = LocalDate.parse(dateStr, formatter);
-                            System.out.println("Tarih parse edildi: " + date);
-                            return date;
-                        } catch (DateTimeParseException e) {
-                            // Try next formatter
-                        }
-                    }
-                    
-                    if (pattern.contains("(\\d{1,2})\\.(\\d{1,2})\\.(\\d{4})")) {
-                        try {
-                            String[] parts = dateStr.split("\\.");
-                            int day = Integer.parseInt(parts[0]);
-                            int month = Integer.parseInt(parts[1]);
-                            int year = Integer.parseInt(parts[2]);
-                            LocalDate date = LocalDate.of(year, month, day);
-                            System.out.println("Manuel tarih parse: " + date);
-                            return date;
-                        } catch (Exception e) {
-                            // Continue
-                        }
-                    }
-                }
-            }
-            
-            if (text.toLowerCase().contains("bugün") || text.toLowerCase().contains("today")) {
-                return LocalDate.now();
-            } else if (text.toLowerCase().contains("dün") || text.toLowerCase().contains("yesterday")) {
-                return LocalDate.now().minusDays(1);
-            }
-            
-            return null;
-            
-        } catch (Exception e) {
-            System.out.println("Tarih parse hatası: " + e.getMessage());
-            return null;
-        }
-    }
-    
-    private String cleanTeamName(String teamName) {
-        if (teamName == null) return "";
-        
-        return teamName
-            .replaceAll("\\d+", "")
-            .replaceAll("[\\(\\)\\[\\]]", "")
-            .replaceAll("\\s+", " ")
-            .trim();
-    }
-    
     private String extractTournamentFromRow(WebElement row) {
         try {
+            // Turnuva ismini farklı yöntemlerle bul
             List<WebElement> elements = row.findElements(By.cssSelector("*"));
             for (WebElement element : elements) {
                 String className = element.getAttribute("class");
-                if (className != null) {
-                    if (className.contains("tournament") || className.contains("league") || 
-                        className.contains("turnuva") || className.contains("lig")) {
-                        String text = element.getText().trim();
-                        if (!text.isEmpty() && !text.matches(".*\\d+[-:]\\d+.*")) {
-                            return text;
-                        }
+                if (className != null && (className.contains("tournament") || className.contains("league") || className.contains("turnuva"))) {
+                    String text = element.getText().trim();
+                    if (!text.isEmpty() && !text.matches("\\d+[-:]\\d+")) { // Skor değilse
+                        return text;
                     }
                 }
             }
+            
+            // Default olarak genel bir isim ver
             return "Genel";
         } catch (Exception e) {
             return "Bilinmeyen";
@@ -796,4 +801,3 @@ class MatchInfo {
     }
 
 }
-
