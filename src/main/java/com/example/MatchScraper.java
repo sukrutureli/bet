@@ -46,8 +46,9 @@ public class MatchScraper {
 
     public List<MatchInfo> scrapeMainPage() {
         List<MatchInfo> matches = new ArrayList<>();
-
-        LocalDate today = LocalDate.now();
+        
+        ZoneId turkeyZone = ZoneId.of("Europe/Istanbul");
+        LocalDate today = LocalDate.now(turkeyZone);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         String todayStr = today.format(formatter);
 
