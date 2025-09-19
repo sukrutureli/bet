@@ -365,7 +365,7 @@ public class MatchScraper {
                     String dateText = row.findElement(By.cssSelector("[data-test-id='CompitionTableItemSeason']")).getText().trim();
                     String homeTeam = extractTeamName(row.findElement(By.cssSelector("div[data-test-id='HomeTeam']")));
                     String awayTeam = extractTeamName(row.findElement(By.cssSelector("div[data-test-id='AwayTeam']")));
-                    String scoreText = row.findElement(By.cssSelector("button[data-testid='nsn-button'] span")).getText().trim();
+                    String scoreText = extractScore(row);
                     String[] parts = scoreText.split("-");
                     int homeScore = Integer.parseInt(parts[0].trim());
                     int awayScore = Integer.parseInt(parts[1].trim());
@@ -382,6 +382,19 @@ public class MatchScraper {
             System.out.println("extractCompetitionHistoryResults hatası: " + e.getMessage());
         }
         return matches;
+    }
+
+    private String extractScore(WebElement row) {
+        List<WebElement> spans = row.findElements(By.cssSelector("button[data-testid='nsn-button'] span"));
+
+        for (WebElement span : spans) {
+            String txt = span.getText().trim();
+            // Skor formatı: sayı - sayı
+            if (txt.matches("\\d+\\s*-\\s*\\d+")) {
+                return txt;
+            }
+        }
+        return "Skor bulunamadı";
     }
 
     // Örnek: extractMatchResults içinde kullanımı
