@@ -208,7 +208,7 @@ public class Scraper {
                         }
                         
                         // Rate limiting - 3 saniye bekle
-                        Thread.sleep(1000);
+                        Thread.sleep(1500);
 
                         if ((i + 1) % 5 == 0) {
                             System.gc(); // Garbage collection tetikle
@@ -272,9 +272,6 @@ public class Scraper {
             // Dosyaları kaydet
             File dir = new File("public");
             if (!dir.exists()) dir.mkdirs();
-            
-            // Final HTML yazımı öncesi
-            System.gc(); // Son GC
 
             // HTML dosyasını kaydet
             try (FileWriter fw = new FileWriter(new File(dir, "index.html"))) {

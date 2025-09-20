@@ -34,6 +34,8 @@ public class MatchScraper {
         options.addArguments("--window-size=1920,1080");
         options.addArguments("--disable-extensions");
         options.addArguments("--disable-blink-features=AutomationControlled");
+        options.addArguments("--disable-default-apps");
+        options.addArguments("--disable-background-timer-throttling");
         options.addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
 
         options.setBinary("/usr/bin/google-chrome");
@@ -42,7 +44,7 @@ public class MatchScraper {
 
         this.driver = new ChromeDriver(options);
         this.js = (JavascriptExecutor) driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     public List<MatchInfo> scrapeMainPage() {
@@ -58,7 +60,7 @@ public class MatchScraper {
             String url = "https://www.nesine.com/iddaa?et=1&dt=" + todayStr + "&le=2&ocg=MS-2%2C5>=Pop%C3%BCler";
             driver.get(url);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
-            Thread.sleep(2000);
+            Thread.sleep(4000);
             performScrolling();
 
             List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
@@ -88,8 +90,8 @@ public class MatchScraper {
                 List<WebElement> matches = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
                 int currentCount = matches.size();
 
-                js.executeScript("window.scrollBy(0, 1500);"); // 1000'den 1500'e
-                Thread.sleep(1000); // 2000'den 1000'e
+                js.executeScript("window.scrollBy(0, 1000);"); // 1000'den 1500'e
+                Thread.sleep(1500); // 2000'den 1000'e
 
                 if (currentCount == previousCount) {
                     stableRounds++;
@@ -121,7 +123,7 @@ public class MatchScraper {
             // Elemente focus yap (lazy loading için)
             try {
                 js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center'});", event);
-                Thread.sleep(200);
+                Thread.sleep(800);
                 
                 // Force trigger lazy loading
                 js.executeScript("arguments[0].focus(); arguments[0].click();", event);
@@ -281,7 +283,7 @@ public class MatchScraper {
         try {
             driver.get(url);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
-            Thread.sleep(500);
+            Thread.sleep(1500);
             // Tüm takım linklerini bul
             List<WebElement> teamLinks = driver.findElements(By.cssSelector("a[data-test-id='TeamLink'] span[data-test-id='HeaderTeams']"));
 
@@ -308,7 +310,7 @@ public class MatchScraper {
         try {
             driver.get(url);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
-            Thread.sleep(2000);
+            Thread.sleep(4000);
 
             WebElement container = driver.findElement(By.cssSelector("div[data-test-id='CompitionHistoryTable']"));
             if (hasNoData(container)) {
@@ -345,11 +347,11 @@ public class MatchScraper {
             WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(
                 By.cssSelector("div[data-test-id='CustomDropdown']")));
             dropdown.click();
-            Thread.sleep(500);
+            Thread.sleep(1000);
             WebElement option = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div[@role='option']//span[contains(text(), 'Bu Turnuva')]")));
             option.click();
-            Thread.sleep(1000);
+            Thread.sleep(1500);
         } catch (Exception e) {
             System.out.println("Turnuva seçimi hatası: " + e.getMessage());
         }
@@ -363,7 +365,7 @@ public class MatchScraper {
                 if (text.contains("daha") || text.contains("more") || text.contains("load")) {
                     if (element.isDisplayed() && element.isEnabled()) {
                         js.executeScript("arguments[0].click();", element);
-                        Thread.sleep(500);
+                        Thread.sleep(1500);
                         return;
                     }
                 }
