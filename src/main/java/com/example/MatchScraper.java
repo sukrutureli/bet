@@ -253,27 +253,41 @@ public class MatchScraper {
 
     private String[] extractOdds(WebElement event) {
         // 1X2 + Alt/Üst + Var/Yok = toplam 7 oran
-        String[] odds = {"-", "-", "-", "-", "-", "-", "-"};
+        String[] odds = {"-", "-", "-", "-", "-", "-", "-"};  
+
         try {
-            // 1X2 oranları
-            List<WebElement> mainOdds = event.findElements(By.cssSelector("dd.col-03.event-row .cell a.odd"));
-            for (int i = 0; i < Math.min(mainOdds.size(), 3); i++) {
-                String text = mainOdds.get(i).getText().trim();
-                if (!text.isEmpty()) odds[i] = text;
+            // --- 1X2 oranları ---
+            List<WebElement> mainOdds = event.findElements(By.cssSelector("dd.col-03.event-row .cell"));
+            for (int i = 0; i < 3; i++) {
+                try {
+                    WebElement oddLink = mainOdds.get(i).findElement(By.cssSelector("a.odd"));
+                    String text = oddLink.getText().trim();
+                    odds[i] = text.isEmpty() ? "-" : text;
+                } catch (IndexOutOfBoundsException | NoSuchElementException e) {
+                    odds[i] = "-"; // Hücre eksikse veya link yoksa garanti "-"
+                }
             }
 
-            // Alt/Üst oranları ve Var/Yok oranları
-            List<WebElement> overUnderGoalOdds = event.findElements(By.cssSelector("dd.col-02.event-row .cell a.odd"));
-            for (int i = 0; i < Math.min(overUnderGoalOdds.size(), 4); i++) {
-                String text = overUnderGoalOdds.get(i).getText().trim();
-                if (!text.isEmpty()) odds[3 + i] = text;
+            // --- Alt/Üst + Var/Yok (4 oran) ---
+            List<WebElement> extraOdds = event.findElements(By.cssSelector("dd.col-02.event-row .cell"));
+            for (int i = 0; i < 4; i++) {
+                try {
+                    WebElement oddLink = extraOdds.get(i).findElement(By.cssSelector("a.odd"));
+                    String text = oddLink.getText().trim();
+                    odds[3 + i] = text.isEmpty() ? "-" : text;
+                } catch (IndexOutOfBoundsException | NoSuchElementException e) {
+                    odds[3 + i] = "-"; // Hücre eksikse veya link yoksa garanti "-"
+                }
             }
+
             System.out.println(Arrays.toString(odds));
         } catch (Exception e) {
             System.out.println("Oran çekme hatası: " + e.getMessage());
         }
+
         return odds; // [1, X, 2, Alt, Üst, Var, Yok]
     }
+
 
 
     public TeamMatchHistory scrapeTeamHistory(String detailUrl, String teamName) {
