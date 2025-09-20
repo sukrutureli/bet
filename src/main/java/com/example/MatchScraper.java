@@ -110,12 +110,12 @@ public class MatchScraper {
             int previousCount = -1;
             int stableRounds = 0;
 
-            while (stableRounds < 3) { // 5'ten 3'e düşür
+            while (stableRounds < 2) { // 5'ten 3'e düşür
                 List<WebElement> matches = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
                 int currentCount = matches.size();
 
-                js.executeScript("window.scrollBy(0, 1000);"); // 1000'den 1500'e
-                Thread.sleep(1500); // 2000'den 1000'e
+                js.executeScript("window.scrollBy(0, 1500);"); // 1000'den 1500'e
+                Thread.sleep(1000); // 2000'den 1000'e
 
                 if (currentCount == previousCount) {
                     stableRounds++;
@@ -147,7 +147,7 @@ public class MatchScraper {
             // Elemente focus yap (lazy loading için)
             try {
                 js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center'});", event);
-                Thread.sleep(800);
+                Thread.sleep(500);
                 
                 // Force trigger lazy loading
                 js.executeScript("arguments[0].focus(); arguments[0].click();", event);
@@ -307,7 +307,7 @@ public class MatchScraper {
         try {
             driver.get(url);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
-            Thread.sleep(1500);
+            Thread.sleep(1000);
             // Tüm takım linklerini bul
             List<WebElement> teamLinks = driver.findElements(By.cssSelector("a[data-test-id='TeamLink'] span[data-test-id='HeaderTeams']"));
 
@@ -334,7 +334,7 @@ public class MatchScraper {
         try {
             driver.get(url);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
-            Thread.sleep(4000);
+            Thread.sleep(2500);
 
             WebElement container = driver.findElement(By.cssSelector("div[data-test-id='CompitionHistoryTable']"));
             if (hasNoData(container)) {
@@ -394,7 +394,7 @@ public class MatchScraper {
                 if (text.contains("daha") || text.contains("more") || text.contains("load")) {
                     if (element.isDisplayed() && element.isEnabled()) {
                         js.executeScript("arguments[0].click();", element);
-                        Thread.sleep(1500);
+                        Thread.sleep(1000);
                         return;
                     }
                 }

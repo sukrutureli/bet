@@ -208,7 +208,7 @@ public class Scraper {
                         }
                         
                         // Rate limiting - 3 saniye bekle
-                        Thread.sleep(1500);
+                        Thread.sleep(1000);
 
                         if ((i + 1) % 5 == 0) {
                             System.gc(); // Garbage collection tetikle
