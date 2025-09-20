@@ -443,8 +443,8 @@ public class MatchScraper {
             // Tek başına sayı (örn. "1", "2") → kart sayısı, atla
             if (txt.matches("\\d+")) continue;
 
-            // Sadece harf, rakam, boşluk, nokta ve tire kalsın
-            txt = txt.replaceAll("[^\\p{L}0-9\\s\\.\\-]", "");
+            // Sadece harf, rakam, boşluk, nokta, parantez ve tire kalsın
+            txt = txt.replaceAll("[^\\p{L}0-9\\s\\.\\-\\(\\)]", "");
 
             if (txt.isEmpty()) continue;
 
