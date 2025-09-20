@@ -54,7 +54,9 @@ public class MatchScraper {
         LocalDate today = LocalDate.now(turkeyZone);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         String todayStr = today.format(formatter);
-        System.out.println(todayStr);
+
+        ZonedDateTime istanbulTime = ZonedDateTime.now(ZoneId.of("Europe/Istanbul"));
+        int nowHour = istanbulTime.getHour();
 
         try {
             String url = "https://www.nesine.com/iddaa?et=1&dt=" + todayStr + "&le=2&ocg=MS-2%2C5>=Pop%C3%BCler";
@@ -63,14 +65,36 @@ public class MatchScraper {
             Thread.sleep(4000);
             performScrolling();
 
+            // SCROLL BİTTİKTEN SONRA FRESH ELEMENTLERİ ÇEK
             List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
+            System.out.println("Final element sayısı: " + events.size());
+            
             for (int idx = 0; idx < events.size(); idx++) {
-                WebElement event = events.get(idx);
-                MatchInfo matchInfo = extractMatchInfo(event, idx);
-                if (matchInfo != null && matchInfo.isClose()) {
-                    matches.add(matchInfo);
-                } else {
-                    break;
+                try {
+                    // Her iterasyonda element'i tekrar bul (fresh reference)
+                    List<WebElement> freshEvents = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
+                    if (idx >= freshEvents.size()) {
+                        System.out.println("Element " + idx + " artık mevcut değil, çıkılıyor");
+                        break;
+                    }
+                    
+                    WebElement event = freshEvents.get(idx);
+                    MatchInfo matchInfo = extractMatchInfo(event, idx);
+                    
+                    if (matchInfo != null && matchInfo.isClose(nowHour)) {
+                        matches.add(matchInfo);
+                    } else if (matchInfo == null) {
+                        // Null ise devam et, break yapma
+                        continue;
+                    } else {
+                        // isClose() false ise dur
+                        break;
+                    }
+                    
+                } catch (Exception e) {
+                    System.out.println("Element " + idx + " işlenirken hata: " + e.getMessage());
+                    // Hata olsa bile devam et
+                    continue;
                 }
             }
 
@@ -577,17 +601,20 @@ class MatchInfo {
     public String getOddYok() { return oddYok; }
     public int getIndex() { return index; }
 
-    public boolean isClose() {
-        ZonedDateTime istanbulTime = ZonedDateTime.now(ZoneId.of("Europe/Istanbul"));
-        int nowHour = istanbulTime.getHour();
+    public boolean isClose(int nowHour) {
+        try {
+            // "Zaman hatası" string'ini parse etmeye çalışırsa hata verir
+            if (time.equals("Zaman bulunamadı") || time.equals("Zaman hatası")) {
+                return true; // Zaman bilinmiyorsa işle
+            }
 
-        Boolean timeInBool = false;
-        int timeInHour = Integer.parseInt(time.split(":")[0]);
-        if (nowHour + 2 >= timeInHour && nowHour <= timeInHour) {
-            timeInBool = true;
+            int timeInHour = Integer.parseInt(time.split(":")[0]);
+            return nowHour + 2 >= timeInHour && nowHour <= timeInHour;
+            
+        } catch (Exception e) {
+            System.out.println("isClose() hatası: " + e.getMessage() + " - time: " + time);
+            return true; // Hata varsa işle
         }
-
-        return timeInBool;
     }
 
     public boolean hasDetailUrl() {
