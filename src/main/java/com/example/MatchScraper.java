@@ -281,7 +281,7 @@ public class MatchScraper {
                 }
             }
 
-            System.out.println(Arrays.toString(odds));
+            //System.out.println(Arrays.toString(odds));
         } catch (Exception e) {
             System.out.println("Oran çekme hatası: " + e.getMessage());
         }
