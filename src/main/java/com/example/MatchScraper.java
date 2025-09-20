@@ -13,6 +13,8 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ArrayList;
+import java.time.ZonedDateTime;
+import java.time.ZoneId;
 
 public class MatchScraper {
     private WebDriver driver;
@@ -574,6 +576,15 @@ class MatchInfo {
     public int getIndex() { return index; }
 
     public boolean hasDetailUrl() {
-        return detailUrl != null && !detailUrl.isEmpty() && detailUrl.contains("istatistik.nesine.com");
+        ZonedDateTime istanbulTime = ZonedDateTime.now(ZoneId.of("Europe/Istanbul"));
+        int nowHour = istanbulTime.getHour();
+
+        Boolean timeInBool = false;
+        int timeInHour = Integer.parseInt(time.split(":")[0]) + 1;
+        if (nowHour + 5 >= timeInHour && nowHour + 1 <= timeInHour) {
+            timeInBool = true;
+        }
+
+        return timeInBool && detailUrl != null && !detailUrl.isEmpty() && detailUrl.contains("istatistik.nesine.com");
     }
 }

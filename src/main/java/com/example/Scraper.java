@@ -60,6 +60,8 @@ public class Scraper {
                 }
             }
             
+            System.out.println("Detay URL'si olan" + detailUrlCount);
+
             html.append("<div class='stats'>");
             html.append("<h3>İstatistikler</h3>");
             html.append("<p>• Toplam maç: ").append(matches.size()).append("</p>");
