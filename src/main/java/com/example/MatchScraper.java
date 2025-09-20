@@ -82,7 +82,7 @@ public class MatchScraper {
                     MatchInfo matchInfo = extractMatchInfo(event, idx);
                     
                     if (matchInfo != null && matchInfo.isClose(nowHour)) {
-                        System.out.println(matchInfo.getTeamName());
+                        System.out.println(matchInfo.getName());
                         matches.add(matchInfo);
                     } else if (matchInfo == null) {
                         // Null ise devam et, break yapma
@@ -339,7 +339,7 @@ public class MatchScraper {
 
             List<WebElement> container = driver.findElements(By.cssSelector("div[data-test-id='CompitionHistoryTable']"));
             if (!container.isEmpty()) {
-                if (hasNoData(container)) {
+                if (hasNoData(container.get(0))) {
                     System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
                     return matches;
                 }
@@ -369,7 +369,7 @@ public class MatchScraper {
             }
             List<WebElement> container = driver.findElements(By.cssSelector(selectorString));
             if (!container.isEmpty()) {
-                if (hasNoData(container)) {
+                if (hasNoData(container.get(0))) {
                     System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
                     return matches;
                 }
@@ -461,7 +461,7 @@ public class MatchScraper {
 
         List<WebElement> container = driver.findElements(By.cssSelector("div[data-test-id='CompitionHistoryTable']"));
         if (!container.isEmpty()) {
-            if (hasNoData(container)) {
+            if (hasNoData(container.get(0))) {
                 System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
                 return matches;
             }
@@ -535,7 +535,7 @@ public class MatchScraper {
         }
         List<WebElement> container = driver.findElements(By.cssSelector(selectorString));
         if (!container.isEmpty()) {
-            if (hasNoData(container)) {
+            if (hasNoData(container.get(0))) {
                 System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
                 return matches;
             }
