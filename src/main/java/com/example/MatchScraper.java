@@ -75,30 +75,32 @@ public class MatchScraper {
 
     private void performScrolling() {
         try {
-            int previousCount = 0;
+            int previousCount = -1;
+            int stableRounds = 0;
 
-            while (true) {
-                // Şu an görünen maç sayısını al
-                List<WebElement> matches = driver.findElements(By.cssSelector("tr[data-test-id='EventRow']"));
+            while (stableRounds < 10) { // 3 kere üst üste artmazsa çık
+                List<WebElement> matches = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
                 int currentCount = matches.size();
+                System.out.println("Şu an görünen maç sayısı: " + currentCount);
 
-                // Scroll yap
-                js.executeScript("window.scrollBy(0, 800);");
-                Thread.sleep(1500); // yeni satırların yüklenmesi için bekle
+                js.executeScript("window.scrollBy(0, 1000);");
+                Thread.sleep(2000);
 
-                // Eğer yeni maç eklenmediyse çık
                 if (currentCount == previousCount) {
-                    break;
+                    stableRounds++;
+                } else {
+                    stableRounds = 0;
                 }
 
                 previousCount = currentCount;
             }
 
-            System.out.println("Toplam yüklenen maç sayısı: " + previousCount);
+            System.out.println("Scroll tamamlandı. Toplam maç sayısı: " + previousCount);
         } catch (Exception e) {
             System.out.println("Scroll işlemi hatası: " + e.getMessage());
         }
     }
+
 
     private MatchInfo extractMatchInfo(WebElement event, int idx) {
         try {
