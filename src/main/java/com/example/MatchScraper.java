@@ -84,7 +84,7 @@ public class MatchScraper {
             int previousCount = -1;
             int stableRounds = 0;
 
-            while (stableRounds < 10) { // 3 kere üst üste artmazsa çık
+            while (stableRounds < 5) { // 5 kere üst üste artmazsa çık
                 List<WebElement> matches = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
                 int currentCount = matches.size();
                 System.out.println("Şu an görünen maç sayısı: " + currentCount);
@@ -585,7 +585,7 @@ class MatchInfo {
 
         Boolean timeInBool = false;
         int timeInHour = Integer.parseInt(time.split(":")[0]) + 1;
-        if (nowHour + 5 >= timeInHour && nowHour + 1 <= timeInHour) {
+        if (nowHour + 2 >= timeInHour && nowHour + 1 <= timeInHour) {
             timeInBool = true;
         }
 
