@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.time.ZonedDateTime;
 import java.time.ZoneId;
+import java.util.Arrays;
 
 public class MatchScraper {
     private WebDriver driver;
@@ -267,7 +268,7 @@ public class MatchScraper {
                 String text = overUnderGoalOdds.get(i).getText().trim();
                 if (!text.isEmpty()) odds[3 + i] = text;
             }
-            System.out.println(odds);
+            System.out.println(Arrays.toString(odds));
         } catch (Exception e) {
             System.out.println("Oran çekme hatası: " + e.getMessage());
         }
