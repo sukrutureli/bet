@@ -62,7 +62,7 @@ public class MatchScraper {
             String url = "https://www.nesine.com/iddaa?et=1&dt=" + todayStr + "&le=2&ocg=MS-2%2C5>=Pop%C3%BCler";
             driver.get(url);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
-            Thread.sleep(4000);
+            Thread.sleep(2000);
             performScrolling();
 
             // SCROLL BİTTİKTEN SONRA FRESH ELEMENTLERİ ÇEK
@@ -115,7 +115,7 @@ public class MatchScraper {
                 int currentCount = matches.size();
 
                 js.executeScript("window.scrollBy(0, 1500);"); // 1000'den 1500'e
-                Thread.sleep(1000); // 2000'den 1000'e
+                Thread.sleep(500); // 2000'den 1000'e
 
                 if (currentCount == previousCount) {
                     stableRounds++;
@@ -147,11 +147,11 @@ public class MatchScraper {
             // Elemente focus yap (lazy loading için)
             try {
                 js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center'});", event);
-                Thread.sleep(500);
+                Thread.sleep(300);
                 
                 // Force trigger lazy loading
                 js.executeScript("arguments[0].focus(); arguments[0].click();", event);
-                Thread.sleep(300);
+                Thread.sleep(200);
             } catch (Exception scrollEx) {
                 System.out.println("Element " + idx + " scroll hatası: " + scrollEx.getMessage());
             }
@@ -334,7 +334,7 @@ public class MatchScraper {
         try {
             driver.get(url);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
-            Thread.sleep(2500);
+            Thread.sleep(1500);
 
             WebElement container = driver.findElement(By.cssSelector("div[data-test-id='CompitionHistoryTable']"));
             if (hasNoData(container)) {
@@ -356,7 +356,20 @@ public class MatchScraper {
         try {
             driver.get(url);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
-            Thread.sleep(2000);
+            Thread.sleep(1500);
+
+            String selectorString = "";
+            if (homeOrAway == 1) {
+                selectorString = "div[data-test-id='LastMatchesTableFirst'] table";
+            } else if (homeOrAway == 2) {
+                selectorString = "div[data-test-id='LastMatchesTableSecond'] table";
+            }
+            WebElement container = driver.findElement(By.cssSelector(selectorString));
+            if (hasNoData(container)) {
+                System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
+                return matches;
+            }
+
             selectTournament();
             clickShowMoreMatches();
             matches = extractMatchResults("son-maclari", url, homeOrAway);
@@ -379,7 +392,7 @@ public class MatchScraper {
                 .until(ExpectedConditions.elementToBeClickable(
                     By.xpath("//div[@role='option']//span[contains(text(), 'Bu Turnuva')]")));
             option.click();
-            Thread.sleep(500); // 1500'den 500'e
+            Thread.sleep(200)); // 1500'den 500'e
         } catch (Exception e) {
             // Hızla geç, takılma
             System.out.println("Turnuva seçimi atlandı");
@@ -394,7 +407,7 @@ public class MatchScraper {
                 if (text.contains("daha") || text.contains("more") || text.contains("load")) {
                     if (element.isDisplayed() && element.isEnabled()) {
                         js.executeScript("arguments[0].click();", element);
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
                         return;
                     }
                 }
@@ -512,6 +525,11 @@ public class MatchScraper {
             selectorString = "div[data-test-id='LastMatchesTableFirst'] table";
         } else if (homeOrAway == 2) {
             selectorString = "div[data-test-id='LastMatchesTableSecond'] table";
+        }
+        WebElement container = driver.findElement(By.cssSelector(selectorString));
+        if (hasNoData(container)) {
+            System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
+            return matches;
         }
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(
