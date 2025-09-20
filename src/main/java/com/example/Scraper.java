@@ -82,9 +82,9 @@ public class Scraper {
                 
                 html.append("<div class='odds'>");
                 html.append("<strong>Güncel Oranlar:</strong> ");
-                html.append("1: ").append(match.getOdd1()).append(" | ");
-                html.append("X: ").append(match.getOddX()).append(" | ");
-                html.append("2: ").append(match.getOdd2()).append(" | ");
+                html.append("MS1: ").append(match.getOdd1()).append(" | ");
+                html.append("MSX: ").append(match.getOddX()).append(" | ");
+                html.append("MS2: ").append(match.getOdd2()).append(" | ");
                 html.append("Alt: ").append(match.getOddAlt()).append(" | ");
                 html.append("Üst: ").append(match.getOddUst()).append(" | ");
                 html.append("Var: ").append(match.getOddVar()).append(" | ");
@@ -101,6 +101,10 @@ public class Scraper {
                         
                         if (teamHistory != null && teamHistory.getTotalMatches() > 0) {
                             historyManager.addTeamHistory(teamHistory);
+
+                            int rekabetMacCount = Math.min(10, teamHistory.getRekabetGecmisi().size());
+                            int sonMaclarCount = Math.min(10, teamHistory.getSonMaclar(1).size()) + 
+                                                    Math.min(10, teamHistory.getSonMaclar(2).size());
                             
                             html.append("<div class='history'>");
                             html.append("<h4>Geçmiş Maç Analizi:</h4>");
@@ -109,12 +113,14 @@ public class Scraper {
                             html.append("<div class='team-stats'>");
                             html.append("<strong>").append(teamHistory.getTeamName()).append("</strong><br>");
                             html.append(teamHistory.toStringAsPercentage(teamHistory.getMs1(), "MS1")).append("  |  ");
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs0(), "MS0")).append("  |  ");
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs0(), "MSX")).append("  |  ");
                             html.append(teamHistory.toStringAsPercentage(teamHistory.getMs2(), "MS2")).append("<br>");
                             html.append(teamHistory.toStringAsPercentage(teamHistory.getAlt(), "Alt")).append("  |  ");
                             html.append(teamHistory.toStringAsPercentage(teamHistory.getUst(), "Üst")).append("<br>");
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getVar(), "Var")).append("  |  ");
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getYok(), "Yok"));
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getYok(), "Yok")).append("  |  ");
+                            html.append(teamHistory.toStringAsPercentage(teamHistory.getVar(), "Var")).append("<br>");
+                            html.append("Bakılan maç sayısı: Rekabet - ").append(rekabetMacCount).append(" | ");
+                            html.append("Son maçlar - ").append(sonMaclarCount);
                             html.append("</div>");
                             
                             // Rekabet Geçmişi

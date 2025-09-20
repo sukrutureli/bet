@@ -289,6 +289,13 @@ public class MatchScraper {
             driver.get(url);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
             Thread.sleep(5000);
+
+            WebElement container = driver.findElement(By.cssSelector("div[data-test-id='CompitionHistoryTable']"));
+            if (hasNoData(container)) {
+                System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
+                return matches;
+            }
+
             selectTournament();
             clickShowMoreMatches();
             matches = extractCompetitionHistoryResults("rekabet-gecmisi", url);
@@ -382,6 +389,13 @@ public class MatchScraper {
     // Örnek: extractCompetitionHistoryResults içinde kullanımı
     private List<MatchResult> extractCompetitionHistoryResults(String matchType, String originalUrl) {
         List<MatchResult> matches = new ArrayList<>();
+
+        WebElement container = driver.findElement(By.cssSelector("div[data-test-id='CompitionHistoryTable']"));
+        if (hasNoData(container)) {
+            System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
+            return matches;
+        }        
+        
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.cssSelector("div[data-test-id='CompitionHistoryTableItem']")));
@@ -418,6 +432,7 @@ public class MatchScraper {
             List<WebElement> spans = row.findElements(By.cssSelector("button[data-test-id='NsnButton'] span"));
             for (WebElement span : spans) {
                 String txt = span.getText().trim();
+                txt = txt.replaceAll("\\(.*?\\)", "").trim(); // (H) engeller
                 // Skor formatı "X - Y" (ör. "2 - 1")
                 if (txt.matches("\\d+\\s*-\\s*\\d+")) {
                     return txt;
@@ -427,6 +442,15 @@ public class MatchScraper {
             System.out.println("Skor çekme hatası: " + e.getMessage());
         }
         return "-";
+    }
+
+    private boolean hasNoData(WebElement container) {
+        try {
+            List<WebElement> noDataElems = container.findElements(By.cssSelector("div[data-test-id='NoData']"));
+            return !noDataElems.isEmpty();
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     // Maç sonuçlarını listeleyen metot
