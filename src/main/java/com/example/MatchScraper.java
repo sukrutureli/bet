@@ -44,7 +44,7 @@ public class MatchScraper {
 
         this.driver = new ChromeDriver(options);
         this.js = (JavascriptExecutor) driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     public List<MatchInfo> scrapeMainPage() {
