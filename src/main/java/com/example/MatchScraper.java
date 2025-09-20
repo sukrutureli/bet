@@ -267,7 +267,7 @@ public class MatchScraper {
                 String text = overUnderGoalOdds.get(i).getText().trim();
                 if (!text.isEmpty()) odds[3 + i] = text;
             }
-
+            System.out.println(odds);
         } catch (Exception e) {
             System.out.println("Oran çekme hatası: " + e.getMessage());
         }
