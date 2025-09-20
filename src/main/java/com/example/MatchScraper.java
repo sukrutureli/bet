@@ -82,6 +82,7 @@ public class MatchScraper {
                     MatchInfo matchInfo = extractMatchInfo(event, idx);
                     
                     if (matchInfo != null && matchInfo.isClose(nowHour)) {
+                        System.out.println(matchInfo.getTeamName());
                         matches.add(matchInfo);
                     } else if (matchInfo == null) {
                         // Null ise devam et, break yapma
@@ -219,7 +220,7 @@ public class MatchScraper {
             try {
                 String elementText = (String) js.executeScript("return (arguments[0].textContent || arguments[0].innerText || '').substring(0, 100);", event);
                 //System.out.println("Element " + idx + " text (ilk 100 kar): " + elementText);
-                System.out.println(matchName);
+                //System.out.println(matchName);
             } catch (Exception debugEx) {
                 // Ignore
             }
@@ -396,7 +397,7 @@ public class MatchScraper {
                 .until(ExpectedConditions.elementToBeClickable(
                     By.xpath("//div[@role='option']//span[contains(text(), 'Bu Turnuva')]")));
             option.click();
-            Thread.sleep(200)); // 1500'den 500'e
+            Thread.sleep(200); // 1500'den 500'e
         } catch (Exception e) {
             // Hızla geç, takılma
             System.out.println("Turnuva seçimi atlandı");
