@@ -386,13 +386,13 @@ public class MatchScraper {
     private void selectTournament() {
         try {
             // Timeout'u 5 saniyeye düşür
-            WebElement dropdown = new WebDriverWait(driver, Duration.ofSeconds(5))
+            WebElement dropdown = new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.elementToBeClickable(
                     By.cssSelector("div[data-test-id='CustomDropdown']")));
             dropdown.click();
             Thread.sleep(300); // 1000'den 300'e
             
-            WebElement option = new WebDriverWait(driver, Duration.ofSeconds(5))
+            WebElement option = new WebDriverWait(driver, Duration.ofSeconds(15))
                 .until(ExpectedConditions.elementToBeClickable(
                     By.xpath("//div[@role='option']//span[contains(text(), 'Bu Turnuva')]")));
             option.click();
