@@ -65,7 +65,11 @@ public class MatchScraper {
             for (int idx = 0; idx < events.size(); idx++) {
                 WebElement event = events.get(idx);
                 MatchInfo matchInfo = extractMatchInfo(event, idx);
-                if (matchInfo != null) matches.add(matchInfo);
+                if (matchInfo != null && matchInfo.isClose()) {
+                    matches.add(matchInfo);
+                } else {
+                    break;
+                }
             }
 
         } catch (Exception e) {
@@ -575,7 +579,7 @@ class MatchInfo {
     public String getOddYok() { return oddYok; }
     public int getIndex() { return index; }
 
-    public boolean hasDetailUrl() {
+    public boolean isClose() {
         ZonedDateTime istanbulTime = ZonedDateTime.now(ZoneId.of("Europe/Istanbul"));
         int nowHour = istanbulTime.getHour();
 
@@ -584,7 +588,9 @@ class MatchInfo {
         if (nowHour + 5 >= timeInHour && nowHour + 1 <= timeInHour) {
             timeInBool = true;
         }
+    }
 
-        return timeInBool && detailUrl != null && !detailUrl.isEmpty() && detailUrl.contains("istatistik.nesine.com");
+    public boolean hasDetailUrl() {
+        return detailUrl != null && !detailUrl.isEmpty() && detailUrl.contains("istatistik.nesine.com");
     }
 }
