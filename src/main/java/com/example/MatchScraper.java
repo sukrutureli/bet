@@ -307,8 +307,8 @@ public class MatchScraper {
         List<String> names = new ArrayList<>();
         try {
             driver.get(url);
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
-            Thread.sleep(1000);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
+            Thread.sleep(1500);
             // Tüm takım linklerini bul
             List<WebElement> teamLinks = driver.findElements(By.cssSelector("a[data-test-id='TeamLink'] span[data-test-id='HeaderTeams']"));
 
