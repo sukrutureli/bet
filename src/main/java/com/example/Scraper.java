@@ -208,7 +208,11 @@ public class Scraper {
                         }
                         
                         // Rate limiting - 3 saniye bekle
-                        Thread.sleep(3000);
+                        Thread.sleep(1000);
+
+                        if ((i + 1) % 5 == 0) {
+                            System.gc(); // Garbage collection tetikle
+                        }
                         
                     } catch (Exception e) {
                         System.out.println("Geçmiş çekme hatası: " + e.getMessage());
@@ -269,9 +273,14 @@ public class Scraper {
             File dir = new File("public");
             if (!dir.exists()) dir.mkdirs();
             
+            // Final HTML yazımı öncesi
+            System.gc(); // Son GC
+
             // HTML dosyasını kaydet
             try (FileWriter fw = new FileWriter(new File(dir, "index.html"))) {
                 fw.write(html.toString());
+                html = null; // Reference'i sil
+                System.gc(); // HTML string'i temizle
             }
             
             // CSV dosyasını kaydet
