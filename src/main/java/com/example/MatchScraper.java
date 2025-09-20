@@ -503,7 +503,7 @@ public class MatchScraper {
             List<WebElement> spans = row.findElements(By.cssSelector("button[data-test-id='NsnButton'] span"));
             for (WebElement span : spans) {
                 String txt = span.getText().trim();
-                txt = txt.replaceAll("\\(.*?\\)", "").trim(); // (H) engeller
+                txt = txt.replaceAll("(H)", "").trim(); // (H) engeller
                 // Skor formatı "X - Y" (ör. "2 - 1")
                 if (txt.matches("\\d+\\s*-\\s*\\d+")) {
                     return txt;
