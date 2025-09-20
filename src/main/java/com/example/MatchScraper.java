@@ -44,7 +44,7 @@ public class MatchScraper {
 
         this.driver = new ChromeDriver(options);
         this.js = (JavascriptExecutor) driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
     public List<MatchInfo> scrapeMainPage() {
@@ -368,16 +368,21 @@ public class MatchScraper {
 
     private void selectTournament() {
         try {
-            WebElement dropdown = wait.until(ExpectedConditions.elementToBeClickable(
-                By.cssSelector("div[data-test-id='CustomDropdown']")));
+            // Timeout'u 5 saniyeye düşür
+            WebElement dropdown = new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.elementToBeClickable(
+                    By.cssSelector("div[data-test-id='CustomDropdown']")));
             dropdown.click();
-            Thread.sleep(1000);
-            WebElement option = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//div[@role='option']//span[contains(text(), 'Bu Turnuva')]")));
+            Thread.sleep(300); // 1000'den 300'e
+            
+            WebElement option = new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//div[@role='option']//span[contains(text(), 'Bu Turnuva')]")));
             option.click();
-            Thread.sleep(1500);
+            Thread.sleep(500); // 1500'den 500'e
         } catch (Exception e) {
-            System.out.println("Turnuva seçimi hatası: " + e.getMessage());
+            // Hızla geç, takılma
+            System.out.println("Turnuva seçimi atlandı");
         }
     }
 
