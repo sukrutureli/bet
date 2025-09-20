@@ -75,10 +75,26 @@ public class MatchScraper {
 
     private void performScrolling() {
         try {
-            for (int i = 0; i < 10; i++) {
-                js.executeScript("window.scrollBy(0, 400);");
-                Thread.sleep(1000);
+            int previousCount = 0;
+
+            while (true) {
+                // Şu an görünen maç sayısını al
+                List<WebElement> matches = driver.findElements(By.cssSelector("tr[data-test-id='EventRow']"));
+                int currentCount = matches.size();
+
+                // Scroll yap
+                js.executeScript("window.scrollBy(0, 800);");
+                Thread.sleep(1500); // yeni satırların yüklenmesi için bekle
+
+                // Eğer yeni maç eklenmediyse çık
+                if (currentCount == previousCount) {
+                    break;
+                }
+
+                previousCount = currentCount;
             }
+
+            System.out.println("Toplam yüklenen maç sayısı: " + previousCount);
         } catch (Exception e) {
             System.out.println("Scroll işlemi hatası: " + e.getMessage());
         }
@@ -395,7 +411,7 @@ public class MatchScraper {
             System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
             return matches;
         }        
-        
+
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.cssSelector("div[data-test-id='CompitionHistoryTableItem']")));
