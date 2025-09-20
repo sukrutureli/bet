@@ -336,11 +336,13 @@ public class MatchScraper {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
             Thread.sleep(1500);
 
-            WebElement container = driver.findElement(By.cssSelector("div[data-test-id='CompitionHistoryTable']"));
-            if (hasNoData(container)) {
-                System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
-                return matches;
-            }
+            List<WebElement> container = driver.findElements(By.cssSelector("div[data-test-id='CompitionHistoryTable']"));
+            if (!container.isEmpty()) {
+                if (hasNoData(container)) {
+                    System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
+                    return matches;
+                }
+            } 
 
             selectTournament();
             clickShowMoreMatches();
@@ -364,10 +366,12 @@ public class MatchScraper {
             } else if (homeOrAway == 2) {
                 selectorString = "div[data-test-id='LastMatchesTableSecond'] table";
             }
-            WebElement container = driver.findElement(By.cssSelector(selectorString));
-            if (hasNoData(container)) {
-                System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
-                return matches;
+            List<WebElement> container = driver.findElements(By.cssSelector(selectorString));
+            if (!container.isEmpty()) {
+                if (hasNoData(container)) {
+                    System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
+                    return matches;
+                }
             }
 
             selectTournament();
@@ -454,11 +458,13 @@ public class MatchScraper {
     private List<MatchResult> extractCompetitionHistoryResults(String matchType, String originalUrl) {
         List<MatchResult> matches = new ArrayList<>();
 
-        WebElement container = driver.findElement(By.cssSelector("div[data-test-id='CompitionHistoryTable']"));
-        if (hasNoData(container)) {
-            System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
-            return matches;
-        }        
+        List<WebElement> container = driver.findElements(By.cssSelector("div[data-test-id='CompitionHistoryTable']"));
+        if (!container.isEmpty()) {
+            if (hasNoData(container)) {
+                System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
+                return matches;
+            }
+        }      
 
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(
@@ -526,10 +532,12 @@ public class MatchScraper {
         } else if (homeOrAway == 2) {
             selectorString = "div[data-test-id='LastMatchesTableSecond'] table";
         }
-        WebElement container = driver.findElement(By.cssSelector(selectorString));
-        if (hasNoData(container)) {
-            System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
-            return matches;
+        List<WebElement> container = driver.findElements(By.cssSelector(selectorString));
+        if (!container.isEmpty()) {
+            if (hasNoData(container)) {
+                System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
+                return matches;
+            }
         }
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(
