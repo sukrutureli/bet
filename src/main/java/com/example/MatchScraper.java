@@ -588,6 +588,8 @@ class MatchInfo {
         if (nowHour + 5 >= timeInHour && nowHour + 1 <= timeInHour) {
             timeInBool = true;
         }
+
+        return timeInBool;
     }
 
     public boolean hasDetailUrl() {
