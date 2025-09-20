@@ -62,7 +62,7 @@ public class MatchScraper {
             String url = "https://www.nesine.com/iddaa?et=1&dt=" + todayStr + "&le=2&ocg=MS-2%2C5>=Pop%C3%BCler";
             driver.get(url);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
-            Thread.sleep(2000);
+            Thread.sleep(3000);
             performScrolling();
 
             // SCROLL BİTTİKTEN SONRA FRESH ELEMENTLERİ ÇEK
@@ -116,7 +116,7 @@ public class MatchScraper {
                 int currentCount = matches.size();
 
                 js.executeScript("window.scrollBy(0, 1500);"); // 1000'den 1500'e
-                Thread.sleep(500); // 2000'den 1000'e
+                Thread.sleep(1500); // 2000'den 1000'e
 
                 if (currentCount == previousCount) {
                     stableRounds++;
