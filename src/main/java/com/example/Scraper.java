@@ -60,7 +60,7 @@ public class Scraper {
                 }
             }
             
-            System.out.println("Detay URL'si olan" + detailUrlCount);
+            System.out.println("Detay URL'si olan " + detailUrlCount);
 
             html.append("<div class='stats'>");
             html.append("<h3>İstatistikler</h3>");
