@@ -81,16 +81,16 @@ public class MatchScraper {
                     WebElement event = freshEvents.get(idx);
                     MatchInfo matchInfo = extractMatchInfo(event, idx);
                     
-                    if (matchInfo != null && matchInfo.isClose(nowHour)) {
+                    if (matchInfo != null/* && matchInfo.isClose(nowHour)*/) {
                         System.out.println(matchInfo.getName());
                         matches.add(matchInfo);
-                    } else if (matchInfo == null) {
+                    } /*else if (matchInfo == null) {
                         // Null ise devam et, break yapma
                         continue;
                     } else {
                         // isClose() false ise dur
                         break;
-                    }
+                    }*/
                     
                 } catch (Exception e) {
                     System.out.println("Element " + idx + " işlenirken hata: " + e.getMessage());
