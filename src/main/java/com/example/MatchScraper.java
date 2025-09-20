@@ -583,7 +583,7 @@ class MatchInfo {
 
         Boolean timeInBool = false;
         int timeInHour = Integer.parseInt(time.split(":")[0]);
-        if (nowHour + 3 >= timeInHour && nowHour <= timeInHour) {
+        if (nowHour + 2 >= timeInHour && nowHour <= timeInHour) {
             timeInBool = true;
         }
 
