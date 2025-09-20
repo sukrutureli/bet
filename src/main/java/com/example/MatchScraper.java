@@ -261,18 +261,11 @@ public class MatchScraper {
                 if (!text.isEmpty()) odds[i] = text;
             }
 
-            // Alt/Üst oranları
-            List<WebElement> overUnderOdds = event.findElements(By.cssSelector("dd.col-02.event-row .cell a.odd"));
-            for (int i = 0; i < Math.min(overUnderOdds.size(), 2); i++) {
-                String text = overUnderOdds.get(i).getText().trim();
-                if (!text.isEmpty()) odds[3 + i] = text;  // odds[3], odds[4]
-            }
-
-            // Var/Yok oranları
-            List<WebElement> goalOdds = event.findElements(By.cssSelector("dd.col-04.event-row .cell a.odd"));
-            for (int i = 0; i < Math.min(goalOdds.size(), 2); i++) {
-                String text = goalOdds.get(i).getText().trim();
-                if (!text.isEmpty()) odds[5 + i] = text;  // odds[5], odds[6]
+            // Alt/Üst oranları ve Var/Yok oranları
+            List<WebElement> overUnderGoalOdds = event.findElements(By.cssSelector("dd.col-02.event-row .cell a.odd"));
+            for (int i = 0; i < Math.min(overUnderGoalOdds.size(), 4); i++) {
+                String text = overUnderGoalOdds.get(i).getText().trim();
+                if (!text.isEmpty()) odds[3 + i] = text;
             }
 
         } catch (Exception e) {
