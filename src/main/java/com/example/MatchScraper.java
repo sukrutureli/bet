@@ -584,8 +584,8 @@ class MatchInfo {
         int nowHour = istanbulTime.getHour();
 
         Boolean timeInBool = false;
-        int timeInHour = Integer.parseInt(time.split(":")[0]) + 1;
-        if (nowHour + 2 >= timeInHour && nowHour + 1 <= timeInHour) {
+        int timeInHour = Integer.parseInt(time.split(":")[0]);
+        if (nowHour + 2 >= timeInHour && nowHour <= timeInHour) {
             timeInBool = true;
         }
 

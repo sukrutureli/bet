@@ -2,7 +2,7 @@ name: Build and Deploy to GitHub Pages
 
 on:
   schedule:
-    - cron: "0 1 * * *"   # Günde 1 kere gece yarısı
+    - cron: '0 */3 * * *' # her 3 saatte bir çalışır
   workflow_dispatch:
 
 jobs:
