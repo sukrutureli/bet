@@ -3,16 +3,18 @@ package com.example;
 import java.io.File;
 import java.io.FileWriter;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 public class Scraper {
     public static void main(String[] args) {
         MatchScraper scraper = null;
         MatchHistoryManager historyManager = new MatchHistoryManager();
+        ZoneId istanbulZone = ZoneId.of("Europe/Istanbul");
         
         try {
             System.out.println("=== İddaa Scraper Başlatılıyor ===");
-            System.out.println("Zaman: " + LocalDateTime.now());
+            System.out.println("Zaman: " + LocalDateTime.now(istanbulZone));
             
             // Scraper'ı başlat
             scraper = new MatchScraper();
@@ -47,7 +49,7 @@ public class Scraper {
             html.append("</style>");
             html.append("</head><body>");
             html.append("<h1>İddaa Maç Geçmişi Analizi</h1>");
-            html.append("<p>Son güncelleme: " + LocalDateTime.now() + "</p>");
+            html.append("<p>Son güncelleme: " + LocalDateTime.now(istanbulZone) + "</p>");
             
             // İstatistik bilgileri
             int detailUrlCount = 0;
@@ -82,16 +84,38 @@ public class Scraper {
                 html.append("<button onclick=\"toggleHistory(this)\">Göster/Gizle</button>");
                 html.append("</div>");
                 
-                html.append("<div class='odds'>");
-                html.append("<strong>Güncel Oranlar:</strong> ");
-                html.append("MS1: ").append(match.getOdd1()).append(" | ");
-                html.append("MSX: ").append(match.getOddX()).append(" | ");
-                html.append("MS2: ").append(match.getOdd2()).append(" | ");
-                html.append("Alt: ").append(match.getOddAlt()).append(" | ");
-                html.append("Üst: ").append(match.getOddUst()).append(" | ");
-                html.append("Var: ").append(match.getOddVar()).append(" | ");
-                html.append("Yok: ").append(match.getOddYok());
+                html.append("<div class='odds' style='margin-top:10px;'>");
+                html.append("<strong>Güncel Oranlar:</strong>");
+                html.append("<table style='width:100%; border-collapse: collapse; margin-top:6px; text-align:center;'>");
+
+                html.append("<tr>");
+                html.append("<td style='padding:6px; border:1px solid #ccc;'>MS1<br><strong>")
+                    .append(match.getOdd1()).append("</strong></td>");
+                html.append("<td style='padding:6px; border:1px solid #ccc;'>MSX<br><strong>")
+                    .append(match.getOddX()).append("</strong></td>");
+                html.append("<td style='padding:6px; border:1px solid #ccc;'>MS2<br><strong>")
+                    .append(match.getOdd2()).append("</strong></td>");
+                html.append("</tr>");
+
+                html.append("<tr>");
+                html.append("<td style='padding:6px; border:1px solid #ccc;'>Alt<br><strong>")
+                    .append(match.getOddAlt()).append("</strong></td>");
+                html.append("<td style='padding:6px; border:1px solid #ccc;'>Üst<br><strong>")
+                    .append(match.getOddUst()).append("</strong></td>");
+                html.append("<td style='padding:6px; border:1px solid #ccc;'>-</td>");
+                html.append("</tr>");
+
+                html.append("<tr>");
+                html.append("<td style='padding:6px; border:1px solid #ccc;'>Var<br><strong>")
+                    .append(match.getOddVar()).append("</strong></td>");
+                html.append("<td style='padding:6px; border:1px solid #ccc;'>Yok<br><strong>")
+                    .append(match.getOddYok()).append("</strong></td>");
+                html.append("<td style='padding:6px; border:1px solid #ccc;'>-</td>");
+                html.append("</tr>");
+
+                html.append("</table>");
                 html.append("</div>");
+
 
                 
                 // Detay URL'si varsa geçmiş verilerini çek
@@ -113,17 +137,29 @@ public class Scraper {
                             
                             // Takım istatistikleri
                             html.append("<div class='team-stats'>");
-                            html.append("<strong>").append(teamHistory.getTeamName()).append("</strong><br>");
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs1(), "MS1")).append("  |  ");
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs0(), "MSX")).append("  |  ");
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getMs2(), "MS2")).append("<br>");
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getAlt(), "Alt")).append("  |  ");
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getUst(), "Üst")).append("<br>");
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getYok(), "Yok")).append("  |  ");
-                            html.append(teamHistory.toStringAsPercentage(teamHistory.getVar(), "Var")).append("<br>");
-                            html.append("Bakılan maç sayısı: Rekabet - ").append(rekabetMacCount).append(" | ");
-                            html.append("Son maçlar - ").append(sonMaclarCount);
+                            html.append("<strong>").append(teamHistory.getTeamName()).append("</strong>");
+                            html.append("<table style='width:100%; border-collapse: collapse; margin-top:10px;'>");
+                            html.append("<tr>");
+                            html.append("<td style='padding:4px; border:1px solid #ccc;'>").append(teamHistory.toStringAsPercentage(teamHistory.getMs1(), "MS1")).append("</td>");
+                            html.append("<td style='padding:4px; border:1px solid #ccc;'>").append(teamHistory.toStringAsPercentage(teamHistory.getMs0(), "MSX")).append("</td>");
+                            html.append("<td style='padding:4px; border:1px solid #ccc;'>").append(teamHistory.toStringAsPercentage(teamHistory.getMs2(), "MS2")).append("</td>");
+                            html.append("</tr>");
+                            html.append("<tr>");
+                            html.append("<td style='padding:4px; border:1px solid #ccc;'>").append(teamHistory.toStringAsPercentage(teamHistory.getAlt(), "Alt")).append("</td>");
+                            html.append("<td style='padding:4px; border:1px solid #ccc;'>").append(teamHistory.toStringAsPercentage(teamHistory.getUst(), "Üst")).append("</td>");
+                            html.append("<td style='padding:4px; border:1px solid #ccc;'>-</td>");
+                            html.append("</tr>");
+                            html.append("<tr>");
+                            html.append("<td style='padding:4px; border:1px solid #ccc;'>").append(teamHistory.toStringAsPercentage(teamHistory.getYok(), "Yok")).append("</td>");
+                            html.append("<td style='padding:4px; border:1px solid #ccc;'>").append(teamHistory.toStringAsPercentage(teamHistory.getVar(), "Var")).append("</td>");
+                            html.append("<td style='padding:4px; border:1px solid #ccc;'>-</td>");
+                            html.append("</tr>");
+                            html.append("</table>");
+                            html.append("<p style='margin-top:8px; font-size:0.9em;'>");
+                            html.append("Bakılan maç sayısı: Rekabet - ").append(rekabetMacCount).append(" | Son maçlar - ").append(sonMaclarCount);
+                            html.append("</p>");
                             html.append("</div>");
+
                             
                             // Rekabet Geçmişi
                             if (!teamHistory.getRekabetGecmisi().isEmpty()) {
@@ -238,20 +274,11 @@ public class Scraper {
             html.append("<p>• Detay URL'si olan: ").append(detailUrlCount).append("</p>");
             html.append("<p>• Başarıyla geçmişi çekilen: ").append(processedTeamCount).append("</p>");
             html.append("<p>• Toplam takım: ").append(historyManager.getTotalTeams()).append("</p>");
-            html.append("<p>• Toplam geçmiş maç: ").append(historyManager.getTotalMatches()).append("</p>");
             html.append("<p>• Başarı oranı: ").append(detailUrlCount > 0 ? String.format("%.1f%%", (processedTeamCount * 100.0 / detailUrlCount)) : "0%").append("</p>");
             html.append("</div>");
             
-            // Export bölümü
-            html.append("<div class='export-section'>");
-            html.append("<h3>Veri Export</h3>");
-            html.append("<p>Toplanan veriler aşağıdaki formatlarda kaydedildi:</p>");
-            html.append("<p>• <strong>CSV:</strong> public/match_results.csv</p>");
-            html.append("<p>• <strong>JSON:</strong> public/match_results.json</p>");
-            html.append("</div>");
-            
             html.append("<p style='text-align: center; color: #666; margin-top: 30px;'>");
-            html.append("Bu veriler otomatik olarak çekilmiştir • Son güncelleme: ").append(LocalDateTime.now());
+            html.append("Bu veriler otomatik olarak çekilmiştir • Son güncelleme: ").append(LocalDateTime.now(istanbulZone));
             html.append("</p>");
 
             html.append("<script>");
@@ -280,32 +307,15 @@ public class Scraper {
                 System.gc(); // HTML string'i temizle
             }
             
-            // CSV dosyasını kaydet
-            try (FileWriter fw = new FileWriter(new File(dir, "match_results.csv"))) {
-                fw.write(historyManager.toCsvString());
-            }
-            
-            // JSON dosyasını kaydet
-            try (FileWriter fw = new FileWriter(new File(dir, "match_results.json"))) {
-                fw.write(historyManager.toJsonString());
-            }
-            
             System.out.println("\n=== Scraping Tamamlandı ===");
             System.out.println("✓ public/index.html başarıyla oluşturuldu!");
-            System.out.println("✓ public/match_results.csv başarıyla oluşturuldu!");
-            System.out.println("✓ public/match_results.json başarıyla oluşturuldu!");
             System.out.println("✓ Toplam maç sayısı: " + matches.size());
             System.out.println("✓ Detay URL'li maç sayısı: " + detailUrlCount);
             System.out.println("✓ Başarıyla geçmişi çekilen: " + processedTeamCount);
             System.out.println("✓ Toplam takım: " + historyManager.getTotalTeams());
             System.out.println("✓ Toplam geçmiş maç: " + historyManager.getTotalMatches());
-            System.out.println("✓ Bitiş zamanı: " + LocalDateTime.now());
+            System.out.println("✓ Bitiş zamanı: " + LocalDateTime.now(istanbulZone));
             
-            // Console'da özet bilgileri yazdır
-            System.out.println("\n=== Takım Geçmişi Özeti ===");
-            for (TeamMatchHistory teamHistory : historyManager.getTeamHistories()) {
-                System.out.println(teamHistory.toString());
-            }
             
         } catch (Exception e) {
             System.out.println("GENEL HATA: " + e.getMessage());
@@ -320,21 +330,11 @@ public class Scraper {
                     fw.write("<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Hata</title></head><body>");
                     fw.write("<h1>Scraper Hatası</h1>");
                     fw.write("<p>Hata: " + e.getMessage() + "</p>");
-                    fw.write("<p>Zaman: " + LocalDateTime.now() + "</p>");
+                    fw.write("<p>Zaman: " + LocalDateTime.now(istanbulZone) + "</p>");
                     if (historyManager.getTotalTeams() > 0) {
                         fw.write("<p>Kısmi veri mevcut: " + historyManager.getTotalTeams() + " takım, " + historyManager.getTotalMatches() + " maç</p>");
                     }
                     fw.write("</body></html>");
-                }
-                
-                // Kısmi veri varsa onu da kaydet
-                if (historyManager.getTotalMatches() > 0) {
-                    try (FileWriter fw = new FileWriter(new File(dir, "match_results.csv"))) {
-                        fw.write(historyManager.toCsvString());
-                    }
-                    try (FileWriter fw = new FileWriter(new File(dir, "match_results.json"))) {
-                        fw.write(historyManager.toJsonString());
-                    }
                 }
                 
             } catch (Exception writeError) {

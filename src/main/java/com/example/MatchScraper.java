@@ -453,7 +453,7 @@ public class MatchScraper {
             if (txt.matches("\\d+")) continue;
 
             // Sadece harf, rakam, boşluk, nokta, parantez ve tire kalsın
-            txt = txt.replaceAll("[^\\p{L}0-9\\s\\.\\-\\(\\)]", "");
+            txt = txt.replaceAll("[^\\p{L}0-9\\s\\.\\-\\(\\)']", "");
 
             if (txt.isEmpty()) continue;
 
