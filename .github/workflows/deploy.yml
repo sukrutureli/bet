@@ -64,5 +64,5 @@ jobs:
         with:
           personal_token: ${{ secrets.DEPLOY_TOKEN }}
           publish_dir: ./public
-          external_repository: sukrutureli/bettingsukru.github.io
+          external_repository: sukrutureli/bettingsukru
           publish_branch: main
