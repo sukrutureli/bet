@@ -296,6 +296,21 @@ class TeamMatchHistory {
     public String toStringAsPercentage(int value, String type) {
         return type + " : %" + ((int)(((value * 1.0) / getTotalMatchesIn10()) * 100));
     }
+
+    public String getStyle(int value, String type) {
+        String color = "background-color: #c8facc;";
+
+        if (type.startsWith("MS")) {
+            if (value >= 50) {
+                return color;
+            }
+        } else {
+            if (value >= 70) {
+                return color;
+            }
+        }
+        return "";
+    }
     
     @Override
     public String toString() {
