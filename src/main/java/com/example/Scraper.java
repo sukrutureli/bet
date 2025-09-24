@@ -90,40 +90,40 @@ public class Scraper {
                     
                     try {
                         TeamMatchHistory teamHistory = scraper.scrapeTeamHistory(match.getDetailUrl(), match.getName());
-
-                        html.append("<div class='odds' style='margin-top:10px;'>");
-                        html.append("<strong>Güncel Oranlar:</strong>");
-                        html.append("<table style='width:100%; border-collapse: collapse; margin-top:6px; text-align:center;'>");
-
-                        html.append("<tr>");
-                        html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getMs1(), "MS1") + "'>MS1<br><strong>")
-                            .append(match.getOdd1()).append("</strong></td>");
-                        html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getMs0(), "MSX") + "'>MSX<br><strong>")
-                            .append(match.getOddX()).append("</strong></td>");
-                        html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getMs2(), "MS2") + "'>MS2<br><strong>")
-                            .append(match.getOdd2()).append("</strong></td>");
-                        html.append("</tr>");
-
-                        html.append("<tr>");
-                        html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getAlt(), "Alt") + "'>Alt<br><strong>")
-                            .append(match.getOddAlt()).append("</strong></td>");
-                        html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getUst(), "Üst") + "'>Üst<br><strong>")
-                            .append(match.getOddUst()).append("</strong></td>");
-                        html.append("<td style='padding:6px; border:1px solid #ccc;'>-</td>");
-                        html.append("</tr>");
-
-                        html.append("<tr>");
-                        html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getVar(), "Var") + "'>Var<br><strong>")
-                            .append(match.getOddVar()).append("</strong></td>");
-                        html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getYok(), "Yok") + "'>Yok<br><strong>")
-                            .append(match.getOddYok()).append("</strong></td>");
-                        html.append("<td style='padding:6px; border:1px solid #ccc;'>-</td>");
-                        html.append("</tr>");
-
-                        html.append("</table>");
-                        html.append("</div>");
                         
                         if (teamHistory != null && teamHistory.getTotalMatches() > 0) {
+                            html.append("<div class='odds' style='margin-top:10px;'>");
+                            html.append("<strong>Güncel Oranlar:</strong>");
+                            html.append("<table style='width:100%; border-collapse: collapse; margin-top:6px; text-align:center;'>");
+
+                            html.append("<tr>");
+                            html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getMs1(), "MS1") + "'>MS1<br><strong>")
+                                .append(match.getOdd1()).append("</strong></td>");
+                            html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getMs0(), "MSX") + "'>MSX<br><strong>")
+                                .append(match.getOddX()).append("</strong></td>");
+                            html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getMs2(), "MS2") + "'>MS2<br><strong>")
+                                .append(match.getOdd2()).append("</strong></td>");
+                            html.append("</tr>");
+
+                            html.append("<tr>");
+                            html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getAlt(), "Alt") + "'>Alt<br><strong>")
+                                .append(match.getOddAlt()).append("</strong></td>");
+                            html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getUst(), "Üst") + "'>Üst<br><strong>")
+                                .append(match.getOddUst()).append("</strong></td>");
+                            html.append("<td style='padding:6px; border:1px solid #ccc;'>-</td>");
+                            html.append("</tr>");
+
+                            html.append("<tr>");
+                            html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getVar(), "Var") + "'>Var<br><strong>")
+                                .append(match.getOddVar()).append("</strong></td>");
+                            html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getYok(), "Yok") + "'>Yok<br><strong>")
+                                .append(match.getOddYok()).append("</strong></td>");
+                            html.append("<td style='padding:6px; border:1px solid #ccc;'>-</td>");
+                            html.append("</tr>");
+
+                            html.append("</table>");
+                            html.append("</div>");
+
                             historyManager.addTeamHistory(teamHistory);
 
                             int rekabetMacCount = Math.min(10, teamHistory.getRekabetGecmisi().size());

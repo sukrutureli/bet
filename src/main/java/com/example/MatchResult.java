@@ -299,13 +299,14 @@ class TeamMatchHistory {
 
     public String getStyle(int value, String type) {
         String color = "background-color: #c8facc;";
+        int percentage = ((int)(((value * 1.0) / getTotalMatchesIn10()) * 100));
 
         if (type.startsWith("MS")) {
-            if (value >= 50) {
+            if (percentage >= 50) {
                 return color;
             }
         } else {
-            if (value >= 70) {
+            if (percentage >= 70) {
                 return color;
             }
         }
