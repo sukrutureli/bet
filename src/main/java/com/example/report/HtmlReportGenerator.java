@@ -22,10 +22,10 @@ public class HtmlReportGenerator {
 
         ZoneId istanbulZone = ZoneId.of("Europe/Istanbul");
      
-        // HTML oluşturmaya başla
+        // HTML oluÅŸturmaya baÅŸla
         StringBuilder html = new StringBuilder();
         html.append("<!DOCTYPE html><html><head><meta charset='UTF-8'>");
-        html.append("<title>İddaa Bülteni</title>");
+        html.append("<title>Ä°ddaa BÃ¼lteni</title>");
         html.append("<style>");
         html.append("body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }");
         html.append(".match { background: white; border: 1px solid #ddd; margin: 10px 0; padding: 15px; border-radius: 8px; }");
@@ -53,14 +53,14 @@ public class HtmlReportGenerator {
 
         html.append("</style>");
         html.append("</head><body>");
-        html.append("<h1>İddaa Maç Geçmişi Analizi</h1>");
-        html.append("<p>Son güncelleme: " + LocalDateTime.now(istanbulZone) + "</p>");
+        html.append("<h1>Ä°ddaa MaÃ§ GeÃ§miÅŸi Analizi</h1>");
+        html.append("<p>Son gÃ¼ncelleme: " + LocalDateTime.now(istanbulZone) + "</p>");
         
-        // İstatistik bilgileri
+        // Ä°statistik bilgileri
         int detailUrlCount = 0;
         int processedTeamCount = 0;
         
-        // URL'li maçları say
+        // URL'li maÃ§larÄ± say
         for (MatchInfo match : matches) {
             if (match.hasDetailUrl()) {
                 detailUrlCount++;
@@ -70,14 +70,14 @@ public class HtmlReportGenerator {
         System.out.println("Detay URL'si olan " + detailUrlCount);
 
         html.append("<div class='stats'>");
-        html.append("<h3>İstatistikler</h3>");
-        html.append("<p>• Toplam maç: ").append(matches.size()).append("</p>");
-        html.append("<p>• Detay URL'si olan: ").append(detailUrlCount).append("</p>");
-        html.append("<p>• Geçmiş verisi çekilecek: ").append(detailUrlCount).append("</p>");
+        html.append("<h3>Ä°statistikler</h3>");
+        html.append("<p>â€¢ Toplam maÃ§: ").append(matches.size()).append("</p>");
+        html.append("<p>â€¢ Detay URL'si olan: ").append(detailUrlCount).append("</p>");
+        html.append("<p>â€¢ GeÃ§miÅŸ verisi Ã§ekilecek: ").append(detailUrlCount).append("</p>");
         html.append("</div>");
         
-        // Her maç için geçmiş bilgilerini işle
-        System.out.println("\n2. Takım geçmişleri çekiliyor...");
+        // Her maÃ§ iÃ§in geÃ§miÅŸ bilgilerini iÅŸle
+        System.out.println("\n2. TakÄ±m geÃ§miÅŸleri Ã§ekiliyor...");
         
         for (int i = 0; i < matches.size(); i++) {
             MatchInfo match = matches.get(i);
@@ -86,19 +86,19 @@ public class HtmlReportGenerator {
             html.append("<div class='match-header'>");
             html.append("<div class='match-name'>").append(match.getName()).append("</div>");
             html.append("<div class='match-time'>").append(match.getTime()).append("</div>");
-            html.append("<button onclick=\"toggleHistory(this)\">Göster/Gizle</button>");
+            html.append("<button onclick=\"toggleHistory(this)\">GÃ¶ster/Gizle</button>");
             html.append("</div>");
              
-            // Detay URL'si varsa geçmiş verilerini çek
+            // Detay URL'si varsa geÃ§miÅŸ verilerini Ã§ek
             if (match.hasDetailUrl()) {
-                System.out.println("Geçmiş çekiliyor " + (i+1) + "/" + matches.size() + ": " + match.getName());
+                System.out.println("GeÃ§miÅŸ Ã§ekiliyor " + (i+1) + "/" + matches.size() + ": " + match.getName());
                 
                 
                 TeamMatchHistory teamHistory = historyManager.getTeamHistories().get(i);
                 
                 if (teamHistory != null && teamHistory.getTotalMatches() > 0) {
                     html.append("<div class='odds' style='margin-top:10px;'>");
-                    html.append("<strong>Güncel Oranlar:</strong>");
+                    html.append("<strong>GÃ¼ncel Oranlar:</strong>");
                     html.append("<table style='width:100%; border-collapse: collapse; margin-top:6px; text-align:center;'>");
 
                     html.append("<tr>");
@@ -113,7 +113,7 @@ public class HtmlReportGenerator {
                     html.append("<tr>");
                     html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getAlt(), "Alt") + "'>Alt<br><strong>")
                         .append(match.getOdds().getUnder25()).append("</strong></td>");
-                    html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getUst(), "Üst") + "'>Üst<br><strong>")
+                    html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getUst(), "Ãœst") + "'>Ãœst<br><strong>")
                         .append(match.getOdds().getOver25()).append("</strong></td>");
                     html.append("<td style='padding:6px; border:1px solid #ccc;'>-</td>");
                     html.append("</tr>");
@@ -137,9 +137,9 @@ public class HtmlReportGenerator {
                     html.append("<th>MS1</th>");
                     html.append("<th>MSX</th>");
                     html.append("<th>MS2</th>");
-                    html.append("<th>�st 2.5</th>");
+                    html.append("<th>Üst 2.5</th>");
                     html.append("<th>KG Var</th>");
-                    html.append("<th>Se�im</th>");
+                    html.append("<th>Seçim</th>");
                     html.append("<th>Skor</th>");
                     html.append("</tr>");
                     html.append("</thead>");
@@ -163,9 +163,9 @@ public class HtmlReportGenerator {
                                             Math.min(10, teamHistory.getSonMaclar(2).size());
               
                     html.append("<div class='history'>");
-                    html.append("<h4>Geçmiş Maç Analizi:</h4>");
+                    html.append("<h4>GeÃ§miÅŸ MaÃ§ Analizi:</h4>");
                     
-                    // Takım istatistikleri
+                    // TakÄ±m istatistikleri
                     html.append("<div class='team-stats'>");
                     html.append("<strong>").append(teamHistory.getTeamName()).append("</strong>");
                     html.append("<table style='width:100%; border-collapse: collapse; margin-top:10px;'>");
@@ -176,7 +176,7 @@ public class HtmlReportGenerator {
                     html.append("</tr>");
                     html.append("<tr>");
                     html.append("<td style='padding:4px; border:1px solid #ccc;'>").append(teamHistory.toStringAsPercentage(teamHistory.getAlt(), "Alt")).append("</td>");
-                    html.append("<td style='padding:4px; border:1px solid #ccc;'>").append(teamHistory.toStringAsPercentage(teamHistory.getUst(), "Üst")).append("</td>");
+                    html.append("<td style='padding:4px; border:1px solid #ccc;'>").append(teamHistory.toStringAsPercentage(teamHistory.getUst(), "Ãœst")).append("</td>");
                     html.append("<td style='padding:4px; border:1px solid #ccc;'>-</td>");
                     html.append("</tr>");
                     html.append("<tr>");
@@ -186,19 +186,19 @@ public class HtmlReportGenerator {
                     html.append("</tr>");
                     html.append("</table>");
                     html.append("<p style='margin-top:8px; font-size:0.9em;'>");
-                    html.append("Bakılan maç sayısı: Rekabet - ").append(rekabetMacCount).append(" | Son maçlar - ").append(sonMaclarCount);
+                    html.append("BakÄ±lan maÃ§ sayÄ±sÄ±: Rekabet - ").append(rekabetMacCount).append(" | Son maÃ§lar - ").append(sonMaclarCount);
                     html.append("</p>");
                     html.append("</div>");
 
                     
-                    // Rekabet Geçmişi
+                    // Rekabet GeÃ§miÅŸi
                     if (!teamHistory.getRekabetGecmisi().isEmpty()) {
                         html.append("<div class='history-section'>");
-                        html.append("<h5>Rekabet Geçmişi (").append(teamHistory.getRekabetGecmisi().size()).append(" maç):</h5>");
+                        html.append("<h5>Rekabet GeÃ§miÅŸi (").append(teamHistory.getRekabetGecmisi().size()).append(" maÃ§):</h5>");
                         
                         int count = 0;
                         for (MatchResult matchResult : teamHistory.getRekabetGecmisi()) {
-                            if (count >= 10) break; // İlk 10 maçı göster
+                            if (count >= 10) break; // Ä°lk 10 maÃ§Ä± gÃ¶ster
                             
                             String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
                             html.append("<div class='match-result ").append(resultClass).append("'>");
@@ -212,19 +212,19 @@ public class HtmlReportGenerator {
                         }
                         
                         if (teamHistory.getRekabetGecmisi().size() > 10) {
-                            html.append("<p><em>... ve ").append(teamHistory.getRekabetGecmisi().size() - 10).append(" maç daha</em></p>");
+                            html.append("<p><em>... ve ").append(teamHistory.getRekabetGecmisi().size() - 10).append(" maÃ§ daha</em></p>");
                         }
                         html.append("</div>");
                     }
                     
-                    // Son Maçlar Home
+                    // Son MaÃ§lar Home
                     if (!teamHistory.getSonMaclar(1).isEmpty()) {
                         html.append("<div class='history-section'>");
-                        html.append("<h5>Ev Sahibi Son Maçlar (").append(teamHistory.getSonMaclar(1).size()).append(" maç):</h5>");
+                        html.append("<h5>Ev Sahibi Son MaÃ§lar (").append(teamHistory.getSonMaclar(1).size()).append(" maÃ§):</h5>");
                         
                         int count = 0;
                         for (MatchResult matchResult : teamHistory.getSonMaclar(1)) {
-                            if (count >= 10) break; // İlk 10 maçı göster
+                            if (count >= 10) break; // Ä°lk 10 maÃ§Ä± gÃ¶ster
                             
                             String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
                             html.append("<div class='match-result ").append(resultClass).append("'>");
@@ -237,19 +237,19 @@ public class HtmlReportGenerator {
                         }
                         
                         if (teamHistory.getSonMaclar(1).size() > 10) {
-                            html.append("<p><em>... ve ").append(teamHistory.getSonMaclar(2).size() - 10).append(" maç daha</em></p>");
+                            html.append("<p><em>... ve ").append(teamHistory.getSonMaclar(2).size() - 10).append(" maÃ§ daha</em></p>");
                         }
                         html.append("</div>");
                     }
 
-                    // Son Maçlar Away
+                    // Son MaÃ§lar Away
                     if (!teamHistory.getSonMaclar(2).isEmpty()) {
                         html.append("<div class='history-section'>");
-                        html.append("<h5>Deplasman Son Maçlar (").append(teamHistory.getSonMaclar(2).size()).append(" maç):</h5>");
+                        html.append("<h5>Deplasman Son MaÃ§lar (").append(teamHistory.getSonMaclar(2).size()).append(" maÃ§):</h5>");
                         
                         int count = 0;
                         for (MatchResult matchResult : teamHistory.getSonMaclar(2)) {
-                            if (count >= 10) break; // İlk 10 maçı göster
+                            if (count >= 10) break; // Ä°lk 10 maÃ§Ä± gÃ¶ster
                             
                             String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
                             html.append("<div class='match-result ").append(resultClass).append("'>");
@@ -262,7 +262,7 @@ public class HtmlReportGenerator {
                         }
                         
                         if (teamHistory.getSonMaclar(2).size() > 10) {
-                            html.append("<p><em>... ve ").append(teamHistory.getSonMaclar(2).size() - 10).append(" maç daha</em></p>");
+                            html.append("<p><em>... ve ").append(teamHistory.getSonMaclar(2).size() - 10).append(" maÃ§ daha</em></p>");
                         }
                         html.append("</div>");
                     }
@@ -270,34 +270,34 @@ public class HtmlReportGenerator {
                     html.append("</div>");
                     processedTeamCount++;
                 } else {
-                    html.append("<div class='no-data'>Bu maç için geçmiş veri bulunamadı</div>");
+                    html.append("<div class='no-data'>Bu maÃ§ iÃ§in geÃ§miÅŸ veri bulunamadÄ±</div>");
                 } 
          
             } else {
-                html.append("<div class='no-data'>Detay URL'si bulunamadı</div>");
+                html.append("<div class='no-data'>Detay URL'si bulunamadÄ±</div>");
             }
             
             html.append("<p><small>Element #").append(match.getIndex()).append("</small></p>");
             html.append("</div>");
             
-            // Her 20 maçta bir progress yazdır
+            // Her 20 maÃ§ta bir progress yazdÄ±r
             if ((i + 1) % 20 == 0) {
-                System.out.println("İşlendi: " + (i + 1) + "/" + matches.size());
+                System.out.println("Ä°ÅŸlendi: " + (i + 1) + "/" + matches.size());
             }
         }
         
         // Final istatistikleri
         html.append("<div class='stats'>");
-        html.append("<h3>Final İstatistikleri</h3>");
-        html.append("<p>• Toplam maç: ").append(matches.size()).append("</p>");
-        html.append("<p>• Detay URL'si olan: ").append(detailUrlCount).append("</p>");
-        html.append("<p>• Başarıyla geçmişi çekilen: ").append(processedTeamCount).append("</p>");
-        html.append("<p>• Toplam takım: ").append(historyManager.getTotalTeams()).append("</p>");
-        html.append("<p>• Başarı oranı: ").append(detailUrlCount > 0 ? String.format("%.1f%%", (processedTeamCount * 100.0 / detailUrlCount)) : "0%").append("</p>");
+        html.append("<h3>Final Ä°statistikleri</h3>");
+        html.append("<p>â€¢ Toplam maÃ§: ").append(matches.size()).append("</p>");
+        html.append("<p>â€¢ Detay URL'si olan: ").append(detailUrlCount).append("</p>");
+        html.append("<p>â€¢ BaÅŸarÄ±yla geÃ§miÅŸi Ã§ekilen: ").append(processedTeamCount).append("</p>");
+        html.append("<p>â€¢ Toplam takÄ±m: ").append(historyManager.getTotalTeams()).append("</p>");
+        html.append("<p>â€¢ BaÅŸarÄ± oranÄ±: ").append(detailUrlCount > 0 ? String.format("%.1f%%", (processedTeamCount * 100.0 / detailUrlCount)) : "0%").append("</p>");
         html.append("</div>");
         
         html.append("<p style='text-align: center; color: #666; margin-top: 30px;'>");
-        html.append("Bu veriler otomatik olarak çekilmiştir • Son güncelleme: ").append(LocalDateTime.now(istanbulZone));
+        html.append("Bu veriler otomatik olarak Ã§ekilmiÅŸtir â€¢ Son gÃ¼ncelleme: ").append(LocalDateTime.now(istanbulZone));
         html.append("</p>");
 
         html.append("<script>");
@@ -308,18 +308,18 @@ public class HtmlReportGenerator {
         html.append("  historySections.forEach(section => {");
         html.append("    section.style.display = isHidden ? 'block' : 'none';");
         html.append("  });");
-        html.append("  button.textContent = isHidden ? 'Gizle' : 'Göster';");
+        html.append("  button.textContent = isHidden ? 'Gizle' : 'GÃ¶ster';");
         html.append("}");
         html.append("document.querySelectorAll('.history .history-section').forEach(s => s.style.display = 'none');");
         html.append("</script>");
 
         html.append("</body></html>");
         
-        // Dosyaları kaydet
+        // DosyalarÄ± kaydet
         File dir = new File("public");
         if (!dir.exists()) dir.mkdirs();
 
-        // HTML dosyasını kaydet
+        // HTML dosyasÄ±nÄ± kaydet
         try (FileWriter fw = new FileWriter(new File(dir, fileName))) {
             fw.write(html.toString());
             html = null; // Reference'i sil
@@ -328,14 +328,14 @@ public class HtmlReportGenerator {
 			e.printStackTrace();
 		}
         
-        System.out.println("\n=== Scraping Tamamlandı ===");
-        System.out.println("✓ public/index.html başarıyla oluşturuldu!");
-        System.out.println("✓ Toplam maç sayısı: " + matches.size());
-        System.out.println("✓ Detay URL'li maç sayısı: " + detailUrlCount);
-        System.out.println("✓ Başarıyla geçmişi çekilen: " + processedTeamCount);
-        System.out.println("✓ Toplam takım: " + historyManager.getTotalTeams());
-        System.out.println("✓ Toplam geçmiş maç: " + historyManager.getTotalMatches());
-        System.out.println("✓ Bitiş zamanı: " + LocalDateTime.now(istanbulZone));
+        System.out.println("\n=== Scraping TamamlandÄ± ===");
+        System.out.println("âœ“ public/index.html baÅŸarÄ±yla oluÅŸturuldu!");
+        System.out.println("âœ“ Toplam maÃ§ sayÄ±sÄ±: " + matches.size());
+        System.out.println("âœ“ Detay URL'li maÃ§ sayÄ±sÄ±: " + detailUrlCount);
+        System.out.println("âœ“ BaÅŸarÄ±yla geÃ§miÅŸi Ã§ekilen: " + processedTeamCount);
+        System.out.println("âœ“ Toplam takÄ±m: " + historyManager.getTotalTeams());
+        System.out.println("âœ“ Toplam geÃ§miÅŸ maÃ§: " + historyManager.getTotalMatches());
+        System.out.println("âœ“ BitiÅŸ zamanÄ±: " + LocalDateTime.now(istanbulZone));
             
             
         
@@ -344,7 +344,7 @@ public class HtmlReportGenerator {
     private static String getResultClass(MatchResult match, String teamName) {
         String result = match.getResult();
         
-        // Takımın ev sahibi mi deplasman mı olduğunu kontrol et
+        // TakÄ±mÄ±n ev sahibi mi deplasman mÄ± olduÄŸunu kontrol et
         boolean isHome = teamName.contains(match.getHomeTeam());
         
         if (result.equals("D")) {
