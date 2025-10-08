@@ -8,6 +8,12 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.example.model.MatchResult;
+import com.example.model.Odds;
+import com.example.model.TeamMatchHistory;
+import com.example.model.MatchInfo;
+
 import org.openqa.selenium.NoSuchElementException;
 
 import java.time.*;
@@ -16,7 +22,6 @@ import java.util.List;
 import java.util.ArrayList;
 import java.time.ZonedDateTime;
 import java.time.ZoneId;
-import java.util.Arrays;
 
 public class MatchScraper {
     private WebDriver driver;
@@ -216,7 +221,7 @@ public class MatchScraper {
             String matchTime = extractMatchTime(event);
             
             // Oranlar
-            String[] odds = extractOdds(event);
+            Odds odds = extractOdds(event);
             
             // Debug: Element'in raw text'ini yazdır
             try {
@@ -233,8 +238,7 @@ public class MatchScraper {
                 return null;
             }
             
-            return new MatchInfo(matchName, matchTime, detailUrl, odds[0], odds[1], odds[2],
-                                odds[3], odds[4], odds[5], odds[6], idx);
+            return new MatchInfo(matchName, matchTime, detailUrl, odds, idx);
             
         } catch (Exception e) {
             System.out.println("Element " + idx + " extract hatası: " + e.getMessage());
@@ -252,7 +256,7 @@ public class MatchScraper {
         }
     }
 
-    private String[] extractOdds(WebElement event) {
+    private Odds extractOdds(WebElement event) {
         // 1X2 + Alt/Üst + Var/Yok = toplam 7 oran
         String[] odds = {"-", "-", "-", "-", "-", "-", "-"};  
 
@@ -285,11 +289,20 @@ public class MatchScraper {
         } catch (Exception e) {
             System.out.println("Oran çekme hatası: " + e.getMessage());
         }
+        
+        
 
-        return odds; // [1, X, 2, Alt, Üst, Var, Yok]
+        return new Odds(toDouble(odds[0]), toDouble(odds[1]), toDouble(odds[2])
+        		, toDouble(odds[4]), toDouble(odds[3]), toDouble(odds[5]), toDouble(odds[6])); // [1, X, 2, Alt, Üst, Var, Yok]
     }
 
-
+    public Double toDouble(String oddInString) {
+    	if (oddInString.equals("-")) {
+    		return 0.0;
+    	} else {
+    		return Double.valueOf(oddInString);
+    	}
+    }
 
     public TeamMatchHistory scrapeTeamHistory(String detailUrl, String teamName) {
         if (detailUrl == null || detailUrl.isEmpty()) return null;
@@ -592,73 +605,7 @@ public class MatchScraper {
         return matches;
     }
 
-
-
     public void close() {
         if (driver != null) driver.quit();
-    }
-}
-// Maç bilgilerini tutan data class (güncellenmiş)
-class MatchInfo {
-    private String name;
-    private String time;
-    private String detailUrl;
-    private String odd1;   // 1
-    private String oddX;   // X
-    private String odd2;   // 2
-    private String oddAlt; // Alt
-    private String oddUst; // Üst
-    private String oddVar; // Var
-    private String oddYok; // Yok
-    private int index;
-
-    public MatchInfo(String name, String time, String detailUrl,
-                     String odd1, String oddX, String odd2,
-                     String oddAlt, String oddUst, String oddVar, String oddYok,
-                     int index) {
-        this.name = name;
-        this.time = time;
-        this.detailUrl = detailUrl;
-        this.odd1 = odd1;
-        this.oddX = oddX;
-        this.odd2 = odd2;
-        this.oddAlt = oddAlt;
-        this.oddUst = oddUst;
-        this.oddVar = oddVar;
-        this.oddYok = oddYok;
-        this.index = index;
-    }
-
-    // Getters
-    public String getName() { return name; }
-    public String getTime() { return time; }
-    public String getDetailUrl() { return detailUrl; }
-    public String getOdd1() { return odd1; }
-    public String getOddX() { return oddX; }
-    public String getOdd2() { return odd2; }
-    public String getOddAlt() { return oddAlt; }
-    public String getOddUst() { return oddUst; }
-    public String getOddVar() { return oddVar; }
-    public String getOddYok() { return oddYok; }
-    public int getIndex() { return index; }
-
-    public boolean isClose(int nowHour) {
-        try {
-            // "Zaman hatası" string'ini parse etmeye çalışırsa hata verir
-            if (time.equals("Zaman bulunamadı") || time.equals("Zaman hatası")) {
-                return true; // Zaman bilinmiyorsa işle
-            }
-
-            int timeInHour = Integer.parseInt(time.split(":")[0]);
-            return nowHour + 2 >= timeInHour && nowHour <= timeInHour;
-            
-        } catch (Exception e) {
-            System.out.println("isClose() hatası: " + e.getMessage() + " - time: " + time);
-            return true; // Hata varsa işle
-        }
-    }
-
-    public boolean hasDetailUrl() {
-        return detailUrl != null && !detailUrl.isEmpty() && detailUrl.contains("istatistik.nesine.com");
     }
 }
