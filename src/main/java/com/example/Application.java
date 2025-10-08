@@ -46,11 +46,8 @@ public class Application {
                         
                         if (teamHistory != null && teamHistory.getTotalMatches() > 0) {
                             historyManager.addTeamHistory(teamHistory);
+                            matchStats.add(teamHistory.createMatch(match));
                         } 
-                        
-                        if (teamHistory.getSonMaclar(1).size() > 0 && teamHistory.getSonMaclar(2).size() > 0) {
-                        	matchStats.add(teamHistory.createMatch(match));
-                        }
                         
                         // Rate limiting - 3 saniye bekle
                         Thread.sleep(1000);
