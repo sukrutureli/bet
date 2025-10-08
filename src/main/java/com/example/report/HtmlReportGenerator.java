@@ -113,7 +113,7 @@ public class HtmlReportGenerator {
                     html.append("<tr>");
                     html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getAlt(), "Alt") + "'>Alt<br><strong>")
                         .append(match.getOdds().getUnder25()).append("</strong></td>");
-                    html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getUst(), "Ãœst") + "'>Ãœst<br><strong>")
+                    html.append("<td style='padding:6px; border:1px solid #ccc; " + teamHistory.getStyle(teamHistory.getUst(), "Üst") + "'>Üst<br><strong>")
                         .append(match.getOdds().getOver25()).append("</strong></td>");
                     html.append("<td style='padding:6px; border:1px solid #ccc;'>-</td>");
                     html.append("</tr>");
@@ -176,7 +176,7 @@ public class HtmlReportGenerator {
                     html.append("</tr>");
                     html.append("<tr>");
                     html.append("<td style='padding:4px; border:1px solid #ccc;'>").append(teamHistory.toStringAsPercentage(teamHistory.getAlt(), "Alt")).append("</td>");
-                    html.append("<td style='padding:4px; border:1px solid #ccc;'>").append(teamHistory.toStringAsPercentage(teamHistory.getUst(), "Ãœst")).append("</td>");
+                    html.append("<td style='padding:4px; border:1px solid #ccc;'>").append(teamHistory.toStringAsPercentage(teamHistory.getUst(), "Üst")).append("</td>");
                     html.append("<td style='padding:4px; border:1px solid #ccc;'>-</td>");
                     html.append("</tr>");
                     html.append("<tr>");
