@@ -76,7 +76,7 @@ public class MatchScraper {
             List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
             System.out.println("Final element sayısı: " + events.size());
             
-            for (int idx = 0; idx < events.size(); idx++) {
+            for (int idx = 0; idx < 5; idx++) {
                 try {
                     // Her iterasyonda element'i tekrar bul (fresh reference)
                     List<WebElement> freshEvents = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
