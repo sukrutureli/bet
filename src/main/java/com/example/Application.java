@@ -1,17 +1,13 @@
 package com.example;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.MatchHistoryManager;
 import com.example.model.Match;
 import com.example.model.MatchInfo;
-import com.example.model.MatchResult;
 import com.example.model.TeamMatchHistory;
 import com.example.report.HtmlReportGenerator;
 import com.example.algo.*;
@@ -22,7 +18,7 @@ public class Application {
         MatchScraper scraper = null;
         MatchHistoryManager historyManager = new MatchHistoryManager();
         List<MatchInfo> matches = null;
-        List<Match> matchStats = null;
+        List<Match> matchStats = new ArrayList<Match>();
         ZoneId istanbulZone = ZoneId.of("Europe/Istanbul");
         
         try {
