@@ -254,6 +254,9 @@ public class TeamMatchHistory {
     	awayStats.setPpg(awayStats.getLast5Points() / ((double) Math.min(5, sonMaclarAway.size())));
     	awayStats.setRating100(getRating(awayStats.getAvgGF(), awayStats.getAvgGA(), awayStats.getPpg()));
     	
+    	currentMatch.setHomeStats(homeStats);
+    	currentMatch.setAwayStats(awayStats);
+    	
     	return currentMatch;
     }
     
