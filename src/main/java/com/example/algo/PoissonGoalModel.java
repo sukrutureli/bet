@@ -53,7 +53,7 @@ public class PoissonGoalModel implements BettingAlgorithm {
         String pick = (maxRes == pHome) ? "MS1" : (maxRes == pDraw ? "MSX" : "MS2");
         double confidence = maxRes;
 
-        // Odds ile kalibrasyon (varsa küçük bir itme; örn: implied prob ortalaması ile harmanla)
+        // Odds ile kalibrasyon (varsa küçük bir itme; Örn: implied prob ortalaması ile harmanla)
         if (oddsOpt.isPresent()) {
             Odds o = oddsOpt.get();
             double imp1 = Odds.impliedProb(o.getMs1());

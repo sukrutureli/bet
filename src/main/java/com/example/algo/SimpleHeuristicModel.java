@@ -27,7 +27,7 @@ public class SimpleHeuristicModel implements BettingAlgorithm {
         // Güvenli koruma
         if (h == null || a == null) {
             if (DEBUG) {
-                System.out.printf("[HEUR DEBUG] %s vs %s | TeamStats eksik, nötr dağıtım döndü.%n",
+                System.out.printf("[HEUR DEBUG] %s vs %s | TeamStats eksik, nÃ¶tr dağıtım dÃ¶ndü.%n",
                         match.getHomeTeam(), match.getAwayTeam());
             }
             return new PredictionResult(
@@ -53,7 +53,7 @@ public class SimpleHeuristicModel implements BettingAlgorithm {
         // tek skora topla (küçük ağırlıklar; aşırı büyümesin)
         double s = 0.55 * formDiff + 0.30 * goalDiff + 0.15 * ratingDiff;
 
-        // 3 sınıf için logit’ler: ev avantajı hadv ekle,
+        // 3 sınıf için logitâ€™ler: ev avantajı hadv ekle,
         // beraberliğin logiti yakın maçlarda yükselsin: -|s|*beta
         double hadv = 0.18;
         double beta = 1.1;
@@ -62,7 +62,7 @@ public class SimpleHeuristicModel implements BettingAlgorithm {
         double La = -s;
         double Ld = -Math.abs(s) * beta;
 
-        // sıcaklık (overconfidence’ı düşürmek için)
+        // sıcaklık (overconfidenceâ€™ı düşürmek için)
         double temp = 1.6;
         Lh /= temp; Ld /= temp; La /= temp;
 
@@ -96,8 +96,8 @@ public class SimpleHeuristicModel implements BettingAlgorithm {
         if (DEBUG) {
             System.out.printf(
                 Locale.US,
-                "[HEUR DEBUG] %s vs %s | formH=%d formA=%d diff=%.2f | gdiffH=%.2f gdiffA=%.2f Δgoal=%.2f | " +
-                "rateH=%d rateA=%d Δrate=%.2f | s=%.2f | Lh=%.2f Ld=%.2f La=%.2f | pH=%.2f pD=%.2f pA=%.2f | pick=%s conf=%.2f | muH=%.2f muA=%.2f over25=%.2f btts=%.2f%n",
+                "[HEUR DEBUG] %s vs %s | formH=%d formA=%d diff=%.2f | gdiffH=%.2f gdiffA=%.2f Î”goal=%.2f | " +
+                "rateH=%d rateA=%d Î”rate=%.2f | s=%.2f | Lh=%.2f Ld=%.2f La=%.2f | pH=%.2f pD=%.2f pA=%.2f | pick=%s conf=%.2f | muH=%.2f muA=%.2f over25=%.2f btts=%.2f%n",
                 match.getHomeTeam(), match.getAwayTeam(),
                 (int)formH, (int)formA, formDiff,
                 gdiffH, gdiffA, goalDiff,

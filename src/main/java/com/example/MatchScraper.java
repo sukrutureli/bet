@@ -81,7 +81,7 @@ public class MatchScraper {
                     // Her iterasyonda element'i tekrar bul (fresh reference)
                     List<WebElement> freshEvents = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
                     if (idx >= freshEvents.size()) {
-                        System.out.println("Element " + idx + " artık mevcut değil, çıkılıyor");
+                        System.out.println("Element " + idx + " artık mevcut deÄŸil, çıkılıyor");
                         break;
                     }
                     
@@ -140,13 +140,13 @@ public class MatchScraper {
 
     private MatchInfo extractMatchInfo(WebElement event, int idx) {
         try {
-            // Daha esnek görünürlük kontrolü
+            // Daha esnek gÖrünürlük kontrolü
             try {
                 Boolean elementExists = (Boolean) js.executeScript(
                     "return arguments[0].offsetParent !== null || arguments[0].offsetWidth > 0 || arguments[0].offsetHeight > 0;", event
                 );
                 if (!elementExists) {
-                    System.out.println("Element " + idx + " DOM'da görünür değil");
+                    System.out.println("Element " + idx + " DOM'da gÖrünür deÄŸil");
                 }
             } catch (Exception e) {
                 System.out.println("Element " + idx + " visibility check hatası: " + e.getMessage());
@@ -232,7 +232,7 @@ public class MatchScraper {
                 // Ignore
             }
             
-            // Eğer minimum veri yoksa null döndür
+            // EÄŸer minimum veri yoksa null dÖndür
             if (matchName.equals("İsim bulunamadı") && matchTime.equals("Zaman bulunamadı")) {
                 System.out.println("Element " + idx + " yeterli veri yok, atlanıyor");
                 return null;
@@ -257,7 +257,7 @@ public class MatchScraper {
     }
 
     private Odds extractOdds(WebElement event) {
-        // 1X2 + Alt/Üst + Var/Yok = toplam 7 oran
+        // 1X2 + Alt/Ãœst + Var/Yok = toplam 7 oran
         String[] odds = {"-", "-", "-", "-", "-", "-", "-"};  
 
         try {
@@ -273,7 +273,7 @@ public class MatchScraper {
                 }
             }
 
-            // --- Alt/Üst + Var/Yok (4 oran) ---
+            // --- Alt/Ãœst + Var/Yok (4 oran) ---
             List<WebElement> extraOdds = event.findElements(By.cssSelector("dd.col-02.event-row .cell"));
             for (int i = 0; i < 4; i++) {
                 try {
@@ -293,7 +293,7 @@ public class MatchScraper {
         
 
         return new Odds(toDouble(odds[0]), toDouble(odds[1]), toDouble(odds[2])
-        		, toDouble(odds[4]), toDouble(odds[3]), toDouble(odds[5]), toDouble(odds[6])); // [1, X, 2, Alt, Üst, Var, Yok]
+        		, toDouble(odds[4]), toDouble(odds[3]), toDouble(odds[5]), toDouble(odds[6])); // [1, X, 2, Alt, Ãœst, Var, Yok]
     }
 
     public Double toDouble(String oddInString) {
@@ -462,7 +462,7 @@ public class MatchScraper {
             txt = txt.trim();
             if (txt.isEmpty()) continue;
 
-            // Tek başına sayı (örn. "1", "2") → kart sayısı, atla
+            // Tek başına sayı (Örn. "1", "2") â†’ kart sayısı, atla
             if (txt.matches("\\d+")) continue;
 
             // Sadece harf, rakam, boşluk, nokta, parantez ve tire kalsın
@@ -477,7 +477,7 @@ public class MatchScraper {
         return sb.toString().trim();
     }
 
-    // Örnek: extractCompetitionHistoryResults içinde kullanımı
+    // Ã–rnek: extractCompetitionHistoryResults içinde kullanımı
     private List<MatchResult> extractCompetitionHistoryResults(String matchType, String originalUrl) {
         List<MatchResult> matches = new ArrayList<>();
 
@@ -526,7 +526,7 @@ public class MatchScraper {
             for (WebElement span : spans) {
                 String txt = span.getText().trim();
                 txt = txt.replaceAll("(\\(.*?\\))", "").trim(); // (H) engeller
-                // Skor formatı "X - Y" (ör. "2 - 1")
+                // Skor formatı "X - Y" (Ör. "2 - 1")
                 if (txt.matches("\\d+\\s*-\\s*\\d+")) {
                     return txt;
                 }
