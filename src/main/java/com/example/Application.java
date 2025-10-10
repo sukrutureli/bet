@@ -44,7 +44,7 @@ public class Application {
                     try {
                         TeamMatchHistory teamHistory = scraper.scrapeTeamHistory(match.getDetailUrl(), match.getName());
                         
-                        if (teamHistory != null && teamHistory.getTotalMatches() > 0) {
+                        if (teamHistory != null/* && teamHistory.getTotalMatches() > 0*/) {
                             historyManager.addTeamHistory(teamHistory);
                             matchStats.add(teamHistory.createMatch(match));
                         } 

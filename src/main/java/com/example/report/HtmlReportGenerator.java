@@ -67,7 +67,6 @@ public class HtmlReportGenerator {
             }
         }
         
-        System.out.println("Detay URL'si olan " + detailUrlCount);
 
         html.append("<div class='stats'>");
         html.append("<h3>İstatistikler</h3>");
@@ -76,8 +75,6 @@ public class HtmlReportGenerator {
         html.append("<p>- Geçmiş verisi çekilecek: ").append(detailUrlCount).append("</p>");
         html.append("</div>");
         
-        // Her maç için geçmiş bilgilerini işle
-        System.out.println("\n2. Takım geçmişleri çekiliyor...");
         
         for (int i = 0; i < matches.size(); i++) {
             MatchInfo match = matches.get(i);
@@ -91,9 +88,7 @@ public class HtmlReportGenerator {
              
             // Detay URL'si varsa geçmiş verilerini çek
             if (match.hasDetailUrl()) {
-                System.out.println("Geçmiş çekiliyor " + (i+1) + "/" + matches.size() + ": " + match.getName());
-                
-                
+               
                 TeamMatchHistory teamHistory = historyManager.getTeamHistories().get(i);
                 
                 if (teamHistory != null && teamHistory.getTotalMatches() > 0) {
@@ -279,11 +274,6 @@ public class HtmlReportGenerator {
             
             html.append("<p><small>Element #").append(match.getIndex()).append("</small></p>");
             html.append("</div>");
-            
-            // Her 20 maçta bir progress yazdır
-            if ((i + 1) % 20 == 0) {
-                System.out.println("İşlendi: " + (i + 1) + "/" + matches.size());
-            }
         }
         
         // Final istatistikleri
@@ -327,18 +317,6 @@ public class HtmlReportGenerator {
         } catch (IOException e) {
 			e.printStackTrace();
 		}
-        
-        System.out.println("\n=== Scraping Tamamlandı ===");
-        System.out.println("- public/index.html başarıyla oluşturuldu!");
-        System.out.println("- Toplam maç sayısı: " + matches.size());
-        System.out.println("- Detay URL'li maç sayısı: " + detailUrlCount);
-        System.out.println("- Başarıyla geçmişi çekilen: " + processedTeamCount);
-        System.out.println("- Toplam takım: " + historyManager.getTotalTeams());
-        System.out.println("- Toplam geçmiş maç: " + historyManager.getTotalMatches());
-        System.out.println("- Bitiş zamanı: " + LocalDateTime.now(istanbulZone));
-            
-            
-        
     }
     
     private static String getResultClass(MatchResult match, String teamName) {

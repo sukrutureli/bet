@@ -20,4 +20,10 @@ public class Match {
     public void setAwayStats(TeamStats awayStats) { this.awayStats = awayStats; }
     public Odds getOdds() { return odds; }
     public void setOdds(Odds odds) { this.odds = odds; }
+    
+    @Override
+    public String toString() {
+        return homeTeam + " - " + awayTeam + " -> \n" + homeStats.toString() + "\n" + awayStats.toString();
+    }
+
 }

@@ -257,7 +257,7 @@ public class MatchScraper {
     }
 
     private Odds extractOdds(WebElement event) {
-        // 1X2 + Alt/Ãœst + Var/Yok = toplam 7 oran
+        // 1X2 + Alt/Üst + Var/Yok = toplam 7 oran
         String[] odds = {"-", "-", "-", "-", "-", "-", "-"};  
 
         try {
@@ -273,7 +273,7 @@ public class MatchScraper {
                 }
             }
 
-            // --- Alt/Ãœst + Var/Yok (4 oran) ---
+            // --- Alt/Üst + Var/Yok (4 oran) ---
             List<WebElement> extraOdds = event.findElements(By.cssSelector("dd.col-02.event-row .cell"));
             for (int i = 0; i < 4; i++) {
                 try {
@@ -293,7 +293,7 @@ public class MatchScraper {
         
 
         return new Odds(toDouble(odds[0]), toDouble(odds[1]), toDouble(odds[2])
-        		, toDouble(odds[4]), toDouble(odds[3]), toDouble(odds[5]), toDouble(odds[6])); // [1, X, 2, Alt, Ãœst, Var, Yok]
+        		, toDouble(odds[4]), toDouble(odds[3]), toDouble(odds[5]), toDouble(odds[6])); // [1, X, 2, Alt, Üst, Var, Yok]
     }
 
     public Double toDouble(String oddInString) {

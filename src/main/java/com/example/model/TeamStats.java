@@ -33,5 +33,11 @@ public class TeamStats {
 	public void setPpg(double ppg) {
 		this.ppg = ppg;
 	}
+	
+	@Override
+    public String toString() {
+		return "avgGF -> " + avgGF + ", " + "avgGA -> " + avgGA + ", " + "ppg -> " + ppg + ", " +
+				"last5Points -> " + last5Points + ", " +"rating100 -> " + rating100; 
+	}
 }
 
