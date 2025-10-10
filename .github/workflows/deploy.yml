@@ -66,3 +66,4 @@ jobs:
           publish_dir: ./public
           external_repository: sukrutureli/bettingsukru
           publish_branch: main
+          keep_files: true
