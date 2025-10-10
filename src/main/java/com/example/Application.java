@@ -76,7 +76,7 @@ public class Application {
                 results.add(ensemble.predict(m, Optional.empty()));
             }
             
-            HtmlReportGenerator.generateHtml(matches, historyManager, matchStats, results, "index.html");
+            HtmlReportGenerator.generateHtml(matches, historyManager, matchStats, results, "futbol.html");
             
         } catch (Exception e) {
             System.out.println("GENEL HATA: " + e.getMessage());
