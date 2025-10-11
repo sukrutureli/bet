@@ -322,7 +322,7 @@ public class HtmlReportGenerator {
     private static String getResultClass(MatchResult match, String teamName) {
         String result = match.getResult();
         
-        // Takımın ev sahibi mi deplasman mı olduÄŸunu kontrol et
+        // Takımın ev sahibi mi deplasman mı olduğunu kontrol et
         boolean isHome = teamName.contains(match.getHomeTeam());
         
         if (result.equals("D")) {
