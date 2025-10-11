@@ -62,9 +62,6 @@ public class MatchScraper {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         String todayStr = today.format(formatter);
 
-        ZonedDateTime istanbulTime = ZonedDateTime.now(ZoneId.of("Europe/Istanbul"));
-        int nowHour = istanbulTime.getHour();
-
         try {
             String url = "https://www.nesine.com/iddaa?et=1&dt=" + todayStr + "&le=2&ocg=MS-2%2C5>=Pop%C3%BCler";
             driver.get(url);
@@ -72,36 +69,21 @@ public class MatchScraper {
             Thread.sleep(3000);
             performScrolling();
 
-            // SCROLL BİTTİKTEN SONRA FRESH ELEMENTLERİ ÇEK
             List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
             System.out.println("Final element sayısı: " + events.size());
             
-            for (int idx = 0; idx < events.size(); idx++) {
+            for (int idx = 0; idx < 10; idx++) {
                 try {
-                    // Her iterasyonda element'i tekrar bul (fresh reference)
-                    List<WebElement> freshEvents = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
-                    if (idx >= freshEvents.size()) {
-                        System.out.println("Element " + idx + " artık mevcut deÄŸil, çıkılıyor");
-                        break;
-                    }
-                    
-                    WebElement event = freshEvents.get(idx);
+                    WebElement event = events.get(idx);
                     MatchInfo matchInfo = extractMatchInfo(event, idx);
                     
-                    if (matchInfo != null/* && matchInfo.isClose(nowHour)*/) {
+                    if (matchInfo != null) {
                         System.out.println(matchInfo.getName());
                         matches.add(matchInfo);
-                    } /*else if (matchInfo == null) {
-                        // Null ise devam et, break yapma
-                        continue;
-                    } else {
-                        // isClose() false ise dur
-                        break;
-                    }*/
+                    }
                     
                 } catch (Exception e) {
                     System.out.println("Element " + idx + " işlenirken hata: " + e.getMessage());
-                    // Hata olsa bile devam et
                     continue;
                 }
             }
@@ -118,12 +100,12 @@ public class MatchScraper {
             int previousCount = -1;
             int stableRounds = 0;
 
-            while (stableRounds < 2) { // 5'ten 3'e düşür
+            while (stableRounds < 3) { 
                 List<WebElement> matches = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
                 int currentCount = matches.size();
 
-                js.executeScript("window.scrollBy(0, 1500);"); // 1000'den 1500'e
-                Thread.sleep(1500); // 2000'den 1000'e
+                js.executeScript("window.scrollBy(0, 1500);");
+                Thread.sleep(1500);
 
                 if (currentCount == previousCount) {
                     stableRounds++;
@@ -140,106 +122,54 @@ public class MatchScraper {
 
     private MatchInfo extractMatchInfo(WebElement event, int idx) {
         try {
-            // Daha esnek gÖrünürlük kontrolü
+            // Lazy load tetikle
             try {
-                Boolean elementExists = (Boolean) js.executeScript(
-                    "return arguments[0].offsetParent !== null || arguments[0].offsetWidth > 0 || arguments[0].offsetHeight > 0;", event
-                );
-                if (!elementExists) {
-                    System.out.println("Element " + idx + " DOM'da gÖrünür deÄŸil");
-                }
-            } catch (Exception e) {
-                System.out.println("Element " + idx + " visibility check hatası: " + e.getMessage());
-            }
-            
-            // Elemente focus yap (lazy loading için)
-            try {
-                js.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center'});", event);
-                Thread.sleep(300);
-                
-                // Force trigger lazy loading
-                js.executeScript("arguments[0].focus(); arguments[0].click();", event);
+                js.executeScript("arguments[0].scrollIntoView({block:'center'});", event);
                 Thread.sleep(200);
-            } catch (Exception scrollEx) {
-                System.out.println("Element " + idx + " scroll hatası: " + scrollEx.getMessage());
-            }
-            
-            // Maç adı ve URL'i çek
+            } catch (Exception ignored) {}
+
+            // Maç adı ve detay URL
             String matchName = "İsim bulunamadı";
             String detailUrl = null;
-            
+
             try {
-                // Name ve href'i aynı anda çek
-                List<WebElement> nameLinks = event.findElements(By.cssSelector("div.name > a"));
+                List<WebElement> nameLinks = event.findElements(By.cssSelector("div.name a"));
                 if (!nameLinks.isEmpty()) {
-                    WebElement nameLink = nameLinks.get(0);
-                    matchName = nameLink.getText().trim();
-                    detailUrl = nameLink.getAttribute("href");
-                    
-                    if (matchName.isEmpty()) {
-                        matchName = "İsim bulunamadı";
-                    }
+                    WebElement link = nameLinks.get(0);
+                    matchName = link.getText().trim();
+                    detailUrl = link.getAttribute("href");
                 }
-                
-                // Alternatif URL arama
-                if (detailUrl == null || detailUrl.isEmpty()) {
-                    List<WebElement> allLinks = event.findElements(By.tagName("a"));
-                    for (WebElement link : allLinks) {
-                        String href = link.getAttribute("href");
-                        if (href != null && href.contains("istatistik.nesine.com")) {
-                            detailUrl = href;
-                            if (matchName.equals("İsim bulunamadı")) {
-                                String linkText = link.getText().trim();
-                                if (!linkText.isEmpty()) {
-                                    matchName = linkText;
-                                }
-                            }
-                            break;
+            } catch (Exception ignored) {}
+
+            // Alternatif: istatistik linki
+            if ((detailUrl == null || detailUrl.isEmpty())) {
+                for (WebElement link : event.findElements(By.tagName("a"))) {
+                    String href = link.getAttribute("href");
+                    if (href != null && href.contains("istatistik.nesine.com")) {
+                        detailUrl = href;
+                        if (matchName.equals("İsim bulunamadı")) {
+                            String t = link.getText().trim();
+                            if (!t.isEmpty()) matchName = t;
                         }
+                        break;
                     }
                 }
-                
-                // JavaScript ile text çekme
-                if (matchName.equals("İsim bulunamadı")) {
-                    String jsText = (String) js.executeScript("return arguments[0].textContent || arguments[0].innerText || '';", event);
-                    if (jsText != null && !jsText.trim().isEmpty()) {
-                        String[] lines = jsText.split("\n");
-                        for (String line : lines) {
-                            line = line.trim();
-                            if (line.length() > 5 && (line.contains("-") || line.contains(" vs ")) && !line.matches(".*\\d+.*")) {
-                                matchName = line;
-                                break;
-                            }
-                        }
-                    }
-                }
-            } catch (Exception nameEx) {
-                System.out.println("Element " + idx + " isim arama hatası: " + nameEx.getMessage());
             }
-            
-            // Maç zamanı
+
+            // Zaman
             String matchTime = extractMatchTime(event);
-            
+
             // Oranlar
             Odds odds = extractOdds(event);
-            
-            // Debug: Element'in raw text'ini yazdır
-            try {
-                String elementText = (String) js.executeScript("return (arguments[0].textContent || arguments[0].innerText || '').substring(0, 100);", event);
-                //System.out.println("Element " + idx + " text (ilk 100 kar): " + elementText);
-                //System.out.println(matchName);
-            } catch (Exception debugEx) {
-                // Ignore
-            }
-            
-            // EÄŸer minimum veri yoksa null dÖndür
+
+            // Minimum veri kontrolü
             if (matchName.equals("İsim bulunamadı") && matchTime.equals("Zaman bulunamadı")) {
-                System.out.println("Element " + idx + " yeterli veri yok, atlanıyor");
+                System.out.println("Element " + idx + " veri eksik, atlanıyor");
                 return null;
             }
-            
+
             return new MatchInfo(matchName, matchTime, detailUrl, odds, idx);
-            
+
         } catch (Exception e) {
             System.out.println("Element " + idx + " extract hatası: " + e.getMessage());
             return null;
@@ -285,12 +215,9 @@ public class MatchScraper {
                 }
             }
 
-            //System.out.println(Arrays.toString(odds));
         } catch (Exception e) {
             System.out.println("Oran çekme hatası: " + e.getMessage());
         }
-        
-        
 
         return new Odds(toDouble(odds[0]), toDouble(odds[1]), toDouble(odds[2])
         		, toDouble(odds[4]), toDouble(odds[3]), toDouble(odds[5]), toDouble(odds[6])); // [1, X, 2, Alt, Üst, Var, Yok]
@@ -321,6 +248,7 @@ public class MatchScraper {
 
         } catch (Exception e) {
             System.out.println("Takım geçmişi çekme hatası: " + e.getMessage());
+            return teamHistory;
         }
         return teamHistory;
     }
@@ -477,21 +405,18 @@ public class MatchScraper {
         return sb.toString().trim();
     }
 
-    // Ã–rnek: extractCompetitionHistoryResults içinde kullanımı
+    // Örnek: extractCompetitionHistoryResults içinde kullanımı
     private List<MatchResult> extractCompetitionHistoryResults(String matchType, String originalUrl) {
-        List<MatchResult> matches = new ArrayList<>();
-
-        List<WebElement> container = driver.findElements(By.cssSelector("div[data-test-id='CompitionHistoryTable']"));
-        if (!container.isEmpty()) {
-            if (hasNoData(container.get(0))) {
-                System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
-                return matches;
-            }
-        }      
+        List<MatchResult> matches = new ArrayList<>();   
 
         try {
-            wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.cssSelector("div[data-test-id='CompitionHistoryTableItem']")));
+        	int retries = 0;
+        	while (driver.findElements(By.cssSelector("div[data-test-id='CompitionHistoryTableItem']")).isEmpty() 
+        			&& retries < 20) {
+        	    Thread.sleep(500); // 0.5 saniye bekle
+        	    retries++;
+        	}
+        	
             List<WebElement> rows = driver.findElements(By.cssSelector("div[data-test-id='CompitionHistoryTableItem']"));
 
             for (WebElement row : rows) {
@@ -555,17 +480,17 @@ public class MatchScraper {
         } else if (homeOrAway == 2) {
             selectorString = "div[data-test-id='LastMatchesTableSecond'] table";
         }
-        List<WebElement> container = driver.findElements(By.cssSelector(selectorString));
-        if (!container.isEmpty()) {
-            if (hasNoData(container.get(0))) {
-                System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
-                return matches;
-            }
-        }
+        
         try {
-            wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.cssSelector(selectorString)));
+        	
             WebElement table = driver.findElement(By.cssSelector(selectorString));
+            
+            int retries = 0;
+        	while (driver.findElements(By.cssSelector("tbody tr")).isEmpty() && retries < 20) {
+        	    Thread.sleep(500); // 0.5 saniye bekle
+        	    retries++;
+        	}
+        	
             List<WebElement> rows = table.findElements(By.cssSelector("tbody tr"));
 
             for (WebElement row : rows) {

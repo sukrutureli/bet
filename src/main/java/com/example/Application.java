@@ -44,7 +44,7 @@ public class Application {
                     try {
                         TeamMatchHistory teamHistory = scraper.scrapeTeamHistory(match.getDetailUrl(), match.getName());
                         
-                        if (teamHistory != null/* && teamHistory.getTotalMatches() > 0*/) {
+                        if (teamHistory != null) {
                             historyManager.addTeamHistory(teamHistory);
                             matchStats.add(teamHistory.createMatch(match));
                         } 
@@ -77,6 +77,8 @@ public class Application {
             }
             
             HtmlReportGenerator.generateHtml(matches, historyManager, matchStats, results, "futbol.html");
+            
+            System.out.println("futbol.html oluşturuldu.");
             
         } catch (Exception e) {
             System.out.println("GENEL HATA: " + e.getMessage());
