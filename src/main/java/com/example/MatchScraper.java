@@ -68,6 +68,13 @@ public class MatchScraper {
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
             Thread.sleep(3000);
             performScrolling();
+            
+            int retries = 0;
+        	while (driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event']")).isEmpty() 
+        			&& retries < 20) {
+        	    Thread.sleep(500); // 0.5 saniye bekle
+        	    retries++;
+        	}
 
             List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
             System.out.println("Final element sayısı: " + events.size());
