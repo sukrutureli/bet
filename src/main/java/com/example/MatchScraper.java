@@ -70,7 +70,7 @@ public class MatchScraper {
             performScrolling();
             
             int retries = 0;
-        	while (driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event']")).isEmpty() 
+        	while (driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event")).isEmpty() 
         			&& retries < 20) {
         	    Thread.sleep(500); // 0.5 saniye bekle
         	    retries++;
