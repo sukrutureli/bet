@@ -76,7 +76,7 @@ public class Application {
                 results.add(ensemble.predict(m, Optional.empty()));
             }
             
-            HtmlReportGenerator.generateHtml(matches, historyManager, matchStats, results, "futboldeneme.html");
+            HtmlReportGenerator.generateHtml(matches, historyManager, matchStats, results, "futboldeneme2.html");
             
             System.out.println("futbol.html oluşturuldu.");
             

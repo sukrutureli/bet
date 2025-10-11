@@ -124,33 +124,36 @@ public class HtmlReportGenerator {
                     html.append("</table>");
                     html.append("</div>");
                     
-                    // stats eklendi
-                    html.append("<div class='quick-summary'>");
-                    html.append("<table class='qs'>");
-                    html.append("<thead>");
-                    html.append("<tr>");
-                    html.append("<th>MS1</th>");
-                    html.append("<th>MSX</th>");
-                    html.append("<th>MS2</th>");
-                    html.append("<th>Üst 2.5</th>");
-                    html.append("<th>KG Var</th>");
-                    html.append("<th>Seçim</th>");
-                    html.append("<th>Skor</th>");
-                    html.append("</tr>");
-                    html.append("</thead>");
-                    html.append("<tbody>");
-                    html.append("<tr>");
-                    html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpHome()) + "</td>");
-                    html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpDraw()) + "</td>");
-                    html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpAway()) + "</td>");
-                    html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpOver25()) + "</td>");
-                    html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpBttsYes()) + "</td>");
-                    html.append("<td class='qs-pick'><span class='pick'>" + results.get(i).getPick() + "</span></td>");
-                    html.append("<td class='qs-score'>" + results.get(i).getScoreline() + "</td>");
-                    html.append("</tr>");
-                    html.append("</tbody>");
-                    html.append("</table>");
-                    html.append("</div>");
+                    
+                    if (!Double.isNaN(results.get(i).getpHome())) { //herhangi biri NaN ise bu tabloyu ekleme
+	                    // stats eklendi
+	                    html.append("<div class='quick-summary'>");
+	                    html.append("<table class='qs'>");
+	                    html.append("<thead>");
+	                    html.append("<tr>");
+	                    html.append("<th>MS1</th>");
+	                    html.append("<th>MSX</th>");
+	                    html.append("<th>MS2</th>");
+	                    html.append("<th>Üst 2.5</th>");
+	                    html.append("<th>KG Var</th>");
+	                    html.append("<th>Seçim</th>");
+	                    html.append("<th>Skor</th>");
+	                    html.append("</tr>");
+	                    html.append("</thead>");
+	                    html.append("<tbody>");
+	                    html.append("<tr>");
+	                    html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpHome()) + "</td>");
+	                    html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpDraw()) + "</td>");
+	                    html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpAway()) + "</td>");
+	                    html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpOver25()) + "</td>");
+	                    html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpBttsYes()) + "</td>");
+	                    html.append("<td class='qs-pick'><span class='pick'>" + results.get(i).getPick() + "</span></td>");
+	                    html.append("<td class='qs-score'>" + results.get(i).getScoreline() + "</td>");
+	                    html.append("</tr>");
+	                    html.append("</tbody>");
+	                    html.append("</table>");
+	                    html.append("</div>");
+                    }
 
 
                     int rekabetMacCount = Math.min(10, teamHistory.getRekabetGecmisi().size());
