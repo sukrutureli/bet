@@ -3,8 +3,7 @@ package com.example;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import com.example.model.*;
 
 import java.time.*;
@@ -29,7 +28,7 @@ public class MatchScraper {
         this.js = (JavascriptExecutor) driver;
     }
 
-    // ------------------------------ ANA SAYFA ------------------------------
+    // ----------------- Ana sayfa -----------------
     public List<MatchInfo> scrapeMainPage() {
         List<MatchInfo> matches = new ArrayList<>();
         try {
@@ -127,17 +126,14 @@ public class MatchScraper {
         }
     }
 
-    // ------------------------------ DETAY SAYFALARI ------------------------------
+    // ----------------- Detay Sayfaları -----------------
     public TeamMatchHistory scrapeTeamHistory(String url, String name) {
         if (url == null || url.isEmpty()) return null;
         TeamMatchHistory hist = new TeamMatchHistory(name, "", "", url);
         try {
-            List<MatchResult> rekabet = scrapeTable(url + "/rekabet-gecmisi",
-                    "div[data-test-id='CompitionHistoryTableItem']");
-            List<MatchResult> sonHome = scrapeTable(url + "/son-maclari",
-                    "div[data-test-id='LastMatchesTableFirst'] table tr");
-            List<MatchResult> sonAway = scrapeTable(url + "/son-maclari",
-                    "div[data-test-id='LastMatchesTableSecond'] table tr");
+            List<MatchResult> rekabet = scrapeRekabetGecmisi(url + "/rekabet-gecmisi");
+            List<MatchResult> sonHome = scrapeSonMaclar(url + "/son-maclari", 1);
+            List<MatchResult> sonAway = scrapeSonMaclar(url + "/son-maclari", 2);
 
             rekabet.forEach(hist::addRekabetGecmisiMatch);
             sonHome.forEach(m -> hist.addSonMacMatch(m, 1));
@@ -148,8 +144,8 @@ public class MatchScraper {
         return hist;
     }
 
-    private List<MatchResult> scrapeTable(String url, String selector) {
-        List<MatchResult> matches = new ArrayList<>();
+    private List<MatchResult> scrapeRekabetGecmisi(String url) {
+        List<MatchResult> list = new ArrayList<>();
         try {
             driver.get(url);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
@@ -158,26 +154,65 @@ public class MatchScraper {
             selectTournament();
             clickShowMoreMatches();
 
+            List<WebElement> rows = driver.findElements(By.cssSelector("div[data-test-id='CompitionHistoryTableItem']"));
+            for (WebElement row : rows) {
+                try {
+                    String score = extractScore(row);
+                    if (!score.contains("-")) continue;
+                    String[] parts = score.split("-");
+                    int hs = Integer.parseInt(parts[0].trim());
+                    int as = Integer.parseInt(parts[1].trim());
+                    list.add(new MatchResult("-", "-", hs, as, "", "", "rekabet", url));
+                } catch (Exception ignored) {}
+            }
+        } catch (Exception e) {
+            System.out.println("Rekabet geçmişi hatası: " + e.getMessage());
+        }
+        return list;
+    }
+
+    private List<MatchResult> scrapeSonMaclar(String url, int homeOrAway) {
+        List<MatchResult> list = new ArrayList<>();
+        try {
+            driver.get(url);
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
+            Thread.sleep(1000);
+
+            selectTournament();
+            clickShowMoreMatches();
+
+            String selector = homeOrAway == 1
+                    ? "div[data-test-id='LastMatchesTableFirst'] table tbody tr"
+                    : "div[data-test-id='LastMatchesTableSecond'] table tbody tr";
             List<WebElement> rows = driver.findElements(By.cssSelector(selector));
             for (WebElement row : rows) {
                 try {
-                    String text = row.getText();
-                    if (!text.matches(".*\\d+-\\d+.*")) continue;
-                    String[] score = text.replaceAll("[^0-9\\-]", "").split("-");
-                    int hs = Integer.parseInt(score[0]);
-                    int as = Integer.parseInt(score[1]);
-                    matches.add(new MatchResult("-", "-", hs, as, "", "", "", url));
-                } catch (Exception ex) {
-                    // Ignore
-                }
+                    String score = extractScore(row);
+                    if (!score.contains("-")) continue;
+                    String[] parts = score.split("-");
+                    int hs = Integer.parseInt(parts[0].trim());
+                    int as = Integer.parseInt(parts[1].trim());
+                    list.add(new MatchResult("-", "-", hs, as, "", "", "son", url));
+                } catch (Exception ignored) {}
             }
         } catch (Exception e) {
-            System.out.println("Scrape table hatası: " + e.getMessage());
+            System.out.println("Son maçlar hatası: " + e.getMessage());
         }
-        return matches;
+        return list;
     }
 
-    // ------------------------------ YARDIMCI METOTLAR ------------------------------
+    private String extractScore(WebElement row) {
+        try {
+            List<WebElement> spans = row.findElements(By.cssSelector("button[data-test-id='NsnButton'] span"));
+            for (WebElement s : spans) {
+                String txt = s.getText().trim();
+                if (txt.matches("\\d+\\s*-\\s*\\d+"))
+                    return txt.replaceAll("[^0-9\\-]", "");
+            }
+        } catch (Exception ignored) {}
+        return "-";
+    }
+
     private void selectTournament() {
         try {
             WebElement dropdown = new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -189,7 +224,7 @@ public class MatchScraper {
                     .until(ExpectedConditions.elementToBeClickable(
                             By.xpath("//div[@role='option']//span[contains(text(),'Bu Turnuva')]")));
             option.click();
-            Thread.sleep(200);
+            Thread.sleep(300);
         } catch (Exception e) {
             System.out.println("Turnuva seçimi atlandı: " + e.getMessage());
         }
@@ -197,18 +232,18 @@ public class MatchScraper {
 
     private void clickShowMoreMatches() {
         try {
-            List<WebElement> clickables = driver.findElements(By.cssSelector("button, a"));
-            for (WebElement el : clickables) {
-                String t = el.getText().toLowerCase();
-                if ((t.contains("daha") || t.contains("more") || t.contains("load"))
+            List<WebElement> buttons = driver.findElements(By.cssSelector("button, a"));
+            for (WebElement el : buttons) {
+                String txt = el.getText().toLowerCase();
+                if ((txt.contains("daha") || txt.contains("more") || txt.contains("load"))
                         && el.isDisplayed() && el.isEnabled()) {
                     js.executeScript("arguments[0].click();", el);
-                    Thread.sleep(500);
+                    Thread.sleep(600);
                     break;
                 }
             }
         } catch (Exception e) {
-            System.out.println("Daha fazla maç yükle butonu bulunamadı: " + e.getMessage());
+            System.out.println("Daha fazla maç yüklenemedi: " + e.getMessage());
         }
     }
 
