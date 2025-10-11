@@ -490,7 +490,13 @@ public class MatchScraper {
         
         try {
         	
-            WebElement table = driver.findElement(By.cssSelector(selectorString));
+        	List<WebElement> table = driver.findElements(By.cssSelector(selectorString));
+            if (!table.isEmpty()) {
+                if (hasNoData(table.get(0))) {
+                    System.out.println("Bu müsabaka için veri yok, tablo beklenmeyecek.");
+                    return matches;
+                }
+            }
             
             int retries = 0;
         	while (driver.findElements(By.cssSelector("tbody tr")).isEmpty() && retries < 20) {
@@ -498,7 +504,7 @@ public class MatchScraper {
         	    retries++;
         	}
         	
-            List<WebElement> rows = table.findElements(By.cssSelector("tbody tr"));
+            List<WebElement> rows = table.get(0).findElements(By.cssSelector("tbody tr"));
 
             for (WebElement row : rows) {
                 try {
