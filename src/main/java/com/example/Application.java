@@ -76,9 +76,16 @@ public class Application {
                 results.add(ensemble.predict(m, Optional.empty()));
             }
             
-            HtmlReportGenerator.generateHtml(matches, historyManager, matchStats, results, "futbol.html");
+            LastPredictionManager lastPredictionManager = new LastPredictionManager(historyManager, results, matches);
+            lastPredictionManager.fillPredictions();
             
-            System.out.println("futbol.html oluşturuldu.");
+            //HtmlReportGenerator.generateHtml(matches, historyManager, matchStats, results, "futbol.html");
+            
+            //System.out.println("futbol.html oluşturuldu.");
+            
+            HtmlReportGenerator.generateHtmlForSublist(lastPredictionManager.getLastPrediction(), "futboltahmin.html");
+            
+            System.out.println("futboltahmin.html oluşturuldu.");
             
         } catch (Exception e) {
             System.out.println("GENEL HATA: " + e.getMessage());

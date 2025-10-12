@@ -1,6 +1,7 @@
 package com.example.report;
 
 import com.example.MatchHistoryManager;
+import com.example.model.LastPrediction;
 import com.example.model.Match;
 import com.example.model.MatchInfo;
 import com.example.model.MatchResult;
@@ -320,6 +321,61 @@ public class HtmlReportGenerator {
         } catch (IOException e) {
 			e.printStackTrace();
 		}
+    }
+    
+    public static void generateHtmlForSublist(List<LastPrediction> predictions, String fileName) {     
+        StringBuilder html = new StringBuilder();
+
+        html.append("<!DOCTYPE html>\n");
+        html.append("<html lang='tr'>\n");
+        html.append("<head>\n");
+        html.append("<meta charset='UTF-8'>\n");
+        html.append("<title>Futbol Tahminleri</title>\n");
+        html.append("<style>\n");
+        html.append("body { font-family: Arial, sans-serif; background-color: #f7f8fa; margin: 0; padding: 30px; color: #222; }\n");
+        html.append("h1 { text-align: center; margin-bottom: 25px; color: #333; }\n");
+        html.append("table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden; }\n");
+        html.append("th, td { padding: 12px 16px; text-align: left; }\n");
+        html.append("th { background-color: #0077cc; color: white; font-size: 15px; }\n");
+        html.append("tr:nth-child(even) { background-color: #f3f6fa; }\n");
+        html.append("tr:hover { background-color: #eaf3ff; }\n");
+        html.append("td { font-size: 14px; border-bottom: 1px solid #ddd; }\n");
+        html.append(".match { font-weight: bold; color: #1a1a1a; }\n");
+        html.append(".prediction { color: #444; white-space: pre-line; }\n");
+        html.append("</style>\n");
+        html.append("</head>\n");
+        html.append("<body>\n");
+        html.append("<h1>⚽ Futbol Tahminleri</h1>\n");
+        html.append("<table>\n");
+        html.append("<tr><th>Maç</th><th>Tahmin</th></tr>\n");
+
+        for (LastPrediction p : predictions) {
+            html.append("<tr>");
+            html.append("<td class='match'>")
+                .append(p.getHomeTeam())
+                .append(" - ")
+                .append(p.getAwayTeam())
+                .append("</td>");
+            html.append("<td class='prediction'>")
+                .append(p.preditionsToString())
+                .append("</td>");
+            html.append("</tr>\n");
+        }
+
+        html.append("</table>\n");
+        html.append("</body>\n");
+        html.append("</html>");
+
+        File dir = new File("public");
+        if (!dir.exists()) dir.mkdirs();
+
+        try (FileWriter fw = new FileWriter(new File(dir, fileName))) {
+            fw.write(html.toString());
+            html = null;
+            System.gc();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     private static String getResultClass(MatchResult match, String teamName) {
