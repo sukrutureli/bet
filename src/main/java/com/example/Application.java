@@ -79,9 +79,9 @@ public class Application {
             LastPredictionManager lastPredictionManager = new LastPredictionManager(historyManager, results, matches);
             lastPredictionManager.fillPredictions();
             
-            //HtmlReportGenerator.generateHtml(matches, historyManager, matchStats, results, "futbol.html");
+            HtmlReportGenerator.generateHtml(matches, historyManager, matchStats, results, "futbol.html");
             
-            //System.out.println("futbol.html oluşturuldu.");
+            System.out.println("futbol.html oluşturuldu.");
             
             HtmlReportGenerator.generateHtmlForSublist(lastPredictionManager.getLastPrediction(), "futboltahmin.html");
             
