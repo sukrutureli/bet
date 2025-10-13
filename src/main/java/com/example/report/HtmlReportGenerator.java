@@ -366,6 +366,7 @@ public class HtmlReportGenerator {
 		html.append("<meta charset='UTF-8'>\n");
 		html.append("<meta name='viewport' content='width=device-width, initial-scale=1.0'>\n");
 		html.append("<title>✅ Hazır Kupon</title>\n");
+		html.append("<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'>\n");
 		html.append("<style>\n");
 
 		/* --- Genel Stil --- */
@@ -381,10 +382,13 @@ public class HtmlReportGenerator {
 		html.append("tr:hover { background-color: #eaf3ff; }\n");
 		html.append("td { font-size: 14px; border-bottom: 1px solid #ddd; }\n");
 
-		/* --- Sütun Oranları --- */
-		html.append("th:nth-child(1), td:nth-child(1) { width: 60px; text-align: center; white-space: nowrap; }\n"); // Saat
-		html.append("th:nth-child(2), td:nth-child(2) { max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }\n"); // Maç
-		html.append("th:nth-child(3), td:nth-child(3) { width: auto; }\n"); // Tahmin
+		/* --- İkon hizalama --- */
+		html.append("td i, td svg, td img { display:inline-block; vertical-align:middle; margin-right:4px; color:#0077cc; }\n");
+
+		/* --- Sütun oranları --- */
+		html.append("th:nth-child(1), td:nth-child(1) { width: 60px; text-align: center; white-space: nowrap; }\n");
+		html.append("th:nth-child(2), td:nth-child(2) { max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }\n");
+		html.append("th:nth-child(3), td:nth-child(3) { width: auto; }\n");
 
 		html.append(".match { font-weight: bold; color: #1a1a1a; }\n");
 		html.append(".prediction { color: #444; white-space: pre-line; }\n");
@@ -395,7 +399,8 @@ public class HtmlReportGenerator {
 		html.append("  thead { display: none; }\n");
 		html.append("  tr { margin-bottom: 12px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); background: #fff; padding: 8px; }\n");
 		html.append("  td { border: none; padding: 6px 8px; }\n");
-		html.append("  td::before { content: attr(data-label); font-weight: bold; color: #0077cc; display: block; margin-bottom: 3px; }\n");
+		html.append("  td i { margin-right: 6px; }\n");
+		html.append("  td span.label { display:block; font-weight:bold; color:#0077cc; margin-bottom:3px; }\n");
 		html.append("}\n");
 
 		html.append("</style>\n");
@@ -403,19 +408,20 @@ public class HtmlReportGenerator {
 		html.append("<body>\n");
 		html.append("<h1>✅ Hazır Kupon</h1>\n");
 		html.append("<table>\n");
-		html.append("<thead><tr><th>Saat</th><th>Maç</th><th>Tahmin</th></tr></thead>\n");
+		html.append("<thead><tr><th>🕒 Saat</th><th>⚽ Maç</th><th>🎯 Tahmin</th></tr></thead>\n");
 		html.append("<tbody>\n");
 
 		for (LastPrediction p : predictions) {
 		    html.append("<tr>");
-		    html.append("<td data-label='Saat'>").append(p.getTime()).append("</td>");
-		    html.append("<td class='match' data-label='Maç'>").append(p.getName()).append("</td>");
-		    html.append("<td class='prediction' data-label='Tahmin'>").append(p.preditionsToString()).append("</td>");
+		    html.append("<td><i class='fa-regular fa-clock'></i>").append(p.getTime()).append("</td>");
+		    html.append("<td class='match'><i class='fa-solid fa-futbol'></i>").append(p.getName()).append("</td>");
+		    html.append("<td class='prediction'><i class='fa-solid fa-bullseye'></i>").append(p.preditionsToString()).append("</td>");
 		    html.append("</tr>\n");
 		}
 
 		html.append("</tbody></table>\n");
 		html.append("</body>\n</html>");
+
 
 
 		File dir = new File("public");
