@@ -50,7 +50,7 @@ public class MatchScraper {
 			List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
 			System.out.println("Final element sayısı: " + events.size());
 
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < events.size(); i++) {
 				WebElement e = events.get(i);
 				MatchInfo info = extractMatchInfo(e, i);
 				if (info != null)

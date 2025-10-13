@@ -24,17 +24,16 @@ public class LastPredictionManager {
 
 	public void fillPredictions() {
 		for (int i = 0; i < historyManager.getTeamHistories().size(); i++) {
-			String[] splitTeamNames = historyManager.getTeamHistories().get(i).getTeamName().split("-");
-			if (splitTeamNames[0].trim().equals("") || splitTeamNames[1].trim().equals("")) {
-				continue;
-			}
-			LastPrediction tempLastPrediction = new LastPrediction(splitTeamNames[0].trim(), splitTeamNames[1].trim());
+			TeamMatchHistory th = historyManager.getTeamHistories().get(i);
+			
+			LastPrediction tempLastPrediction = new LastPrediction(th.getTeamName(), matchInfo.get(i).getTime());
 			String[] tahminListesi = { "MS1", "MS2", "Üst", "Alt", "Var", "Yok" };
 
 			for (String s : tahminListesi) {
-				if (calculatePrediction(historyManager.getTeamHistories().get(i), predictionResults.get(i),
+				if (calculatePrediction(th, predictionResults.get(i),
 						matchInfo.get(i), s) != null) {
-					tempLastPrediction.getPredictions().add(s);
+					String withOdd = s + " (" + getOdds(s, matchInfo.get(i))  + ")";
+					tempLastPrediction.getPredictions().add(withOdd);
 				}
 			}
 
@@ -137,7 +136,23 @@ public class LastPredictionManager {
 		} else {
 			return false;
 		}
-
+	}
+	
+	private String getOdds(String tahmin, MatchInfo match) {
+		if (tahmin.equals("MS1")) {
+			return String.valueOf(match.getOdds().getMs1());
+		} else if (tahmin.equals("MS2")) {
+			return String.valueOf(match.getOdds().getMs2());
+		} else if (tahmin.equals("Alt")) {
+			return String.valueOf(match.getOdds().getUnder25());
+		} else if (tahmin.equals("Üst")) {
+			return String.valueOf(match.getOdds().getOver25());
+		} else if (tahmin.equals("Var")) {
+			return String.valueOf(match.getOdds().getBttsYes());
+		} else if (tahmin.equals("Yok")) {
+			return String.valueOf(match.getOdds().getBttsNo());
+		}
+		return null;
 	}
 
 	public List<LastPrediction> getLastPrediction() {

@@ -4,27 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LastPrediction {
-	private String homeTeam;
-	private String awayTeam;
+	private String name;
+	private String time;
 	private List<String> predictions;
 	
-	public LastPrediction(String homeTeam, String awayTeam) {
-		this.homeTeam = homeTeam;
-		this.awayTeam = awayTeam;
+	public LastPrediction(String name, String time) {
+		this.name = name;
+		this.time = time;
 		this.predictions = new ArrayList<String>();
 	}
-	public String getHomeTeam() {
-		return homeTeam;
-	}
-	public void setHomeTeam(String homeTeam) {
-		this.homeTeam = homeTeam;
-	}
-	public String getAwayTeam() {
-		return awayTeam;
-	}
-	public void setAwayTeam(String awayTeam) {
-		this.awayTeam = awayTeam;
-	}
+	
 	public List<String> getPredictions() {
 		return predictions;
 	}
@@ -44,5 +33,13 @@ public class LastPrediction {
 		}
 		
 		return result;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getTime() {
+		return time;
 	}
 }

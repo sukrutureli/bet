@@ -42,7 +42,6 @@ public class PageWaitUtils {
             element.click();
             return true;
         } catch (Exception e) {
-            System.out.println("safeClick (WebElement) hata: " + e.getMessage());
             return false;
         }
     }
