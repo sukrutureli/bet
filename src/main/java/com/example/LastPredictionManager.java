@@ -26,7 +26,7 @@ public class LastPredictionManager {
 		for (int i = 0; i < historyManager.getTeamHistories().size(); i++) {
 			TeamMatchHistory th = historyManager.getTeamHistories().get(i);
 			
-			LastPrediction tempLastPrediction = new LastPrediction(th.getTeamName(), matchInfo.get(i).getTime());
+			LastPrediction tempLastPrediction = new LastPrediction(matchInfo.get(i).getName(), matchInfo.get(i).getTime());
 			String[] tahminListesi = { "MS1", "MS2", "Üst", "Alt", "Var", "Yok" };
 
 			for (String s : tahminListesi) {
