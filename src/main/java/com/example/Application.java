@@ -30,7 +30,7 @@ public class Application {
             
             // Ana sayfa verilerini çek
             System.out.println("\n1. Ana sayfa maçları çekiliyor...");
-            matches = scraper.scrapeMainPage();
+            matches = scraper.fetchMatches();
             
             System.out.println("Ana sayfadan " + matches.size() + " maç çekildi");
             
@@ -42,26 +42,29 @@ public class Application {
                     System.out.println("Geçmiş çekiliyor " + (i+1) + "/" + matches.size() + ": " + match.getName());
                     
                     try {
+                    	String url = match.getDetailUrl();
+                        if (url == null || !url.startsWith("http")) {
+                            System.out.println("⚠️ Geçersiz URL: " + url);
+                            continue;
+                        }
+                        
                         TeamMatchHistory teamHistory = scraper.scrapeTeamHistory(match.getDetailUrl(), match.getName());
                         
                         if (teamHistory != null) {
                             historyManager.addTeamHistory(teamHistory);
                             matchStats.add(teamHistory.createMatch(match));
-                        } 
-                        
-                        // Rate limiting - 3 saniye bekle
-                        Thread.sleep(1000);
-
-                        if ((i + 1) % 5 == 0) {
-                            System.gc(); // Garbage collection tetikle
+                        } else {
+                            System.out.println("⚠️ Veri yok veya boş döndü: " + match.getName());
                         }
+                        
+                        Thread.sleep(1500);
+                        if ((i + 1) % 5 == 0) System.gc();
                         
                     } catch (Exception e) {
                         System.out.println("Geçmiş çekme hatası: " + e.getMessage());
                     }
                 }
                 
-                // Her 20 maçta bir progress yazdır
                 if ((i + 1) % 20 == 0) {
                     System.out.println("İşlendi: " + (i + 1) + "/" + matches.size());
                 }
@@ -76,16 +79,14 @@ public class Application {
                 results.add(ensemble.predict(m, Optional.empty()));
             }
             
-            LastPredictionManager lastPredictionManager = new LastPredictionManager(historyManager, results, matches);
-            lastPredictionManager.fillPredictions();
-            
-            HtmlReportGenerator.generateHtml(matches, historyManager, matchStats, results, "futbol.html");
-            
+            HtmlReportGenerator.generateHtml(matches, historyManager, matchStats, results, "futbol_.html");
             System.out.println("futbol.html oluşturuldu.");
             
-            HtmlReportGenerator.generateHtmlForSublist(lastPredictionManager.getLastPrediction(), "futboltahmin.html");
-            
-            System.out.println("futboltahmin.html oluşturuldu.");
+            LastPredictionManager lastPredictionManager = new LastPredictionManager(historyManager, results, matches);
+            lastPredictionManager.fillPredictions();
+          
+            //HtmlReportGenerator.generateHtmlForSublist(lastPredictionManager.getLastPrediction(), "futboltahmin.html");       
+            //System.out.println("futboltahmin.html oluşturuldu.");
             
         } catch (Exception e) {
             System.out.println("GENEL HATA: " + e.getMessage());
