@@ -364,38 +364,59 @@ public class HtmlReportGenerator {
 		html.append("<html lang='tr'>\n");
 		html.append("<head>\n");
 		html.append("<meta charset='UTF-8'>\n");
+		html.append("<meta name='viewport' content='width=device-width, initial-scale=1.0'>\n");
 		html.append("<title>✅ Hazır Kupon</title>\n");
 		html.append("<style>\n");
-		html.append(
-				"body { font-family: Arial, sans-serif; background-color: #f7f8fa; margin: 0; padding: 30px; color: #222; }\n");
-		html.append("h1 { text-align: center; margin-bottom: 25px; color: #333; }\n");
-		html.append(
-				"table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden; }\n");
-		html.append("th, td { padding: 12px 16px; text-align: left; }\n");
+
+		/* --- Genel Stil --- */
+		html.append("body { font-family: Arial, sans-serif; background-color: #f7f8fa; margin: 0; padding: 20px; color: #222; }\n");
+		html.append("h1 { text-align: center; margin-bottom: 20px; color: #333; font-size: 22px; }\n");
+
+		/* --- Tablo --- */
+		html.append("table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; ");
+		html.append("box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden; }\n");
+		html.append("th, td { padding: 10px 12px; text-align: left; }\n");
 		html.append("th { background-color: #0077cc; color: white; font-size: 15px; }\n");
 		html.append("tr:nth-child(even) { background-color: #f3f6fa; }\n");
 		html.append("tr:hover { background-color: #eaf3ff; }\n");
 		html.append("td { font-size: 14px; border-bottom: 1px solid #ddd; }\n");
+
+		/* --- Sütun Oranları --- */
+		html.append("th:nth-child(1), td:nth-child(1) { width: 60px; text-align: center; white-space: nowrap; }\n"); // Saat
+		html.append("th:nth-child(2), td:nth-child(2) { max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }\n"); // Maç
+		html.append("th:nth-child(3), td:nth-child(3) { width: auto; }\n"); // Tahmin
+
 		html.append(".match { font-weight: bold; color: #1a1a1a; }\n");
 		html.append(".prediction { color: #444; white-space: pre-line; }\n");
+
+		/* --- Mobil görünüm (max 600px) --- */
+		html.append("@media (max-width: 600px) {\n");
+		html.append("  table, thead, tbody, th, td, tr { display: block; width: 100%; }\n");
+		html.append("  thead { display: none; }\n");
+		html.append("  tr { margin-bottom: 12px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); background: #fff; padding: 8px; }\n");
+		html.append("  td { border: none; padding: 6px 8px; }\n");
+		html.append("  td::before { content: attr(data-label); font-weight: bold; color: #0077cc; display: block; margin-bottom: 3px; }\n");
+		html.append("}\n");
+
 		html.append("</style>\n");
 		html.append("</head>\n");
 		html.append("<body>\n");
 		html.append("<h1>✅ Hazır Kupon</h1>\n");
 		html.append("<table>\n");
-		html.append("<tr><th>Saat</th><th>Maç</th><th>Tahmin</th></tr>\n");
+		html.append("<thead><tr><th>Saat</th><th>Maç</th><th>Tahmin</th></tr></thead>\n");
+		html.append("<tbody>\n");
 
 		for (LastPrediction p : predictions) {
-			html.append("<tr>");
-			html.append("<td>").append(p.getTime()).append("</td>");
-			html.append("<td class='match'>").append(p.getName()).append("</td>");
-			html.append("<td class='prediction'>").append(p.preditionsToString()).append("</td>");
-			html.append("</tr>\n");
+		    html.append("<tr>");
+		    html.append("<td data-label='Saat'>").append(p.getTime()).append("</td>");
+		    html.append("<td class='match' data-label='Maç'>").append(p.getName()).append("</td>");
+		    html.append("<td class='prediction' data-label='Tahmin'>").append(p.preditionsToString()).append("</td>");
+		    html.append("</tr>\n");
 		}
 
-		html.append("</table>\n");
-		html.append("</body>\n");
-		html.append("</html>");
+		html.append("</tbody></table>\n");
+		html.append("</body>\n</html>");
+
 
 		File dir = new File("public");
 		if (!dir.exists())
