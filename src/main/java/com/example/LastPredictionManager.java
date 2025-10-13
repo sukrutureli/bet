@@ -54,21 +54,21 @@ public class LastPredictionManager {
 		if (tahmin.equals("MS1")) {
 			percentageH = ((h.getMs1() * 1.0) / h.getTotalMatchesIn10()) * 100;
 			percentagePR = pr.getpHome() * 100;
-			if (matchInfo.getOdds().getMs1() > 1.30 && percentageH > 50 && percentagePR > 50
+			if (matchInfo.getOdds().getMs1() > 0.0 && percentageH > 50 && percentagePR > 50
 					&& isScoreOk(pr.getScoreline(), "MS1")) {
 				return "MS1";
 			}
 		} else if (tahmin.equals("MS2")) {
 			percentageH = ((h.getMs2() * 1.0) / h.getTotalMatchesIn10()) * 100;
 			percentagePR = pr.getpAway() * 100;
-			if (matchInfo.getOdds().getMs2() > 1.30 && percentageH > 50 && percentagePR > 50
+			if (matchInfo.getOdds().getMs2() > 0.0 && percentageH > 50 && percentagePR > 50
 					&& isScoreOk(pr.getScoreline(), "MS2")) {
 				return "MS2";
 			}
 		} else if (tahmin.equals("Üst")) {
 			percentageH = ((h.getUst() * 1.0) / h.getTotalMatchesIn10()) * 100;
 			percentagePR = pr.getpOver25() * 100;
-			if (matchInfo.getOdds().getOver25() > 1.30) {
+			if (matchInfo.getOdds().getOver25() > 0.0) {
 				if (percentageH > 70 && percentagePR > 70 && isScoreOk(pr.getScoreline(), "Üst")) {
 					return "Üst";
 				}
@@ -79,7 +79,7 @@ public class LastPredictionManager {
 		} else if (tahmin.equals("Alt")) {
 			percentageH = ((h.getAlt() * 1.0) / h.getTotalMatchesIn10()) * 100;
 			percentagePR = (1 - pr.getpOver25()) * 100;
-			if (matchInfo.getOdds().getUnder25() > 1.30) {
+			if (matchInfo.getOdds().getUnder25() > 0.0) {
 				if (percentageH > 70 && percentagePR > 70 && isScoreOk(pr.getScoreline(), "Alt")) {
 					return "Alt";
 				}
@@ -90,7 +90,7 @@ public class LastPredictionManager {
 		} else if (tahmin.equals("Var")) {
 			percentageH = ((h.getVar() * 1.0) / h.getTotalMatchesIn10()) * 100;
 			percentagePR = pr.getpBttsYes() * 100;
-			if (matchInfo.getOdds().getBttsYes() > 1.30) {
+			if (matchInfo.getOdds().getBttsYes() > 0.0) {
 				if (matchInfo.getOdds().getMs1() > 1.50 && matchInfo.getOdds().getMs2() > 1.50) {
 					if (percentageH > 70 && percentagePR > 70 && isScoreOk(pr.getScoreline(), "Var")) {
 						return "Var";
@@ -103,7 +103,7 @@ public class LastPredictionManager {
 		} else if (tahmin.equals("Yok")) {
 			percentageH = ((h.getYok() * 1.0) / h.getTotalMatchesIn10()) * 100;
 			percentagePR = (1 - pr.getpBttsYes()) * 100;
-			if (matchInfo.getOdds().getBttsNo() > 1.30) {
+			if (matchInfo.getOdds().getBttsNo() > 0.0) {
 				if (percentageH > 70 && percentagePR > 70 && isScoreOk(pr.getScoreline(), "Yok")) {
 					return "Yok";
 				}
@@ -160,3 +160,4 @@ public class LastPredictionManager {
 	}
 
 }
+
