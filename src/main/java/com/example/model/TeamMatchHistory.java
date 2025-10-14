@@ -130,10 +130,10 @@ public class TeamMatchHistory {
 
 		for (int i = 0; i < Math.min(10, sonMaclarAway.size()); i++) {
 			if (sonMaclarAway.get(i).getHomeTeam().contains(teamDep) && sonMaclarAway.get(i).getResult() == "A") {
-				ms1SonH++;
+				ms1SonA++;
 			} else if (sonMaclarAway.get(i).getAwayTeam().contains(teamDep)
 					&& sonMaclarAway.get(i).getResult() == "H") {
-				ms1SonH++;
+				ms1SonA++;
 			}
 		}
 
