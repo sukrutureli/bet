@@ -106,132 +106,189 @@ public class TeamMatchHistory {
 				+ Math.min(10, sonMaclarAway.size());
 	}
 
-	public int getMs1() {
-		int ms1 = 0;
+	public double getMs1() {
+		double ms1Rekabet = 0;
+		double ms1SonH = 0;
+		double ms1SonA = 0;
+
 		for (int i = 0; i < Math.min(10, rekabetGecmisi.size()); i++) {
 			if (rekabetGecmisi.get(i).getHomeTeam().contains(teamEv) && rekabetGecmisi.get(i).getResult() == "H") {
-				ms1++;
+				ms1Rekabet++;
 			} else if (rekabetGecmisi.get(i).getAwayTeam().contains(teamEv)
 					&& rekabetGecmisi.get(i).getResult() == "A") {
-				ms1++;
+				ms1Rekabet++;
 			}
 		}
 
 		for (int i = 0; i < Math.min(10, sonMaclarHome.size()); i++) {
 			if (sonMaclarHome.get(i).getHomeTeam().contains(teamEv) && sonMaclarHome.get(i).getResult() == "H") {
-				ms1++;
+				ms1SonH++;
 			} else if (sonMaclarHome.get(i).getAwayTeam().contains(teamEv) && sonMaclarHome.get(i).getResult() == "A") {
-				ms1++;
+				ms1SonH++;
 			}
 		}
 
 		for (int i = 0; i < Math.min(10, sonMaclarAway.size()); i++) {
 			if (sonMaclarAway.get(i).getHomeTeam().contains(teamDep) && sonMaclarAway.get(i).getResult() == "A") {
-				ms1++;
+				ms1SonH++;
 			} else if (sonMaclarAway.get(i).getAwayTeam().contains(teamDep)
 					&& sonMaclarAway.get(i).getResult() == "H") {
-				ms1++;
+				ms1SonH++;
 			}
 		}
-		return ms1;
+
+		if (isInfoEnough()) {
+			double result = (ms1Rekabet / Math.min(10, rekabetGecmisi.size())) * 0.4;
+			result += ((ms1SonH / Math.min(10, sonMaclarHome.size())) * 0.3);
+			result += ((ms1SonA / Math.min(10, sonMaclarAway.size())) * 0.3);
+
+			return result;
+		} else {
+			return (ms1Rekabet + ms1SonH + ms1SonA) / getTotalMatchesIn10();
+		}
 	}
 
-	public int getMs2() {
-		int ms2 = 0;
+	public double getMs2() {
+		double ms2Rekabet = 0;
+		double ms2SonH = 0;
+		double ms2SonA = 0;
+		
 		for (int i = 0; i < Math.min(10, rekabetGecmisi.size()); i++) {
 			if (rekabetGecmisi.get(i).getHomeTeam().contains(teamDep) && rekabetGecmisi.get(i).getResult() == "H") {
-				ms2++;
+				ms2Rekabet++;
 			} else if (rekabetGecmisi.get(i).getAwayTeam().contains(teamDep)
 					&& rekabetGecmisi.get(i).getResult() == "A") {
-				ms2++;
+				ms2Rekabet++;
 			}
 		}
 
 		for (int i = 0; i < Math.min(10, sonMaclarHome.size()); i++) {
 			if (sonMaclarHome.get(i).getHomeTeam().contains(teamEv) && sonMaclarHome.get(i).getResult() == "A") {
-				ms2++;
+				ms2SonH++;
 			} else if (sonMaclarHome.get(i).getAwayTeam().contains(teamEv) && sonMaclarHome.get(i).getResult() == "H") {
-				ms2++;
+				ms2SonH++;
 			}
 		}
 
 		for (int i = 0; i < Math.min(10, sonMaclarAway.size()); i++) {
 			if (sonMaclarAway.get(i).getHomeTeam().contains(teamDep) && sonMaclarAway.get(i).getResult() == "H") {
-				ms2++;
+				ms2SonA++;
 			} else if (sonMaclarAway.get(i).getAwayTeam().contains(teamDep)
 					&& sonMaclarAway.get(i).getResult() == "A") {
-				ms2++;
+				ms2SonA++;
 			}
 		}
 
-		return ms2;
+		if (isInfoEnough()) {
+			double result = (ms2Rekabet / Math.min(10, rekabetGecmisi.size())) * 0.4;
+			result += ((ms2SonH / Math.min(10, sonMaclarHome.size())) * 0.3);
+			result += ((ms2SonA / Math.min(10, sonMaclarAway.size())) * 0.3);
+
+			return result;
+		} else {
+			return (ms2Rekabet + ms2SonH + ms2SonA) / getTotalMatchesIn10();
+		}
 	}
 
-	public int getMs0() {
-		return getTotalMatchesIn10() - getMs1() - getMs2();
+	public double getMs0() {
+		return 1 - getMs1() - getMs2();
 	}
 
-	public int getVar() {
-		int var = 0;
+	public double getVar() {
+		double varRekabet = 0;
+		double varSonH = 0;
+		double varSonA = 0;
 
 		for (int i = 0; i < Math.min(10, rekabetGecmisi.size()); i++) {
 			if (rekabetGecmisi.get(i).getHomeScore() > 0 && rekabetGecmisi.get(i).getAwayScore() > 0) {
-				var++;
+				varRekabet++;
 			}
 		}
 
 		for (int i = 0; i < Math.min(10, sonMaclarHome.size()); i++) {
 			if (sonMaclarHome.get(i).getHomeScore() > 0 && sonMaclarHome.get(i).getAwayScore() > 0) {
-				var++;
+				varSonH++;
 			}
 		}
 
 		for (int i = 0; i < Math.min(10, sonMaclarAway.size()); i++) {
 			if (sonMaclarAway.get(i).getHomeScore() > 0 && sonMaclarAway.get(i).getAwayScore() > 0) {
-				var++;
+				varSonA++;
 			}
 		}
-		return var;
+
+		if (isInfoEnough()) {
+			double result = (varRekabet / Math.min(10, rekabetGecmisi.size())) * 0.4;
+			result += ((varSonH / Math.min(10, sonMaclarHome.size())) * 0.3);
+			result += ((varSonA / Math.min(10, sonMaclarAway.size())) * 0.3);
+
+			return result;
+		} else {
+			return (varRekabet + varSonH + varSonA) / getTotalMatchesIn10();
+		}
 	}
 
-	public int getYok() {
-		return getTotalMatchesIn10() - getVar();
+	public double getYok() {
+		return 1 - getVar();
 	}
 
-	public int getUst() {
-		int ust = 0;
+	public double getUst() {
+		double ustRekabet = 0;
+		double ustSonH = 0;
+		double ustSonA = 0;
 
 		for (int i = 0; i < Math.min(10, rekabetGecmisi.size()); i++) {
 			if ((rekabetGecmisi.get(i).getHomeScore() + rekabetGecmisi.get(i).getAwayScore()) > 2) {
-				ust++;
+				ustRekabet++;
 			}
 		}
 
 		for (int i = 0; i < Math.min(10, sonMaclarHome.size()); i++) {
 			if ((sonMaclarHome.get(i).getHomeScore() + sonMaclarHome.get(i).getAwayScore()) > 2) {
-				ust++;
+				ustSonH++;
 			}
 		}
 
 		for (int i = 0; i < Math.min(10, sonMaclarAway.size()); i++) {
 			if ((sonMaclarAway.get(i).getHomeScore() + sonMaclarAway.get(i).getAwayScore()) > 2) {
-				ust++;
+				ustSonA++;
 			}
 		}
-		return ust;
+
+		if (isInfoEnough()) {
+			double result = (ustRekabet / Math.min(10, rekabetGecmisi.size())) * 0.4;
+			result += ((ustSonH / Math.min(10, sonMaclarHome.size())) * 0.3);
+			result += ((ustSonA / Math.min(10, sonMaclarAway.size())) * 0.3);
+
+			return result;
+		} else {
+			return (ustRekabet + ustSonH + ustSonA) / getTotalMatchesIn10();
+		}
 	}
 
-	public int getAlt() {
-		return getTotalMatchesIn10() - getUst();
+	public double getAlt() {
+		return 1 - getUst();
 	}
 
-	public String toStringAsPercentage(int value, String type) {
-		return type + " : %" + ((int) (((value * 1.0) / getTotalMatchesIn10()) * 100));
+	public boolean isInfoEnough() {
+		if (sonMaclarHome.size() < 2 || sonMaclarAway.size() < 2 || rekabetGecmisi.size() < 2) {
+			return false;
+		}
+
+		return true;
+	}
+	
+	public String toStringAsPercentage(double value) {
+		return "%" + ((int) (value * 100));
 	}
 
-	public String getStyle(int value, String type) {
+	public String getStyle(double value, String type) {
 		String color = "background-color: #c8facc;";
-		int percentage = ((int) (((value * 1.0) / getTotalMatchesIn10()) * 100));
+		int percentage = ((int) (value* 100));
+
+		if (!isInfoEnough()) {
+			return "";
+		}
 
 		if (type.startsWith("MS")) {
 			if (percentage >= 50) {

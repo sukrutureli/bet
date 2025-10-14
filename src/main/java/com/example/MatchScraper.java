@@ -44,13 +44,13 @@ public class MatchScraper {
 			String date = LocalDate.now(ZoneId.of("Europe/Istanbul")).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 			String url = "https://www.nesine.com/iddaa?et=1&dt=" + date + "&le=2&ocg=MS&gt=Popüler";
 			driver.get(url);
-			PageWaitUtils.safeWaitForLoad(driver, 15);
+			PageWaitUtils.safeWaitForLoad(driver, 20);
 			scrollToEnd();
 
 			List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
 			System.out.println("Final element sayısı: " + events.size());
 
-			for (int i = 0; i < events.size(); i++) {
+			for (int i = 0; i < 5; i++) {
 				WebElement e = events.get(i);
 				MatchInfo info = extractMatchInfo(e, i);
 				if (info != null)

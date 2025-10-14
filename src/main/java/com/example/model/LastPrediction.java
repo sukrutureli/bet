@@ -7,6 +7,7 @@ public class LastPrediction {
 	private String name;
 	private String time;
 	private List<String> predictions;
+	private String score;
 	
 	public LastPrediction(String name, String time) {
 		this.name = name;
@@ -41,5 +42,13 @@ public class LastPrediction {
 
 	public String getTime() {
 		return time;
+	}
+
+	public String getScore() {
+		return score;
+	}
+
+	public void setScore(String score) {
+		this.score = score;
 	}
 }

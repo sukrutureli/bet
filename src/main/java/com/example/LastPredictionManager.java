@@ -28,6 +28,8 @@ public class LastPredictionManager {
 			
 			LastPrediction tempLastPrediction = new LastPrediction(matchInfo.get(i).getName(), matchInfo.get(i).getTime());
 			String[] tahminListesi = { "MS1", "MS2", "Üst", "Alt", "Var", "Yok" };
+			
+			tempLastPrediction.setScore(predictionResults.get(i).getScoreline());
 
 			for (String s : tahminListesi) {
 				if (calculatePrediction(th, predictionResults.get(i),
@@ -47,7 +49,7 @@ public class LastPredictionManager {
 		double percentageH = 0;
 		double percentagePR = 0;
 
-		if (h.getRekabetGecmisi().size() == 0 || h.getSonMaclar(1).size() == 0 || h.getRekabetGecmisi().size() == 0) {
+		if (!h.isInfoEnough()) {
 			return null;
 		}
 
