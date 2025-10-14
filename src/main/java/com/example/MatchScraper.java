@@ -42,7 +42,7 @@ public class MatchScraper {
 		List<MatchInfo> list = new ArrayList<>();
 		try {
 			String date = LocalDate.now(ZoneId.of("Europe/Istanbul")).plusDays(1).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-			String url = "https://www.nesine.com/iddaa?et=1&dt=" + date + "&le=2&ocg=MS&gt=Popüler";
+			String url = "https://www.nesine.com/iddaa?et=1&dt=" + date + "&le=2&ocg=MS-2%2C5&gt=Popüler";
 			driver.get(url);
 			PageWaitUtils.safeWaitForLoad(driver, 20);
 			scrollToEnd();
