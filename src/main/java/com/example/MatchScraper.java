@@ -117,34 +117,55 @@ public class MatchScraper {
 		}
 	}
 
+	private String extractOddFromCell(WebElement cell) {
+		try {
+			// Önce <a class="odd"> var mı bak
+			List<WebElement> link = cell.findElements(By.cssSelector("a.odd"));
+			if (!link.isEmpty()) {
+				return safeText(link.get(0));
+			}
+
+			// Eğer <a> yoksa <span class="odd"> kontrol et
+			List<WebElement> span = cell.findElements(By.cssSelector("span.odd"));
+			if (!span.isEmpty()) {
+				return safeText(span.get(0));
+			}
+
+			// Hiçbiri yoksa "-"
+			return "-";
+		} catch (Exception e) {
+			return "-";
+		}
+	}
+
 	private Odds extractOdds(WebElement event) {
 		String[] o = { "-", "-", "-", "-", "-", "-", "-" };
+
 		try {
 			// 1X2 oranları
 			List<WebElement> main = event.findElements(By.cssSelector("dd.col-03.event-row .cell"));
 			for (int i = 0; i < main.size() && i < 3; i++) {
-				try {
-					o[i] = safeText(main.get(i).findElement(By.cssSelector("a.odd")));
-				} catch (Exception e) {
-					System.out.println("1X2 oran okunamadı: " + e.getMessage());
-				}
+				o[i] = extractOddFromCell(main.get(i));
 			}
 
-			// Alt/Üst ve Var/Yok oranları
+			// Alt/Üst ve Var/Yok
 			List<WebElement> extra = event.findElements(By.cssSelector("dd.col-02.event-row .cell"));
 			for (int i = 0; i < extra.size() && i < 4; i++) {
-				try {
-					o[3 + i] = safeText(extra.get(i).findElement(By.cssSelector("a.odd")));
-				} catch (Exception e) {
-					System.out.println("Ek oran okunamadı: " + e.getMessage());
-				}
+				o[3 + i] = extractOddFromCell(extra.get(i));
 			}
 
 		} catch (Exception e) {
-			System.out.println("Oran hatası: " + e.getMessage());
+			System.out.println("Oran ana hatası: " + e.getMessage());
 		}
-		return new Odds(toDouble(o[0]), toDouble(o[1]), toDouble(o[2]), toDouble(o[4]), toDouble(o[3]), toDouble(o[5]),
-				toDouble(o[6]));
+
+		return new Odds(toDouble(o[0]), // 1
+				toDouble(o[1]), // X
+				toDouble(o[2]), // 2
+				toDouble(o[4]), // Üst
+				toDouble(o[3]), // Alt
+				toDouble(o[5]), // Var
+				toDouble(o[6]) // Yok
+		);
 	}
 
 	private double toDouble(String s) {
