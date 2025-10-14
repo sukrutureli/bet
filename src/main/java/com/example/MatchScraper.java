@@ -123,13 +123,21 @@ public class MatchScraper {
 			// 1X2 oranları
 			List<WebElement> main = event.findElements(By.cssSelector("dd.col-03.event-row .cell"));
 			for (int i = 0; i < main.size() && i < 3; i++) {
-				o[i] = safeText(main.get(i).findElement(By.cssSelector("a.odd")));
+				try {
+					o[i] = safeText(main.get(i).findElement(By.cssSelector("a.odd")));
+				} catch (Exception e) {
+					System.out.println("1X2 oran okunamadı: " + e.getMessage());
+				}
 			}
 
 			// Alt/Üst ve Var/Yok oranları
 			List<WebElement> extra = event.findElements(By.cssSelector("dd.col-02.event-row .cell"));
 			for (int i = 0; i < extra.size() && i < 4; i++) {
-				o[3 + i] = safeText(extra.get(i).findElement(By.cssSelector("a.odd")));
+				try {
+					o[3 + i] = safeText(extra.get(i).findElement(By.cssSelector("a.odd")));
+				} catch (Exception e) {
+					System.out.println("Ek oran okunamadı: " + e.getMessage());
+				}
 			}
 
 		} catch (Exception e) {
@@ -141,8 +149,9 @@ public class MatchScraper {
 
 	private double toDouble(String s) {
 		try {
-			s = s.replace(",", ".");
-			return s.equals("-") ? 0.0 : Double.parseDouble(s);
+			if (s == null || s.equals("-") || s.isEmpty())
+				return 0.0;
+			return Double.parseDouble(s.replace(",", "."));
 		} catch (Exception e) {
 			return 0.0;
 		}
