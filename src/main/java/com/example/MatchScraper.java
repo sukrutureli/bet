@@ -29,7 +29,7 @@ public class MatchScraper {
 		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless=new", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu",
-				"--window-size=1920,1080");
+				"--window-size=1920,1080", "--disable-blink-features=AutomationControlled");
 		driver = new ChromeDriver(options);
 		js = (JavascriptExecutor) driver;
 		wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -220,8 +220,15 @@ public class MatchScraper {
 			driver.get(url);
 			PageWaitUtils.safeWaitForLoad(driver, 10);
 			selectTournament();
-			wait.until(ExpectedConditions
-					.presenceOfElementLocated(By.cssSelector("div[data-test-id='CompitionHistoryTable']")));
+			
+			try {
+				wait.until(ExpectedConditions
+						.presenceOfElementLocated(By.cssSelector("div[data-test-id='CompitionHistoryTable']")));
+			} catch (Exception e) {
+				System.out.println("Rekabet geçmişi tablosu yok");
+				return list;
+			}
+			
 			clickMoreMatches();
 			list = extractCompetitionHistoryResults(url);
 		} catch (Exception e) {
@@ -238,7 +245,14 @@ public class MatchScraper {
 			selectTournament();
 			String sel = (side == 1) ? "div[data-test-id='LastMatchesTableFirst'] tbody tr"
 					: "div[data-test-id='LastMatchesTableSecond'] tbody tr";
-			wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(sel)));
+
+			try {
+				wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(sel)));
+			} catch (Exception e) {
+				System.out.println("Son maçlar tablosu yok: " + ((side == 1) ? "EvSahibi" : "Deplasman"));
+				return list;
+			}
+			
 			clickMoreMatches();
 			list = extractMatchResults(url, side);
 		} catch (Exception e) {
@@ -373,7 +387,14 @@ public class MatchScraper {
 		try {
 			driver.get(url);
 			PageWaitUtils.waitForPageLoad(driver, 12);
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div[data-test-id='HeaderTeams']")));
+
+			try {
+				wait.until(ExpectedConditions
+						.visibilityOfElementLocated(By.cssSelector("div[data-test-id='HeaderTeams']")));
+			} catch (Exception e) {
+				System.out.println("Takım adları çekilemedi.");
+			}
+			
 			WebElement header = driver.findElement(By.cssSelector("div[data-test-id='HeaderTeams']"));
 			List<WebElement> teams = header
 					.findElements(By.cssSelector("a[data-test-id='TeamLink'] span[data-test-id='HeaderTeams']"));
