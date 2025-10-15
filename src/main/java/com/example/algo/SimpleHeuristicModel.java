@@ -12,7 +12,7 @@ public class SimpleHeuristicModel implements BettingAlgorithm {
 
 	@Override
 	public double weight() {
-		return 0.4;
+		return 0.3;
 	}
 
 	@Override

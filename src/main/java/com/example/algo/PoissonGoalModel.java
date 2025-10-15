@@ -13,7 +13,7 @@ public class PoissonGoalModel implements BettingAlgorithm {
 
 	@Override
 	public double weight() {
-		return 0.6;
+		return 0.5;
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class PoissonGoalModel implements BettingAlgorithm {
 			lambdaA = Math.max(0.1, lambdaA);
 
 			// --- 4. Olasılık dağılımları ---
-			int maxG = 7;
+			int maxG = 6;
 			double[] pH = MathUtils.poissonDist(lambdaH, maxG);
 			double[] pA = MathUtils.poissonDist(lambdaA, maxG);
 
@@ -71,23 +71,6 @@ public class PoissonGoalModel implements BettingAlgorithm {
 						bestP = pij;
 						bestScore = i + "-" + j;
 					}
-				}
-			}
-
-			// --- 5. Oran kalibrasyonu (isteğe bağlı) ---
-			if (oddsOpt.isPresent()) {
-				Odds o = oddsOpt.get();
-				double imp1 = Odds.impliedProb(o.getMs1());
-				double impx = Odds.impliedProb(o.getMsX());
-				double imp2 = Odds.impliedProb(o.getMs2());
-				double sum = imp1 + impx + imp2;
-				if (sum > 0) {
-					imp1 /= sum;
-					impx /= sum;
-					imp2 /= sum;
-					pHome = 0.8 * pHome + 0.2 * imp1;
-					pDraw = 0.8 * pDraw + 0.2 * impx;
-					pAway = 0.8 * pAway + 0.2 * imp2;
 				}
 			}
 

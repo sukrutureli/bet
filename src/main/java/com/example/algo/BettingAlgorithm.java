@@ -7,7 +7,9 @@ import com.example.model.Odds;
 import com.example.model.PredictionResult;
 
 public interface BettingAlgorithm {
-    String name();
-    double weight();
-    PredictionResult predict(Match match, Optional<Odds> odds);
+	String name();
+
+	double weight();
+
+	PredictionResult predict(Match match, Optional<Odds> odds);
 }
