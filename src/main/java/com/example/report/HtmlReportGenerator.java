@@ -385,12 +385,12 @@ public class HtmlReportGenerator {
 				"td i, td svg, td img { display:inline-block; vertical-align:middle; margin-right:4px; color:#0077cc; }\n");
 
 		/* --- Sütun oranları --- */
-		html.append("th:nth-child(1), td:nth-child(1) { width: 60px; text-align: center; white-space: nowrap; }\n");
+		html.append("th:nth-child(1), td:nth-child(1) { width: 60px; text-align: left; white-space: nowrap; }\n");
 		html.append(
 				"th:nth-child(2), td:nth-child(2) { max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }\n");
 		html.append("th:nth-child(3), td:nth-child(3) { width: auto; }\n");
 		html.append(
-				"th:nth-child(4), td:nth-child(4) { width: 120px; text-align: center; color: #333; font-weight: bold; }\n");
+				"th:nth-child(4), td:nth-child(4) { width: 120px; text-align: left; color: #333; font-weight: bold; }\n");
 
 		html.append(".match { font-weight: bold; color: #1a1a1a; }\n");
 		html.append(".prediction { color: #444; white-space: pre-line; }\n");
