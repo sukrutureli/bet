@@ -23,7 +23,7 @@ public class PredictionSaver {
                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
         // data klasörü yoksa oluştur
-        File folder = new File("data");
+        File folder = new File("public/data");
         if (!folder.exists()) {
             folder.mkdirs();
         }
