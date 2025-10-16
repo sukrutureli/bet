@@ -33,7 +33,7 @@ public class Application {
 
 			// Ana sayfa verilerini çek
 			System.out.println("\n1. Ana sayfa maçları çekiliyor...");
-			/*matches = scraper.fetchMatches();
+			matches = scraper.fetchMatches();
 
 			System.out.println("Ana sayfadan " + matches.size() + " maç çekildi");
 
@@ -95,9 +95,9 @@ public class Application {
 			HtmlReportGenerator.generateHtmlForSublist(lastPredictionManager.getLastPrediction(), "futboltahmin.html");
 			System.out.println("futboltahmin.html oluşturuldu.");
 			
-			PredictionSaver.saveTodayPredictions(lastPredictionManager.getPredictionData());*/
+			PredictionSaver.saveTodayPredictions(lastPredictionManager.getPredictionData());
 			
-			Map<String, String> updatedScores = scraper.fetchFinishedScores();
+			/*Map<String, String> updatedScores = scraper.fetchFinishedScores();
 			
 			System.out.println("----- Güncellenen Skorlar (" + updatedScores.size() + ") -----");
 			for (Map.Entry<String, String> entry : updatedScores.entrySet()) {
@@ -105,7 +105,7 @@ public class Application {
 			}
 			System.out.println("--------------------------------------------");
 			
-			PredictionUpdater.updateFromGithub(updatedScores);
+			PredictionUpdater.updateFromGithub(updatedScores);*/
 
 		} catch (Exception e) {
 			System.out.println("GENEL HATA: " + e.getMessage());
