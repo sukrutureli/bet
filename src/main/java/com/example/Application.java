@@ -76,8 +76,7 @@ public class Application {
 			BettingAlgorithm elo = new EloRatingModel();
 			BettingAlgorithm formMomentum = new FormMomentumModel();
 			BettingAlgorithm skellam = new SkellamGoalDiffModel();
-			BettingAlgorithm valueBet = new ValueBetModel();
-			EnsembleModel ensemble = new EnsembleModel(List.of(poisson, heur, elo, formMomentum, skellam, valueBet));
+			EnsembleModel ensemble = new EnsembleModel(List.of(poisson, heur, elo, formMomentum, skellam));
 
 			List<PredictionResult> results = new ArrayList<>();
 			for (Match m : matchStats) {
