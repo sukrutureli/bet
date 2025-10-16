@@ -4,12 +4,14 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.example.model.Match;
 import com.example.model.MatchInfo;
 import com.example.model.TeamMatchHistory;
 import com.example.prediction.PredictionSaver;
+import com.example.prediction.PredictionUpdater;
 import com.example.report.HtmlReportGenerator;
 import com.example.algo.*;
 import com.example.model.PredictionResult;
@@ -31,7 +33,7 @@ public class Application {
 
 			// Ana sayfa verilerini çek
 			System.out.println("\n1. Ana sayfa maçları çekiliyor...");
-			matches = scraper.fetchMatches();
+			/*matches = scraper.fetchMatches();
 
 			System.out.println("Ana sayfadan " + matches.size() + " maç çekildi");
 
@@ -93,7 +95,10 @@ public class Application {
 			HtmlReportGenerator.generateHtmlForSublist(lastPredictionManager.getLastPrediction(), "futboltahmin.html");
 			System.out.println("futboltahmin.html oluşturuldu.");
 			
-			PredictionSaver.saveTodayPredictions(lastPredictionManager.getPredictionData());
+			PredictionSaver.saveTodayPredictions(lastPredictionManager.getPredictionData());*/
+			
+			Map<String, String> updatedScores = scraper.fetchFinishedScores();
+			PredictionUpdater.updateFromGithub(updatedScores);
 
 		} catch (Exception e) {
 			System.out.println("GENEL HATA: " + e.getMessage());

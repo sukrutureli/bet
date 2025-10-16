@@ -13,7 +13,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MatchScraper {
 
@@ -447,6 +449,46 @@ public class MatchScraper {
 		}
 
 		return sb.toString().trim();
+	}
+	
+	// =============================================================
+	// CANLI SKOR (BİTMİŞ MAÇLAR) ÇEK
+	// =============================================================
+	public Map<String, String> fetchFinishedScores() {
+	    Map<String, String> scores = new HashMap<>();
+	    try {
+	        String url = "https://www.nesine.com/iddaa/canli-skor/futbol";
+	        driver.get(url);
+	        PageWaitUtils.safeWaitForLoad(driver, 20);
+
+	        // Bitmiş maç bloklarını bul
+	        List<WebElement> finishedMatches = driver.findElements(By.cssSelector("div.main:has(.status.finished)"));
+
+	        System.out.println("Bitmiş maç sayısı: " + finishedMatches.size());
+
+	        for (WebElement match : finishedMatches) {
+	            try {
+	                String home = safeText(match.findElement(By.cssSelector(".home-team span")));
+	                String away = safeText(match.findElement(By.cssSelector(".away-team span")));
+
+	                // Skor
+	                WebElement scoreBoard = match.findElement(By.cssSelector(".board"));
+	                String homeScore = safeText(scoreBoard.findElement(By.cssSelector(".home-score")));
+	                String awayScore = safeText(scoreBoard.findElement(By.cssSelector(".away-score")));
+	                String score = homeScore + "-" + awayScore;
+
+	                String key = home + " - " + away;
+	                scores.put(key, score);
+	                System.out.println("✅ " + key + " → " + score);
+
+	            } catch (Exception e) {
+	                System.out.println("⚠️ Tekil maç çekilemedi: " + e.getMessage());
+	            }
+	        }
+	    } catch (Exception e) {
+	        System.out.println("fetchFinishedScores hata: " + e.getMessage());
+	    }
+	    return scores;
 	}
 
 	public void close() {
