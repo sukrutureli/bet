@@ -283,7 +283,7 @@ public class TeamMatchHistory {
 	}
 
 	public String getStyle(double value, String type) {
-		String color = "background-color: #c8facc;";
+		String color = "background-color:#e8fbe8; border:1px solid #6ecf6e;";
 		int percentage = ((int) (value* 100));
 
 		if (!isInfoEnough()) {

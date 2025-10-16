@@ -87,21 +87,18 @@ public class HtmlReportGenerator {
 				".stats { background: #fff; border: 1px solid #dbe2ea; padding: 18px; margin: 20px 0; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }");
 		html.append(".stats h3 { color: #004d80; margin-top: 0; }");
 
-		/* --- Mini Oran Grid --- */
 		html.append(
-				".odds-mini { background: #f9fbfd; border: 1px solid #dbe2ea; border-radius: 10px; padding: 10px 14px; margin: 12px 0; font-size: 0.88em; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }");
-		html.append(".odds-mini h4 { margin: 0 0 6px 0; color: #004d80; font-size: 0.95em; font-weight: 600; }");
+				".odds-mini { background:#f9fbfd; border:1px solid #dbe2ea; border-radius:10px; padding:10px 14px; margin:12px 0; font-size:0.9em; box-shadow:0 1px 3px rgba(0,0,0,0.05);}");
+		html.append(".odds-mini h4 { margin:0 0 6px 0; color:#004d80; font-size:0.95em; font-weight:600;}");
 		html.append(
-				".odds-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 6px; text-align: center; }");
+				".odds-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(100px,1fr)); gap:6px; text-align:center;}");
+		html.append(".odds-cell { border:1px solid #e0e6ec; border-radius:6px; padding:6px 4px; background:#fff;}");
+		html.append(".odds-label { font-weight:700; color:#004080; font-size:0.85em;}");
 		html.append(
-				".odds-cell { background: #fff; border: 1px solid #e0e6ec; border-radius: 6px; padding: 6px 4px; }");
-		html.append(".odds-label { display: block; font-weight: 600; color: #004080; font-size: 0.85em; }");
-		html.append(
-				".odds-value { display: block; color: #111; font-weight: 700; font-size: 0.95em; margin-top: 2px; }");
-		html.append(".odds-pct { display: block; font-size: 0.8em; color: #666; margin-top: 1px; }");
-		html.append(".odds-cell.highlight { background: #e7f7ec; border-color: #9ddaa8; }");
-		html.append(".odds-cell.lowlight { background: #fff0f0; border-color: #e0b8b8; }");
-		html.append("@media (max-width: 600px) { .odds-grid { grid-template-columns: repeat(2, 1fr); } }");
+				".odds-line { display:flex; justify-content:center; align-items:center; gap:4px; font-weight:600; color:#222;}");
+		html.append(".odds-value { color:#000; font-weight:700;}");
+		html.append(".odds-pct { display:block; font-size:0.8em; color:#777; margin-top:2px;}");
+		html.append("@media (max-width:600px){.odds-grid{grid-template-columns:repeat(2,1fr);} }");
 
 		/* --- Uyarı, no-data --- */
 		html.append(
@@ -165,33 +162,75 @@ public class HtmlReportGenerator {
 					html.append("<h4>Güncel Oranlar ve Yüzdeler</h4>");
 
 					html.append("<div class='odds-grid'>");
-					html.append("<div class='odds-cell'><span class='odds-label'>MS1</span><span class='odds-value'>")
-							.append(match.getOdds().getMs1()).append("</span><span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getMs1())).append("</span></div>");
-					html.append("<div class='odds-cell'><span class='odds-label'>MSX</span><span class='odds-value'>")
-							.append(match.getOdds().getMsX()).append("</span><span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getMs0())).append("</span></div>");
-					html.append("<div class='odds-cell'><span class='odds-label'>MS2</span><span class='odds-value'>")
-							.append(match.getOdds().getMs2()).append("</span><span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getMs2())).append("</span></div>");
-					html.append("</div>");
 
-					html.append("<div class='odds-grid' style='margin-top:8px;'>");
-					html.append("<div class='odds-cell'><span class='odds-label'>Alt</span><span class='odds-value'>")
-							.append(match.getOdds().getUnder25()).append("</span><span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getAlt())).append("</span></div>");
-					html.append("<div class='odds-cell'><span class='odds-label'>Üst</span><span class='odds-value'>")
-							.append(match.getOdds().getOver25()).append("</span><span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getUst())).append("</span></div>");
+					// MS1
 					html.append(
-							"<div class='odds-cell'><span class='odds-label'>KG Var</span><span class='odds-value'>")
-							.append(match.getOdds().getBttsYes()).append("</span><span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getVar())).append("</span></div>");
-					html.append("<div class='odds-cell'><span class='odds-label'>Yok</span><span class='odds-value'>")
-							.append(match.getOdds().getBttsNo()).append("</span><span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getYok())).append("</span></div>");
+							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getMs1(), "MS1") + "'>")
+							.append("<div class='odds-line'><span class='odds-label'>MS1:</span>")
+							.append("<span class='odds-value'>").append(match.getOdds().getMs1())
+							.append("</span></div>").append("<span class='odds-pct'>")
+							.append(teamHistory.toStringAsPercentage(teamHistory.getMs1())).append("</span>")
+							.append("</div>");
+
+					// MSX
+					html.append(
+							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getMs0(), "MSX") + "'>")
+							.append("<div class='odds-line'><span class='odds-label'>MSX:</span>")
+							.append("<span class='odds-value'>").append(match.getOdds().getMsX())
+							.append("</span></div>").append("<span class='odds-pct'>")
+							.append(teamHistory.toStringAsPercentage(teamHistory.getMs0())).append("</span>")
+							.append("</div>");
+
+					// MS2
+					html.append(
+							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getMs2(), "MS2") + "'>")
+							.append("<div class='odds-line'><span class='odds-label'>MS2:</span>")
+							.append("<span class='odds-value'>").append(match.getOdds().getMs2())
+							.append("</span></div>").append("<span class='odds-pct'>")
+							.append(teamHistory.toStringAsPercentage(teamHistory.getMs2())).append("</span>")
+							.append("</div>");
 					html.append("</div>");
 
+					// ALT / ÜST / VAR / YOK
+					html.append("<div class='odds-grid' style='margin-top:8px;'>");
+
+					// ALT
+					html.append(
+							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getAlt(), "Alt") + "'>")
+							.append("<div class='odds-line'><span class='odds-label'>Alt:</span>")
+							.append("<span class='odds-value'>").append(match.getOdds().getUnder25())
+							.append("</span></div>").append("<span class='odds-pct'>")
+							.append(teamHistory.toStringAsPercentage(teamHistory.getAlt())).append("</span>")
+							.append("</div>");
+
+					// ÜST
+					html.append(
+							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getUst(), "Üst") + "'>")
+							.append("<div class='odds-line'><span class='odds-label'>Üst:</span>")
+							.append("<span class='odds-value'>").append(match.getOdds().getOver25())
+							.append("</span></div>").append("<span class='odds-pct'>")
+							.append(teamHistory.toStringAsPercentage(teamHistory.getUst())).append("</span>")
+							.append("</div>");
+
+					// VAR
+					html.append(
+							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getVar(), "Var") + "'>")
+							.append("<div class='odds-line'><span class='odds-label'>KG Var:</span>")
+							.append("<span class='odds-value'>").append(match.getOdds().getBttsYes())
+							.append("</span></div>").append("<span class='odds-pct'>")
+							.append(teamHistory.toStringAsPercentage(teamHistory.getVar())).append("</span>")
+							.append("</div>");
+
+					// YOK
+					html.append(
+							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getYok(), "Yok") + "'>")
+							.append("<div class='odds-line'><span class='odds-label'>KG Yok:</span>")
+							.append("<span class='odds-value'>").append(match.getOdds().getBttsNo())
+							.append("</span></div>").append("<span class='odds-pct'>")
+							.append(teamHistory.toStringAsPercentage(teamHistory.getYok())).append("</span>")
+							.append("</div>");
+
+					html.append("</div>");
 					html.append("</div>");
 
 					int rekabetMacCount = Math.min(10, teamHistory.getRekabetGecmisi().size());
