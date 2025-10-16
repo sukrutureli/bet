@@ -43,7 +43,8 @@ public class MatchScraper {
 	public List<MatchInfo> fetchMatches() {
 		List<MatchInfo> list = new ArrayList<>();
 		try {
-			//String date = LocalDate.now(ZoneId.of("Europe/Istanbul")).plusDays(1).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+			// String date =
+			// LocalDate.now(ZoneId.of("Europe/Istanbul")).plusDays(1).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 			String date = LocalDate.now(ZoneId.of("Europe/Istanbul")).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 			String url = "https://www.nesine.com/iddaa?et=1&dt=" + date + "&le=2&ocg=MS-2%2C5&gt=Popüler";
 			driver.get(url);
@@ -223,7 +224,7 @@ public class MatchScraper {
 			driver.get(url);
 			PageWaitUtils.safeWaitForLoad(driver, 10);
 			selectTournament();
-			
+
 			try {
 				wait.until(ExpectedConditions
 						.presenceOfElementLocated(By.cssSelector("div[data-test-id='CompitionHistoryTable']")));
@@ -231,7 +232,7 @@ public class MatchScraper {
 				System.out.println("Rekabet geçmişi tablosu yok");
 				return list;
 			}
-			
+
 			clickMoreMatches();
 			list = extractCompetitionHistoryResults(url);
 		} catch (Exception e) {
@@ -255,7 +256,7 @@ public class MatchScraper {
 				System.out.println("Son maçlar tablosu yok: " + ((side == 1) ? "EvSahibi" : "Deplasman"));
 				return list;
 			}
-			
+
 			clickMoreMatches();
 			list = extractMatchResults(url, side);
 		} catch (Exception e) {
@@ -397,7 +398,7 @@ public class MatchScraper {
 			} catch (Exception e) {
 				System.out.println("Takım adları çekilemedi.");
 			}
-			
+
 			WebElement header = driver.findElement(By.cssSelector("div[data-test-id='HeaderTeams']"));
 			List<WebElement> teams = header
 					.findElements(By.cssSelector("a[data-test-id='TeamLink'] span[data-test-id='HeaderTeams']"));
@@ -450,55 +451,58 @@ public class MatchScraper {
 
 		return sb.toString().trim();
 	}
-	
+
 	// =============================================================
 	// CANLI SKOR (BİTMİŞ MAÇLAR) ÇEK
 	// =============================================================
 	public Map<String, String> fetchFinishedScores() {
-	    Map<String, String> scores = new HashMap<>();
-	    try {
-	        String url = "https://www.nesine.com/iddaa/canli-skor/futbol";
-	        driver.get(url);
-	        PageWaitUtils.safeWaitForLoad(driver, 20);
+		Map<String, String> scores = new HashMap<>();
+		try {
+			String url = "https://www.nesine.com/iddaa/canli-skor/futbol";
+			driver.get(url);
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("li.match-not-play")));
 
-	        List<WebElement> allMatches = driver.findElements(By.cssSelector("li.match-not-play"));
-	        List<WebElement> finishedMatches = new ArrayList<>();
+			Thread.sleep(2000); // Dinamik skor tablosunun yüklenmesi için kısa bekleme
 
-	        for (WebElement match : allMatches) {
-	            try {
-	                WebElement statusEl = match.findElement(By.cssSelector(".statusLive.status"));
-	                String status = statusEl.getAttribute("class");
-	                if (status.contains("finished")) {
-	                    finishedMatches.add(match);
-	                }
-	            } catch (Exception ignore) {}
-	        }
+			List<WebElement> allMatches = driver.findElements(By.cssSelector("li.match-not-play"));
+			List<WebElement> finishedMatches = new ArrayList<>();
 
-	        System.out.println("Bitmiş maç sayısı: " + finishedMatches.size());
+			for (WebElement match : allMatches) {
+				try {
+					WebElement statusEl = match.findElement(By.cssSelector(".statusLive.status"));
+					String status = statusEl.getAttribute("class");
+					if (status.contains("finished")) {
+						finishedMatches.add(match);
+					}
+				} catch (Exception ignore) {
+				}
+			}
 
-	        for (WebElement match : finishedMatches) {
-	            try {
-	                String home = safeText(match.findElement(By.cssSelector(".home-team span")));
-	                String away = safeText(match.findElement(By.cssSelector(".away-team span")));
+			System.out.println("Bitmiş maç sayısı: " + finishedMatches.size());
 
-	                // Skor
-	                WebElement scoreBoard = match.findElement(By.cssSelector(".board"));
-	                String homeScore = safeText(scoreBoard.findElement(By.cssSelector(".home-score")));
-	                String awayScore = safeText(scoreBoard.findElement(By.cssSelector(".away-score")));
-	                String score = homeScore + "-" + awayScore;
+			for (WebElement match : finishedMatches) {
+				try {
+					String home = safeText(match.findElement(By.cssSelector(".home-team span")));
+					String away = safeText(match.findElement(By.cssSelector(".away-team span")));
 
-	                String key = home + " - " + away;
-	                scores.put(key, score);
-	                System.out.println("✅ " + key + " → " + score);
+					// Skor
+					WebElement scoreBoard = match.findElement(By.cssSelector(".board"));
+					String homeScore = safeText(scoreBoard.findElement(By.cssSelector(".home-score")));
+					String awayScore = safeText(scoreBoard.findElement(By.cssSelector(".away-score")));
+					String score = homeScore + "-" + awayScore;
 
-	            } catch (Exception e) {
-	                System.out.println("⚠️ Tekil maç çekilemedi: " + e.getMessage());
-	            }
-	        }
-	    } catch (Exception e) {
-	        System.out.println("fetchFinishedScores hata: " + e.getMessage());
-	    }
-	    return scores;
+					String key = home + " - " + away;
+					scores.put(key, score);
+					System.out.println("✅ " + key + " → " + score);
+
+				} catch (Exception e) {
+					System.out.println("⚠️ Tekil maç çekilemedi: " + e.getMessage());
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("fetchFinishedScores hata: " + e.getMessage());
+		}
+		return scores;
 	}
 
 	public void close() {
