@@ -461,8 +461,18 @@ public class MatchScraper {
 	        driver.get(url);
 	        PageWaitUtils.safeWaitForLoad(driver, 20);
 
-	        // Bitmiş maç bloklarını bul
-	        List<WebElement> finishedMatches = driver.findElements(By.cssSelector("div.main:has(.status.finished)"));
+	        List<WebElement> allMatches = driver.findElements(By.cssSelector("li.match-not-play"));
+	        List<WebElement> finishedMatches = new ArrayList<>();
+
+	        for (WebElement match : allMatches) {
+	            try {
+	                WebElement statusEl = match.findElement(By.cssSelector(".statusLive.status"));
+	                String status = statusEl.getAttribute("class");
+	                if (status.contains("finished")) {
+	                    finishedMatches.add(match);
+	                }
+	            } catch (Exception ignore) {}
+	        }
 
 	        System.out.println("Bitmiş maç sayısı: " + finishedMatches.size());
 
