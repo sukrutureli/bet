@@ -28,40 +28,67 @@ public class HtmlReportGenerator {
 		html.append("<!DOCTYPE html><html><head><meta charset='UTF-8'>");
 		html.append("<title>⚽ Futbol Tahminleri</title>");
 		html.append("<style>");
-		html.append("body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }");
-		html.append(
-				".match { background: white; border: 1px solid #ddd; margin: 10px 0; padding: 15px; border-radius: 8px; }");
-		html.append(".match.insufficient { background-color: #ffe5e5; }"); // açık kırmızı arka plan
-		html.append(
-				".match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }");
-		html.append(".match-name { font-weight: bold; color: #333; font-size: 1.1em; }");
-		html.append(".match-time { color: #666; }");
-		html.append(".odds { background: #f8f9fa; padding: 10px; border-radius: 5px; margin: 10px 0; }");
-		html.append(".history { margin-top: 15px; }");
-		html.append(".history-section { background: #e9ecef; margin: 10px 0; padding: 15px; border-radius: 5px; }");
-		html.append(
-				".match-result { background: white; padding: 8px; margin: 5px 0; border-left: 4px solid #007bff; border-radius: 3px; font-size: 0.9em; }");
-		html.append(".win { border-left-color: #28a745; background-color: #d4edda; }");
-		html.append(".draw { border-left-color: #ffc107; background-color: #fff3cd; }");
-		html.append(".loss { border-left-color: #dc3545; background-color: #f8d7da; }");
-		html.append(
-				".team-stats { background: #d1ecf1; color: #0c5460; padding: 10px; border-radius: 5px; margin: 10px 0; }");
-		html.append(".no-data { color: #999; font-style: italic; padding: 20px; text-align: center; }");
-		html.append(
-				".stats { background: #d1ecf1; color: #0c5460; padding: 15px; margin: 20px 0; border-radius: 8px; }");
-		html.append(
-				".export-section { background: #fff; padding: 20px; margin: 20px 0; border: 1px solid #ddd; border-radius: 8px; }");
-		html.append(".quick-summary { margin: 10px 0 14px; }");
-		html.append(
-				".quick-summary table.qs { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #ccc; border-radius: 6px; overflow: hidden; font-size: 0.9em; }");
-		html.append(
-				".quick-summary th, .quick-summary td { padding: 6px 8px; text-align: center; border: 1px solid #ddd; }");
-		html.append(".quick-summary th { background: #f2f2f2; font-weight: 600; color: #333; }");
-		html.append(".quick-summary td.qs-odd { color: #222; font-variant-numeric: tabular-nums; }");
-		html.append(
-				".quick-summary td.qs-pick .pick { display: inline-block; padding: 3px 8px; border-radius: 10px; background: #e7f1ff; color: #0056b3; font-weight: 700; }");
-		html.append(".quick-summary td.qs-score { color: #444; font-weight: 600; }");
+		html.append("body { font-family: 'Segoe UI', Roboto, Arial, sans-serif; margin: 0; padding: 20px; background-color: #f3f6fa; color: #222; }");
+		html.append("h1 { text-align: center; color: #004d80; margin-bottom: 25px; font-size: 26px; }");
+		html.append("p { margin: 6px 0; }");
 
+		/* --- Genel kutu ve kart yapısı --- */
+		html.append(".match { background: #fff; border: 1px solid #dce3ec; margin: 18px 0; padding: 18px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; }");
+		html.append(".match:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }");
+		html.append(".match.insufficient { background-color: #fff1f1; border-left: 4px solid #dc3545; }");
+
+		/* --- Başlık --- */
+		html.append(".match-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }");
+		html.append(".match-name { font-weight: 700; color: #003366; font-size: 1.1em; }");
+		html.append(".match-time { color: #666; font-size: 0.9em; }");
+		html.append(".match-header button { background: linear-gradient(180deg,#007bff,#0062cc); border: none; color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9em; }");
+		html.append(".match-header button:hover { background: linear-gradient(180deg,#0069d9,#005cbf); }");
+
+		/* --- Oran tablosu --- */
+		html.append(".odds { background: #f8fafc; border: 1px solid #dbe2ea; padding: 12px; border-radius: 8px; margin: 12px 0; }");
+		html.append(".odds strong { color: #004d80; }");
+		html.append(".odds table { width: 100%; border-collapse: collapse; margin-top: 8px; }");
+		html.append(".odds td { border: 1px solid #ddd; padding: 6px; font-size: 0.9em; text-align: center; }");
+		html.append(".odds td strong { color: #111; }");
+
+		/* --- Hızlı özet tablosu --- */
+		html.append(".quick-summary table.qs { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #ccd6e0; border-radius: 8px; overflow: hidden; margin-top: 10px; }");
+		html.append(".quick-summary th, .quick-summary td { padding: 8px; text-align: center; border: 1px solid #e1e7ef; }");
+		html.append(".quick-summary th { background: #f0f5fb; color: #003366; font-weight: 600; }");
+		html.append(".quick-summary tr:nth-child(even) { background: #f9fbfd; }");
+		html.append(".qs-odd { font-variant-numeric: tabular-nums; color: #333; }");
+		html.append(".qs-pick .pick { display: inline-block; padding: 3px 10px; border-radius: 12px; background: #e7f1ff; color: #004d80; font-weight: 700; }");
+		html.append(".qs-score { color: #111; font-weight: 600; }");
+
+		/* --- Tarihçe & sonuçlar --- */
+		html.append(".history { margin-top: 14px; }");
+		html.append(".history-section { background: #f4f7fb; border: 1px solid #e1e7ef; padding: 14px; border-radius: 8px; margin: 10px 0; }");
+		html.append(".history-section h5 { margin-top: 0; color: #004d80; }");
+		html.append(".match-result { background: #fff; padding: 6px 10px; margin: 4px 0; border-left: 4px solid #007bff; border-radius: 4px; font-size: 0.9em; transition: background 0.2s; }");
+		html.append(".match-result:hover { background: #f3f7ff; }");
+		html.append(".match-result.win { border-left-color: #28a745; background-color: #e9f7ef; }");
+		html.append(".match-result.draw { border-left-color: #ffc107; background-color: #fff7e6; }");
+		html.append(".match-result.loss { border-left-color: #dc3545; background-color: #fdeaea; }");
+
+		/* --- Takım istatistikleri --- */
+		html.append(".team-stats { background: #e3f2fd; color: #0c5460; padding: 10px 12px; border-radius: 6px; margin: 8px 0; font-size: 0.9em; }");
+		html.append(".stats { background: #fff; border: 1px solid #dbe2ea; padding: 18px; margin: 20px 0; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }");
+		html.append(".stats h3 { color: #004d80; margin-top: 0; }");
+
+		/* --- Uyarı, no-data --- */
+		html.append(".no-data { color: #999; font-style: italic; padding: 20px; text-align: center; background: #fff; border: 1px dashed #ccc; border-radius: 8px; }");
+
+		/* --- Footer --- */
+		html.append("footer { text-align: center; color: #777; font-size: 0.85em; margin-top: 40px; }");
+
+		/* --- Mobil uyum --- */
+		html.append("@media (max-width: 600px) {");
+		html.append("  body { padding: 10px; }");
+		html.append("  .match { padding: 12px; }");
+		html.append("  .match-header { flex-direction: column; align-items: flex-start; gap: 6px; }");
+		html.append("  .match-header button { width: 100%; }");
+		html.append("  .quick-summary table.qs, .odds table { font-size: 0.8em; }");
+		html.append("}");
 		html.append("</style>");
 		html.append("</head><body>");
 		html.append("<h1>⚽ Futbol Tahminleri</h1>");
