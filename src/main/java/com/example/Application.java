@@ -98,6 +98,13 @@ public class Application {
 			PredictionSaver.saveTodayPredictions(lastPredictionManager.getPredictionData());*/
 			
 			Map<String, String> updatedScores = scraper.fetchFinishedScores();
+			
+			System.out.println("----- Güncellenen Skorlar (" + updatedScores.size() + ") -----");
+			for (Map.Entry<String, String> entry : updatedScores.entrySet()) {
+			    System.out.println(entry.getKey() + " → " + entry.getValue());
+			}
+			System.out.println("--------------------------------------------");
+			
 			PredictionUpdater.updateFromGithub(updatedScores);
 
 		} catch (Exception e) {

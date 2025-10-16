@@ -39,6 +39,7 @@ public class PredictionUpdater {
 		// 🔹 Güncelle
 		for (PredictionData p : predictions) {
 			String key = (p.getHomeTeam() + " - " + p.getAwayTeam()).trim();
+			System.out.println(key);
 			if (updatedScores.containsKey(key)) {
 				String score = updatedScores.get(key);
 				p.setScore(score);
