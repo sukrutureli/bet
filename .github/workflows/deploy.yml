@@ -2,8 +2,8 @@ name: Build and Deploy to GitHub Pages
 
 on:
   schedule:
-    # UTC zamanında, her gün saat 22:00
-    - cron: '0 19 * * *'
+    # UTC zamanında, her gün saat 00:00
+    - cron: '0 21 * * *'
   workflow_dispatch:
 
 jobs:
