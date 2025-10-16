@@ -78,11 +78,11 @@ public class PredictionUpdater {
 	}
 
 	private static String evaluatePick(String pick, int home, int away) {
-		if (pick.equalsIgnoreCase("MS1"))
+		if (pick.contains("MS1"))
 			return home > away ? "won" : "lost";
-		if (pick.equalsIgnoreCase("MS2"))
+		if (pick.contains("MS2"))
 			return away > home ? "won" : "lost";
-		if (pick.equalsIgnoreCase("MSX"))
+		if (pick.contains("MSX"))
 			return away == home ? "won" : "lost";
 
 		if (pick.toLowerCase().contains("üst"))
@@ -90,7 +90,7 @@ public class PredictionUpdater {
 		if (pick.toLowerCase().contains("alt"))
 			return (home + away) < 2.5 ? "won" : "lost";
 		
-		if (pick.equalsIgnoreCase("var"))
+		if (pick.toLowerCase().contains("var"))
 			return (home > 0 && away > 0) ? "won" : "lost";
 		if (pick.toLowerCase().contains("yok"))
 			return (home == 0 || away == 0) ? "won" : "lost";
