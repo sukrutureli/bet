@@ -11,7 +11,6 @@ import com.example.model.Match;
 import com.example.model.MatchInfo;
 import com.example.model.TeamMatchHistory;
 import com.example.prediction.PredictionSaver;
-import com.example.prediction.PredictionUpdater;
 import com.example.report.HtmlReportGenerator;
 import com.example.algo.*;
 import com.example.model.PredictionResult;
@@ -96,16 +95,6 @@ public class Application {
 			System.out.println("futboltahmin.html oluşturuldu.");
 			
 			PredictionSaver.saveTodayPredictions(lastPredictionManager.getPredictionData());
-			
-			/*Map<String, String> updatedScores = scraper.fetchFinishedScores();
-			
-			System.out.println("----- Güncellenen Skorlar (" + updatedScores.size() + ") -----");
-			for (Map.Entry<String, String> entry : updatedScores.entrySet()) {
-			    System.out.println(entry.getKey() + " → " + entry.getValue());
-			}
-			System.out.println("--------------------------------------------");
-			
-			PredictionUpdater.updateFromGithub(updatedScores);*/
 
 		} catch (Exception e) {
 			System.out.println("GENEL HATA: " + e.getMessage());
