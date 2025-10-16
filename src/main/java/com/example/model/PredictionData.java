@@ -12,6 +12,10 @@ public class PredictionData {
     private List<String> picks;               // Birden fazla tahmin (ör. MS1, ÜST)
     private String score;                     // "2-1" gibi skor
     private Map<String, String> statuses;     // Her pick için durum: "won", "lost", "pending"
+    
+    public PredictionData() {
+    	
+    }
 
     public PredictionData(String homeTeam, String awayTeam, List<String> picks) {
         this.homeTeam = homeTeam;
