@@ -68,7 +68,7 @@ public class HtmlReportGenerator {
 				".qs-pick .pick { display: inline-block; padding: 3px 10px; border-radius: 12px; background: #e7f1ff; color: #004d80; font-weight: 700; }");
 		html.append(".qs-score { color: #111; font-weight: 600; }");
 
-		/* --- Tarihçe & sonuçlar --- */
+		/* --- Tarih & sonuçlar --- */
 		html.append(".history { margin-top: 14px; }");
 		html.append(
 				".history-section { background: #f4f7fb; border: 1px solid #e1e7ef; padding: 14px; border-radius: 8px; margin: 10px 0; }");
@@ -93,11 +93,11 @@ public class HtmlReportGenerator {
 		html.append(
 				".odds-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(100px,1fr)); gap:6px; text-align:center;}");
 		html.append(".odds-cell { border:1px solid #e0e6ec; border-radius:6px; padding:6px 4px; background:#fff;}");
-		html.append(".odds-label { font-weight:700; color:#004080; font-size:0.85em;}");
+		html.append(".odds-label { font-weight:700; color:#004080; }");
 		html.append(
 				".odds-line { display:flex; justify-content:center; align-items:center; gap:4px; font-weight:600; color:#222;}");
 		html.append(".odds-value { color:#000; font-weight:700;}");
-		html.append(".odds-pct { display:block; font-size:0.8em; color:#777; margin-top:2px;}");
+		html.append(".odds-pct { display:block; color:#777; margin-top:2px;}");
 		html.append("@media (max-width:600px){.odds-grid{grid-template-columns:repeat(2,1fr);} }");
 
 		/* --- Uyarı, no-data --- */

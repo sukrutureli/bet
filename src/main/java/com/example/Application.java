@@ -9,6 +9,7 @@ import java.util.Optional;
 import com.example.model.Match;
 import com.example.model.MatchInfo;
 import com.example.model.TeamMatchHistory;
+import com.example.prediction.PredictionSaver;
 import com.example.report.HtmlReportGenerator;
 import com.example.algo.*;
 import com.example.model.PredictionResult;
@@ -91,6 +92,8 @@ public class Application {
 
 			HtmlReportGenerator.generateHtmlForSublist(lastPredictionManager.getLastPrediction(), "futboltahmin.html");
 			System.out.println("futboltahmin.html oluşturuldu.");
+			
+			PredictionSaver.saveTodayPredictions(lastPredictionManager.getPredictionData());
 
 		} catch (Exception e) {
 			System.out.println("GENEL HATA: " + e.getMessage());
