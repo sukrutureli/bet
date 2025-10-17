@@ -50,12 +50,6 @@ public class SimpleHeuristicModel implements BettingAlgorithm {
 
 			// --- 5. Mantıklı skor tahmini ---
 			String score = "";
-			if (totalGoals >= 0.5 && totalGoals <= 5.0) {
-				if (Math.abs(pHome - pAway) > 0.05)
-					score = (pHome > pAway) ? "2-1" : "1-2";
-				else
-					score = "1-1";
-			}
 
 			// --- 6. Tahmin çıktısı ---
 			double maxRes = Math.max(pHome, Math.max(pDraw, pAway));
