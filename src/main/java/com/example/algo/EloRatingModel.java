@@ -10,8 +10,8 @@ public class EloRatingModel implements BettingAlgorithm {
 	}
 
 	@Override
-	public double weight() {
-		return 0.25;
+	public double[] weight() {
+		return new double[]{ 0.2, 0.0 };
 	}
 
 	@Override

@@ -9,9 +9,8 @@ public class FormMomentumModel implements BettingAlgorithm {
 		return "FormMomentumModel";
 	}
 
-	@Override
-	public double weight() {
-		return 0.2;
+	public double[] weight() {
+		return new double[]{ 0.2, 0.0 };
 	}
 
 	@Override

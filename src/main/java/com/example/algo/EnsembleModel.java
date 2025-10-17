@@ -15,9 +15,8 @@ public class EnsembleModel implements BettingAlgorithm {
 		return "EnsembleModel";
 	}
 
-	@Override
-	public double weight() {
-		return 1.0;
+	public double[] weight() {
+		return new double[]{ 1.0, 1.0 };
 	}
 
 	@Override
@@ -25,30 +24,30 @@ public class EnsembleModel implements BettingAlgorithm {
 		double pH = 0, pD = 0, pA = 0; // Maç sonucu
 		double pO = 0, pB = 0; // Üst ve BTTS
 		double totW = 0;
+		double totWOUBtts = 0;
 
 		String bestScore = "";
-		double bestWeight = -1;
 
 		for (BettingAlgorithm m : models) {
 			PredictionResult r = m.predict(match, odds);
 			if (r == null)
 				continue;
 
-			double w = m.weight();
-			if (Double.isNaN(w) || w <= 0)
-				continue;
+			double w1 = m.weight()[0];
+			double w2 = m.weight()[1];
 
-			pH += w * safe(r.getpHome());
-			pD += w * safe(r.getpDraw());
-			pA += w * safe(r.getpAway());
-			pO += w * safe(r.getpOver25());
-			pB += w * safe(r.getpBttsYes());
-			totW += w;
+			pH += w1 * safe(r.getpHome());
+			pD += w1 * safe(r.getpDraw());
+			pA += w1 * safe(r.getpAway());
+			pO += w2 * safe(r.getpOver25());
+			pB += w2 * safe(r.getpBttsYes());
+			
+			totW += w1;
+			totWOUBtts += w2;
 
 			// skor doluysa ve model ağır basıyorsa onu referans al
-			if (w > bestWeight && r.getScoreline() != null && !r.getScoreline().isBlank()) {
+			if (r.getScoreline() != null && !r.getScoreline().isBlank()) {
 				bestScore = r.getScoreline();
-				bestWeight = w;
 			}
 		}
 
@@ -57,8 +56,8 @@ public class EnsembleModel implements BettingAlgorithm {
 		pH /= totW;
 		pD /= totW;
 		pA /= totW;
-		pO /= totW;
-		pB /= totW;
+		pO /= totWOUBtts;
+		pB /= totWOUBtts;
 
 		// --- 1️⃣ Maç Sonucu Olasılığı ---
 		double msMax = Math.max(pH, Math.max(pD, pA));

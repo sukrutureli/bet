@@ -10,9 +10,8 @@ public class SimpleHeuristicModel implements BettingAlgorithm {
 		return "SimpleHeuristicModel";
 	}
 
-	@Override
-	public double weight() {
-		return 0.3;
+	public double[] weight() {
+		return new double[]{ 0.5, 0.3 };
 	}
 
 	@Override

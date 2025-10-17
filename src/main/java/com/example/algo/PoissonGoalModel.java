@@ -11,9 +11,8 @@ public class PoissonGoalModel implements BettingAlgorithm {
 		return "PoissonGoalModel";
 	}
 
-	@Override
-	public double weight() {
-		return 0.5;
+	public double[] weight() {
+		return new double[]{ 0.1, 0.7 };
 	}
 
 	@Override
