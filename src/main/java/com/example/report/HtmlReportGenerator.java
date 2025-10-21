@@ -173,7 +173,6 @@ public class HtmlReportGenerator {
 				html.append("    <span class='match-name'>" + match.getName() + "</span>");
 				html.append("    <span class='match-separator'>•</span>");
 				html.append("    <span class='match-mbs " + mbsClass + "'>" + match.getOdds().getMbs() + "</span>");
-				html.append("    <span class='match-mbs'>" + match.getOdds().getMbs() + "</span>");
 				html.append("  </div>");
 				html.append("  <button onclick=\"toggleHistory(this)\">Göster</button>");
 				html.append("</div>");
