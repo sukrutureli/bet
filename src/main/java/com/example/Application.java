@@ -90,7 +90,7 @@ public class Application {
 			LastPredictionManager lastPredictionManager = new LastPredictionManager(historyManager, results, matches);
 			lastPredictionManager.fillPredictions();
 
-			HtmlReportGenerator.generateHtmlForSublist(lastPredictionManager.getLastPrediction(), "futboltahmin.html");
+			HtmlReportGenerator.generateHtmlForSublist(lastPredictionManager.getLastPrediction(), "futboltahmin_.html");
 			System.out.println("futboltahmin.html oluşturuldu.");
 //			
 //			PredictionSaver.saveTodayPredictions(lastPredictionManager.getPredictionData());
