@@ -6,6 +6,7 @@ public class MatchInfo {
     private String detailUrl;
     private Odds odds;
     private int index;
+    private int mbs;
 
     public MatchInfo(String name, String time, String detailUrl,
                      Odds odds, int index) {
@@ -24,6 +25,14 @@ public class MatchInfo {
 
     public Odds getOdds() {
 		return odds;
+	}
+
+	public int getMbs() {
+		return mbs;
+	}
+
+	public void setMbs(int mbs) {
+		this.mbs = mbs;
 	}
 
 	public boolean isClose(int nowHour) {

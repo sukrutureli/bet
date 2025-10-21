@@ -40,13 +40,23 @@ public class HtmlReportGenerator {
 		html.append(".match.insufficient { background-color: #fff1f1; border-left: 4px solid #dc3545; }");
 
 		/* --- Başlık --- */
-		html.append(
+		/*html.append(
 				".match-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }");
 		html.append(".match-name { font-weight: 700; color: #003366; font-size: 1.1em; }");
 		html.append(".match-time { color: #666; font-size: 0.9em; }");
 		html.append(
 				".match-header button { background: linear-gradient(180deg,#007bff,#0062cc); border: none; color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9em; }");
+		html.append(".match-header button:hover { background: linear-gradient(180deg,#0069d9,#005cbf); }");*/
+		
+		html.append(".match-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }");
+		html.append(".match-info { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }");
+		html.append(".match-mbs { font-weight: bold; color: #d9534f; background: #f8d7da; border-radius: 6px; padding: 3px 7px; font-size: 0.85em; }");
+		html.append(".match-separator { color: #aaa; margin: 0 5px; }");
+		html.append(".match-name { font-weight: 700; color: #003366; font-size: 1.1em; }");
+		html.append(".match-time { color: #666; font-size: 0.9em; font-style: italic; }");
+		html.append(".match-header button { background: linear-gradient(180deg,#007bff,#0062cc); border: none; color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9em; }");
 		html.append(".match-header button:hover { background: linear-gradient(180deg,#0069d9,#005cbf); }");
+
 
 		/* --- Oran tablosu --- */
 		html.append(
@@ -151,10 +161,21 @@ public class HtmlReportGenerator {
 				html.append("<div class='match").append(insufficient ? " insufficient" : "").append("'>");
 				// html.append("<div class='match'>");
 
-				html.append("<div class='match-header'>");
+				/*html.append("<div class='match-header'>");
 				html.append("<div class='match-name'>").append(match.getName()).append("</div>");
 				html.append("<div class='match-time'>").append(match.getTime()).append("</div>");
 				html.append("<button onclick=\"toggleHistory(this)\">Göster/Gizle</button>");
+				html.append("</div>");*/
+				
+				html.append("<div class='match-header'>");
+				html.append("  <div class='match-info'>");
+				html.append("    <span class='match-time'>" + match.getTime() + "</span>");
+				html.append("    <span class='match-separator'>•</span>");
+				html.append("    <span class='match-name'>" + match.getName() + "</span>");
+				html.append("    <span class='match-separator'>•</span>");
+				html.append("    <span class='match-mbs'>MBS: " + match.getOdds().getMbs() + "</span>");
+				html.append("  </div>");
+				html.append("  <button onclick=\"toggleHistory(this)\">Göster</button>");
 				html.append("</div>");
 
 				if (teamHistory != null && teamHistory.getTotalMatches() > 0) {
@@ -437,7 +458,7 @@ public class HtmlReportGenerator {
 		html.append("<head>\n");
 		html.append("<meta charset='UTF-8'>\n");
 		html.append("<meta name='viewport' content='width=device-width, initial-scale=1.0'>\n");
-		html.append("<title>✅ Hazır Kupon</title>\n");
+		html.append("<title>💰 Hazır Kupon</title>\n");
 		html.append(
 				"<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'>\n");
 		html.append("<style>\n");
@@ -485,7 +506,7 @@ public class HtmlReportGenerator {
 		html.append("</style>\n");
 		html.append("</head>\n");
 		html.append("<body>\n");
-		html.append("<h1>✅ Hazır Kupon</h1>\n");
+		html.append("<h1>💰 Hazır Kupon</h1>\n");
 		html.append("<table>\n");
 		html.append(
 				"<thead><tr><th>🕒 Saat</th><th>⚽ Maç</th><th>🎯 Tahmin</th><th>📊 Skor Tahmini</th></tr></thead>\n");

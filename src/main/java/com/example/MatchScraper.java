@@ -144,8 +144,21 @@ public class MatchScraper {
 
 	private Odds extractOdds(WebElement event) {
 		String[] o = { "-", "-", "-", "-", "-", "-", "-" };
+		int mbs = -1;
 
 		try {
+			List<WebElement> mbsElements = event.findElements(By.cssSelector(".mbs-box-desktop"));
+			if (!mbsElements.isEmpty()) {
+				String classAttr = mbsElements.get(0).getAttribute("class");
+				if (classAttr.contains("mbs")) {
+					String num = classAttr.replaceAll(".*mbs(\\d+)-desktop.*", "$1");
+					try {
+						mbs = Integer.parseInt(num);
+					} catch (NumberFormatException ignore) {
+					}
+				}
+			}
+
 			// 1X2 oranları
 			List<WebElement> main = event.findElements(By.cssSelector("dd.col-03.event-row .cell"));
 			for (int i = 0; i < main.size() && i < 3; i++) {
@@ -168,7 +181,8 @@ public class MatchScraper {
 				toDouble(o[4]), // Üst
 				toDouble(o[3]), // Alt
 				toDouble(o[5]), // Var
-				toDouble(o[6]) // Yok
+				toDouble(o[6]), // Yok
+				mbs
 		);
 	}
 
