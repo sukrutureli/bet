@@ -33,7 +33,7 @@ public class LastPredictionManager {
 			String[] tahminListesi = { "MS1", "MS2", "Üst", "Alt", "Var", "Yok" };
 			
 			tempLastPrediction.setScore(predictionResults.get(i).getScoreline());
-			tempLastPrediction.setMbs("MBS:" + matchInfo.get(i).getOdds().getMbs());
+			tempLastPrediction.setMbs(matchInfo.get(i).getOdds().getMbs());
 
 			for (String s : tahminListesi) {
 				if (calculatePrediction(th, predictionResults.get(i),

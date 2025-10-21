@@ -50,12 +50,15 @@ public class HtmlReportGenerator {
 		
 		html.append(".match-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }");
 		html.append(".match-info { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }");
-		html.append(".match-mbs { font-weight: bold; color: #d9534f; background: #f8d7da; border-radius: 6px; padding: 3px 7px; font-size: 0.85em; }");
 		html.append(".match-separator { color: #aaa; margin: 0 5px; }");
 		html.append(".match-name { font-weight: 700; color: #003366; font-size: 1.1em; }");
 		html.append(".match-time { color: #666; font-size: 0.9em; font-style: italic; }");
 		html.append(".match-header button { background: linear-gradient(180deg,#007bff,#0062cc); border: none; color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9em; }");
 		html.append(".match-header button:hover { background: linear-gradient(180deg,#0069d9,#005cbf); }");
+		html.append(".match-mbs { font-weight: bold; border-radius: 6px; padding: 3px 7px; font-size: 0.85em; min-width: 55px; text-align: center; }");
+		html.append(".match-mbs-1 { background: #dc3545; color: #fff; }"); // kırmızı
+		html.append(".match-mbs-2 { background: #fd7e14; color: #fff; }"); // turuncu
+		html.append(".match-mbs-3 { background: #28a745; color: #fff; }"); // yeşil
 
 
 		/* --- Oran tablosu --- */
@@ -161,11 +164,7 @@ public class HtmlReportGenerator {
 				html.append("<div class='match").append(insufficient ? " insufficient" : "").append("'>");
 				// html.append("<div class='match'>");
 
-				/*html.append("<div class='match-header'>");
-				html.append("<div class='match-name'>").append(match.getName()).append("</div>");
-				html.append("<div class='match-time'>").append(match.getTime()).append("</div>");
-				html.append("<button onclick=\"toggleHistory(this)\">Göster/Gizle</button>");
-				html.append("</div>");*/
+				String mbsClass = "match-mbs-" + match.getOdds().getMbs();
 				
 				html.append("<div class='match-header'>");
 				html.append("  <div class='match-info'>");
@@ -173,7 +172,8 @@ public class HtmlReportGenerator {
 				html.append("    <span class='match-separator'>•</span>");
 				html.append("    <span class='match-name'>" + match.getName() + "</span>");
 				html.append("    <span class='match-separator'>•</span>");
-				html.append("    <span class='match-mbs'>MBS: " + match.getOdds().getMbs() + "</span>");
+				html.append("    <span class='match-mbs " + mbsClass + "'>" + match.getOdds().getMbs() + "</span>");
+				html.append("    <span class='match-mbs'>" + match.getOdds().getMbs() + "</span>");
 				html.append("  </div>");
 				html.append("  <button onclick=\"toggleHistory(this)\">Göster</button>");
 				html.append("</div>");
@@ -459,13 +459,11 @@ public class HtmlReportGenerator {
 		html.append("<meta charset='UTF-8'>\n");
 		html.append("<meta name='viewport' content='width=device-width, initial-scale=1.0'>\n");
 		html.append("<title>💰 Hazır Kupon</title>\n");
-		html.append(
-				"<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'>\n");
+		html.append("<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'>\n");
 		html.append("<style>\n");
 
 		/* --- Genel Stil --- */
-		html.append(
-				"body { font-family: Arial, sans-serif; background-color: #f7f8fa; margin: 0; padding: 20px; color: #222; }\n");
+		html.append("body { font-family: Arial, sans-serif; background-color: #f7f8fa; margin: 0; padding: 20px; color: #222; }\n");
 		html.append("h1 { text-align: center; margin-bottom: 20px; color: #333; font-size: 22px; }\n");
 
 		/* --- Tablo --- */
@@ -478,29 +476,33 @@ public class HtmlReportGenerator {
 		html.append("td { font-size: 14px; border-bottom: 1px solid #ddd; }\n");
 
 		/* --- İkon hizalama --- */
-		html.append(
-				"td i, td svg, td img { display:inline-block; vertical-align:middle; margin-right:4px; color:#0077cc; }\n");
+		html.append("td i, td svg, td img { display:inline-block; vertical-align:middle; margin-right:4px; color:#0077cc; }\n");
 
 		/* --- Sütun oranları --- */
-		html.append("th:nth-child(1), td:nth-child(1) { width: 60px; text-align: left; white-space: nowrap; }\n");
-		html.append(
-				"th:nth-child(2), td:nth-child(2) { max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }\n");
-		html.append("th:nth-child(3), td:nth-child(3) { width: auto; }\n");
-		html.append(
-				"th:nth-child(4), td:nth-child(4) { width: 120px; text-align: left; color: #333; font-weight: bold; }\n");
+		html.append("th:nth-child(1), td:nth-child(1) { width: 80px; text-align: left; white-space: nowrap; }\n");  // Saat
+		html.append("th:nth-child(2), td:nth-child(2) { width: 60px; text-align: center; white-space: nowrap; }\n"); // MBS
+		html.append("th:nth-child(3), td:nth-child(3) { max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }\n"); // Maç
+		html.append("th:nth-child(4), td:nth-child(4) { width: auto; }\n");
+		html.append("th:nth-child(5), td:nth-child(5) { width: 120px; text-align: left; color: #333; font-weight: bold; }\n");
 
 		html.append(".match { font-weight: bold; color: #1a1a1a; }\n");
 		html.append(".prediction { color: #444; white-space: pre-line; }\n");
+
+		/* --- MBS renkleri --- */
+		html.append(".match-mbs { font-weight: bold; border-radius: 6px; padding: 3px 8px; font-size: 0.85em; min-width: 40px; display:inline-block; text-align:center; }\n");
+		html.append(".match-mbs-1 { background: #dc3545; color: #fff; } /* kırmızı */\n");
+		html.append(".match-mbs-2 { background: #fd7e14; color: #fff; } /* turuncu */\n");
+		html.append(".match-mbs-3 { background: #28a745; color: #fff; } /* yeşil */\n");
 
 		/* --- Mobil görünüm (max 600px) --- */
 		html.append("@media (max-width: 600px) {\n");
 		html.append("  table, thead, tbody, th, td, tr { display: block; width: 100%; }\n");
 		html.append("  thead { display: none; }\n");
-		html.append(
-				"  tr { margin-bottom: 12px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); background: #fff; padding: 8px; }\n");
+		html.append("  tr { margin-bottom: 12px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); background: #fff; padding: 8px; }\n");
 		html.append("  td { border: none; padding: 6px 8px; }\n");
 		html.append("  td i { margin-right: 6px; }\n");
 		html.append("  td span.label { display:block; font-weight:bold; color:#0077cc; margin-bottom:3px; }\n");
+		html.append("  .match-mbs { display:inline-block; margin-left:8px; }\n");
 		html.append("}\n");
 
 		html.append("</style>\n");
@@ -508,23 +510,26 @@ public class HtmlReportGenerator {
 		html.append("<body>\n");
 		html.append("<h1>💰 Hazır Kupon</h1>\n");
 		html.append("<table>\n");
-		html.append(
-				"<thead><tr><th>🕒 Saat</th><th>⚽ Maç</th><th>🎯 Tahmin</th><th>📊 Skor Tahmini</th></tr></thead>\n");
+		html.append("<thead><tr><th>🕒 Saat</th><th>MBS</th><th>⚽ Maç</th><th>🎯 Tahmin</th><th>📊 Skor Tahmini</th></tr></thead>\n");
 		html.append("<tbody>\n");
 
+		// --- TABLO SATIRLARI ---
 		for (LastPrediction p : predictions) {
-			html.append("<tr>");
-			html.append("<td><i class='fa-regular fa-clock'></i>").append(p.getTime()).append("</td>");
-			html.append("<td class='match'><i class='fa-solid fa-futbol'></i>").append(p.getName()).append("</td>");
-			html.append("<td class='prediction'><i class='fa-solid fa-bullseye'></i>").append(p.preditionsToString())
-					.append("</td>");
-			html.append("<td class='score'><i class='fa-solid fa-chart-line'></i>")
-					.append(p.getScore() != null ? p.getScore() : "-").append("</td>");
-			html.append("</tr>\n");
+		    String mbsClass = "match-mbs-" + p.getMbs(); // örn. match-mbs-1 / 2 / 3
+
+		    html.append("<tr>");
+		    html.append("<td><i class='fa-regular fa-clock'></i>").append(p.getTime()).append("</td>");
+		    html.append("<td><span class='match-mbs ").append(mbsClass).append("'>").append(String.valueOf(p.getMbs())).append("</span></td>");
+		    html.append("<td class='match'><i class='fa-solid fa-futbol'></i>").append(p.getName()).append("</td>");
+		    html.append("<td class='prediction'><i class='fa-solid fa-bullseye'></i>").append(p.preditionsToString()).append("</td>");
+		    html.append("<td class='score'><i class='fa-solid fa-chart-line'></i>")
+		        .append(p.getScore() != null ? p.getScore() : "-").append("</td>");
+		    html.append("</tr>\n");
 		}
 
 		html.append("</tbody></table>\n");
 		html.append("</body>\n</html>");
+
 
 		File dir = new File("public");
 		if (!dir.exists())

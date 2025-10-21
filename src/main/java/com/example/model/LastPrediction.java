@@ -8,7 +8,7 @@ public class LastPrediction {
 	private String time;
 	private List<String> predictions;
 	private String score;
-	private String mbs;
+	private int mbs;
 	
 	public LastPrediction(String name, String time) {
 		this.name = name;
@@ -53,11 +53,11 @@ public class LastPrediction {
 		this.score = score;
 	}
 
-	public String getMbs() {
+	public int getMbs() {
 		return mbs;
 	}
 
-	public void setMbs(String mbs) {
+	public void setMbs(int mbs) {
 		this.mbs = mbs;
 	}
 }
