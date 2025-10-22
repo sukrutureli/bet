@@ -28,27 +28,28 @@ public class LastPredictionManager {
 	public void fillPredictions() {
 		for (int i = 0; i < historyManager.getTeamHistories().size(); i++) {
 			TeamMatchHistory th = historyManager.getTeamHistories().get(i);
-			
-			LastPrediction tempLastPrediction = new LastPrediction(matchInfo.get(i).getName(), matchInfo.get(i).getTime());
+
+			LastPrediction tempLastPrediction = new LastPrediction(matchInfo.get(i).getName(),
+					matchInfo.get(i).getTime());
 			String[] tahminListesi = { "MS1", "MS2", "Üst", "Alt", "Var", "Yok" };
-			
+
 			tempLastPrediction.setScore(predictionResults.get(i).getScoreline());
 			tempLastPrediction.setMbs(matchInfo.get(i).getOdds().getMbs());
 
 			for (String s : tahminListesi) {
-				if (calculatePrediction(th, predictionResults.get(i),
-						matchInfo.get(i), s) != null) {
-					String withOdd = s + " (" + getOdds(s, matchInfo.get(i))  + ")";
+				if (calculatePrediction(th, predictionResults.get(i), matchInfo.get(i), s) != null) {
+					String withOdd = s + getOddsAndPercentage(s, matchInfo.get(i), predictionResults.get(i));
 					tempLastPrediction.getPredictions().add(withOdd);
 				}
 			}
 
 			if (!tempLastPrediction.getPredictions().isEmpty()) {
 				lastPrediction.add(tempLastPrediction);
-				
+
 				String homeTeam = tempLastPrediction.getName().split("-")[0].trim();
 				String awayTeam = tempLastPrediction.getName().split("-")[1].trim();
-				PredictionData tempPredictionData = new PredictionData(homeTeam, awayTeam, tempLastPrediction.getPredictions());
+				PredictionData tempPredictionData = new PredictionData(homeTeam, awayTeam,
+						tempLastPrediction.getPredictions());
 				predictionData.add(tempPredictionData);
 			}
 		}
@@ -65,14 +66,14 @@ public class LastPredictionManager {
 		if (tahmin.equals("MS1")) {
 			percentageH = h.getMs1() * 100;
 			percentagePR = pr.getpHome() * 100;
-			if (matchInfo.getOdds().getMs1() > 0.0 && percentageH > 50 && percentagePR > 50
+			if (matchInfo.getOdds().getMs1() > 0.0 && percentageH >= 50 && percentagePR >= 55
 					&& isScoreOk(pr.getScoreline(), "MS1")) {
 				return "MS1";
 			}
 		} else if (tahmin.equals("MS2")) {
 			percentageH = h.getMs2() * 100;
 			percentagePR = pr.getpAway() * 100;
-			if (matchInfo.getOdds().getMs2() > 0.0 && percentageH > 50 && percentagePR > 50
+			if (matchInfo.getOdds().getMs2() > 0.0 && percentageH >= 50 && percentagePR >= 55
 					&& isScoreOk(pr.getScoreline(), "MS2")) {
 				return "MS2";
 			}
@@ -80,10 +81,7 @@ public class LastPredictionManager {
 			percentageH = h.getUst() * 100;
 			percentagePR = pr.getpOver25() * 100;
 			if (matchInfo.getOdds().getOver25() > 0.0) {
-				if (percentageH > 70 && percentagePR > 70 && isScoreOk(pr.getScoreline(), "Üst")) {
-					return "Üst";
-				}
-				if (percentagePR > 80 && isScoreOk(pr.getScoreline(), "Üst")) {
+				if (percentageH >= 60 && percentagePR >= 65 && isScoreOk(pr.getScoreline(), "Üst")) {
 					return "Üst";
 				}
 			}
@@ -91,10 +89,7 @@ public class LastPredictionManager {
 			percentageH = h.getAlt() * 100;
 			percentagePR = (1 - pr.getpOver25()) * 100;
 			if (matchInfo.getOdds().getUnder25() > 0.0) {
-				if (percentageH > 70 && percentagePR > 70 && isScoreOk(pr.getScoreline(), "Alt")) {
-					return "Alt";
-				}
-				if (percentagePR > 80 && isScoreOk(pr.getScoreline(), "Alt")) {
+				if (percentageH >= 60 && percentagePR >= 65 && isScoreOk(pr.getScoreline(), "Alt")) {
 					return "Alt";
 				}
 			}
@@ -102,23 +97,15 @@ public class LastPredictionManager {
 			percentageH = h.getVar() * 100;
 			percentagePR = pr.getpBttsYes() * 100;
 			if (matchInfo.getOdds().getBttsYes() > 0.0) {
-				if (matchInfo.getOdds().getMs1() > 1.50 && matchInfo.getOdds().getMs2() > 1.50) {
-					if (percentageH > 70 && percentagePR > 70 && isScoreOk(pr.getScoreline(), "Var")) {
-						return "Var";
-					}
-					if (percentagePR > 80 && isScoreOk(pr.getScoreline(), "Var")) {
-						return "Var";
-					}
+				if (percentageH >= 60 && percentagePR >= 65 && isScoreOk(pr.getScoreline(), "Var")) {
+					return "Var";
 				}
 			}
 		} else if (tahmin.equals("Yok")) {
 			percentageH = h.getYok() * 100;
 			percentagePR = (1 - pr.getpBttsYes()) * 100;
 			if (matchInfo.getOdds().getBttsNo() > 0.0) {
-				if (percentageH > 70 && percentagePR > 70 && isScoreOk(pr.getScoreline(), "Yok")) {
-					return "Yok";
-				}
-				if (percentagePR > 80 && isScoreOk(pr.getScoreline(), "Yok")) {
+				if (percentageH >= 60 && percentagePR >= 65 && isScoreOk(pr.getScoreline(), "Yok")) {
 					return "Yok";
 				}
 			}
@@ -148,21 +135,25 @@ public class LastPredictionManager {
 			return false;
 		}
 	}
-	
-	private String getOdds(String tahmin, MatchInfo match) {
+
+	private String getOddsAndPercentage(String tahmin, MatchInfo match, PredictionResult pr) {
 		if (tahmin.equals("MS1")) {
-			return String.valueOf(match.getOdds().getMs1());
+			return " (" + String.valueOf(match.getOdds().getMs1()) + " - %" + ((int) (pr.getpHome() * 100)) + ")";
 		} else if (tahmin.equals("MS2")) {
-			return String.valueOf(match.getOdds().getMs2());
+			return " (" + String.valueOf(match.getOdds().getMs2()) + " - %" + ((int) (pr.getpAway() * 100)) + ")";
 		} else if (tahmin.equals("Alt")) {
-			return String.valueOf(match.getOdds().getUnder25());
+			return " (" + String.valueOf(match.getOdds().getUnder25()) + " - %" + ((int) ((1 - pr.getpOver25()) * 100))
+					+ ")";
 		} else if (tahmin.equals("Üst")) {
-			return String.valueOf(match.getOdds().getOver25());
+			return " (" + String.valueOf(match.getOdds().getOver25()) + " - %" + ((int) (pr.getpOver25() * 100)) + ")";
 		} else if (tahmin.equals("Var")) {
-			return String.valueOf(match.getOdds().getBttsYes());
+			return " (" + String.valueOf(match.getOdds().getBttsYes()) + " - %" + ((int) (pr.getpBttsYes() * 100))
+					+ ")";
 		} else if (tahmin.equals("Yok")) {
-			return String.valueOf(match.getOdds().getBttsNo());
+			return " (" + String.valueOf(match.getOdds().getBttsNo()) + " - %" + ((int) ((1 - pr.getpBttsYes()) * 100))
+					+ ")";
 		}
+
 		return null;
 	}
 
@@ -175,4 +166,3 @@ public class LastPredictionManager {
 	}
 
 }
-
