@@ -136,6 +136,11 @@ public class TeamMatchHistory {
 			result += ((ms1SonA / sonMaclarAway.size()) * 0.3);
 
 			return result;
+		} else if (isInfoEnoughWithoutRekabet()) {
+			double result = ((ms1SonH / sonMaclarHome.size()) * 0.5);
+			result += ((ms1SonA / sonMaclarAway.size()) * 0.5);
+
+			return result;
 		} else {
 			return (ms1Rekabet + ms1SonH + ms1SonA) / getTotalMatches();
 		}
@@ -145,7 +150,7 @@ public class TeamMatchHistory {
 		double ms2Rekabet = 0;
 		double ms2SonH = 0;
 		double ms2SonA = 0;
-		
+
 		for (int i = 0; i < rekabetGecmisi.size(); i++) {
 			if (rekabetGecmisi.get(i).getHomeTeam().contains(teamDep) && rekabetGecmisi.get(i).getResult() == "H") {
 				ms2Rekabet++;
@@ -176,6 +181,11 @@ public class TeamMatchHistory {
 			double result = (ms2Rekabet / rekabetGecmisi.size()) * 0.4;
 			result += ((ms2SonH / sonMaclarHome.size()) * 0.3);
 			result += ((ms2SonA / sonMaclarAway.size()) * 0.3);
+
+			return result;
+		} else if (isInfoEnoughWithoutRekabet()) {
+			double result = ((ms2SonH / sonMaclarHome.size()) * 0.5);
+			result += ((ms2SonA / sonMaclarAway.size()) * 0.5);
 
 			return result;
 		} else {
@@ -216,6 +226,11 @@ public class TeamMatchHistory {
 			result += ((varSonA / sonMaclarAway.size()) * 0.3);
 
 			return result;
+		} else if (isInfoEnoughWithoutRekabet()) {
+			double result = ((varSonH / sonMaclarHome.size()) * 0.5);
+			result += ((varSonA / sonMaclarAway.size()) * 0.5);
+
+			return result;
 		} else {
 			return (varRekabet + varSonH + varSonA) / getTotalMatches();
 		}
@@ -254,6 +269,11 @@ public class TeamMatchHistory {
 			result += ((ustSonA / sonMaclarAway.size()) * 0.3);
 
 			return result;
+		} else if (isInfoEnoughWithoutRekabet()) {
+			double result = ((ustSonH / sonMaclarHome.size()) * 0.5);
+			result += ((ustSonA / sonMaclarAway.size()) * 0.5);
+
+			return result;
 		} else {
 			return (ustRekabet + ustSonH + ustSonA) / getTotalMatches();
 		}
@@ -270,16 +290,24 @@ public class TeamMatchHistory {
 
 		return true;
 	}
-	
+
+	public boolean isInfoEnoughWithoutRekabet() {
+		if (sonMaclarHome.size() > 1 && sonMaclarAway.size() > 1 && rekabetGecmisi.size() == 0) {
+			return true;
+		}
+
+		return false;
+	}
+
 	public String toStringAsPercentage(double value) {
 		return "%" + ((int) (value * 100));
 	}
 
 	public String getStyle(double value, String type) {
 		String color = "background-color:#e8fbe8; border:1px solid #6ecf6e;";
-		int percentage = ((int) (value* 100));
+		int percentage = ((int) (value * 100));
 
-		if (!isInfoEnough()) {
+		if (!isInfoEnough() && !isInfoEnoughWithoutRekabet()) {
 			return "";
 		}
 
