@@ -52,7 +52,7 @@ public class MatchScraper {
 			PageWaitUtils.safeWaitForLoad(driver, 25);
 
 			// Dinamik scroll
-			scrollToEndStable();
+			scrollToEnd();
 
 			// Artık tüm maçlar yüklendi
 			wait.until(ExpectedConditions
@@ -76,26 +76,39 @@ public class MatchScraper {
 		return list;
 	}
 
-	private void scrollToEndStable() throws InterruptedException {
-		int stable = 0, prev = -1;
-		long lastHeight = (long) js.executeScript("return document.body.scrollHeight");
+	private void scrollToEnd() throws InterruptedException {
+	    int stable = 0;
+	    int prev = -1;
 
-		while (stable < 3) {
-			js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-			Thread.sleep(1800); // daha uzun bekleme
-			List<WebElement> events = driver.findElements(By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']"));
-			int size = events.size();
-			long newHeight = (long) js.executeScript("return document.body.scrollHeight");
+	    // önce hızlıca alta inelim
+	    for (int i = 0; i < 8; i++) {
+	        js.executeScript("window.scrollBy(0, 2000)");
+	        Thread.sleep(1000);
+	    }
 
-			if (newHeight == lastHeight && size == prev)
-				stable++;
-			else
-				stable = 0;
+	    // ardından stabilize olana kadar devam edelim
+	    while (stable < 3) {
+	        List<WebElement> events = driver.findElements(By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']"));
+	        int size = events.size();
 
-			prev = size;
-			lastHeight = newHeight;
-		}
+	        js.executeScript("window.scrollBy(0, 2000)");
+	        Thread.sleep(1000);
+
+	        if (size == prev)
+	            stable++;
+	        else
+	            stable = 0;
+
+	        prev = size;
+	    }
+
+	    // 🔄 şimdi yukarıya da kaydır ki baştaki maçlar da DOM’a girsin
+	    for (int i = 0; i < 8; i++) {
+	        js.executeScript("window.scrollBy(0, -2000)");
+	        Thread.sleep(1000);
+	    }
 	}
+
 
 	private MatchInfo extractMatchInfo(WebElement event, int index) {
 		try {
