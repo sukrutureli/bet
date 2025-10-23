@@ -49,8 +49,8 @@ public class MatchScraper {
 			PageWaitUtils.safeWaitForLoad(driver, 20);
 			scrollToEnd();
 
-	        List<WebElement> events = driver.findElements(By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']"));
-	        System.out.println("Final element sayısı: " + events.size());
+			List<WebElement> events = driver.findElements(By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']"));
+			System.out.println("Final element sayısı: " + events.size());
 
 			for (int i = 0; i < events.size(); i++) {
 				WebElement e = events.get(i);
@@ -68,108 +68,106 @@ public class MatchScraper {
 	private void scrollToEnd() throws InterruptedException {
 		int stable = 0, prev = -1;
 		while (stable < 3) {
-			List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
+			// ⚽ Yeni grid yapısı: her maç satırı data-test-id="r_XXXXXX" içeriyor
+			List<WebElement> events = driver.findElements(By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']"));
 			int size = events.size();
-			js.executeScript("window.scrollBy(0,1500)");
-			Thread.sleep(800);
-			stable = (size == prev) ? stable + 1 : 0;
+
+			js.executeScript("window.scrollBy(0, 1500)");
+			Thread.sleep(1000);
+
+			if (size == prev)
+				stable++;
+			else
+				stable = 0;
+
 			prev = size;
 		}
 	}
 
 	private MatchInfo extractMatchInfo(WebElement event, int index) {
-	    try {
-	        js.executeScript("arguments[0].scrollIntoView({block:'center'});", event);
-	        Thread.sleep(100);
+		try {
+			js.executeScript("arguments[0].scrollIntoView({block:'center'});", event);
+			Thread.sleep(100);
 
-	        // ⚽ Maç ismi ve istatistik URL’si
-	        WebElement link = event.findElement(By.cssSelector("a[data-test-id='matchName']"));
-	        String name = link.getText().trim();
-	        String url = link.getAttribute("href");
+			// ⚽ Maç ismi ve istatistik URL’si
+			WebElement link = event.findElement(By.cssSelector("a[data-test-id='matchName']"));
+			String name = link.getText().trim();
+			String url = link.getAttribute("href");
 
-	        // 🕐 Maç saati
-	        String time = extractMatchTime(event);
+			// 🕐 Maç saati
+			String time = extractMatchTime(event);
 
-	        // 🎯 Oran bilgileri
-	        Odds odds = extractOdds(event);
+			// 🎯 Oran bilgileri
+			Odds odds = extractOdds(event);
 
-	        return new MatchInfo(name, time, url, odds, index);
-	    } catch (Exception e) {
-	        System.out.println("extractMatchInfo hata: " + e.getMessage());
-	        return null;
-	    }
+			return new MatchInfo(name, time, url, odds, index);
+		} catch (Exception e) {
+			System.out.println("extractMatchInfo hata: " + e.getMessage());
+			return null;
+		}
 	}
 
 	private String extractMatchTime(WebElement e) {
-	    try {
-	        WebElement timeEl = e.findElement(By.cssSelector("span[data-testid^='time']"));
-	        return timeEl.getText().trim();
-	    } catch (Exception ex) {
-	        return "?";
-	    }
+		try {
+			WebElement timeEl = e.findElement(By.cssSelector("span[data-testid^='time']"));
+			return timeEl.getText().trim();
+		} catch (Exception ex) {
+			return "?";
+		}
 	}
 
 	private Odds extractOdds(WebElement event) {
-	    try {
-	        // 🧩 data-testid değerlerinden doğrudan çekiyoruz
-	        String ms1 = getOdd(event, "odd_Maç Sonucu_1");
-	        String ms0 = getOdd(event, "odd_Maç Sonucu_X");
-	        String ms2 = getOdd(event, "odd_Maç Sonucu_2");
+		try {
+			// 🧩 data-testid değerlerinden doğrudan çekiyoruz
+			String ms1 = getOdd(event, "odd_Maç Sonucu_1");
+			String ms0 = getOdd(event, "odd_Maç Sonucu_X");
+			String ms2 = getOdd(event, "odd_Maç Sonucu_2");
 
-	        String alt = getOdd(event, "odd_2,5 Gol_Alt");
-	        String ust = getOdd(event, "odd_2,5 Gol_Üst");
+			String alt = getOdd(event, "odd_2,5 Gol_Alt");
+			String ust = getOdd(event, "odd_2,5 Gol_Üst");
 
-	        String var = getOdd(event, "odd_Karş. Gol_Var");
-	        String yok = getOdd(event, "odd_Karş. Gol_Yok");
+			String var = getOdd(event, "odd_Karş. Gol_Var");
+			String yok = getOdd(event, "odd_Karş. Gol_Yok");
 
-	        int mbs = getMbs(event);
+			int mbs = getMbs(event);
 
-	        return new Odds(
-	            toDouble(ms1),
-	            toDouble(ms0),
-	            toDouble(ms2),
-	            toDouble(ust),
-	            toDouble(alt),
-	            toDouble(var),
-	            toDouble(yok),
-	            mbs
-	        );
+			return new Odds(toDouble(ms1), toDouble(ms0), toDouble(ms2), toDouble(ust), toDouble(alt), toDouble(var),
+					toDouble(yok), mbs);
 
-	    } catch (Exception e) {
-	        System.out.println("extractOdds hata: " + e.getMessage());
-	        return new Odds(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1);
-	    }
+		} catch (Exception e) {
+			System.out.println("extractOdds hata: " + e.getMessage());
+			return new Odds(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1);
+		}
 	}
 
 	private String getOdd(WebElement event, String testId) {
-	    try {
-	        WebElement el = event.findElement(By.cssSelector("button[data-testid='" + testId + "']"));
-	        return el.getText().trim();
-	    } catch (Exception e) {
-	        return "-";
-	    }
+		try {
+			WebElement el = event.findElement(By.cssSelector("button[data-testid='" + testId + "']"));
+			return el.getText().trim();
+		} catch (Exception e) {
+			return "-";
+		}
 	}
 
 	private int getMbs(WebElement event) {
-	    try {
-	        WebElement mbsEl = event.findElement(By.cssSelector("div[data-test-id='event_mbs'] span"));
-	        String text = mbsEl.getText().trim();
-	        return Integer.parseInt(text);
-	    } catch (Exception e) {
-	        return -1;
-	    }
+		try {
+			WebElement mbsEl = event.findElement(By.cssSelector("div[data-test-id='event_mbs'] span"));
+			String text = mbsEl.getText().trim();
+			return Integer.parseInt(text);
+		} catch (Exception e) {
+			return -1;
+		}
 	}
 
 	private double toDouble(String s) {
-	    try {
-	        if (s == null || s.equals("-") || s.isEmpty())
-	            return 0.0;
-	        return Double.parseDouble(s.replace(",", "."));
-	    } catch (Exception e) {
-	        return 0.0;
-	    }
+		try {
+			if (s == null || s.equals("-") || s.isEmpty())
+				return 0.0;
+			return Double.parseDouble(s.replace(",", "."));
+		} catch (Exception e) {
+			return 0.0;
+		}
 	}
-
 
 	private String safeText(WebElement el) {
 		try {
@@ -302,19 +300,21 @@ public class MatchScraper {
 		}
 		return list;
 	}
-
+	
 	private String extractScore(WebElement r) {
-		try {
-			for (WebElement s : r.findElements(By.cssSelector("button[data-test-id='NsnButton'] span"))) {
-				String t = s.getText().replaceAll("\\(.*?\\)", "").trim();
-				if (t.matches("\\d+\\s*-\\s*\\d+"))
-					return t;
-			}
-		} catch (Exception e) {
-			return "-";
-		}
-		return "-";
+	    try {
+	        List<WebElement> scoreEls = r.findElements(By.cssSelector("div[data-test-id='Score'], button[data-test-id='NsnButton'] span"));
+	        for (WebElement s : scoreEls) {
+	            String t = s.getText().replaceAll("\\(.*?\\)", "").trim();
+	            if (t.matches("\\d+\\s*-\\s*\\d+"))
+	                return t;
+	        }
+	    } catch (Exception e) {
+	        // ignore
+	    }
+	    return "-";
 	}
+
 
 	private int[] parseScore(String s) {
 		try {
@@ -373,8 +373,8 @@ public class MatchScraper {
 			}
 
 			WebElement header = driver.findElement(By.cssSelector("div[data-test-id='HeaderTeams']"));
-			List<WebElement> teams = header
-					.findElements(By.cssSelector("a[data-test-id='TeamLink'] span[data-test-id='HeaderTeams']"));
+			List<WebElement> teams = header.findElements(By.cssSelector(
+					"a[data-test-id='TeamLink'] span[data-test-id='HeaderTeams'], a[data-test-id='TeamLink'] div[data-test-id='HeaderTeams']"));
 
 			if (teams.size() >= 2) {
 				home = teams.get(0).getText().trim();
