@@ -30,8 +30,8 @@ public class MatchScraper {
 	private void setupDriver() {
 		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless=new", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu",
-				"--window-size=1920,1080", "--disable-blink-features=AutomationControlled");
+		options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu",
+				"--window-size=1920,1080");
 		driver = new ChromeDriver(options);
 		js = (JavascriptExecutor) driver;
 		wait = new WebDriverWait(driver, Duration.ofSeconds(15));
