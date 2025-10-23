@@ -1,10 +1,5 @@
 package com.example.model;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.ArrayList;
-
 // Tek maç sonucu
 public class MatchResult {
     private String homeTeam;

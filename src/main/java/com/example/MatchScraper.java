@@ -43,8 +43,6 @@ public class MatchScraper {
 	public List<MatchInfo> fetchMatches() {
 		List<MatchInfo> list = new ArrayList<>();
 		try {
-			// String date =
-			// LocalDate.now(ZoneId.of("Europe/Istanbul")).plusDays(1).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 			String date = LocalDate.now(ZoneId.of("Europe/Istanbul")).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
 			String url = "https://www.nesine.com/iddaa?et=1&dt=" + date + "&le=2&ocg=MS-2%2C5&gt=Popüler";
 			driver.get(url);
@@ -182,8 +180,7 @@ public class MatchScraper {
 				toDouble(o[3]), // Alt
 				toDouble(o[5]), // Var
 				toDouble(o[6]), // Yok
-				mbs
-		);
+				mbs);
 	}
 
 	private double toDouble(String s) {
@@ -247,7 +244,7 @@ public class MatchScraper {
 				return list;
 			}
 
-			clickMoreMatches();
+			// clickMoreMatches();
 			list = extractCompetitionHistoryResults(url);
 		} catch (Exception e) {
 			System.out.println("Rekabet geçmişi hatası: " + e.getMessage());
@@ -271,7 +268,7 @@ public class MatchScraper {
 				return list;
 			}
 
-			clickMoreMatches();
+			// clickMoreMatches();
 			list = extractMatchResults(url, side);
 		} catch (Exception e) {
 			System.out.println("Son maç hatası: " + e.getMessage());
@@ -362,43 +359,27 @@ public class MatchScraper {
 		}
 	}
 
-	private void clickMoreMatches() {
-		try {
-			// sayfadaki tüm buton ve linkleri al
-			List<WebElement> candidates = driver.findElements(By.cssSelector("button, a"));
-			WebElement found = null;
-
-			// olası "daha", "more", "load", "show" kelimelerini içerenleri tara
-			for (WebElement el : candidates) {
-				String text = "";
-				try {
-					text = el.getText().toLowerCase().trim();
-				} catch (Exception ignore) {
-				}
-				if (text.isEmpty())
-					continue;
-
-				if (text.contains("daha") || text.contains("more") || text.contains("load") || text.contains("show")) {
-					if (el.isDisplayed() && el.isEnabled()) {
-						found = el;
-						break;
-					}
-				}
-			}
-
-			// buton bulundu → kaydır & tıkla
-			try {
-				js.executeScript("arguments[0].scrollIntoView({block:'center'});", found);
-			} catch (Exception ignore) {
-			}
-			boolean clicked = PageWaitUtils.safeClick(driver, found, 5);
-			if (clicked) {
-				Thread.sleep(1000); // yükleme için kısa bekleme
-			}
-		} catch (Exception e) {
-			System.out.println("clickMoreMatches hata: " + e.getMessage());
-		}
-	}
+	/*
+	 * private void clickMoreMatches() { try { // sayfadaki tüm buton ve linkleri al
+	 * List<WebElement> candidates =
+	 * driver.findElements(By.cssSelector("button, a")); WebElement found = null;
+	 * 
+	 * // olası "daha", "more", "load", "show" kelimelerini içerenleri tara for
+	 * (WebElement el : candidates) { String text = ""; try { text =
+	 * el.getText().toLowerCase().trim(); } catch (Exception ignore) { } if
+	 * (text.isEmpty()) continue;
+	 * 
+	 * if (text.contains("daha") || text.contains("more") || text.contains("load")
+	 * || text.contains("show")) { if (el.isDisplayed() && el.isEnabled()) { found =
+	 * el; break; } } }
+	 * 
+	 * // buton bulundu → kaydır & tıkla try {
+	 * js.executeScript("arguments[0].scrollIntoView({block:'center'});", found); }
+	 * catch (Exception ignore) { } boolean clicked =
+	 * PageWaitUtils.safeClick(driver, found, 5); if (clicked) { Thread.sleep(1000);
+	 * // yükleme için kısa bekleme } } catch (Exception e) {
+	 * System.out.println("clickMoreMatches hata: " + e.getMessage()); } }
+	 */
 
 	private String[] extractTeamsFromHeader(String url) {
 		String home = "-", away = "-", name = "";

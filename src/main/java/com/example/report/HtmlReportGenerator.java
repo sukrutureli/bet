@@ -253,9 +253,9 @@ public class HtmlReportGenerator {
 					html.append("</div>");
 					html.append("</div>");
 
-					int rekabetMacCount = Math.min(10, teamHistory.getRekabetGecmisi().size());
-					int sonMaclarHomeCount = Math.min(10, teamHistory.getSonMaclar(1).size());
-					int sonMaclarAwayCount = Math.min(10, teamHistory.getSonMaclar(2).size());
+					int rekabetMacCount = teamHistory.getRekabetGecmisi().size();
+					int sonMaclarHomeCount = teamHistory.getSonMaclar(1).size();
+					int sonMaclarAwayCount = teamHistory.getSonMaclar(2).size();
 
 					if (sonMaclarHomeCount > 0 && sonMaclarAwayCount > 0) { // herhangi biri NaN ise bu tabloyu ekleme
 						// stats eklendi
@@ -309,11 +309,7 @@ public class HtmlReportGenerator {
 						html.append("<h5>Rekabet Geçmişi (").append(teamHistory.getRekabetGecmisi().size())
 								.append(" maç):</h5>");
 
-						int count = 0;
 						for (MatchResult matchResult : teamHistory.getRekabetGecmisi()) {
-							if (count >= 10)
-								break; // İlk 10 maçı göster
-
 							String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
 							html.append("<div class='match-result ").append(resultClass).append("'>");
 							html.append(matchResult.getMatchDate()).append(" - ");
@@ -322,12 +318,6 @@ public class HtmlReportGenerator {
 							html.append(matchResult.getAwayTeam());
 							html.append(" [").append(matchResult.getTournament()).append("]");
 							html.append("</div>");
-							count++;
-						}
-
-						if (teamHistory.getRekabetGecmisi().size() > 10) {
-							html.append("<p><em>... ve ").append(teamHistory.getRekabetGecmisi().size() - 10)
-									.append(" maç daha</em></p>");
 						}
 						html.append("</div>");
 					}
@@ -338,11 +328,7 @@ public class HtmlReportGenerator {
 						html.append("<h5>Ev Sahibi Son Maçlar (").append(teamHistory.getSonMaclar(1).size())
 								.append(" maç):</h5>");
 
-						int count = 0;
 						for (MatchResult matchResult : teamHistory.getSonMaclar(1)) {
-							if (count >= 10)
-								break; // İlk 10 maçı göster
-
 							String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
 							html.append("<div class='match-result ").append(resultClass).append("'>");
 							html.append(matchResult.getMatchDate()).append(" - ");
@@ -350,12 +336,6 @@ public class HtmlReportGenerator {
 							html.append(matchResult.getScoreString()).append(" ");
 							html.append(matchResult.getAwayTeam());
 							html.append("</div>");
-							count++;
-						}
-
-						if (teamHistory.getSonMaclar(1).size() > 10) {
-							html.append("<p><em>... ve ").append(teamHistory.getSonMaclar(2).size() - 10)
-									.append(" maç daha</em></p>");
 						}
 						html.append("</div>");
 					}
@@ -366,11 +346,7 @@ public class HtmlReportGenerator {
 						html.append("<h5>Deplasman Son Maçlar (").append(teamHistory.getSonMaclar(2).size())
 								.append(" maç):</h5>");
 
-						int count = 0;
 						for (MatchResult matchResult : teamHistory.getSonMaclar(2)) {
-							if (count >= 10)
-								break; // İlk 10 maçı göster
-
 							String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
 							html.append("<div class='match-result ").append(resultClass).append("'>");
 							html.append(matchResult.getMatchDate()).append(" - ");
@@ -378,12 +354,6 @@ public class HtmlReportGenerator {
 							html.append(matchResult.getScoreString()).append(" ");
 							html.append(matchResult.getAwayTeam());
 							html.append("</div>");
-							count++;
-						}
-
-						if (teamHistory.getSonMaclar(2).size() > 10) {
-							html.append("<p><em>... ve ").append(teamHistory.getSonMaclar(2).size() - 10)
-									.append(" maç daha</em></p>");
 						}
 						html.append("</div>");
 					}

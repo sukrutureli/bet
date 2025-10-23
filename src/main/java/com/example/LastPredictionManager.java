@@ -97,8 +97,10 @@ public class LastPredictionManager {
 			percentageH = h.getVar() * 100;
 			percentagePR = pr.getpBttsYes() * 100;
 			if (matchInfo.getOdds().getBttsYes() > 0.0) {
-				if (percentageH >= 60 && percentagePR >= 65 && isScoreOk(pr.getScoreline(), "Var")) {
-					return "Var";
+				if (matchInfo.getOdds().getMs1() > 1.5 && matchInfo.getOdds().getMs2() > 1.5) {
+					if (percentageH >= 60 && percentagePR >= 65 && isScoreOk(pr.getScoreline(), "Var")) {
+						return "Var";
+					}
 				}
 			}
 		} else if (tahmin.equals("Yok")) {

@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.model.TeamStats;
-
 public class TeamMatchHistory {
 	private String teamName;
 	private String teamEv;
@@ -101,17 +99,12 @@ public class TeamMatchHistory {
 		return (double) getWinCount() / getTotalMatches() * 100;
 	}
 
-	public int getTotalMatchesIn10() {
-		return Math.min(10, rekabetGecmisi.size()) + Math.min(10, sonMaclarHome.size())
-				+ Math.min(10, sonMaclarAway.size());
-	}
-
 	public double getMs1() {
 		double ms1Rekabet = 0;
 		double ms1SonH = 0;
 		double ms1SonA = 0;
 
-		for (int i = 0; i < Math.min(10, rekabetGecmisi.size()); i++) {
+		for (int i = 0; i < rekabetGecmisi.size(); i++) {
 			if (rekabetGecmisi.get(i).getHomeTeam().contains(teamEv) && rekabetGecmisi.get(i).getResult() == "H") {
 				ms1Rekabet++;
 			} else if (rekabetGecmisi.get(i).getAwayTeam().contains(teamEv)
@@ -120,7 +113,7 @@ public class TeamMatchHistory {
 			}
 		}
 
-		for (int i = 0; i < Math.min(10, sonMaclarHome.size()); i++) {
+		for (int i = 0; i < sonMaclarHome.size(); i++) {
 			if (sonMaclarHome.get(i).getHomeTeam().contains(teamEv) && sonMaclarHome.get(i).getResult() == "H") {
 				ms1SonH++;
 			} else if (sonMaclarHome.get(i).getAwayTeam().contains(teamEv) && sonMaclarHome.get(i).getResult() == "A") {
@@ -128,7 +121,7 @@ public class TeamMatchHistory {
 			}
 		}
 
-		for (int i = 0; i < Math.min(10, sonMaclarAway.size()); i++) {
+		for (int i = 0; i < sonMaclarAway.size(); i++) {
 			if (sonMaclarAway.get(i).getHomeTeam().contains(teamDep) && sonMaclarAway.get(i).getResult() == "A") {
 				ms1SonA++;
 			} else if (sonMaclarAway.get(i).getAwayTeam().contains(teamDep)
@@ -138,13 +131,13 @@ public class TeamMatchHistory {
 		}
 
 		if (isInfoEnough()) {
-			double result = (ms1Rekabet / Math.min(10, rekabetGecmisi.size())) * 0.4;
-			result += ((ms1SonH / Math.min(10, sonMaclarHome.size())) * 0.3);
-			result += ((ms1SonA / Math.min(10, sonMaclarAway.size())) * 0.3);
+			double result = (ms1Rekabet / rekabetGecmisi.size()) * 0.4;
+			result += ((ms1SonH / sonMaclarHome.size()) * 0.3);
+			result += ((ms1SonA / sonMaclarAway.size()) * 0.3);
 
 			return result;
 		} else {
-			return (ms1Rekabet + ms1SonH + ms1SonA) / getTotalMatchesIn10();
+			return (ms1Rekabet + ms1SonH + ms1SonA) / getTotalMatches();
 		}
 	}
 
@@ -153,7 +146,7 @@ public class TeamMatchHistory {
 		double ms2SonH = 0;
 		double ms2SonA = 0;
 		
-		for (int i = 0; i < Math.min(10, rekabetGecmisi.size()); i++) {
+		for (int i = 0; i < rekabetGecmisi.size(); i++) {
 			if (rekabetGecmisi.get(i).getHomeTeam().contains(teamDep) && rekabetGecmisi.get(i).getResult() == "H") {
 				ms2Rekabet++;
 			} else if (rekabetGecmisi.get(i).getAwayTeam().contains(teamDep)
@@ -162,7 +155,7 @@ public class TeamMatchHistory {
 			}
 		}
 
-		for (int i = 0; i < Math.min(10, sonMaclarHome.size()); i++) {
+		for (int i = 0; i < sonMaclarHome.size(); i++) {
 			if (sonMaclarHome.get(i).getHomeTeam().contains(teamEv) && sonMaclarHome.get(i).getResult() == "A") {
 				ms2SonH++;
 			} else if (sonMaclarHome.get(i).getAwayTeam().contains(teamEv) && sonMaclarHome.get(i).getResult() == "H") {
@@ -170,7 +163,7 @@ public class TeamMatchHistory {
 			}
 		}
 
-		for (int i = 0; i < Math.min(10, sonMaclarAway.size()); i++) {
+		for (int i = 0; i < sonMaclarAway.size(); i++) {
 			if (sonMaclarAway.get(i).getHomeTeam().contains(teamDep) && sonMaclarAway.get(i).getResult() == "H") {
 				ms2SonA++;
 			} else if (sonMaclarAway.get(i).getAwayTeam().contains(teamDep)
@@ -180,13 +173,13 @@ public class TeamMatchHistory {
 		}
 
 		if (isInfoEnough()) {
-			double result = (ms2Rekabet / Math.min(10, rekabetGecmisi.size())) * 0.4;
-			result += ((ms2SonH / Math.min(10, sonMaclarHome.size())) * 0.3);
-			result += ((ms2SonA / Math.min(10, sonMaclarAway.size())) * 0.3);
+			double result = (ms2Rekabet / rekabetGecmisi.size()) * 0.4;
+			result += ((ms2SonH / sonMaclarHome.size()) * 0.3);
+			result += ((ms2SonA / sonMaclarAway.size()) * 0.3);
 
 			return result;
 		} else {
-			return (ms2Rekabet + ms2SonH + ms2SonA) / getTotalMatchesIn10();
+			return (ms2Rekabet + ms2SonH + ms2SonA) / getTotalMatches();
 		}
 	}
 
@@ -199,32 +192,32 @@ public class TeamMatchHistory {
 		double varSonH = 0;
 		double varSonA = 0;
 
-		for (int i = 0; i < Math.min(10, rekabetGecmisi.size()); i++) {
+		for (int i = 0; i < rekabetGecmisi.size(); i++) {
 			if (rekabetGecmisi.get(i).getHomeScore() > 0 && rekabetGecmisi.get(i).getAwayScore() > 0) {
 				varRekabet++;
 			}
 		}
 
-		for (int i = 0; i < Math.min(10, sonMaclarHome.size()); i++) {
+		for (int i = 0; i < sonMaclarHome.size(); i++) {
 			if (sonMaclarHome.get(i).getHomeScore() > 0 && sonMaclarHome.get(i).getAwayScore() > 0) {
 				varSonH++;
 			}
 		}
 
-		for (int i = 0; i < Math.min(10, sonMaclarAway.size()); i++) {
+		for (int i = 0; i < sonMaclarAway.size(); i++) {
 			if (sonMaclarAway.get(i).getHomeScore() > 0 && sonMaclarAway.get(i).getAwayScore() > 0) {
 				varSonA++;
 			}
 		}
 
 		if (isInfoEnough()) {
-			double result = (varRekabet / Math.min(10, rekabetGecmisi.size())) * 0.4;
-			result += ((varSonH / Math.min(10, sonMaclarHome.size())) * 0.3);
-			result += ((varSonA / Math.min(10, sonMaclarAway.size())) * 0.3);
+			double result = (varRekabet / rekabetGecmisi.size()) * 0.4;
+			result += ((varSonH / sonMaclarHome.size()) * 0.3);
+			result += ((varSonA / sonMaclarAway.size()) * 0.3);
 
 			return result;
 		} else {
-			return (varRekabet + varSonH + varSonA) / getTotalMatchesIn10();
+			return (varRekabet + varSonH + varSonA) / getTotalMatches();
 		}
 	}
 
@@ -237,32 +230,32 @@ public class TeamMatchHistory {
 		double ustSonH = 0;
 		double ustSonA = 0;
 
-		for (int i = 0; i < Math.min(10, rekabetGecmisi.size()); i++) {
+		for (int i = 0; i < rekabetGecmisi.size(); i++) {
 			if ((rekabetGecmisi.get(i).getHomeScore() + rekabetGecmisi.get(i).getAwayScore()) > 2) {
 				ustRekabet++;
 			}
 		}
 
-		for (int i = 0; i < Math.min(10, sonMaclarHome.size()); i++) {
+		for (int i = 0; i < sonMaclarHome.size(); i++) {
 			if ((sonMaclarHome.get(i).getHomeScore() + sonMaclarHome.get(i).getAwayScore()) > 2) {
 				ustSonH++;
 			}
 		}
 
-		for (int i = 0; i < Math.min(10, sonMaclarAway.size()); i++) {
+		for (int i = 0; i < sonMaclarAway.size(); i++) {
 			if ((sonMaclarAway.get(i).getHomeScore() + sonMaclarAway.get(i).getAwayScore()) > 2) {
 				ustSonA++;
 			}
 		}
 
 		if (isInfoEnough()) {
-			double result = (ustRekabet / Math.min(10, rekabetGecmisi.size())) * 0.4;
-			result += ((ustSonH / Math.min(10, sonMaclarHome.size())) * 0.3);
-			result += ((ustSonA / Math.min(10, sonMaclarAway.size())) * 0.3);
+			double result = (ustRekabet / rekabetGecmisi.size()) * 0.4;
+			result += ((ustSonH / sonMaclarHome.size()) * 0.3);
+			result += ((ustSonA / sonMaclarAway.size()) * 0.3);
 
 			return result;
 		} else {
-			return (ustRekabet + ustSonH + ustSonA) / getTotalMatchesIn10();
+			return (ustRekabet + ustSonH + ustSonA) / getTotalMatches();
 		}
 	}
 
@@ -363,7 +356,7 @@ public class TeamMatchHistory {
 	public double[] getGFandGA(List<MatchResult> macResult, String teamName) {
 		double[] goals = { 0.0, 0.0 };
 
-		int size = Math.min(10, macResult.size());
+		int size = macResult.size();
 
 		for (int i = 0; i < size; i++) {
 			if (macResult.get(i).getHomeTeam().contains(teamName)) {
