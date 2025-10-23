@@ -30,17 +30,8 @@ public class MatchScraper {
 	private void setupDriver() {
 		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 		ChromeOptions options = new ChromeOptions();
-
-		options.addArguments("--headless");
-		options.addArguments("--no-sandbox");
-		options.addArguments("--disable-dev-shm-usage");
-		options.addArguments("--disable-gpu");
-		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--disable-site-isolation-trials");
-		options.addArguments("--disable-features=IsolateOrigins,site-per-process");
-		options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-				+ "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.5993.117 Safari/537.36");
-
+		options.addArguments("--headless=new", "--no-sandbox", "--disable-dev-shm-usage", "--disable-gpu",
+				"--window-size=1920,1080", "--disable-blink-features=AutomationControlled");
 		driver = new ChromeDriver(options);
 		js = (JavascriptExecutor) driver;
 		wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -56,7 +47,6 @@ public class MatchScraper {
 			String url = "https://www.nesine.com/iddaa?et=1&le=2&dt=" + date;
 
 			driver.manage().deleteAllCookies();
-			js.executeScript("window.localStorage.clear();");
 
 			driver.get(url);
 			PageWaitUtils.safeWaitForLoad(driver, 25);
