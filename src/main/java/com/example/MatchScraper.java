@@ -49,8 +49,8 @@ public class MatchScraper {
 			PageWaitUtils.safeWaitForLoad(driver, 20);
 			scrollToEnd();
 
-			List<WebElement> events = driver.findElements(By.cssSelector("div.odd-col.event-list.pre-event"));
-			System.out.println("Final element sayısı: " + events.size());
+	        List<WebElement> events = driver.findElements(By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']"));
+	        System.out.println("Final element sayısı: " + events.size());
 
 			for (int i = 0; i < events.size(); i++) {
 				WebElement e = events.get(i);
@@ -78,120 +78,98 @@ public class MatchScraper {
 	}
 
 	private MatchInfo extractMatchInfo(WebElement event, int index) {
-		try {
-			js.executeScript("arguments[0].scrollIntoView({block:'center'});", event);
-			Thread.sleep(100);
+	    try {
+	        js.executeScript("arguments[0].scrollIntoView({block:'center'});", event);
+	        Thread.sleep(100);
 
-			String name = "?";
-			String url = null;
+	        // ⚽ Maç ismi ve istatistik URL’si
+	        WebElement link = event.findElement(By.cssSelector("a[data-test-id='matchName']"));
+	        String name = link.getText().trim();
+	        String url = link.getAttribute("href");
 
-			List<WebElement> nameLinks = event.findElements(By.cssSelector("div.name a"));
-			if (!nameLinks.isEmpty()) {
-				name = nameLinks.get(0).getText().trim();
-				url = nameLinks.get(0).getAttribute("href");
-			}
+	        // 🕐 Maç saati
+	        String time = extractMatchTime(event);
 
-			if (url == null) {
-				for (WebElement a : event.findElements(By.tagName("a"))) {
-					String href = a.getAttribute("href");
-					if (href != null && href.contains("istatistik.nesine.com")) {
-						url = href;
-						break;
-					}
-				}
-			}
+	        // 🎯 Oran bilgileri
+	        Odds odds = extractOdds(event);
 
-			String time = extractMatchTime(event);
-			Odds odds = extractOdds(event);
-			return new MatchInfo(name, time, url, odds, index);
-		} catch (Exception e) {
-			System.out.println("extractMatchInfo hata: " + e.getMessage());
-			return null;
-		}
+	        return new MatchInfo(name, time, url, odds, index);
+	    } catch (Exception e) {
+	        System.out.println("extractMatchInfo hata: " + e.getMessage());
+	        return null;
+	    }
 	}
 
 	private String extractMatchTime(WebElement e) {
-		try {
-			List<WebElement> spans = e.findElements(By.cssSelector("div.time span"));
-			return spans.isEmpty() ? "?" : spans.get(0).getText().trim();
-		} catch (Exception ex) {
-			return "?";
-		}
-	}
-
-	private String extractOddFromCell(WebElement cell) {
-		try {
-			// Önce <a class="odd"> var mı bak
-			List<WebElement> link = cell.findElements(By.cssSelector("a.odd"));
-			if (!link.isEmpty()) {
-				return safeText(link.get(0));
-			}
-
-			// Eğer <a> yoksa <span class="odd"> kontrol et
-			List<WebElement> span = cell.findElements(By.cssSelector("span.odd"));
-			if (!span.isEmpty()) {
-				return safeText(span.get(0));
-			}
-
-			// Hiçbiri yoksa "-"
-			return "-";
-		} catch (Exception e) {
-			return "-";
-		}
+	    try {
+	        WebElement timeEl = e.findElement(By.cssSelector("span[data-testid^='time']"));
+	        return timeEl.getText().trim();
+	    } catch (Exception ex) {
+	        return "?";
+	    }
 	}
 
 	private Odds extractOdds(WebElement event) {
-		String[] o = { "-", "-", "-", "-", "-", "-", "-" };
-		int mbs = -1;
+	    try {
+	        // 🧩 data-testid değerlerinden doğrudan çekiyoruz
+	        String ms1 = getOdd(event, "odd_Maç Sonucu_1");
+	        String ms0 = getOdd(event, "odd_Maç Sonucu_X");
+	        String ms2 = getOdd(event, "odd_Maç Sonucu_2");
 
-		try {
-			List<WebElement> mbsElements = event.findElements(By.cssSelector(".mbs-box-desktop"));
-			if (!mbsElements.isEmpty()) {
-				String classAttr = mbsElements.get(0).getAttribute("class");
-				if (classAttr.contains("mbs")) {
-					String num = classAttr.replaceAll(".*mbs(\\d+)-desktop.*", "$1");
-					try {
-						mbs = Integer.parseInt(num);
-					} catch (NumberFormatException ignore) {
-					}
-				}
-			}
+	        String alt = getOdd(event, "odd_2,5 Gol_Alt");
+	        String ust = getOdd(event, "odd_2,5 Gol_Üst");
 
-			// 1X2 oranları
-			List<WebElement> main = event.findElements(By.cssSelector("dd.col-03.event-row .cell"));
-			for (int i = 0; i < main.size() && i < 3; i++) {
-				o[i] = extractOddFromCell(main.get(i));
-			}
+	        String var = getOdd(event, "odd_Karş. Gol_Var");
+	        String yok = getOdd(event, "odd_Karş. Gol_Yok");
 
-			// Alt/Üst ve Var/Yok
-			List<WebElement> extra = event.findElements(By.cssSelector("dd.col-02.event-row .cell"));
-			for (int i = 0; i < extra.size() && i < 4; i++) {
-				o[3 + i] = extractOddFromCell(extra.get(i));
-			}
+	        int mbs = getMbs(event);
 
-		} catch (Exception e) {
-			System.out.println("Oran ana hatası: " + e.getMessage());
-		}
+	        return new Odds(
+	            toDouble(ms1),
+	            toDouble(ms0),
+	            toDouble(ms2),
+	            toDouble(ust),
+	            toDouble(alt),
+	            toDouble(var),
+	            toDouble(yok),
+	            mbs
+	        );
 
-		return new Odds(toDouble(o[0]), // 1
-				toDouble(o[1]), // X
-				toDouble(o[2]), // 2
-				toDouble(o[4]), // Üst
-				toDouble(o[3]), // Alt
-				toDouble(o[5]), // Var
-				toDouble(o[6]), // Yok
-				mbs);
+	    } catch (Exception e) {
+	        System.out.println("extractOdds hata: " + e.getMessage());
+	        return new Odds(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1);
+	    }
+	}
+
+	private String getOdd(WebElement event, String testId) {
+	    try {
+	        WebElement el = event.findElement(By.cssSelector("button[data-testid='" + testId + "']"));
+	        return el.getText().trim();
+	    } catch (Exception e) {
+	        return "-";
+	    }
+	}
+
+	private int getMbs(WebElement event) {
+	    try {
+	        WebElement mbsEl = event.findElement(By.cssSelector("div[data-test-id='event_mbs'] span"));
+	        String text = mbsEl.getText().trim();
+	        return Integer.parseInt(text);
+	    } catch (Exception e) {
+	        return -1;
+	    }
 	}
 
 	private double toDouble(String s) {
-		try {
-			if (s == null || s.equals("-") || s.isEmpty())
-				return 0.0;
-			return Double.parseDouble(s.replace(",", "."));
-		} catch (Exception e) {
-			return 0.0;
-		}
+	    try {
+	        if (s == null || s.equals("-") || s.isEmpty())
+	            return 0.0;
+	        return Double.parseDouble(s.replace(",", "."));
+	    } catch (Exception e) {
+	        return 0.0;
+	    }
 	}
+
 
 	private String safeText(WebElement el) {
 		try {
