@@ -43,75 +43,69 @@ public class MatchScraper {
 	// ANA SAYFA MAÇLARINI ÇEK
 	// =============================================================
 	public List<MatchInfo> fetchMatches() {
-	    List<MatchInfo> list = new ArrayList<>();
-	    try {
-	        String date = LocalDate.now(ZoneId.of("Europe/Istanbul"))
-	                .format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-	        String url = "https://www.nesine.com/iddaa?et=1&le=2&dt=" + date;
+		List<MatchInfo> list = new ArrayList<>();
+		try {
+			String date = LocalDate.now(ZoneId.of("Europe/Istanbul")).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+			String url = "https://www.nesine.com/iddaa?et=1&le=2&dt=" + date;
 
-	        driver.manage().deleteAllCookies();
-	        driver.get(url);
-	        PageWaitUtils.safeWaitForLoad(driver, 25);
+			driver.manage().deleteAllCookies();
+			driver.get(url);
+			PageWaitUtils.safeWaitForLoad(driver, 25);
 
-	        // Artık string verileri toplayan fonksiyon
-	        List<MatchInfo> matches = scrollAndCollectMatchData();
-	        System.out.println("✅ Toplam benzersiz maç: " + matches.size());
+			// Artık string verileri toplayan fonksiyon
+			list = scrollAndCollectMatchData();
+			System.out.println("✅ Toplam benzersiz maç: " + list.size());
 
-	        int index = 0;
-	        for (MatchInfo data : matches) {
-	            try {
-	                data.setIndex(index++);
-	                list.add(data);
-	            } catch (Exception ignore) {
-	            }
-	        }
+			int index = 0;
+			for (MatchInfo data : list) {
+				data.setIndex(index++);
+			}
 
-	    } catch (Exception e) {
-	        System.out.println("fetchMatches hata: " + e.getMessage());
-	    }
-	    return list;
+		} catch (Exception e) {
+			System.out.println("fetchMatches hata: " + e.getMessage());
+		}
+		return list;
 	}
 
 	/**
 	 * WebElement tutmadan scroll yaparak maç isimlerini ve URL’lerini toplar.
 	 */
 	private List<MatchInfo> scrollAndCollectMatchData() throws InterruptedException {
-	    By eventSelector = By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']");
-	    Set<String> seenNames = new HashSet<>();
-	    List<MatchInfo> collected = new ArrayList<>();
+		By eventSelector = By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']");
+		Set<String> seenNames = new HashSet<>();
+		List<MatchInfo> collected = new ArrayList<>();
 
-	    int stable = 0;
-	    int prevCount = 0;
+		int stable = 0;
+		int prevCount = 0;
 
-	    for (int i = 0; i < 70 && stable < 5; i++) {
-	        js.executeScript("window.scrollBy(0, 2000)");
-	        Thread.sleep(800);
+		for (int i = 0; i < 70 && stable < 5; i++) {
+			js.executeScript("window.scrollBy(0, 2000)");
+			Thread.sleep(800);
 
-	        List<WebElement> visible = driver.findElements(eventSelector);
-	        for (WebElement el : visible) {
-	            try {
-	                String name = el.findElement(By.cssSelector("a[data-test-id='matchName']")).getText().trim();
-	                if (!seenNames.contains(name)) {
-	                    seenNames.add(name);
+			List<WebElement> visible = driver.findElements(eventSelector);
+			for (WebElement el : visible) {
+				try {
+					String name = el.findElement(By.cssSelector("a[data-test-id='matchName']")).getText().trim();
+					if (!seenNames.contains(name)) {
+						seenNames.add(name);
 
-	                    collected.add(extractMatchInfo(el, 0));
-	                }
-	            } catch (Exception ignore) {
-	            }
-	        }
+						collected.add(extractMatchInfo(el, 0));
+					}
+				} catch (Exception ignore) {
+				}
+			}
 
-	        if (seenNames.size() == prevCount)
-	            stable++;
-	        else
-	            stable = 0;
+			if (seenNames.size() == prevCount)
+				stable++;
+			else
+				stable = 0;
 
-	        prevCount = seenNames.size();
-	    }
+			prevCount = seenNames.size();
+		}
 
-	    System.out.println("🧩 Toplanan benzersiz maç: " + seenNames.size());
-	    return collected;
+		System.out.println("🧩 Toplanan benzersiz maç: " + seenNames.size());
+		return collected;
 	}
-
 
 	private MatchInfo extractMatchInfo(WebElement event, int index) {
 		try {
