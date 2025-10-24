@@ -47,20 +47,20 @@ public class MatchScraper {
 			String url = "https://www.nesine.com/iddaa?et=1&le=1&dt=" + date;
 
 			driver.manage().deleteAllCookies();
-
 			driver.get(url);
 			PageWaitUtils.safeWaitForLoad(driver, 25);
 
-			// Dinamik scroll
+			// 🧭 yeni scroll sistemi
 			scrollToEnd();
 
-			// Artık tüm maçlar yüklendi
-			wait.until(ExpectedConditions
-					.presenceOfAllElementsLocatedBy(By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']")));
+			// yeni DOM için selector güncellendi
+			By eventSelector = By
+					.cssSelector("div[data-test-id^='r_'][data-sport-id='1']:not([data-test-is-live='true'])");
 
-			Thread.sleep(1000); // render beklemesi
+			wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(eventSelector));
+			Thread.sleep(1000); // render tamamlanması için kısa bekleme
 
-			List<WebElement> events = driver.findElements(By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']"));
+			List<WebElement> events = driver.findElements(eventSelector);
 			System.out.println("Toplam maç sayısı: " + events.size());
 
 			for (int i = 0; i < events.size(); i++) {
@@ -77,53 +77,59 @@ public class MatchScraper {
 	}
 
 	private void scrollToEnd() throws InterruptedException {
-	    int stable = 0;
-	    int prev = -1;
+		int prevCount = 0;
+		int stableCount = 0;
 
-	    // önce hızlıca alta inelim
-	    for (int i = 0; i < 8; i++) {
-	        js.executeScript("window.scrollBy(0, 2000)");
-	        Thread.sleep(1000);
-	    }
+		// 🔽 yavaş yavaş aşağı in → React virtual scroll'u tetikle
+		for (int i = 0; i < 50; i++) {
+			js.executeScript("window.scrollBy(0, 1500)");
+			Thread.sleep(700);
 
-	    // ardından stabilize olana kadar devam edelim
-	    while (stable < 3) {
-	        List<WebElement> events = driver.findElements(By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']"));
-	        int size = events.size();
+			int currentCount = driver.findElements(By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']")).size();
 
-	        js.executeScript("window.scrollBy(0, 2000)");
-	        Thread.sleep(1000);
+			if (currentCount == prevCount)
+				stableCount++;
+			else
+				stableCount = 0;
 
-	        if (size == prev)
-	            stable++;
-	        else
-	            stable = 0;
+			prevCount = currentCount;
 
-	        prev = size;
-	    }
+			// 3 kez aynı sayıda maç görünürse yükleme bitmiştir
+			if (stableCount >= 3)
+				break;
+		}
 
-	    // 🔄 şimdi yukarıya da kaydır ki baştaki maçlar da DOM’a girsin
-	    for (int i = 0; i < 8; i++) {
-	        js.executeScript("window.scrollBy(0, -2000)");
-	        Thread.sleep(1000);
-	    }
+		// 🔁 baştaki maçların DOM'a girmesi için yukarı-aşağı gezdir
+		for (int i = 0; i < 4; i++) {
+			js.executeScript("window.scrollBy(0, -2000)");
+			Thread.sleep(500);
+			js.executeScript("window.scrollBy(0, 2000)");
+			Thread.sleep(500);
+		}
+
+		// 🧠 React render tetikleyicileri
+		js.executeScript("window.dispatchEvent(new Event('scroll'));");
+		js.executeScript("window.dispatchEvent(new Event('resize'));");
+
+		// 🔝 en başa dön — ilk satırları da DOM’a al
+		js.executeScript("window.scrollTo(0, 0)");
+		Thread.sleep(1500);
 	}
-
 
 	private MatchInfo extractMatchInfo(WebElement event, int index) {
 		try {
 			js.executeScript("arguments[0].scrollIntoView({block:'center'});", event);
 			Thread.sleep(100);
 
-			// ⚽ Maç ismi ve istatistik URL’si
+			// ⚽ Maç ismi ve URL
 			WebElement link = event.findElement(By.cssSelector("a[data-test-id='matchName']"));
 			String name = link.getText().trim();
 			String url = link.getAttribute("href");
 
-			// 🕐 Maç saati
+			// 🕒 Maç saati (eski + yeni selector destekli)
 			String time = extractMatchTime(event);
 
-			// 🎯 Oran bilgileri
+			// 🎯 Oranlar
 			Odds odds = extractOdds(event);
 
 			return new MatchInfo(name, time, url, odds, index);
@@ -135,8 +141,11 @@ public class MatchScraper {
 
 	private String extractMatchTime(WebElement e) {
 		try {
-			WebElement timeEl = e.findElement(By.cssSelector("span[data-testid^='time']"));
-			return timeEl.getText().trim();
+			try {
+				return e.findElement(By.cssSelector("span[data-testid^='time']")).getText().trim();
+			} catch (Exception ignore) {
+				return e.findElement(By.cssSelector("span[class*='time']")).getText().trim();
+			}
 		} catch (Exception ex) {
 			return "?";
 		}
