@@ -14,8 +14,10 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class MatchScraper {
 
@@ -50,22 +52,13 @@ public class MatchScraper {
 			driver.get(url);
 			PageWaitUtils.safeWaitForLoad(driver, 25);
 
-			// 🧭 yeni scroll sistemi
-			scrollToEnd();
+			// Maçları kümülatif olarak topla
+			List<WebElement> allEvents = scrollAndCollectAllMatches();
+			System.out.println("Toplam benzersiz maç: " + allEvents.size());
 
-			// yeni DOM için selector güncellendi
-			By eventSelector = By
-					.cssSelector("div[data-test-id^='r_'][data-sport-id='1']:not([data-test-is-live='true'])");
-
-			wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(eventSelector));
-			Thread.sleep(1000); // render tamamlanması için kısa bekleme
-
-			List<WebElement> events = driver.findElements(eventSelector);
-			System.out.println("Toplam maç sayısı: " + events.size());
-
-			for (int i = 0; i < events.size(); i++) {
-				WebElement e = events.get(i);
-				MatchInfo info = extractMatchInfo(e, i);
+			int index = 0;
+			for (WebElement e : allEvents) {
+				MatchInfo info = extractMatchInfo(e, index++);
 				if (info != null)
 					list.add(info);
 			}
@@ -76,44 +69,45 @@ public class MatchScraper {
 		return list;
 	}
 
-	private void scrollToEnd() throws InterruptedException {
-		int prevCount = 0;
-		int stableCount = 0;
+	/**
+	 * React virtual scroll sisteminde her görünür maç DOM'dan silinebilir. Bu
+	 * yüzden her scroll adımında görünenleri toplayıp benzersiz set oluşturuyoruz.
+	 */
+	private List<WebElement> scrollAndCollectAllMatches() throws InterruptedException {
+		By eventSelector = By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']");
+		Set<String> seenNames = new HashSet<>();
+		List<WebElement> collected = new ArrayList<>();
 
-		// 🔽 yavaş yavaş aşağı in → React virtual scroll'u tetikle
-		for (int i = 0; i < 50; i++) {
-			js.executeScript("window.scrollBy(0, 1500)");
-			Thread.sleep(700);
+		int stable = 0;
+		int prevSize = 0;
 
-			int currentCount = driver.findElements(By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']")).size();
-
-			if (currentCount == prevCount)
-				stableCount++;
-			else
-				stableCount = 0;
-
-			prevCount = currentCount;
-
-			// 3 kez aynı sayıda maç görünürse yükleme bitmiştir
-			if (stableCount >= 3)
-				break;
-		}
-
-		// 🔁 baştaki maçların DOM'a girmesi için yukarı-aşağı gezdir
-		for (int i = 0; i < 4; i++) {
-			js.executeScript("window.scrollBy(0, -2000)");
-			Thread.sleep(500);
+		for (int i = 0; i < 60 && stable < 5; i++) {
 			js.executeScript("window.scrollBy(0, 2000)");
-			Thread.sleep(500);
+			Thread.sleep(800);
+
+			List<WebElement> visible = driver.findElements(eventSelector);
+
+			for (WebElement el : visible) {
+				try {
+					String name = el.findElement(By.cssSelector("a[data-test-id='matchName']")).getText().trim();
+					if (!seenNames.contains(name)) {
+						seenNames.add(name);
+						collected.add(el);
+					}
+				} catch (Exception ignore) {
+				}
+			}
+
+			if (seenNames.size() == prevSize)
+				stable++;
+			else
+				stable = 0;
+
+			prevSize = seenNames.size();
 		}
 
-		// 🧠 React render tetikleyicileri
-		js.executeScript("window.dispatchEvent(new Event('scroll'));");
-		js.executeScript("window.dispatchEvent(new Event('resize'));");
-
-		// 🔝 en başa dön — ilk satırları da DOM’a al
-		js.executeScript("window.scrollTo(0, 0)");
-		Thread.sleep(1500);
+		System.out.println("🧩 Toplanan maç sayısı (benzersiz): " + seenNames.size());
+		return collected;
 	}
 
 	private MatchInfo extractMatchInfo(WebElement event, int index) {
