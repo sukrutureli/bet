@@ -43,72 +43,75 @@ public class MatchScraper {
 	// ANA SAYFA MAÇLARINI ÇEK
 	// =============================================================
 	public List<MatchInfo> fetchMatches() {
-		List<MatchInfo> list = new ArrayList<>();
-		try {
-			String date = LocalDate.now(ZoneId.of("Europe/Istanbul")).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-			String url = "https://www.nesine.com/iddaa?et=1&le=1&dt=" + date;
+	    List<MatchInfo> list = new ArrayList<>();
+	    try {
+	        String date = LocalDate.now(ZoneId.of("Europe/Istanbul"))
+	                .format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+	        String url = "https://www.nesine.com/iddaa?et=1&le=2&dt=" + date;
 
-			driver.manage().deleteAllCookies();
-			driver.get(url);
-			PageWaitUtils.safeWaitForLoad(driver, 25);
+	        driver.manage().deleteAllCookies();
+	        driver.get(url);
+	        PageWaitUtils.safeWaitForLoad(driver, 25);
 
-			// Maçları kümülatif olarak topla
-			List<WebElement> allEvents = scrollAndCollectAllMatches();
-			System.out.println("Toplam benzersiz maç: " + allEvents.size());
+	        // Artık string verileri toplayan fonksiyon
+	        List<MatchInfo> matches = scrollAndCollectMatchData();
+	        System.out.println("✅ Toplam benzersiz maç: " + matches.size());
 
-			int index = 0;
-			for (WebElement e : allEvents) {
-				MatchInfo info = extractMatchInfo(e, index++);
-				if (info != null)
-					list.add(info);
-			}
+	        int index = 0;
+	        for (MatchInfo data : matches) {
+	            try {
+	                data.setIndex(index++);
+	                list.add(data);
+	            } catch (Exception ignore) {
+	            }
+	        }
 
-		} catch (Exception e) {
-			System.out.println("fetchMatches hata: " + e.getMessage());
-		}
-		return list;
+	    } catch (Exception e) {
+	        System.out.println("fetchMatches hata: " + e.getMessage());
+	    }
+	    return list;
 	}
 
 	/**
-	 * React virtual scroll sisteminde her görünür maç DOM'dan silinebilir. Bu
-	 * yüzden her scroll adımında görünenleri toplayıp benzersiz set oluşturuyoruz.
+	 * WebElement tutmadan scroll yaparak maç isimlerini ve URL’lerini toplar.
 	 */
-	private List<WebElement> scrollAndCollectAllMatches() throws InterruptedException {
-		By eventSelector = By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']");
-		Set<String> seenNames = new HashSet<>();
-		List<WebElement> collected = new ArrayList<>();
+	private List<MatchInfo> scrollAndCollectMatchData() throws InterruptedException {
+	    By eventSelector = By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']");
+	    Set<String> seenNames = new HashSet<>();
+	    List<MatchInfo> collected = new ArrayList<>();
 
-		int stable = 0;
-		int prevSize = 0;
+	    int stable = 0;
+	    int prevCount = 0;
 
-		for (int i = 0; i < 60 && stable < 5; i++) {
-			js.executeScript("window.scrollBy(0, 2000)");
-			Thread.sleep(800);
+	    for (int i = 0; i < 70 && stable < 5; i++) {
+	        js.executeScript("window.scrollBy(0, 2000)");
+	        Thread.sleep(800);
 
-			List<WebElement> visible = driver.findElements(eventSelector);
+	        List<WebElement> visible = driver.findElements(eventSelector);
+	        for (WebElement el : visible) {
+	            try {
+	                String name = el.findElement(By.cssSelector("a[data-test-id='matchName']")).getText().trim();
+	                if (!seenNames.contains(name)) {
+	                    seenNames.add(name);
 
-			for (WebElement el : visible) {
-				try {
-					String name = el.findElement(By.cssSelector("a[data-test-id='matchName']")).getText().trim();
-					if (!seenNames.contains(name)) {
-						seenNames.add(name);
-						collected.add(el);
-					}
-				} catch (Exception ignore) {
-				}
-			}
+	                    collected.add(extractMatchInfo(el, 0));
+	                }
+	            } catch (Exception ignore) {
+	            }
+	        }
 
-			if (seenNames.size() == prevSize)
-				stable++;
-			else
-				stable = 0;
+	        if (seenNames.size() == prevCount)
+	            stable++;
+	        else
+	            stable = 0;
 
-			prevSize = seenNames.size();
-		}
+	        prevCount = seenNames.size();
+	    }
 
-		System.out.println("🧩 Toplanan maç sayısı (benzersiz): " + seenNames.size());
-		return collected;
+	    System.out.println("🧩 Toplanan benzersiz maç: " + seenNames.size());
+	    return collected;
 	}
+
 
 	private MatchInfo extractMatchInfo(WebElement event, int index) {
 		try {
