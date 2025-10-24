@@ -72,7 +72,7 @@ public class MatchScraper {
 	 */
 	private List<MatchInfo> scrollAndCollectMatchData() throws InterruptedException {
 		By eventSelector = By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']");
-		Set<String> seenNames = new HashSet<>();
+		List<String> seenNames = new ArrayList<>();
 		List<MatchInfo> collected = new ArrayList<>();
 
 		int stable = 0;
@@ -85,6 +85,9 @@ public class MatchScraper {
 			List<WebElement> visible = driver.findElements(eventSelector);
 			for (WebElement el : visible) {
 				try {
+					js.executeScript("arguments[0].scrollIntoView({block:'center'});", el);
+					Thread.sleep(100);
+					
 					String name = el.findElement(By.cssSelector("a[data-test-id='matchName']")).getText().trim();
 					if (!seenNames.contains(name)) {
 						seenNames.add(name);
