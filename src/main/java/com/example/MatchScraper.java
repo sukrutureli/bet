@@ -46,7 +46,7 @@ public class MatchScraper {
 		List<MatchInfo> list = new ArrayList<>();
 		try {
 			String date = LocalDate.now(ZoneId.of("Europe/Istanbul")).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-			String url = "https://www.nesine.com/iddaa?et=1&le=2&dt=" + date;
+			String url = "https://www.nesine.com/iddaa?et=1&le=1&dt=" + date;
 
 			driver.manage().deleteAllCookies();
 			driver.get(url);
@@ -79,8 +79,6 @@ public class MatchScraper {
 		int prevCount = 0;
 
 		for (int i = 0; i < 70 && stable < 5; i++) {
-			js.executeScript("window.scrollBy(0, 2000)");
-			Thread.sleep(800);
 
 			List<WebElement> visible = driver.findElements(eventSelector);
 			for (WebElement el : visible) {
@@ -104,6 +102,9 @@ public class MatchScraper {
 				stable = 0;
 
 			prevCount = seenNames.size();
+			
+			js.executeScript("window.scrollBy(0, 2000)");
+			Thread.sleep(800);
 		}
 
 		System.out.println("🧩 Toplanan benzersiz maç: " + seenNames.size());
