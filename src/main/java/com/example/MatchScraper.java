@@ -111,7 +111,7 @@ public class MatchScraper {
 						map.put("time", el.findElement(By.cssSelector("div.time span")).getText().trim());
 
 						// 🎯 Oranları yakala
-						List<WebElement> odds1x2 = el.findElements(By.cssSelector("dd.col-03.event-row .cell a.odd"));
+						List<WebElement> odds1x2 = el.findElements(By.cssSelector("dd.col-03.event-row .cell"));
 						if (odds1x2.size() >= 3) {
 							map.put("ms1", odds1x2.get(0).getText());
 							map.put("ms0", odds1x2.get(1).getText());
@@ -122,7 +122,7 @@ public class MatchScraper {
 							map.put("ms2", "-");
 						}
 
-						List<WebElement> altust = el.findElements(By.cssSelector("dd.col-02.event-row .cell a.odd"));
+						List<WebElement> altust = el.findElements(By.cssSelector("dd.col-02.event-row .cell"));
 						if (altust.size() >= 2) {
 							map.put("alt", altust.get(0).getText());
 							map.put("ust", altust.get(1).getText());
@@ -143,7 +143,7 @@ public class MatchScraper {
 
 						// Var / Yok
 						List<WebElement> varyok = el
-								.findElements(By.cssSelector("dd.col-03.event-row + dd.col-02.event-row .cell a.odd"));
+								.findElements(By.cssSelector("dd.col-03.event-row + dd.col-02.event-row .cell"));
 						if (varyok.size() >= 2) {
 							map.put("var", varyok.get(0).getText());
 							map.put("yok", varyok.get(1).getText());
