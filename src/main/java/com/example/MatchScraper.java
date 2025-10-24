@@ -80,18 +80,28 @@ public class MatchScraper {
 	}
 
 	private List<Map<String, String>> scrollAndCollectMatchData() throws InterruptedException {
-		By eventSelector = By.cssSelector("div[data-test-id^='r_'][data-sport-id='1']");
+		By eventSelector = By
+				.cssSelector("div[data-test-id^='r_'][data-sport-id='1'], div[data-test-id^='r_'][data-sportid='1']");
 		Set<String> seenNames = new HashSet<>();
 		List<Map<String, String>> collected = new ArrayList<>();
 
-		int stable = 0, prevCount = 0;
+		// 1️⃣ En az bir maç görünene kadar bekle
+		int waitTry = 0;
+		while (driver.findElements(eventSelector).isEmpty() && waitTry < 10) {
+			Thread.sleep(1000);
+			waitTry++;
+		}
+		System.out.println("⏳ İlk maçlar göründü (" + waitTry + "sn) sonra scroll başlıyor...");
 
-		for (int i = 0; i < 70 && stable < 5; i++) {
+		int stable = 0, prevCount = 0;
+		int minScroll = 12; // en az 12 defa kaydır
+
+		for (int i = 0; (i < 70 && stable < 5) || i < minScroll; i++) {
 			List<WebElement> visible = driver.findElements(eventSelector);
 			for (WebElement el : visible) {
 				try {
 					String name = el.findElement(By.cssSelector("a[data-test-id='matchName']")).getText().trim();
-					if (!seenNames.contains(name)) {
+					if (!seenNames.contains(name) && !name.isEmpty()) {
 						seenNames.add(name);
 
 						Map<String, String> data = new HashMap<>();
@@ -106,7 +116,7 @@ public class MatchScraper {
 						}
 						data.put("time", time);
 
-						// 🎯 oranlar
+						// oranlar
 						data.put("ms1", getOddText(el, "odd_Maç Sonucu_1"));
 						data.put("ms0", getOddText(el, "odd_Maç Sonucu_X"));
 						data.put("ms2", getOddText(el, "odd_Maç Sonucu_2"));
@@ -114,9 +124,7 @@ public class MatchScraper {
 						data.put("ust", getOddText(el, "odd_2,5 Gol_Üst"));
 						data.put("var", getOddText(el, "odd_Karş. Gol_Var"));
 						data.put("yok", getOddText(el, "odd_Karş. Gol_Yok"));
-
-						String mbs = getMbsText(el);
-						data.put("mbs", mbs);
+						data.put("mbs", getMbsText(el));
 
 						collected.add(data);
 					}
@@ -128,10 +136,10 @@ public class MatchScraper {
 				stable++;
 			else
 				stable = 0;
-
 			prevCount = seenNames.size();
-			js.executeScript("window.scrollBy(0, 2000)");
-			Thread.sleep(800);
+
+			js.executeScript("window.scrollBy(0, 2500)");
+			Thread.sleep(1000);
 		}
 
 		System.out.println("🧩 Toplanan benzersiz maç: " + seenNames.size());
