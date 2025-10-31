@@ -140,12 +140,16 @@ public class MatchScraper {
 
 	                    // ALT, ÜST
 	                    List<WebElement> altust = el.findElements(By.cssSelector("dd.col-02.event-row .cell"));
-	                    if (altust.size() >= 2) {
+	                    if (altust.size() >= 4) {
 	                        map.put("alt", altust.get(0).getText());
 	                        map.put("ust", altust.get(1).getText());
+	                        map.put("var", altust.get(2).getText());
+	                        map.put("yok", altust.get(3).getText());
 	                    } else {
 	                        map.put("alt", "-");
 	                        map.put("ust", "-");
+	                        map.put("var", "-");
+	                        map.put("yok", "-");
 	                    }
 
 	                    // MBS
@@ -156,16 +160,6 @@ public class MatchScraper {
 	                        map.put("mbs", mbsNum);
 	                    } catch (Exception ex) {
 	                        map.put("mbs", "-1");
-	                    }
-
-	                    // VAR, YOK
-	                    List<WebElement> varyok = el.findElements(By.cssSelector("dd.col-03.event-row + dd.col-02.event-row .cell"));
-	                    if (varyok.size() >= 2) {
-	                        map.put("var", varyok.get(0).getText());
-	                        map.put("yok", varyok.get(1).getText());
-	                    } else {
-	                        map.put("var", "-");
-	                        map.put("yok", "-");
 	                    }
 
 	                    collected.add(map);
