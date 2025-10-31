@@ -80,103 +80,123 @@ public class MatchScraper {
 	}
 
 	private List<Map<String, String>> scrollAndCollectMatchData() throws InterruptedException {
-		// ✅ Artık data-test-id yok → id^='r_' ve class event-list kullanılacak
-		By eventSelector = By.cssSelector("div[id^='r_'].event-list[data-sport-id='1']");
-		Set<String> seen = new HashSet<>();
-		List<Map<String, String>> collected = new ArrayList<>();
+	    By eventSelector = By.cssSelector("div[id^='r_'].event-list[data-sport-id='1']");
+	    Set<String> seen = new HashSet<>();
+	    List<Map<String, String>> collected = new ArrayList<>();
 
-		int stable = 0, prevCount = 0;
-		int minScroll = 12;
+	    int stable = 0, prevCount = 0;
+	    int maxScroll = 150; // Maksimum scroll iterasyonu
+	    int scrollAmount = 2000;
+	    
+	    // Sayfanın yüklenmesini bekle
+	    int waitTry = 0;
+	    while (driver.findElements(eventSelector).isEmpty() && waitTry < 15) {
+	        Thread.sleep(500);
+	        waitTry++;
+	    }
+	    System.out.println("⏳ İlk maçlar göründü (" + waitTry + "sn sonra) - scroll başlıyor...");
 
-		// Sayfanın yüklenmesini bekle
-		int waitTry = 0;
-		while (driver.findElements(eventSelector).isEmpty() && waitTry < 10) {
-			Thread.sleep(1000);
-			waitTry++;
-		}
-		System.out.println("⏳ İlk maçlar göründü (" + waitTry + "sn) sonra scroll başlıyor...");
+	    long startTime = System.currentTimeMillis();
+	    long maxWaitTime = 120000; // 2 dakika max
 
-		for (int i = 0; (i < 70 && stable < 5) || i < minScroll; i++) {
-			List<WebElement> matches = driver.findElements(eventSelector);
+	    for (int i = 0; i < maxScroll; i++) {
+	        // Timeout kontrolü
+	        if (System.currentTimeMillis() - startTime > maxWaitTime) {
+	            System.out.println("⏱️ Maksimum süre aşıldı, scroll sonlandırılıyor");
+	            break;
+	        }
 
-			for (WebElement el : matches) {
-				try {
-					String name = el.findElement(By.cssSelector("div.name a")).getText().trim();
-					if (!seen.contains(name) && !name.isEmpty()) {
-						seen.add(name);
+	        List<WebElement> matches = driver.findElements(eventSelector);
+	        
+	        // Tüm maçları işle
+	        for (WebElement el : matches) {
+	            try {
+	                String name = el.findElement(By.cssSelector("div.name a")).getText().trim();
+	                if (!seen.contains(name) && !name.isEmpty()) {
+	                    seen.add(name);
 
-						Map<String, String> map = new HashMap<>();
-						map.put("name", name);
-						
-						String href = el.findElement(By.cssSelector("div.name a")).getAttribute("href");
-						if (href == null || href.contains("javascript:void") || href.isEmpty()) {
-						    // canlı maç veya geçersiz link
-						    continue;
-						}
-						map.put("url", href);
+	                    Map<String, String> map = new HashMap<>();
+	                    map.put("name", name);
 
-						map.put("time", el.findElement(By.cssSelector("div.time span")).getText().trim());
+	                    String href = el.findElement(By.cssSelector("div.name a")).getAttribute("href");
+	                    if (href == null || href.contains("javascript:void") || href.isEmpty()) {
+	                        continue;
+	                    }
+	                    map.put("url", href);
 
-						// 🎯 Oranları yakala
-						List<WebElement> odds1x2 = el.findElements(By.cssSelector("dd.col-03.event-row .cell"));
-						if (odds1x2.size() >= 3) {
-							map.put("ms1", odds1x2.get(0).getText());
-							map.put("ms0", odds1x2.get(1).getText());
-							map.put("ms2", odds1x2.get(2).getText());
-						} else {
-							map.put("ms1", "-");
-							map.put("ms0", "-");
-							map.put("ms2", "-");
-						}
+	                    map.put("time", el.findElement(By.cssSelector("div.time span")).getText().trim());
 
-						List<WebElement> altust = el.findElements(By.cssSelector("dd.col-02.event-row .cell"));
-						if (altust.size() >= 2) {
-							map.put("alt", altust.get(0).getText());
-							map.put("ust", altust.get(1).getText());
-						} else {
-							map.put("alt", "-");
-							map.put("ust", "-");
-						}
+	                    // MS1, MS0, MS2
+	                    List<WebElement> odds1x2 = el.findElements(By.cssSelector("dd.col-03.event-row .cell"));
+	                    if (odds1x2.size() >= 3) {
+	                        map.put("ms1", odds1x2.get(0).getText());
+	                        map.put("ms0", odds1x2.get(1).getText());
+	                        map.put("ms2", odds1x2.get(2).getText());
+	                    } else {
+	                        map.put("ms1", "-");
+	                        map.put("ms0", "-");
+	                        map.put("ms2", "-");
+	                    }
 
-						// MBS
-						try {
-							WebElement mbsEl = el.findElement(By.cssSelector(".mbs-box-desktop"));
-							String cls = mbsEl.getAttribute("class");
-							String mbsNum = cls.replaceAll(".*mbs(\\d+)-desktop.*", "$1");
-							map.put("mbs", mbsNum);
-						} catch (Exception ex) {
-							map.put("mbs", "-1");
-						}
+	                    // ALT, ÜST
+	                    List<WebElement> altust = el.findElements(By.cssSelector("dd.col-02.event-row .cell"));
+	                    if (altust.size() >= 2) {
+	                        map.put("alt", altust.get(0).getText());
+	                        map.put("ust", altust.get(1).getText());
+	                    } else {
+	                        map.put("alt", "-");
+	                        map.put("ust", "-");
+	                    }
 
-						// Var / Yok
-						List<WebElement> varyok = el
-								.findElements(By.cssSelector("dd.col-03.event-row + dd.col-02.event-row .cell"));
-						if (varyok.size() >= 2) {
-							map.put("var", varyok.get(0).getText());
-							map.put("yok", varyok.get(1).getText());
-						} else {
-							map.put("var", "-");
-							map.put("yok", "-");
-						}
+	                    // MBS
+	                    try {
+	                        WebElement mbsEl = el.findElement(By.cssSelector(".mbs-box-desktop"));
+	                        String cls = mbsEl.getAttribute("class");
+	                        String mbsNum = cls.replaceAll(".*mbs(\\d+)-desktop.*", "$1");
+	                        map.put("mbs", mbsNum);
+	                    } catch (Exception ex) {
+	                        map.put("mbs", "-1");
+	                    }
 
-						collected.add(map);
-					}
-				} catch (Exception ignore) {
-				}
-			}
+	                    // VAR, YOK
+	                    List<WebElement> varyok = el.findElements(By.cssSelector("dd.col-03.event-row + dd.col-02.event-row .cell"));
+	                    if (varyok.size() >= 2) {
+	                        map.put("var", varyok.get(0).getText());
+	                        map.put("yok", varyok.get(1).getText());
+	                    } else {
+	                        map.put("var", "-");
+	                        map.put("yok", "-");
+	                    }
 
-			if (seen.size() == prevCount)
-				stable++;
-			else
-				stable = 0;
-			prevCount = seen.size();
+	                    collected.add(map);
+	                }
+	            } catch (Exception ignore) {
+	            }
+	        }
 
-			js.executeScript("window.scrollBy(0, 2000)");
-			Thread.sleep(1000);
-		}
+	        // Stabilite kontrolü
+	        if (seen.size() == prevCount) {
+	            stable++;
+	            System.out.println("  ⚠️ Stabilite sayacı: " + stable + "/8 (toplam: " + seen.size() + ")");
+	        } else {
+	            stable = 0;
+	            System.out.println("  ✓ Maç sayısı: " + seen.size() + " (+yeni " + (seen.size() - prevCount) + ")");
+	        }
+	        prevCount = seen.size();
 
-		System.out.println("🧩 Toplanan benzersiz maç: " + seen.size());
-		return collected;
+	        // 8 kez ardarda sabitlik → dur
+	        if (stable >= 8) {
+	            System.out.println("✅ Scroll tamamlandı (sabitliğe ulaşıldı)");
+	            break;
+	        }
+
+	        // Scroll yap
+	        js.executeScript("window.scrollBy(0, " + scrollAmount + ");");
+	        Thread.sleep(800); // Stabil waiting time
+	    }
+
+	    System.out.println("🧩 TOPLAM BENZERSIZ MAÇ: " + seen.size());
+	    return collected;
 	}
 
 	private double toDouble(String s) {
