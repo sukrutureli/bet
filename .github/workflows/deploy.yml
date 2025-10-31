@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: selenium/standalone-chrome:4.14.1-20231025
-      options: --user root --shm-size=2gb
+      options: --user root --shm-size=4gb
 
     steps:
       - name: Checkout repo
