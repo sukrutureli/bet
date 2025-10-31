@@ -19,7 +19,6 @@
 			<artifactId>selenium-java</artifactId>
 			<version>4.14.0</version>
 		</dependency>
-		<!-- JSON yazma/okuma için Jackson -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
