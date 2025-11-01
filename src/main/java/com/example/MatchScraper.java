@@ -106,6 +106,8 @@ public class MatchScraper {
 	            break;
 	        }
 
+	        Thread.sleep(300);
+	        
 	        List<WebElement> matches = driver.findElements(eventSelector);
 	        
 	        // Tüm maçları işle
