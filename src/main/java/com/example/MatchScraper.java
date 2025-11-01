@@ -86,7 +86,7 @@ public class MatchScraper {
 
 	    int stable = 0, prevCount = 0;
 	    int maxScroll = 150; // Maksimum scroll iterasyonu
-	    int scrollAmount = 2000;
+	    int scrollAmount = 600;
 	    
 	    // Sayfanın yüklenmesini bekle
 	    int waitTry = 0;
