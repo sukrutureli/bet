@@ -97,7 +97,7 @@ public class MatchScraper {
 	    System.out.println("⏳ İlk maçlar göründü (" + waitTry + "sn sonra) - scroll başlıyor...");
 
 	    long startTime = System.currentTimeMillis();
-	    long maxWaitTime = 120000; // 2 dakika max
+	    long maxWaitTime = 240000; // 2 dakika max
 
 	    for (int i = 0; i < maxScroll; i++) {
 	        // Timeout kontrolü
