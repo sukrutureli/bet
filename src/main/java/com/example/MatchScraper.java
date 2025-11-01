@@ -173,7 +173,7 @@ public class MatchScraper {
 	        // Stabilite kontrolü
 	        if (seen.size() == prevCount) {
 	            stable++;
-	            System.out.println("  ⚠️ Stabilite sayacı: " + stable + "/8 (toplam: " + seen.size() + ")");
+	            System.out.println("  ⚠️ Stabilite sayacı: " + stable + "/4 (toplam: " + seen.size() + ")");
 	        } else {
 	            stable = 0;
 	            System.out.println("  ✓ Maç sayısı: " + seen.size() + " (+yeni " + (seen.size() - prevCount) + ")");
@@ -181,7 +181,7 @@ public class MatchScraper {
 	        prevCount = seen.size();
 
 	        // 8 kez ardarda sabitlik → dur
-	        if (stable >= 8) {
+	        if (stable >= 4) {
 	            System.out.println("✅ Scroll tamamlandı (sabitliğe ulaşıldı)");
 	            break;
 	        }
