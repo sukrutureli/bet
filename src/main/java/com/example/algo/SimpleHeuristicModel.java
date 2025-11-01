@@ -26,10 +26,11 @@ public class SimpleHeuristicModel implements BettingAlgorithm {
 			double formDiff = safeDiv((h.getAvgPointsPerMatch() - a.getAvgPointsPerMatch()), 2.5);
 			double goalDiff = safeDiv(((h.getAvgGF() - h.getAvgGA()) - (a.getAvgGF() - a.getAvgGA())), 3.0);
 			double ratingDiff = safeDiv((h.getRating100() - a.getRating100()), 120.0);
-			double h2hDiff = h.getH2hCount() > 0 ? safeDiv((h.getH2hWinRate() - 0.5), 0.5) : 0.0;
+			//double h2hDiff = h.getH2hCount() > 0 ? safeDiv((h.getH2hWinRate() - 0.5), 0.5) : 0.0;
 
 			// --- 2. Kombine güç skoru ---
-			double s = 0.45 * formDiff + 0.25 * goalDiff + 0.20 * ratingDiff + 0.10 * h2hDiff;
+			//double s = 0.45 * formDiff + 0.25 * goalDiff + 0.20 * ratingDiff + 0.10 * h2hDiff;
+			double s = 0.45 * formDiff + 0.35 * goalDiff + 0.20 * ratingDiff;
 
 			// --- 3. Softmax tabanlı sonuç olasılıkları ---
 			double hadv = 0.12;

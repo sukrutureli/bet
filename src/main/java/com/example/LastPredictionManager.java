@@ -66,14 +66,14 @@ public class LastPredictionManager {
 		if (tahmin.equals("MS1")) {
 			percentageH = h.getMs1() * 100;
 			percentagePR = pr.getpHome() * 100;
-			if (matchInfo.getOdds().getMs1() > 0.0 && percentageH >= 50 && percentagePR >= 55
+			if (matchInfo.getOdds().getMs1() > 0.0 && percentageH >= 55 && percentagePR >= 60
 					&& isScoreOk(pr.getScoreline(), "MS1")) {
 				return "MS1";
 			}
 		} else if (tahmin.equals("MS2")) {
 			percentageH = h.getMs2() * 100;
 			percentagePR = pr.getpAway() * 100;
-			if (matchInfo.getOdds().getMs2() > 0.0 && percentageH >= 50 && percentagePR >= 55
+			if (matchInfo.getOdds().getMs2() > 0.0 && percentageH >= 55 && percentagePR >= 60
 					&& isScoreOk(pr.getScoreline(), "MS2")) {
 				return "MS2";
 			}
@@ -81,7 +81,7 @@ public class LastPredictionManager {
 			percentageH = h.getUst() * 100;
 			percentagePR = pr.getpOver25() * 100;
 			if (matchInfo.getOdds().getOver25() > 0.0) {
-				if (percentageH >= 60 && percentagePR >= 65 && isScoreOk(pr.getScoreline(), "Üst")) {
+				if (percentageH >= 65 && percentagePR >= 70 && isScoreOk(pr.getScoreline(), "Üst")) {
 					return "Üst";
 				}
 			}
@@ -89,7 +89,7 @@ public class LastPredictionManager {
 			percentageH = h.getAlt() * 100;
 			percentagePR = (1 - pr.getpOver25()) * 100;
 			if (matchInfo.getOdds().getUnder25() > 0.0) {
-				if (percentageH >= 60 && percentagePR >= 65 && isScoreOk(pr.getScoreline(), "Alt")) {
+				if (percentageH >= 65 && percentagePR >= 70 && isScoreOk(pr.getScoreline(), "Alt")) {
 					return "Alt";
 				}
 			}
@@ -98,7 +98,7 @@ public class LastPredictionManager {
 			percentagePR = pr.getpBttsYes() * 100;
 			if (matchInfo.getOdds().getBttsYes() > 0.0) {
 				if (matchInfo.getOdds().getMs1() > 1.5 && matchInfo.getOdds().getMs2() > 1.5) {
-					if (percentageH >= 60 && percentagePR >= 65 && isScoreOk(pr.getScoreline(), "Var")) {
+					if (percentageH >= 65 && percentagePR >= 70 && isScoreOk(pr.getScoreline(), "Var")) {
 						return "Var";
 					}
 				}
@@ -107,7 +107,7 @@ public class LastPredictionManager {
 			percentageH = h.getYok() * 100;
 			percentagePR = (1 - pr.getpBttsYes()) * 100;
 			if (matchInfo.getOdds().getBttsNo() > 0.0) {
-				if (percentageH >= 60 && percentagePR >= 65 && isScoreOk(pr.getScoreline(), "Yok")) {
+				if (percentageH >= 65 && percentagePR >= 70 && isScoreOk(pr.getScoreline(), "Yok")) {
 					return "Yok";
 				}
 			}

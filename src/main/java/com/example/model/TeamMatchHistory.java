@@ -131,9 +131,9 @@ public class TeamMatchHistory {
 		}
 
 		if (isInfoEnough()) {
-			double result = (ms1Rekabet / rekabetGecmisi.size()) * 0.4;
-			result += ((ms1SonH / sonMaclarHome.size()) * 0.3);
-			result += ((ms1SonA / sonMaclarAway.size()) * 0.3);
+			double result = (ms1Rekabet / rekabetGecmisi.size()) * 0.1;
+			result += ((ms1SonH / sonMaclarHome.size()) * 0.45);
+			result += ((ms1SonA / sonMaclarAway.size()) * 0.45);
 
 			return result;
 		} else if (isInfoEnoughWithoutRekabet()) {
@@ -178,9 +178,9 @@ public class TeamMatchHistory {
 		}
 
 		if (isInfoEnough()) {
-			double result = (ms2Rekabet / rekabetGecmisi.size()) * 0.4;
-			result += ((ms2SonH / sonMaclarHome.size()) * 0.3);
-			result += ((ms2SonA / sonMaclarAway.size()) * 0.3);
+			double result = (ms2Rekabet / rekabetGecmisi.size()) * 0.1;
+			result += ((ms2SonH / sonMaclarHome.size()) * 0.45);
+			result += ((ms2SonA / sonMaclarAway.size()) * 0.45);
 
 			return result;
 		} else if (isInfoEnoughWithoutRekabet()) {
@@ -221,9 +221,9 @@ public class TeamMatchHistory {
 		}
 
 		if (isInfoEnough()) {
-			double result = (varRekabet / rekabetGecmisi.size()) * 0.4;
-			result += ((varSonH / sonMaclarHome.size()) * 0.3);
-			result += ((varSonA / sonMaclarAway.size()) * 0.3);
+			double result = (varRekabet / rekabetGecmisi.size()) * 0.1;
+			result += ((varSonH / sonMaclarHome.size()) * 0.45);
+			result += ((varSonA / sonMaclarAway.size()) * 0.45);
 
 			return result;
 		} else if (isInfoEnoughWithoutRekabet()) {
@@ -264,9 +264,9 @@ public class TeamMatchHistory {
 		}
 
 		if (isInfoEnough()) {
-			double result = (ustRekabet / rekabetGecmisi.size()) * 0.4;
-			result += ((ustSonH / sonMaclarHome.size()) * 0.3);
-			result += ((ustSonA / sonMaclarAway.size()) * 0.3);
+			double result = (ustRekabet / rekabetGecmisi.size()) * 0.1;
+			result += ((ustSonH / sonMaclarHome.size()) * 0.45);
+			result += ((ustSonA / sonMaclarAway.size()) * 0.45);
 
 			return result;
 		} else if (isInfoEnoughWithoutRekabet()) {
@@ -332,7 +332,7 @@ public class TeamMatchHistory {
 		homeStats.setLast5Count(Math.min(5, sonMaclarHome.size()));
 		homeStats.setAvgGF(getGFandGA(sonMaclarHome, teamEv)[0]);
 		homeStats.setAvgGA(getGFandGA(sonMaclarHome, teamEv)[1]);
-		homeStats.setRating100(getRating(homeStats.getAvgGF(), homeStats.getAvgGA(), homeStats.getLast5Points()));
+		homeStats.setRating100(getRating(homeStats.getAvgGF(), homeStats.getAvgGA(), homeStats.getAvgPointsPerMatch()));
 		homeStats.setH2hCount(Math.min(5, rekabetGecmisi.size()));
 		homeStats.setH2hWins(getWinCount(rekabetGecmisi, teamEv));
 
@@ -341,7 +341,7 @@ public class TeamMatchHistory {
 		awayStats.setLast5Count(Math.min(5, sonMaclarAway.size()));
 		awayStats.setAvgGF(getGFandGA(sonMaclarAway, teamDep)[0]);
 		awayStats.setAvgGA(getGFandGA(sonMaclarAway, teamDep)[1]);
-		awayStats.setRating100(getRating(awayStats.getAvgGF(), awayStats.getAvgGA(), awayStats.getLast5Points()));
+		awayStats.setRating100(getRating(awayStats.getAvgGF(), awayStats.getAvgGA(), awayStats.getAvgPointsPerMatch()));
 		awayStats.setH2hCount(Math.min(5, rekabetGecmisi.size()));
 		awayStats.setH2hWins(getWinCount(rekabetGecmisi, teamDep));
 
