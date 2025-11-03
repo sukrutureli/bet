@@ -19,7 +19,7 @@ public class PoissonGoalModel implements BettingAlgorithm {
     // --- Global seviye ---
     private double mu = Math.log(1.40);   // takım başına ortalama gol ≈ 1.40 (toplam ≈ 2.8)
     private double muAlpha = 0.97;        // EMA faktörü (istersen maç sonrasında updateMu çağır)
-    private double rho = 0.10;            // Dixon–Coles düzeltmesi
+    private double rho = 0.12;            // Dixon–Coles düzeltmesi
 
     // GF/GA global ortalamaları (istersen sezonluk güncelleyebilirsin)
     private double meanGF = 1.40;
@@ -87,15 +87,15 @@ public class PoissonGoalModel implements BettingAlgorithm {
             double targetTotal = 2.0 * Math.exp(mu);     // ≈ global toplam gol
             double totalNow = lambdaH + lambdaA;
             if (totalNow > 0) {
-                double beta = 0.40;                      // 0: kapalı, 1: tam eşitle (esnek tut)
+                double beta = 0.45;                      // 0: kapalı, 1: tam eşitle (esnek tut)
                 double scale = Math.pow(targetTotal / totalNow, beta);
                 lambdaH *= scale;
                 lambdaA *= scale;
             }
 
             // --- 6) Güvenlik sınırları (doğal dağılım için geniş band) ---
-            lambdaH = Math.max(0.10, Math.min(3.20, lambdaH));
-            lambdaA = Math.max(0.10, Math.min(3.20, lambdaA));
+            lambdaH = Math.max(0.08, Math.min(3.20, lambdaH));
+            lambdaA = Math.max(0.08, Math.min(3.20, lambdaA));
 
             // --- 7) Skor dağılımları ---
             int maxG = 7; // biraz geniş tuttuk (4-2, 5-3 gibi skorlar mümkün)
@@ -165,12 +165,11 @@ public class PoissonGoalModel implements BettingAlgorithm {
 
     // --- Dixon–Coles local correction ---
     private double dcAdjust(int i, int j) {
-        if (i == 0 && j == 0) return 1 - rho;
-        if (i == 0 && j == 1) return 1 - rho;
-        if (i == 1 && j == 0) return 1 - rho;
-        if (i == 1 && j == 1) return 1 + rho;
-        return 1.0;
-    }
+    if (i == 0 && j == 0) return 1 + rho;          // 0-0 BOOST
+    if (i == 1 && j == 1) return 1 + 0.5 * rho;    // 1-1 hafif boost
+    if ((i == 0 && j == 1) || (i == 1 && j == 0)) return 1 - 0.5 * rho; // 0-1 / 1-0 hafif kırp
+    return 1.0;
+}
 
     private double safeProb(double v) {
         return Double.isFinite(v) ? Math.min(0.99, Math.max(0.01, v)) : 0.33;
