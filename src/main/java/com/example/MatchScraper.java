@@ -365,14 +365,6 @@ public class MatchScraper {
 		}
 	}
 
-	private String safeText(WebElement el) {
-		try {
-			return el.getText().trim();
-		} catch (Exception e) {
-			return "-";
-		}
-	}
-
 	private String safeText(WebElement parent, String css) {
 		try {
 			WebElement el = parent.findElement(By.cssSelector(css));
