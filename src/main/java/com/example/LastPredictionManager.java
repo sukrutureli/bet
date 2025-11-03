@@ -1,5 +1,9 @@
 package com.example;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,14 +70,14 @@ public class LastPredictionManager {
 		if (tahmin.equals("MS1")) {
 			percentageH = h.getMs1() * 100;
 			percentagePR = pr.getpHome() * 100;
-			if (matchInfo.getOdds().getMs1() > 0.0 && percentageH >= 55 && percentagePR >= 60
+			if (matchInfo.getOdds().getMs1() > 0.0 && isPercentageOK(percentageH, percentagePR, "MS")
 					&& isScoreOk(pr.getScoreline(), "MS1")) {
 				return "MS1";
 			}
 		} else if (tahmin.equals("MS2")) {
 			percentageH = h.getMs2() * 100;
 			percentagePR = pr.getpAway() * 100;
-			if (matchInfo.getOdds().getMs2() > 0.0 && percentageH >= 55 && percentagePR >= 60
+			if (matchInfo.getOdds().getMs2() > 0.0 && isPercentageOK(percentageH, percentagePR, "MS")
 					&& isScoreOk(pr.getScoreline(), "MS2")) {
 				return "MS2";
 			}
@@ -81,7 +85,7 @@ public class LastPredictionManager {
 			percentageH = h.getUst() * 100;
 			percentagePR = pr.getpOver25() * 100;
 			if (matchInfo.getOdds().getOver25() > 0.0) {
-				if (percentageH >= 65 && percentagePR >= 70 && isScoreOk(pr.getScoreline(), "Üst")) {
+				if (isPercentageOK(percentageH, percentagePR, "Other") && isScoreOk(pr.getScoreline(), "Üst")) {
 					return "Üst";
 				}
 			}
@@ -89,7 +93,7 @@ public class LastPredictionManager {
 			percentageH = h.getAlt() * 100;
 			percentagePR = (1 - pr.getpOver25()) * 100;
 			if (matchInfo.getOdds().getUnder25() > 0.0) {
-				if (percentageH >= 65 && percentagePR >= 70 && isScoreOk(pr.getScoreline(), "Alt")) {
+				if (isPercentageOK(percentageH, percentagePR, "Other") && isScoreOk(pr.getScoreline(), "Alt")) {
 					return "Alt";
 				}
 			}
@@ -98,7 +102,7 @@ public class LastPredictionManager {
 			percentagePR = pr.getpBttsYes() * 100;
 			if (matchInfo.getOdds().getBttsYes() > 0.0) {
 				if (matchInfo.getOdds().getMs1() > 1.5 && matchInfo.getOdds().getMs2() > 1.5) {
-					if (percentageH >= 65 && percentagePR >= 70 && isScoreOk(pr.getScoreline(), "Var")) {
+					if (isPercentageOK(percentageH, percentagePR, "Other") && isScoreOk(pr.getScoreline(), "Var")) {
 						return "Var";
 					}
 				}
@@ -107,7 +111,7 @@ public class LastPredictionManager {
 			percentageH = h.getYok() * 100;
 			percentagePR = (1 - pr.getpBttsYes()) * 100;
 			if (matchInfo.getOdds().getBttsNo() > 0.0) {
-				if (percentageH >= 65 && percentagePR >= 70 && isScoreOk(pr.getScoreline(), "Yok")) {
+				if (isPercentageOK(percentageH, percentagePR, "Other") && isScoreOk(pr.getScoreline(), "Yok")) {
 					return "Yok";
 				}
 			}
@@ -167,4 +171,43 @@ public class LastPredictionManager {
 		return predictionData;
 	}
 
+	public boolean isPercentageOK(double h, double pr, String type) {
+		boolean result = false;
+		double hWdMs = 55;
+		double hWeMs = 60;
+		double prWdMs = 60;
+		double prWeMs = 65;
+
+		double hWdOther = 65;
+		double hWeOther = 70;
+		double prWdOther = 70;
+		double prWeOther = 75;
+
+		LocalDate now = LocalDate.now(ZoneId.of("Europe/Istanbul"));
+		boolean isWeekEnd = now.getDayOfWeek() == DayOfWeek.SATURDAY || now.getDayOfWeek() == DayOfWeek.SUNDAY;
+
+		if (isWeekEnd) {
+			if (type.contains("MS")) {
+				if (h >= hWeMs && pr >= prWeMs) {
+					result = true;
+				}
+			} else {
+				if (h >= hWeOther && pr >= prWeOther) {
+					result = true;
+				}
+			}
+		} else {
+			if (type.equals("MS")) {
+				if (h >= hWdMs && pr >= prWdMs) {
+					result = true;
+				}
+			} else {
+				if (h >= hWdOther && pr >= prWdOther) {
+					result = true;
+				}
+			}
+		}
+
+		return result;
+	}
 }
