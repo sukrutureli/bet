@@ -74,9 +74,8 @@ public class Application {
 
 			BettingAlgorithm poisson = new PoissonGoalModel();
 			BettingAlgorithm heur = new SimpleHeuristicModel();
-			BettingAlgorithm elo = new EloRatingModel();
 			BettingAlgorithm formMomentum = new FormMomentumModel();
-			EnsembleModel ensemble = new EnsembleModel(List.of(poisson, heur, elo, formMomentum));
+			EnsembleModel ensemble = new EnsembleModel(List.of(poisson, heur, formMomentum));
 
 			List<PredictionResult> results = new ArrayList<>();
 			for (Match m : matchStats) {
