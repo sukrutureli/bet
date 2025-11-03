@@ -144,7 +144,7 @@ public class LastPredictionManager {
 	private String getOddsAndPercentage(String tahmin, MatchInfo match, PredictionResult pr) {
 		if (tahmin.equals("MS1")) {
 			return " (" + String.valueOf(match.getOdds().getMs1()) + " - %" + ((int) (pr.getpHome() * 100)) + ")";
-		} else if (tahmin.equals("MS0")) {
+		} else if (tahmin.equals("MSX")) {
 			return " (" + String.valueOf(match.getOdds().getMsX()) + " - %" + ((int) (pr.getpDraw() * 100)) + ")";
 		} else if (tahmin.equals("MS2")) {
 			return " (" + String.valueOf(match.getOdds().getMs2()) + " - %" + ((int) (pr.getpAway() * 100)) + ")";
