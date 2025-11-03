@@ -216,49 +216,18 @@ public class MatchScraper {
 			Thread.sleep(1000);
 
 			// --- REKABET GEÇMİŞİ ---
-			List<WebElement> rekabetRows = driver
-					.findElements(By.cssSelector("div[data-test-id='CompitionHistoryTableItem']"));
-			for (WebElement r : rekabetRows) {
-				try {
-					String date = safeText(r, "[data-test-id='CompitionTableItemSeason']");
-					String league = safeText(r, "[data-test-id='CompitionTableItemLeague']");
-					String homeTeam = extractTeamName(r.findElement(By.cssSelector("div[data-test-id='HomeTeam']")));
-					String awayTeam = extractTeamName(r.findElement(By.cssSelector("div[data-test-id='AwayTeam']")));
-					String score = extractScore(r);
-					int[] sc = parseScore(score);
-					th.addRekabetGecmisiMatch(new MatchResult(homeTeam, awayTeam, sc[0], sc[1], date, league,
-							"rekabet-gecmisi", summaryUrl));
-				} catch (Exception ignore) {
-				}
-			}
 
-			// --- SON MAÇLAR (Ev / Dep) ---
-			List<WebElement> sonTables = driver.findElements(By.cssSelector("div[data-test-id^='LastMatchesTable']"));
-			for (WebElement table : sonTables) {
-				int side = 0;
+			try {
+				List<WebElement> rows = driver
+						.findElements(By.cssSelector("div[data-test-id='CompitionHistoryTableItem']"));
+				System.out.println("🔹 Rekabet geçmişi satır sayısı: " + rows.size());
 
-				try {
-					// Başlık metnine göre hangi taraf olduğunu anla
-					WebElement titleEl = table
-							.findElement(By.cssSelector("h3, [data-test-id='LastMatchesTableTitle']"));
-					String titleText = titleEl.getText().toLowerCase(Locale.ROOT);
-					if (titleText.contains("ev") || titleText.contains("home")) {
-						side = 1;
-					} else if (titleText.contains("deplasman") || titleText.contains("away")) {
-						side = 2;
-					} else {
-						// fallback: ilk tablo ev kabul edilir
-						side = (sonTables.indexOf(table) == 0) ? 1 : 2;
-					}
-				} catch (Exception e) {
-					side = (sonTables.indexOf(table) == 0) ? 1 : 2;
-				}
-
-				List<WebElement> rows = table.findElements(By.cssSelector("tbody tr"));
 				for (WebElement r : rows) {
 					try {
-						String date = safeText(r, "td[data-test-id='TableBodyDate']");
-						String tournament = safeText(r, "td[data-test-id='TableBodyTournament']");
+						String date = safeText(r,
+								"[data-test-id='CompitionTableItemSeason'], [data-test-id='TableBodyDate']");
+						String league = safeText(r,
+								"[data-test-id='CompitionTableItemLeague'], [data-test-id='TableBodyTournament']");
 						String homeTeam = extractTeamName(
 								r.findElement(By.cssSelector("div[data-test-id='HomeTeam']")));
 						String awayTeam = extractTeamName(
@@ -266,11 +235,54 @@ public class MatchScraper {
 						String score = extractScore(r);
 						int[] sc = parseScore(score);
 
-						th.addSonMacMatch(new MatchResult(homeTeam, awayTeam, sc[0], sc[1], date, tournament,
-								"son-maclari", summaryUrl), side);
-					} catch (Exception ignore) {
+						th.addRekabetGecmisiMatch(new MatchResult(homeTeam, awayTeam, sc[0], sc[1], date, league,
+								"rekabet-gecmisi", summaryUrl));
+					} catch (Exception ex) {
+						System.out.println("⚠️ Rekabet satırı hatası: " + ex.getMessage());
 					}
 				}
+			} catch (Exception e) {
+				System.out.println("extractCompetitionHistoryResults hata: " + e.getMessage());
+			}
+
+			// --- SON MAÇLAR (Ev / Dep) ---
+			try {
+				List<WebElement> tables = driver.findElements(By.cssSelector("div[data-test-id^='LastMatchesTable']"));
+				for (WebElement table : tables) {
+					int currentSide = 0;
+					try {
+						WebElement titleEl = table
+								.findElement(By.cssSelector("h3, [data-test-id='LastMatchesTableTitle']"));
+						String titleText = titleEl.getText().toLowerCase(Locale.ROOT);
+						if (titleText.contains("ev") || titleText.contains("home"))
+							currentSide = 1;
+						else if (titleText.contains("deplasman") || titleText.contains("away"))
+							currentSide = 2;
+					} catch (Exception e) {
+						currentSide = (tables.indexOf(table) == 0) ? 1 : 2;
+					}
+
+					List<WebElement> rows = table.findElements(By.cssSelector("tbody tr"));
+					for (WebElement r : rows) {
+						try {
+							String date = safeText(r, "td[data-test-id='TableBodyDate']");
+							String tournament = safeText(r, "td[data-test-id='TableBodyTournament']");
+							String homeTeam = extractTeamName(
+									r.findElement(By.cssSelector("div[data-test-id='HomeTeam']")));
+							String awayTeam = extractTeamName(
+									r.findElement(By.cssSelector("div[data-test-id='AwayTeam']")));
+							String score = extractScore(r);
+							int[] sc = parseScore(score);
+
+							th.addSonMacMatch(new MatchResult(homeTeam, awayTeam, sc[0], sc[1], date, tournament,
+									"son-maclari", summaryUrl), currentSide);
+						} catch (Exception ex) {
+							System.out.println("⚠️ Satır hatası: " + ex.getMessage());
+						}
+					}
+				}
+			} catch (Exception e) {
+				System.out.println("extractMatchResults hata: " + e.getMessage());
 			}
 
 			System.out.println("✅ " + title + " için geçmiş verisi: " + th.getRekabetGecmisi().size() + " rekabet, "
@@ -281,16 +293,34 @@ public class MatchScraper {
 		return th;
 	}
 
-	private String extractScore(WebElement r) {
+	private String extractScore(WebElement row) {
 		try {
-			List<WebElement> scoreEls = r
-					.findElements(By.cssSelector("div[data-test-id='Score'], span[data-test-id='Score']"));
-			for (WebElement s : scoreEls) {
-				String t = s.getText().replaceAll("\\(.*?\\)", "").trim();
+			// 1) Öncelikle normal tablo skor alanlarını ara
+			List<WebElement> direct = row
+					.findElements(By.cssSelector("[data-test-id='Score'] span, td[data-test-id='Score']"));
+			for (WebElement s : direct) {
+				String t = s.getText().trim().replaceAll("\\(.*?\\)", "");
+				if (t.matches("\\d+\\s*-\\s*\\d+"))
+					return t;
+			}
+
+			// 2) Eğer bulunamadıysa, buton veya tooltip içindeki skorları ara
+			List<WebElement> buttons = row.findElements(By.cssSelector("button[data-test-id='NsnButton'] span"));
+			for (WebElement b : buttons) {
+				String t = b.getText().trim().replaceAll("\\(.*?\\)", "");
+				if (t.matches("\\d+\\s*-\\s*\\d+"))
+					return t;
+			}
+
+			// 3) Alternatif: direkt <span> içinde "X-Y" formu
+			List<WebElement> spans = row.findElements(By.cssSelector("span"));
+			for (WebElement s : spans) {
+				String t = s.getText().trim().replaceAll("\\(.*?\\)", "");
 				if (t.matches("\\d+\\s*-\\s*\\d+"))
 					return t;
 			}
 		} catch (Exception e) {
+			// ignore
 		}
 		return "-";
 	}
@@ -345,7 +375,9 @@ public class MatchScraper {
 
 	private String safeText(WebElement parent, String css) {
 		try {
-			return parent.findElement(By.cssSelector(css)).getText().trim();
+			WebElement el = parent.findElement(By.cssSelector(css));
+			String t = el.getText().trim();
+			return t.isEmpty() ? "-" : t;
 		} catch (Exception e) {
 			return "-";
 		}
