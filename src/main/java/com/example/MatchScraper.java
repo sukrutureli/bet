@@ -51,7 +51,7 @@ public class MatchScraper {
         try {
             String date = LocalDate.now(ZoneId.of("Europe/Istanbul"))
                     .format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-            String url = "https://www.nesine.com/iddaa?et=1&dt=" + date + "&le=1";
+            String url = "https://www.nesine.com/iddaa?et=1&le=1&dt=" + date;
 
             System.out.println("🔗 URL açılıyor: " + url);
             driver.manage().deleteAllCookies();
