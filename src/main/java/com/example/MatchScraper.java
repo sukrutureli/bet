@@ -200,88 +200,108 @@ public class MatchScraper {
 	// GEÇMİŞ MAÇLAR (REKABET + SON MAÇLAR)
 	// =============================================================
 	public TeamMatchHistory scrapeTeamHistory(String detailUrl, String name) {
-	    if (detailUrl == null || !detailUrl.startsWith("http"))
-	        return null;
+		if (detailUrl == null || !detailUrl.startsWith("http"))
+			return null;
 
-	    String[] teams = extractTeamsFromHeader(detailUrl);
-	    String home = teams[0];
-	    String away = teams[1];
-	    String title = teams[2];
+		String[] teams = extractTeamsFromHeader(detailUrl);
+		String home = teams[0];
+		String away = teams[1];
+		String title = teams[2];
 
-	    TeamMatchHistory th = new TeamMatchHistory(title, home, away, detailUrl);
-	    try {
-	        String summaryUrl = detailUrl + "/ozet";
-	        driver.get(summaryUrl);
-	        PageWaitUtils.safeWaitForLoad(driver, 15);
-	        Thread.sleep(1000);
+		TeamMatchHistory th = new TeamMatchHistory(title, home, away, detailUrl);
+		try {
+			String summaryUrl = detailUrl + "/ozet";
+			driver.get(summaryUrl);
+			PageWaitUtils.safeWaitForLoad(driver, 15);
+			Thread.sleep(1000);
 
-	        // --- REKABET GEÇMİŞİ ---
-	        List<WebElement> rekabetRows = driver.findElements(
-	                By.cssSelector("div[data-test-id='CompitionHistoryTableItem']")
-	        );
-	        for (WebElement r : rekabetRows) {
-	            try {
-	                String date = safeText(r, "[data-test-id='CompitionTableItemSeason']");
-	                String league = safeText(r, "[data-test-id='CompitionTableItemLeague']");
-	                String homeTeam = extractTeamName(r.findElement(By.cssSelector("div[data-test-id='HomeTeam']")));
-	                String awayTeam = extractTeamName(r.findElement(By.cssSelector("div[data-test-id='AwayTeam']")));
-	                String score = extractScore(r);
-	                int[] sc = parseScore(score);
-	                th.addRekabetGecmisiMatch(new MatchResult(homeTeam, awayTeam, sc[0], sc[1], date, league, "rekabet-gecmisi", summaryUrl));
-	            } catch (Exception ignore) {}
-	        }
+			// --- REKABET GEÇMİŞİ ---
+			List<WebElement> rekabetRows = driver
+					.findElements(By.cssSelector("div[data-test-id='CompitionHistoryTableItem']"));
+			for (WebElement r : rekabetRows) {
+				try {
+					String date = safeText(r, "[data-test-id='CompitionTableItemSeason']");
+					String league = safeText(r, "[data-test-id='CompitionTableItemLeague']");
+					String homeTeam = extractTeamName(r.findElement(By.cssSelector("div[data-test-id='HomeTeam']")));
+					String awayTeam = extractTeamName(r.findElement(By.cssSelector("div[data-test-id='AwayTeam']")));
+					String score = extractScore(r);
+					int[] sc = parseScore(score);
+					th.addRekabetGecmisiMatch(new MatchResult(homeTeam, awayTeam, sc[0], sc[1], date, league,
+							"rekabet-gecmisi", summaryUrl));
+				} catch (Exception ignore) {
+				}
+			}
 
-	        // --- SON MAÇLAR (Ev / Dep) ---
-	     // --- SON MAÇLAR ---
-	        List<WebElement> sonTables = driver.findElements(By.cssSelector("div[data-test-id^='LastMatchesTable']"));
-	        for (WebElement table : sonTables) {
-	            int side = (table.getAttribute("data-test-id").contains("Home")) ? 1 : 2;
+			// --- SON MAÇLAR (Ev / Dep) ---
+			List<WebElement> sonTables = driver.findElements(By.cssSelector("div[data-test-id^='LastMatchesTable']"));
+			for (WebElement table : sonTables) {
+				int side = 0;
 
-	            List<WebElement> rows = table.findElements(By.cssSelector("tbody tr"));
-	            for (WebElement r : rows) {
-	                try {
-	                    String date = safeText(r, "td[data-test-id='TableBodyDate']");
-	                    String tournament = safeText(r, "td[data-test-id='TableBodyTournament']");
-	                    String homeTeam = extractTeamName(r.findElement(By.cssSelector("div[data-test-id='HomeTeam']")));
-	                    String awayTeam = extractTeamName(r.findElement(By.cssSelector("div[data-test-id='AwayTeam']")));
-	                    String score = extractScore(r);
-	                    int[] sc = parseScore(score);
+				try {
+					// Başlık metnine göre hangi taraf olduğunu anla
+					WebElement titleEl = table
+							.findElement(By.cssSelector("h3, [data-test-id='LastMatchesTableTitle']"));
+					String titleText = titleEl.getText().toLowerCase(Locale.ROOT);
+					if (titleText.contains("ev") || titleText.contains("home")) {
+						side = 1;
+					} else if (titleText.contains("deplasman") || titleText.contains("away")) {
+						side = 2;
+					} else {
+						// fallback: ilk tablo ev kabul edilir
+						side = (sonTables.indexOf(table) == 0) ? 1 : 2;
+					}
+				} catch (Exception e) {
+					side = (sonTables.indexOf(table) == 0) ? 1 : 2;
+				}
 
-	                    th.addSonMacMatch(
-	                            new MatchResult(homeTeam, awayTeam, sc[0], sc[1], date, tournament, "son-maclari", summaryUrl),
-	                            side);
-	                } catch (Exception ignore) {}
-	            }
-	        }
+				List<WebElement> rows = table.findElements(By.cssSelector("tbody tr"));
+				for (WebElement r : rows) {
+					try {
+						String date = safeText(r, "td[data-test-id='TableBodyDate']");
+						String tournament = safeText(r, "td[data-test-id='TableBodyTournament']");
+						String homeTeam = extractTeamName(
+								r.findElement(By.cssSelector("div[data-test-id='HomeTeam']")));
+						String awayTeam = extractTeamName(
+								r.findElement(By.cssSelector("div[data-test-id='AwayTeam']")));
+						String score = extractScore(r);
+						int[] sc = parseScore(score);
 
+						th.addSonMacMatch(new MatchResult(homeTeam, awayTeam, sc[0], sc[1], date, tournament,
+								"son-maclari", summaryUrl), side);
+					} catch (Exception ignore) {
+					}
+				}
+			}
 
-	        System.out.println("✅ " + title + " için geçmiş verisi: "
-	                + th.getRekabetGecmisi().size() + " rekabet, "
-	                + th.getSonMaclar(1).size() + "+" + th.getSonMaclar(2).size() + " son maç");
-	    } catch (Exception e) {
-	        System.out.println("⚠️ Geçmiş verisi hatası: " + e.getMessage());
-	    }
-	    return th;
+			System.out.println("✅ " + title + " için geçmiş verisi: " + th.getRekabetGecmisi().size() + " rekabet, "
+					+ th.getSonMaclar(1).size() + "+" + th.getSonMaclar(2).size() + " son maç");
+		} catch (Exception e) {
+			System.out.println("⚠️ Geçmiş verisi hatası: " + e.getMessage());
+		}
+		return th;
 	}
 
 	private String extractScore(WebElement r) {
-	    try {
-	        List<WebElement> scoreEls = r.findElements(By.cssSelector("div[data-test-id='Score'], span[data-test-id='Score']"));
-	        for (WebElement s : scoreEls) {
-	            String t = s.getText().replaceAll("\\(.*?\\)", "").trim();
-	            if (t.matches("\\d+\\s*-\\s*\\d+")) return t;
-	        }
-	    } catch (Exception e) {}
-	    return "-";
+		try {
+			List<WebElement> scoreEls = r
+					.findElements(By.cssSelector("div[data-test-id='Score'], span[data-test-id='Score']"));
+			for (WebElement s : scoreEls) {
+				String t = s.getText().replaceAll("\\(.*?\\)", "").trim();
+				if (t.matches("\\d+\\s*-\\s*\\d+"))
+					return t;
+			}
+		} catch (Exception e) {
+		}
+		return "-";
 	}
 
 	private int[] parseScore(String s) {
-	    try {
-	        String[] p = s.split("-");
-	        return new int[]{Integer.parseInt(p[0].trim()), Integer.parseInt(p[1].trim())};
-	    } catch (Exception e) {
-	        return new int[]{-1, -1};
-	    }
+		try {
+			String[] p = s.split("-");
+			return new int[] { Integer.parseInt(p[0].trim()), Integer.parseInt(p[1].trim()) };
+		} catch (Exception e) {
+			return new int[] { -1, -1 };
+		}
 	}
 
 	private String[] extractTeamsFromHeader(String url) {
