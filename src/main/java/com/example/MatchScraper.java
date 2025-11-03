@@ -199,7 +199,7 @@ public class MatchScraper {
 	// =============================================================
 	// GEÇMİŞ MAÇLAR (REKABET + SON MAÇLAR)
 	// =============================================================
-	public TeamMatchHistory scrapeTeamHistory(String detailUrl, String name, Odds odds) {
+	public TeamMatchHistory scrapeTeamHistory(String detailUrl, String name) {
 	    if (detailUrl == null || !detailUrl.startsWith("http"))
 	        return null;
 
