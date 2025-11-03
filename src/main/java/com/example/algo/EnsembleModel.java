@@ -65,11 +65,11 @@ public class EnsembleModel implements BettingAlgorithm {
 
 		// --- 2️⃣ Alt/Üst Olasılığı ---
 		double pUnder = 1.0 - pO;
-		String ouPick = (pO > 0.55) ? "ÜST" : (pUnder > 0.55 ? "ALT" : "");
+		String ouPick = (pO > 0.55) ? "Üst" : (pUnder > 0.55 ? "Alt" : "");
 
 		// --- 3️⃣ Var/Yok Olasılığı ---
 		double pNoBtts = 1.0 - pB;
-		String bttsPick = (pB > 0.55) ? "VAR" : (pNoBtts > 0.55 ? "YOK" : "");
+		String bttsPick = (pB > 0.55) ? "Var" : (pNoBtts > 0.55 ? "Yok" : "");
 
 		// --- 4️⃣ En güçlü olasılığı seç (dinamik strateji) ---
 		Map<String, Double> candidates = new LinkedHashMap<>();

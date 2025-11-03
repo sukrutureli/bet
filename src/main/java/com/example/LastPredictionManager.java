@@ -35,16 +35,15 @@ public class LastPredictionManager {
 
 			LastPrediction tempLastPrediction = new LastPrediction(matchInfo.get(i).getName(),
 					matchInfo.get(i).getTime());
-			String[] tahminListesi = { "MS1", "MS2", "Üst", "Alt", "Var", "Yok" };
 
 			tempLastPrediction.setScore(predictionResults.get(i).getScoreline());
 			tempLastPrediction.setMbs(matchInfo.get(i).getOdds().getMbs());
 
-			for (String s : tahminListesi) {
-				if (calculatePrediction(th, predictionResults.get(i), matchInfo.get(i), s) != null) {
-					String withOdd = s + getOddsAndPercentage(s, matchInfo.get(i), predictionResults.get(i));
-					tempLastPrediction.getPredictions().add(withOdd);
-				}
+			if (calculatePrediction(th, predictionResults.get(i), matchInfo.get(i),
+					predictionResults.get(i).getPick()) != null) {
+				String withOdd = predictionResults.get(i).getPick() + getOddsAndPercentage(
+						predictionResults.get(i).getPick(), matchInfo.get(i), predictionResults.get(i));
+				tempLastPrediction.getPredictions().add(withOdd);
 			}
 
 			if (!tempLastPrediction.getPredictions().isEmpty()) {
@@ -145,6 +144,8 @@ public class LastPredictionManager {
 	private String getOddsAndPercentage(String tahmin, MatchInfo match, PredictionResult pr) {
 		if (tahmin.equals("MS1")) {
 			return " (" + String.valueOf(match.getOdds().getMs1()) + " - %" + ((int) (pr.getpHome() * 100)) + ")";
+		} else if (tahmin.equals("MS0")) {
+			return " (" + String.valueOf(match.getOdds().getMsX()) + " - %" + ((int) (pr.getpDraw() * 100)) + ")";
 		} else if (tahmin.equals("MS2")) {
 			return " (" + String.valueOf(match.getOdds().getMs2()) + " - %" + ((int) (pr.getpAway() * 100)) + ")";
 		} else if (tahmin.equals("Alt")) {
