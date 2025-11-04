@@ -265,8 +265,20 @@ public class MatchScraper {
 					List<WebElement> rows = table.findElements(By.cssSelector("tbody tr"));
 					for (WebElement r : rows) {
 						try {
-							String date = safeText(r, "td[data-test-id='TableBodyDate']");
-							String tournament = safeText(r, "td[data-test-id='TableBodyTournament']");
+							// 🔹 Lig ve tarih aynı hücrede (ör: V-L / 31 Eki)
+							String league = "-";
+							String date = "-";
+							try {
+								WebElement leagueTd = r
+										.findElement(By.cssSelector("td[data-test-id='TableBodyLeague']"));
+								List<WebElement> spans = leagueTd.findElements(By.tagName("span"));
+								if (spans.size() >= 1)
+									league = spans.get(0).getText().trim();
+								if (spans.size() >= 2)
+									date = spans.get(1).getText().trim();
+							} catch (Exception ignore) {
+							}
+
 							String homeTeam = extractTeamName(
 									r.findElement(By.cssSelector("div[data-test-id='HomeTeam']")));
 							String awayTeam = extractTeamName(
@@ -274,8 +286,9 @@ public class MatchScraper {
 							String score = extractScore(r);
 							int[] sc = parseScore(score);
 
-							th.addSonMacMatch(new MatchResult(homeTeam, awayTeam, sc[0], sc[1], date, tournament,
+							th.addSonMacMatch(new MatchResult(homeTeam, awayTeam, sc[0], sc[1], date, league,
 									"son-maclari", summaryUrl), currentSide);
+
 						} catch (Exception ex) {
 							System.out.println("⚠️ Satır hatası: " + ex.getMessage());
 						}
