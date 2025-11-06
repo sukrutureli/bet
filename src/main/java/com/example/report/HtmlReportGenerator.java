@@ -342,7 +342,7 @@ public class HtmlReportGenerator {
 //							html.append(matchResult.getAwayTeam());
 //							html.append("</div>");
 //						}
-//						html.append("</div>");
+						html.append("</div>");
 //					}
 //
 //					html.append("</div>");
