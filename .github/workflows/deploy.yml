@@ -48,12 +48,12 @@ jobs:
           name: public-html
           path: ./public
 
-      - name: Push updated files to sukrutureli/bettingsukru
+      - name: Push updated files to sukrutureli/fathertahmin
         env:
           TOKEN: ${{ secrets.ADMIN_USER }}
         run: |
           echo "🔹 Cloning target repo..."
-          git clone "https://x-access-token:${TOKEN}@github.com/sukrutureli/bettingsukru.git" target-repo
+          git clone "https://x-access-token:${TOKEN}@github.com/sukrutureli/fathertahmin.git" target-repo
           cd target-repo
 
           echo "🔹 Copying updated files from public/..."
