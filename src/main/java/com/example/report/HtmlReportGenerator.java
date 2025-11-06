@@ -39,26 +39,12 @@ public class HtmlReportGenerator {
 		html.append(".match:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }");
 		html.append(".match.insufficient { background-color: #fff1f1; border-left: 4px solid #dc3545; }");
 
-		/* --- Başlık --- */
-		/*
-		 * html.append(
-		 * ".match-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }"
-		 * ); html.
-		 * append(".match-name { font-weight: 700; color: #003366; font-size: 1.1em; }"
-		 * ); html.append(".match-time { color: #666; font-size: 0.9em; }");
-		 * html.append(
-		 * ".match-header button { background: linear-gradient(180deg,#007bff,#0062cc); border: none; color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9em; }"
-		 * ); html.
-		 * append(".match-header button:hover { background: linear-gradient(180deg,#0069d9,#005cbf); }"
-		 * );
-		 */
-
 		html.append(
 				".match-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }");
 		html.append(".match-info { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }");
 		html.append(".match-separator { color: #aaa; margin: 0 5px; }");
-		html.append(".match-name { font-weight: 700; color: #003366; font-size: 1.1em; }");
-		html.append(".match-time { color: #666; font-size: 0.9em; font-style: italic; }");
+		html.append(".match-name { font-weight: 700; color: #003366; font-size: 1.5em; line-height: 1.2; }");
+		html.append(".match-time { color: #004d80; font-size: 1.3em; font-weight: 600; }");
 		html.append(
 				".match-header button { background: linear-gradient(180deg,#007bff,#0062cc); border: none; color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9em; }");
 		html.append(".match-header button:hover { background: linear-gradient(180deg,#0069d9,#005cbf); }");
@@ -162,221 +148,208 @@ public class HtmlReportGenerator {
 			MatchInfo match = matches.get(i);
 
 			// Detay URL'si varsa geçmiş verilerini çek
-			if (match.hasDetailUrl()) {
 
-				TeamMatchHistory teamHistory = historyManager.getTeamHistories().get(i);
+			TeamMatchHistory teamHistory = historyManager.getTeamHistories().get(i);
 
-				boolean insufficient = (teamHistory != null && !teamHistory.isInfoEnough()
-						&& !teamHistory.isInfoEnoughWithoutRekabet());
+			boolean insufficient = (teamHistory != null && !teamHistory.isInfoEnough()
+					&& !teamHistory.isInfoEnoughWithoutRekabet());
 
-				html.append("<div class='match").append(insufficient ? " insufficient" : "").append("'>");
-				// html.append("<div class='match'>");
+			html.append("<div class='match").append(insufficient ? " insufficient" : "").append("'>");
+			// html.append("<div class='match'>");
 
-				String mbsClass = "match-mbs-" + match.getOdds().getMbs();
+			String mbsClass = "match-mbs-" + match.getOdds().getMbs();
 
-				html.append("<div class='match-header'>");
-				html.append("  <div class='match-info'>");
-				html.append("    <span class='match-time'>" + match.getTime() + "</span>");
-				html.append("    <span class='match-separator'>•</span>");
-				html.append("    <span class='match-name'>" + match.getName() + "</span>");
-				html.append("    <span class='match-separator'>•</span>");
-				html.append("    <span class='match-mbs " + mbsClass + "'>" + match.getOdds().getMbs() + "</span>");
-				html.append("  </div>");
-				html.append("  <button onclick=\"toggleHistory(this)\">Göster</button>");
+			html.append("<div class='match-header'>");
+			html.append("  <div class='match-info'>");
+			html.append("    <span class='match-time'>" + match.getTime() + "</span>");
+			html.append("    <span class='match-separator'>•</span>");
+			html.append("    <span class='match-name'>" + match.getName() + "</span>");
+			html.append("    <span class='match-separator'>•</span>");
+			html.append("    <span class='match-mbs " + mbsClass + "'>" + match.getOdds().getMbs() + "</span>");
+			html.append("  </div>");
+//			html.append("  <button onclick=\"toggleHistory(this)\">Göster</button>");
+			html.append("</div>");
+
+			if (teamHistory != null && teamHistory.getTotalMatches() > 0) {
+				html.append("<div class='odds-mini'>");
+				html.append("<h4>Güncel Oranlar ve Yüzdeler</h4>");
+
+				html.append("<div class='odds-grid'>");
+
+				// MS1
+				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getMs1(), "MS1") + "'>")
+						.append("<div class='odds-line'><span class='odds-label'>MS1:</span>")
+						.append("<span class='odds-value'>").append(match.getOdds().getMs1()).append("</span></div>")
+						.append("<span class='odds-pct'>")
+						.append(teamHistory.toStringAsPercentage(teamHistory.getMs1())).append("</span>")
+						.append("</div>");
+
+				// MSX
+				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getMs0(), "MSX") + "'>")
+						.append("<div class='odds-line'><span class='odds-label'>MSX:</span>")
+						.append("<span class='odds-value'>").append(match.getOdds().getMsX()).append("</span></div>")
+						.append("<span class='odds-pct'>")
+						.append(teamHistory.toStringAsPercentage(teamHistory.getMs0())).append("</span>")
+						.append("</div>");
+
+				// MS2
+				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getMs2(), "MS2") + "'>")
+						.append("<div class='odds-line'><span class='odds-label'>MS2:</span>")
+						.append("<span class='odds-value'>").append(match.getOdds().getMs2()).append("</span></div>")
+						.append("<span class='odds-pct'>")
+						.append(teamHistory.toStringAsPercentage(teamHistory.getMs2())).append("</span>")
+						.append("</div>");
 				html.append("</div>");
 
-				if (teamHistory != null && teamHistory.getTotalMatches() > 0) {
-					html.append("<div class='odds-mini'>");
-					html.append("<h4>Güncel Oranlar ve Yüzdeler</h4>");
+				// ALT / ÜST / VAR / YOK
+				html.append("<div class='odds-grid' style='margin-top:8px;'>");
 
-					html.append("<div class='odds-grid'>");
+				// ALT
+				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getAlt(), "Alt") + "'>")
+						.append("<div class='odds-line'><span class='odds-label'>Alt:</span>")
+						.append("<span class='odds-value'>").append(match.getOdds().getUnder25())
+						.append("</span></div>").append("<span class='odds-pct'>")
+						.append(teamHistory.toStringAsPercentage(teamHistory.getAlt())).append("</span>")
+						.append("</div>");
 
-					// MS1
-					html.append(
-							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getMs1(), "MS1") + "'>")
-							.append("<div class='odds-line'><span class='odds-label'>MS1:</span>")
-							.append("<span class='odds-value'>").append(match.getOdds().getMs1())
-							.append("</span></div>").append("<span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getMs1())).append("</span>")
-							.append("</div>");
+				// ÜST
+				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getUst(), "Üst") + "'>")
+						.append("<div class='odds-line'><span class='odds-label'>Üst:</span>")
+						.append("<span class='odds-value'>").append(match.getOdds().getOver25()).append("</span></div>")
+						.append("<span class='odds-pct'>")
+						.append(teamHistory.toStringAsPercentage(teamHistory.getUst())).append("</span>")
+						.append("</div>");
 
-					// MSX
-					html.append(
-							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getMs0(), "MSX") + "'>")
-							.append("<div class='odds-line'><span class='odds-label'>MSX:</span>")
-							.append("<span class='odds-value'>").append(match.getOdds().getMsX())
-							.append("</span></div>").append("<span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getMs0())).append("</span>")
-							.append("</div>");
+				// VAR
+				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getVar(), "Var") + "'>")
+						.append("<div class='odds-line'><span class='odds-label'>KG Var:</span>")
+						.append("<span class='odds-value'>").append(match.getOdds().getBttsYes())
+						.append("</span></div>").append("<span class='odds-pct'>")
+						.append(teamHistory.toStringAsPercentage(teamHistory.getVar())).append("</span>")
+						.append("</div>");
 
-					// MS2
-					html.append(
-							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getMs2(), "MS2") + "'>")
-							.append("<div class='odds-line'><span class='odds-label'>MS2:</span>")
-							.append("<span class='odds-value'>").append(match.getOdds().getMs2())
-							.append("</span></div>").append("<span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getMs2())).append("</span>")
-							.append("</div>");
+				// YOK
+				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getYok(), "Yok") + "'>")
+						.append("<div class='odds-line'><span class='odds-label'>KG Yok:</span>")
+						.append("<span class='odds-value'>").append(match.getOdds().getBttsNo()).append("</span></div>")
+						.append("<span class='odds-pct'>")
+						.append(teamHistory.toStringAsPercentage(teamHistory.getYok())).append("</span>")
+						.append("</div>");
+
+				html.append("</div>");
+				html.append("</div>");
+
+				int rekabetMacCount = teamHistory.getRekabetGecmisi().size();
+				int sonMaclarHomeCount = teamHistory.getSonMaclar(1).size();
+				int sonMaclarAwayCount = teamHistory.getSonMaclar(2).size();
+
+				if (sonMaclarHomeCount > 0 && sonMaclarAwayCount > 0) { // herhangi biri NaN ise bu tabloyu ekleme
+					// stats eklendi
+					html.append("<div class='quick-summary'>");
+					html.append("<table class='qs'>");
+					html.append("<thead>");
+					html.append("<tr>");
+					html.append("<th>MS1</th>");
+					html.append("<th>MSX</th>");
+					html.append("<th>MS2</th>");
+					html.append("<th>Üst 2.5</th>");
+					html.append("<th>KG Var</th>");
+					html.append("<th>Seçim</th>");
+					html.append("<th>Skor</th>");
+					html.append("</tr>");
+					html.append("</thead>");
+					html.append("<tbody>");
+					html.append("<tr>");
+					html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpHome()) + "</td>");
+					html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpDraw()) + "</td>");
+					html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpAway()) + "</td>");
+					html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpOver25()) + "</td>");
+					html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpBttsYes()) + "</td>");
+					html.append("<td class='qs-pick'><span class='pick'>" + results.get(i).getPick() + "</span></td>");
+					html.append("<td class='qs-score'>" + results.get(i).getScoreline() + "</td>");
+					html.append("</tr>");
+					html.append("</tbody>");
+					html.append("</table>");
 					html.append("</div>");
-
-					// ALT / ÜST / VAR / YOK
-					html.append("<div class='odds-grid' style='margin-top:8px;'>");
-
-					// ALT
-					html.append(
-							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getAlt(), "Alt") + "'>")
-							.append("<div class='odds-line'><span class='odds-label'>Alt:</span>")
-							.append("<span class='odds-value'>").append(match.getOdds().getUnder25())
-							.append("</span></div>").append("<span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getAlt())).append("</span>")
-							.append("</div>");
-
-					// ÜST
-					html.append(
-							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getUst(), "Üst") + "'>")
-							.append("<div class='odds-line'><span class='odds-label'>Üst:</span>")
-							.append("<span class='odds-value'>").append(match.getOdds().getOver25())
-							.append("</span></div>").append("<span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getUst())).append("</span>")
-							.append("</div>");
-
-					// VAR
-					html.append(
-							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getVar(), "Var") + "'>")
-							.append("<div class='odds-line'><span class='odds-label'>KG Var:</span>")
-							.append("<span class='odds-value'>").append(match.getOdds().getBttsYes())
-							.append("</span></div>").append("<span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getVar())).append("</span>")
-							.append("</div>");
-
-					// YOK
-					html.append(
-							"<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getYok(), "Yok") + "'>")
-							.append("<div class='odds-line'><span class='odds-label'>KG Yok:</span>")
-							.append("<span class='odds-value'>").append(match.getOdds().getBttsNo())
-							.append("</span></div>").append("<span class='odds-pct'>")
-							.append(teamHistory.toStringAsPercentage(teamHistory.getYok())).append("</span>")
-							.append("</div>");
-
-					html.append("</div>");
-					html.append("</div>");
-
-					int rekabetMacCount = teamHistory.getRekabetGecmisi().size();
-					int sonMaclarHomeCount = teamHistory.getSonMaclar(1).size();
-					int sonMaclarAwayCount = teamHistory.getSonMaclar(2).size();
-
-					if (sonMaclarHomeCount > 0 && sonMaclarAwayCount > 0) { // herhangi biri NaN ise bu tabloyu ekleme
-						// stats eklendi
-						html.append("<div class='quick-summary'>");
-						html.append("<table class='qs'>");
-						html.append("<thead>");
-						html.append("<tr>");
-						html.append("<th>MS1</th>");
-						html.append("<th>MSX</th>");
-						html.append("<th>MS2</th>");
-						html.append("<th>Üst 2.5</th>");
-						html.append("<th>KG Var</th>");
-						html.append("<th>Seçim</th>");
-						html.append("<th>Skor</th>");
-						html.append("</tr>");
-						html.append("</thead>");
-						html.append("<tbody>");
-						html.append("<tr>");
-						html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpHome()) + "</td>");
-						html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpDraw()) + "</td>");
-						html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpAway()) + "</td>");
-						html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpOver25()) + "</td>");
-						html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpBttsYes()) + "</td>");
-						html.append(
-								"<td class='qs-pick'><span class='pick'>" + results.get(i).getPick() + "</span></td>");
-						html.append("<td class='qs-score'>" + results.get(i).getScoreline() + "</td>");
-						html.append("</tr>");
-						html.append("</tbody>");
-						html.append("</table>");
-						html.append("</div>");
-					}
-
-					html.append("<div class='history'>");
-
-					// Takım istatistikleri
-					html.append("<div class='team-stats'>");
-					html.append("<p style='margin-top:8px; font-size:0.9em;'>");
-					html.append("Bakılan maç sayısı: Rekabet - ").append(rekabetMacCount)
-							.append(" | Ev sahibi son maçlar  - ").append(sonMaclarHomeCount)
-							.append(" | Deplasman son maçlar  - ").append(sonMaclarAwayCount);
-					html.append("</p>");
-					html.append("</div>");
-
-					html.append("<div class='history-section'>");
-					html.append("<strong>").append(teamHistory.getTeamName()).append("</strong>");
-					html.append("</div>");
-
-					// Rekabet Geçmişi
-					if (!teamHistory.getRekabetGecmisi().isEmpty()) {
-						html.append("<div class='history-section'>");
-						html.append("<h5>Rekabet Geçmişi (").append(teamHistory.getRekabetGecmisi().size())
-								.append(" maç):</h5>");
-
-						for (MatchResult matchResult : teamHistory.getRekabetGecmisi()) {
-							String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
-							html.append("<div class='match-result ").append(resultClass).append("'>");
-							html.append(matchResult.getMatchDate()).append(" - ");
-							html.append(matchResult.getHomeTeam()).append(" ");
-							html.append(matchResult.getScoreString()).append(" ");
-							html.append(matchResult.getAwayTeam());
-							html.append(" [").append(matchResult.getTournament()).append("]");
-							html.append("</div>");
-						}
-						html.append("</div>");
-					}
-
-					// Son Maçlar Home
-					if (!teamHistory.getSonMaclar(1).isEmpty()) {
-						html.append("<div class='history-section'>");
-						html.append("<h5>Ev Sahibi Son Maçlar (").append(teamHistory.getSonMaclar(1).size())
-								.append(" maç):</h5>");
-
-						for (MatchResult matchResult : teamHistory.getSonMaclar(1)) {
-							String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
-							html.append("<div class='match-result ").append(resultClass).append("'>");
-							html.append(matchResult.getMatchDate()).append(" - ");
-							html.append(matchResult.getHomeTeam()).append(" ");
-							html.append(matchResult.getScoreString()).append(" ");
-							html.append(matchResult.getAwayTeam());
-							html.append("</div>");
-						}
-						html.append("</div>");
-					}
-
-					// Son Maçlar Away
-					if (!teamHistory.getSonMaclar(2).isEmpty()) {
-						html.append("<div class='history-section'>");
-						html.append("<h5>Deplasman Son Maçlar (").append(teamHistory.getSonMaclar(2).size())
-								.append(" maç):</h5>");
-
-						for (MatchResult matchResult : teamHistory.getSonMaclar(2)) {
-							String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
-							html.append("<div class='match-result ").append(resultClass).append("'>");
-							html.append(matchResult.getMatchDate()).append(" - ");
-							html.append(matchResult.getHomeTeam()).append(" ");
-							html.append(matchResult.getScoreString()).append(" ");
-							html.append(matchResult.getAwayTeam());
-							html.append("</div>");
-						}
-						html.append("</div>");
-					}
-
-					html.append("</div>");
-					processedTeamCount++;
-				} else {
-					html.append("<div class='no-data'>Bu maç için geçmiş veri bulunamadı</div>");
 				}
 
+				html.append("<div class='history'>");
+
+				// Takım istatistikleri
+				html.append("<div class='team-stats'>");
+				html.append("<p style='margin-top:8px; font-size:0.9em;'>");
+				html.append("Bakılan maç sayısı: Rekabet - ").append(rekabetMacCount)
+						.append(" | Ev sahibi son maçlar  - ").append(sonMaclarHomeCount)
+						.append(" | Deplasman son maçlar  - ").append(sonMaclarAwayCount);
+				html.append("</p>");
+				html.append("</div>");
+
+//					html.append("<div class='history-section'>");
+//					html.append("<strong>").append(teamHistory.getTeamName()).append("</strong>");
+//					html.append("</div>");
+//
+//					// Rekabet Geçmişi
+//					if (!teamHistory.getRekabetGecmisi().isEmpty()) {
+//						html.append("<div class='history-section'>");
+//						html.append("<h5>Rekabet Geçmişi (").append(teamHistory.getRekabetGecmisi().size())
+//								.append(" maç):</h5>");
+//
+//						for (MatchResult matchResult : teamHistory.getRekabetGecmisi()) {
+//							String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
+//							html.append("<div class='match-result ").append(resultClass).append("'>");
+//							html.append(matchResult.getMatchDate()).append(" - ");
+//							html.append(matchResult.getHomeTeam()).append(" ");
+//							html.append(matchResult.getScoreString()).append(" ");
+//							html.append(matchResult.getAwayTeam());
+//							html.append(" [").append(matchResult.getTournament()).append("]");
+//							html.append("</div>");
+//						}
+//						html.append("</div>");
+//					}
+//
+//					// Son Maçlar Home
+//					if (!teamHistory.getSonMaclar(1).isEmpty()) {
+//						html.append("<div class='history-section'>");
+//						html.append("<h5>Ev Sahibi Son Maçlar (").append(teamHistory.getSonMaclar(1).size())
+//								.append(" maç):</h5>");
+//
+//						for (MatchResult matchResult : teamHistory.getSonMaclar(1)) {
+//							String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
+//							html.append("<div class='match-result ").append(resultClass).append("'>");
+//							html.append(matchResult.getMatchDate()).append(" - ");
+//							html.append(matchResult.getHomeTeam()).append(" ");
+//							html.append(matchResult.getScoreString()).append(" ");
+//							html.append(matchResult.getAwayTeam());
+//							html.append("</div>");
+//						}
+//						html.append("</div>");
+//					}
+//
+//					// Son Maçlar Away
+//					if (!teamHistory.getSonMaclar(2).isEmpty()) {
+//						html.append("<div class='history-section'>");
+//						html.append("<h5>Deplasman Son Maçlar (").append(teamHistory.getSonMaclar(2).size())
+//								.append(" maç):</h5>");
+//
+//						for (MatchResult matchResult : teamHistory.getSonMaclar(2)) {
+//							String resultClass = getResultClass(matchResult, teamHistory.getTeamName());
+//							html.append("<div class='match-result ").append(resultClass).append("'>");
+//							html.append(matchResult.getMatchDate()).append(" - ");
+//							html.append(matchResult.getHomeTeam()).append(" ");
+//							html.append(matchResult.getScoreString()).append(" ");
+//							html.append(matchResult.getAwayTeam());
+//							html.append("</div>");
+//						}
+//						html.append("</div>");
+//					}
+//
+//					html.append("</div>");
+				processedTeamCount++;
 			} else {
-				html.append("<div class='no-data'>Detay URL'si bulunamadı</div>");
+				html.append("<div class='no-data'>Bu maç için geçmiş veri bulunamadı</div>");
 			}
 
-			html.append("<p><small>Element #").append(match.getIndex()).append("</small></p>");
+//			html.append("<p><small>Element #").append(match.getIndex()).append("</small></p>");
 			html.append("</div>");
 		}
 
