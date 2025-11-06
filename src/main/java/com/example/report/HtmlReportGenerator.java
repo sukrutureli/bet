@@ -256,6 +256,7 @@ public class HtmlReportGenerator {
 					html.append("<th>KG Var</th>");
 					html.append("<th>Seçim</th>");
 					html.append("<th>Skor</th>");
+					html.append("<th>Güven</th>");
 					html.append("</tr>");
 					html.append("</thead>");
 					html.append("<tbody>");
@@ -267,6 +268,7 @@ public class HtmlReportGenerator {
 					html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpBttsYes()) + "</td>");
 					html.append("<td class='qs-pick'><span class='pick'>" + results.get(i).getPick() + "</span></td>");
 					html.append("<td class='qs-score'>" + results.get(i).getScoreline() + "</td>");
+					html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getConfidence()) + "</td>");
 					html.append("</tr>");
 					html.append("</tbody>");
 					html.append("</table>");
