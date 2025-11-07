@@ -177,7 +177,8 @@ public class HtmlReportGenerator {
 				html.append("<div class='odds-grid'>");
 
 				// MS1
-				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getMs1(), "MS1", match.getOdds().getMs1()) + "'>")
+				html.append("<div class='odds-cell' style='"
+						+ teamHistory.getStyle(teamHistory.getMs1(), "MS1", match.getOdds().getMs1()) + "'>")
 						.append("<div class='odds-line'><span class='odds-label'>MS1:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getMs1()).append("</span></div>")
 						.append("<span class='odds-pct'>")
@@ -185,7 +186,8 @@ public class HtmlReportGenerator {
 						.append("</div>");
 
 				// MSX
-				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getMs0(), "MSX", match.getOdds().getMsX()) + "'>")
+				html.append("<div class='odds-cell' style='"
+						+ teamHistory.getStyle(teamHistory.getMs0(), "MSX", match.getOdds().getMsX()) + "'>")
 						.append("<div class='odds-line'><span class='odds-label'>MSX:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getMsX()).append("</span></div>")
 						.append("<span class='odds-pct'>")
@@ -193,7 +195,8 @@ public class HtmlReportGenerator {
 						.append("</div>");
 
 				// MS2
-				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getMs2(), "MS2", match.getOdds().getMs2()) + "'>")
+				html.append("<div class='odds-cell' style='"
+						+ teamHistory.getStyle(teamHistory.getMs2(), "MS2", match.getOdds().getMs2()) + "'>")
 						.append("<div class='odds-line'><span class='odds-label'>MS2:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getMs2()).append("</span></div>")
 						.append("<span class='odds-pct'>")
@@ -205,7 +208,8 @@ public class HtmlReportGenerator {
 				html.append("<div class='odds-grid' style='margin-top:8px;'>");
 
 				// ALT
-				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getAlt(), "Alt", match.getOdds().getUnder25()) + "'>")
+				html.append("<div class='odds-cell' style='"
+						+ teamHistory.getStyle(teamHistory.getAlt(), "Alt", match.getOdds().getUnder25()) + "'>")
 						.append("<div class='odds-line'><span class='odds-label'>Alt:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getUnder25())
 						.append("</span></div>").append("<span class='odds-pct'>")
@@ -213,7 +217,8 @@ public class HtmlReportGenerator {
 						.append("</div>");
 
 				// ÜST
-				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getUst(), "Üst", match.getOdds().getOver25()) + "'>")
+				html.append("<div class='odds-cell' style='"
+						+ teamHistory.getStyle(teamHistory.getUst(), "Üst", match.getOdds().getOver25()) + "'>")
 						.append("<div class='odds-line'><span class='odds-label'>Üst:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getOver25()).append("</span></div>")
 						.append("<span class='odds-pct'>")
@@ -221,7 +226,8 @@ public class HtmlReportGenerator {
 						.append("</div>");
 
 				// VAR
-				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getVar(), "Var", match.getOdds().getBttsYes()) + "'>")
+				html.append("<div class='odds-cell' style='"
+						+ teamHistory.getStyle(teamHistory.getVar(), "Var", match.getOdds().getBttsYes()) + "'>")
 						.append("<div class='odds-line'><span class='odds-label'>KG Var:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getBttsYes())
 						.append("</span></div>").append("<span class='odds-pct'>")
@@ -229,7 +235,8 @@ public class HtmlReportGenerator {
 						.append("</div>");
 
 				// YOK
-				html.append("<div class='odds-cell' style='" + teamHistory.getStyle(teamHistory.getYok(), "Yok", match.getOdds().getBttsNo()) + "'>")
+				html.append("<div class='odds-cell' style='"
+						+ teamHistory.getStyle(teamHistory.getYok(), "Yok", match.getOdds().getBttsNo()) + "'>")
 						.append("<div class='odds-line'><span class='odds-label'>KG Yok:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getBttsNo()).append("</span></div>")
 						.append("<span class='odds-pct'>")
@@ -268,7 +275,8 @@ public class HtmlReportGenerator {
 					html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getpBttsYes()) + "</td>");
 					html.append("<td class='qs-pick'><span class='pick'>" + results.get(i).getPick() + "</span></td>");
 					html.append("<td class='qs-score'>" + results.get(i).getScoreline() + "</td>");
-					html.append("<td class='qs-odd'>" + MathUtils.fmtPct(results.get(i).getConfidence()) + "</td>");
+					html.append("<td class='qs-odd'>" + String.format("%.0f%%", results.get(i).getConfidence() * 100)
+							+ "</td>");
 					html.append("</tr>");
 					html.append("</tbody>");
 					html.append("</table>");
@@ -342,10 +350,10 @@ public class HtmlReportGenerator {
 //							html.append(matchResult.getAwayTeam());
 //							html.append("</div>");
 //						}
-						html.append("</div>");
+				html.append("</div>");
 //					}
 //
-					html.append("</div>");
+				html.append("</div>");
 				processedTeamCount++;
 			} else {
 				html.append("<div class='no-data'>Bu maç için geçmiş veri bulunamadı</div>");
