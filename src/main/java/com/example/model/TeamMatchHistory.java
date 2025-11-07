@@ -305,19 +305,18 @@ public class TeamMatchHistory {
 
 	public String getStyle(double value, String type, Double oddValue) {
 		String color = "background-color:#e8fbe8; border:1px solid #6ecf6e;";
-		int percentage = ((int) (value * 100));
 
 		if (!isInfoEnough() && !isInfoEnoughWithoutRekabet()) {
 			return "";
 		}
 
-		if (oddValue > 1) {
+		if (oddValue > 1.0) {
 			if (type.startsWith("MS")) {
-				if (percentage >= 50) {
+				if (value > 0.55) {
 					return color;
 				}
 			} else {
-				if (percentage >= 70) {
+				if (value > 0.7) {
 					return color;
 				}
 			}

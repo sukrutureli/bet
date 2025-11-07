@@ -59,60 +59,44 @@ public class LastPredictionManager {
 	}
 
 	private String calculatePrediction(TeamMatchHistory h, PredictionResult pr, MatchInfo matchInfo, String tahmin) {
-		double percentageH = 0;
-		double percentagePR = 0;
-
 		if (!h.isInfoEnough() && !h.isInfoEnoughWithoutRekabet()) {
 			return null;
 		}
-
+		
 		if (tahmin.equals("MS1")) {
-			percentageH = h.getMs1() * 100;
-			percentagePR = pr.getpHome() * 100;
-			if (matchInfo.getOdds().getMs1() > 0.0 && isPercentageOK(percentageH, percentagePR, "MS")
-					&& isScoreOk(pr.getScoreline(), "MS1")) {
-				return "MS1";
+			if (matchInfo.getOdds().getMs1() > 1.0 && h.getMs1() > 0.55
+					&& isScoreOk(pr.getScoreline(), tahmin)) {
+				return tahmin;
 			}
-		} else if (tahmin.equals("MS2")) {
-			percentageH = h.getMs2() * 100;
-			percentagePR = pr.getpAway() * 100;
-			if (matchInfo.getOdds().getMs2() > 0.0 && isPercentageOK(percentageH, percentagePR, "MS")
-					&& isScoreOk(pr.getScoreline(), "MS2")) {
-				return "MS2";
+		}
+		else if (tahmin.equals("MS2")) {
+			if (matchInfo.getOdds().getMs2() > 1.0 && h.getMs2() > 0.55
+					&& isScoreOk(pr.getScoreline(), tahmin)) {
+				return tahmin;
 			}
-		} else if (tahmin.equals("Üst")) {
-			percentageH = h.getUst() * 100;
-			percentagePR = pr.getpOver25() * 100;
-			if (matchInfo.getOdds().getOver25() > 0.0) {
-				if (isPercentageOK(percentageH, percentagePR, "Other") && isScoreOk(pr.getScoreline(), "Üst")) {
-					return "Üst";
-				}
+		}
+		else if (tahmin.equals("Üst")) {
+			if (matchInfo.getOdds().getOver25() > 1.0 && h.getUst() > 0.7
+					&& isScoreOk(pr.getScoreline(), tahmin)) {
+				return tahmin;
 			}
-		} else if (tahmin.equals("Alt")) {
-			percentageH = h.getAlt() * 100;
-			percentagePR = (1 - pr.getpOver25()) * 100;
-			if (matchInfo.getOdds().getUnder25() > 0.0) {
-				if (isPercentageOK(percentageH, percentagePR, "Other") && isScoreOk(pr.getScoreline(), "Alt")) {
-					return "Alt";
-				}
+		}
+		else if (tahmin.equals("Alt")) {
+			if (matchInfo.getOdds().getUnder25() > 1.0 && h.getAlt() > 0.7
+					&& isScoreOk(pr.getScoreline(), tahmin)) {
+				return tahmin;
 			}
-		} else if (tahmin.equals("Var")) {
-			percentageH = h.getVar() * 100;
-			percentagePR = pr.getpBttsYes() * 100;
-			if (matchInfo.getOdds().getBttsYes() > 0.0) {
-				if (matchInfo.getOdds().getMs1() > 1.5 && matchInfo.getOdds().getMs2() > 1.5) {
-					if (isPercentageOK(percentageH, percentagePR, "Other") && isScoreOk(pr.getScoreline(), "Var")) {
-						return "Var";
-					}
-				}
+		}
+		else if (tahmin.equals("Var")) {
+			if (matchInfo.getOdds().getBttsYes() > 1.0 && h.getVar() > 0.7
+					&& isScoreOk(pr.getScoreline(), tahmin)) {
+				return tahmin;
 			}
-		} else if (tahmin.equals("Yok")) {
-			percentageH = h.getYok() * 100;
-			percentagePR = (1 - pr.getpBttsYes()) * 100;
-			if (matchInfo.getOdds().getBttsNo() > 0.0) {
-				if (isPercentageOK(percentageH, percentagePR, "Other") && isScoreOk(pr.getScoreline(), "Yok")) {
-					return "Yok";
-				}
+		}
+		else if (tahmin.equals("Yok")) {
+			if (matchInfo.getOdds().getBttsNo() > 1.0 && h.getYok() > 0.7
+					&& isScoreOk(pr.getScoreline(), tahmin)) {
+				return tahmin;
 			}
 		}
 
