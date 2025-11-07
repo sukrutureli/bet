@@ -303,7 +303,7 @@ public class TeamMatchHistory {
 		return "%" + ((int) (value * 100));
 	}
 
-	public String getStyle(double value, String type) {
+	public String getStyle(double value, String type, Double oddValue) {
 		String color = "background-color:#e8fbe8; border:1px solid #6ecf6e;";
 		int percentage = ((int) (value * 100));
 
@@ -311,13 +311,15 @@ public class TeamMatchHistory {
 			return "";
 		}
 
-		if (type.startsWith("MS")) {
-			if (percentage >= 50) {
-				return color;
-			}
-		} else {
-			if (percentage >= 70) {
-				return color;
+		if (oddValue > 1) {
+			if (type.startsWith("MS")) {
+				if (percentage >= 50) {
+					return color;
+				}
+			} else {
+				if (percentage >= 70) {
+					return color;
+				}
 			}
 		}
 		return "";
@@ -423,4 +425,3 @@ public class TeamMatchHistory {
 				getWinCount(), getDrawCount(), getLossCount(), getWinRate());
 	}
 }
-
