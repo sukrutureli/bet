@@ -416,6 +416,42 @@ public class TeamMatchHistory {
 		return Math.max(lo, Math.min(hi, v));
 	}
 
+	public String getMax() {
+		String maxStr = "";
+		double max = 0.0;
+
+		if (getMs1() > max) {
+			maxStr = "MS1";
+			max = getMs1();
+		}
+		if (getMs0() > max) {
+			maxStr = "MSX";
+			max = getMs0();
+		}
+		if (getMs2() > max) {
+			maxStr = "MS2";
+			max = getMs1();
+		}
+		if (getAlt() > max) {
+			maxStr = "Alt";
+			max = getAlt();
+		}
+		if (getUst() > max) {
+			maxStr = "Üst";
+			max = getUst();
+		}
+		if (getVar() > max) {
+			maxStr = "Var";
+			max = getVar();
+		}
+		if (getYok() > max) {
+			maxStr = "Yok";
+			max = getYok();
+		}
+
+		return maxStr;
+	}
+
 	@Override
 	public String toString() {
 		return String.format(

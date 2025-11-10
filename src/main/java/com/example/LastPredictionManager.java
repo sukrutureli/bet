@@ -64,39 +64,51 @@ public class LastPredictionManager {
 		}
 		
 		if (tahmin.equals("MS1")) {
-			if (matchInfo.getOdds().getMs1() > 1.0 && h.getMs1() > 0.55
+			if (matchInfo.getOdds().getMs1() > 1.0 && h.getMax().equals(tahmin)
 					&& isScoreOk(pr.getScoreline(), tahmin)) {
-				return tahmin;
+				if (pr.getpHome() > pr.getpAway() && pr.getpHome() > pr.getpDraw()) {
+					return tahmin;
+				}
 			}
 		}
 		else if (tahmin.equals("MS2")) {
-			if (matchInfo.getOdds().getMs2() > 1.0 && h.getMs2() > 0.55
+			if (matchInfo.getOdds().getMs2() > 1.0 && h.getMax().equals(tahmin)
 					&& isScoreOk(pr.getScoreline(), tahmin)) {
-				return tahmin;
+				if (pr.getpHome() < pr.getpAway() && pr.getpAway() > pr.getpDraw()) {
+					return tahmin;
+				}
 			}
 		}
 		else if (tahmin.equals("Üst")) {
-			if (matchInfo.getOdds().getOver25() > 1.0 && h.getUst() > 0.7
+			if (matchInfo.getOdds().getOver25() > 1.0 && h.getMax().equals(tahmin)
 					&& isScoreOk(pr.getScoreline(), tahmin)) {
-				return tahmin;
+				if (pr.getpOver25() > 0.5) {
+					return tahmin;
+				}
 			}
 		}
 		else if (tahmin.equals("Alt")) {
-			if (matchInfo.getOdds().getUnder25() > 1.0 && h.getAlt() > 0.7
+			if (matchInfo.getOdds().getUnder25() > 1.0 && h.getMax().equals(tahmin)
 					&& isScoreOk(pr.getScoreline(), tahmin)) {
-				return tahmin;
+				if (pr.getpOver25() < 0.5) {
+					return tahmin;
+				}
 			}
 		}
 		else if (tahmin.equals("Var")) {
-			if (matchInfo.getOdds().getBttsYes() > 1.0 && h.getVar() > 0.7
+			if (matchInfo.getOdds().getBttsYes() > 1.0 && h.getMax().equals(tahmin)
 					&& isScoreOk(pr.getScoreline(), tahmin)) {
-				return tahmin;
+				if (pr.getpBttsYes() > 0.5) {
+					return tahmin;
+				}
 			}
 		}
 		else if (tahmin.equals("Yok")) {
-			if (matchInfo.getOdds().getBttsNo() > 1.0 && h.getYok() > 0.7
+			if (matchInfo.getOdds().getBttsNo() > 1.0 && h.getMax().equals(tahmin)
 					&& isScoreOk(pr.getScoreline(), tahmin)) {
-				return tahmin;
+				if (pr.getpBttsYes() < 0.5) {
+					return tahmin;
+				}
 			}
 		}
 
