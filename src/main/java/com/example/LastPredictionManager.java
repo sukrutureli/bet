@@ -62,7 +62,7 @@ public class LastPredictionManager {
 		if (!h.isInfoEnough() && !h.isInfoEnoughWithoutRekabet()) {
 			return null;
 		}
-		
+
 		if (tahmin.equals("MS1")) {
 			if (matchInfo.getOdds().getMs1() > 1.0 && h.getMax().equals(tahmin)
 					&& isScoreOk(pr.getScoreline(), tahmin)) {
@@ -70,40 +70,36 @@ public class LastPredictionManager {
 					return tahmin;
 				}
 			}
-		}
-		else if (tahmin.equals("MS2")) {
+		} else if (tahmin.equals("MS2")) {
 			if (matchInfo.getOdds().getMs2() > 1.0 && h.getMax().equals(tahmin)
 					&& isScoreOk(pr.getScoreline(), tahmin)) {
 				if (pr.getpHome() < pr.getpAway() && pr.getpAway() > pr.getpDraw()) {
 					return tahmin;
 				}
 			}
-		}
-		else if (tahmin.equals("Üst")) {
+		} else if (tahmin.equals("Üst")) {
 			if (matchInfo.getOdds().getOver25() > 1.0 && h.getMax().equals(tahmin)
 					&& isScoreOk(pr.getScoreline(), tahmin)) {
 				if (pr.getpOver25() > 0.5) {
 					return tahmin;
 				}
 			}
-		}
-		else if (tahmin.equals("Alt")) {
+		} else if (tahmin.equals("Alt")) {
 			if (matchInfo.getOdds().getUnder25() > 1.0 && h.getMax().equals(tahmin)
 					&& isScoreOk(pr.getScoreline(), tahmin)) {
 				if (pr.getpOver25() < 0.5) {
 					return tahmin;
 				}
 			}
-		}
-		else if (tahmin.equals("Var")) {
+		} else if (tahmin.equals("Var")) {
 			if (matchInfo.getOdds().getBttsYes() > 1.0 && h.getMax().equals(tahmin)
-					&& isScoreOk(pr.getScoreline(), tahmin)) {
+					&& isScoreOk(pr.getScoreline(), tahmin) && matchInfo.getOdds().getMs1() > 1.69
+					&& matchInfo.getOdds().getMs2() > 1.69) {
 				if (pr.getpBttsYes() > 0.5) {
 					return tahmin;
 				}
 			}
-		}
-		else if (tahmin.equals("Yok")) {
+		} else if (tahmin.equals("Yok")) {
 			if (matchInfo.getOdds().getBttsNo() > 1.0 && h.getMax().equals(tahmin)
 					&& isScoreOk(pr.getScoreline(), tahmin)) {
 				if (pr.getpBttsYes() < 0.5) {
