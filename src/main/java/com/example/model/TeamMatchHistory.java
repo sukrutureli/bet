@@ -430,7 +430,7 @@ public class TeamMatchHistory {
 		}
 		if (getMs2() > max) {
 			maxStr = "MS2";
-			max = getMs1();
+			max = getMs2();
 		}
 		if (getAlt() > max) {
 			maxStr = "Alt";
