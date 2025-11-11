@@ -299,10 +299,6 @@ public class TeamMatchHistory {
 		return false;
 	}
 
-	public String toStringAsPercentage(double value) {
-		return "%" + ((int) (value * 100));
-	}
-
 	public String getStyle(double value, String type, Double oddValue) {
 		String color = "background-color:#e8fbe8; border:1px solid #6ecf6e;";
 

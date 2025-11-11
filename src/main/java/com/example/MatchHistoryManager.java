@@ -58,44 +58,6 @@ public class MatchHistoryManager {
 		return csv.toString();
 	}
 
-	// JSON export için
-	public String toJsonString() {
-		StringBuilder json = new StringBuilder();
-		json.append("{\n");
-		json.append("  \"createdAt\": \"").append(createdAt).append("\",\n");
-		json.append("  \"totalTeams\": ").append(getTotalTeams()).append(",\n");
-		json.append("  \"totalMatches\": ").append(getTotalMatches()).append(",\n");
-		json.append("  \"teams\": [\n");
-
-		for (int i = 0; i < teamHistories.size(); i++) {
-			TeamMatchHistory team = teamHistories.get(i);
-			json.append("    {\n");
-			json.append("      \"teamName\": \"").append(team.getTeamName()).append("\",\n");
-			json.append("      \"totalMatches\": ").append(team.getTotalMatches()).append(",\n");
-			json.append("      \"winRate\": ").append(String.format("%.1f", team.getWinRate())).append(",\n");
-			json.append("      \"matches\": [\n");
-
-			List<MatchResult> matches = team.getAllMatches();
-			for (int j = 0; j < matches.size(); j++) {
-				json.append("        ").append(matches.get(j).toJsonString());
-				if (j < matches.size() - 1)
-					json.append(",");
-				json.append("\n");
-			}
-
-			json.append("      ]\n");
-			json.append("    }");
-			if (i < teamHistories.size() - 1)
-				json.append(",");
-			json.append("\n");
-		}
-
-		json.append("  ]\n");
-		json.append("}");
-
-		return json.toString();
-	}
-
 	@Override
 	public String toString() {
 		return String.format("MatchHistoryManager: %d takım, %d maç (Oluşturma: %s)", getTotalTeams(),

@@ -102,12 +102,4 @@ public class MatchResult {
 		return String.format("%s: %s %d-%d %s [%s] (%s)", matchDate, homeTeam, homeScore, awayScore, awayTeam,
 				tournament, matchType);
 	}
-
-	// JSON-like string representation
-	public String toJsonString() {
-		return String.format(
-				"{\"homeTeam\":\"%s\",\"awayTeam\":\"%s\",\"homeScore\":%d,\"awayScore\":%d,"
-						+ "\"matchDate\":\"%s\",\"tournament\":\"%s\",\"matchType\":\"%s\",\"result\":\"%s\"}",
-				homeTeam, awayTeam, homeScore, awayScore, matchDate, tournament, matchType, getResult());
-	}
 }

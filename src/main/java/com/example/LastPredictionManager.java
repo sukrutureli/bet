@@ -11,6 +11,7 @@ import com.example.model.MatchInfo;
 import com.example.model.PredictionData;
 import com.example.model.PredictionResult;
 import com.example.model.TeamMatchHistory;
+import com.example.util.MathUtils;
 
 public class LastPredictionManager {
 	private List<LastPrediction> lastPrediction;
@@ -134,22 +135,26 @@ public class LastPredictionManager {
 
 	private String getOddsAndPercentage(String tahmin, MatchInfo match, PredictionResult pr) {
 		if (tahmin.equals("MS1")) {
-			return " (" + String.valueOf(match.getOdds().getMs1()) + " - %" + ((int) (pr.getpHome() * 100)) + ")";
+			return String.format(" (%s - %s)", String.valueOf(match.getOdds().getMs1()),
+					MathUtils.fmtPct(pr.getpHome()));
 		} else if (tahmin.equals("MSX")) {
-			return " (" + String.valueOf(match.getOdds().getMsX()) + " - %" + ((int) (pr.getpDraw() * 100)) + ")";
+			return String.format(" (%s - %s)", String.valueOf(match.getOdds().getMsX()),
+					MathUtils.fmtPct(pr.getpDraw()));
 		} else if (tahmin.equals("MS2")) {
-			return " (" + String.valueOf(match.getOdds().getMs2()) + " - %" + ((int) (pr.getpAway() * 100)) + ")";
+			return String.format(" (%s - %s)", String.valueOf(match.getOdds().getMs2()),
+					MathUtils.fmtPct(pr.getpAway()));
 		} else if (tahmin.equals("Alt")) {
-			return " (" + String.valueOf(match.getOdds().getUnder25()) + " - %" + ((int) ((1 - pr.getpOver25()) * 100))
-					+ ")";
+			return String.format(" (%s - %s)", String.valueOf(match.getOdds().getUnder25()),
+					MathUtils.fmtPct(1 - pr.getpOver25()));
 		} else if (tahmin.equals("Üst")) {
-			return " (" + String.valueOf(match.getOdds().getOver25()) + " - %" + ((int) (pr.getpOver25() * 100)) + ")";
+			return String.format(" (%s - %s)", String.valueOf(match.getOdds().getOver25()),
+					MathUtils.fmtPct(pr.getpOver25()));
 		} else if (tahmin.equals("Var")) {
-			return " (" + String.valueOf(match.getOdds().getBttsYes()) + " - %" + ((int) (pr.getpBttsYes() * 100))
-					+ ")";
+			return String.format(" (%s - %s)", String.valueOf(match.getOdds().getBttsYes()),
+					MathUtils.fmtPct(pr.getpBttsYes()));
 		} else if (tahmin.equals("Yok")) {
-			return " (" + String.valueOf(match.getOdds().getBttsNo()) + " - %" + ((int) ((1 - pr.getpBttsYes()) * 100))
-					+ ")";
+			return String.format(" (%s - %s)", String.valueOf(match.getOdds().getBttsNo()),
+					MathUtils.fmtPct(1 - pr.getpBttsYes()));
 		}
 
 		return null;
@@ -161,45 +166,5 @@ public class LastPredictionManager {
 
 	public List<PredictionData> getPredictionData() {
 		return predictionData;
-	}
-
-	public boolean isPercentageOK(double h, double pr, String type) {
-		boolean result = false;
-		double hWdMs = 55;
-		double hWeMs = 60;
-		double prWdMs = 60;
-		double prWeMs = 65;
-
-		double hWdOther = 65;
-		double hWeOther = 70;
-		double prWdOther = 70;
-		double prWeOther = 75;
-
-		LocalDate now = LocalDate.now(ZoneId.of("Europe/Istanbul"));
-		boolean isWeekEnd = now.getDayOfWeek() == DayOfWeek.SATURDAY || now.getDayOfWeek() == DayOfWeek.SUNDAY;
-
-		if (isWeekEnd) {
-			if (type.contains("MS")) {
-				if (h >= hWeMs && pr >= prWeMs) {
-					result = true;
-				}
-			} else {
-				if (h >= hWeOther && pr >= prWeOther) {
-					result = true;
-				}
-			}
-		} else {
-			if (type.equals("MS")) {
-				if (h >= hWdMs && pr >= prWdMs) {
-					result = true;
-				}
-			} else {
-				if (h >= hWdOther && pr >= prWdOther) {
-					result = true;
-				}
-			}
-		}
-
-		return result;
 	}
 }
