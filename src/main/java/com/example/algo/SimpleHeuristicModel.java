@@ -81,9 +81,6 @@ public class SimpleHeuristicModel implements BettingAlgorithm {
             String pick = (maxRes == pHome) ? "MS1" : (maxRes == pDraw ? "MSX" : "MS2");
             double confidence = Math.round(maxRes * 100.0) / 100.0;
 
-            String meta = String.format("form=%.2f goal=%.2f rating=%.2f avgG=%.2f",
-                    formDiff, goalDiff, ratingDiff, avgGoals);
-
             return new PredictionResult(
                     name(),
                     match.getHomeTeam(),

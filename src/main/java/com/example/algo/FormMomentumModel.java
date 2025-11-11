@@ -67,8 +67,6 @@ public class FormMomentumModel implements BettingAlgorithm {
 
         double conf = Math.max(Math.max(pHome, pDraw), pAway);
 
-        String meta = String.format("momentum=%.2f, k=%.1f", momentum, k);
-
         return new PredictionResult(name(), match.getHomeTeam(), match.getAwayTeam(),
             clamp(pHome), clamp(pDraw), clamp(pAway), 0.5, 0.5, pick, conf, "");
     }
