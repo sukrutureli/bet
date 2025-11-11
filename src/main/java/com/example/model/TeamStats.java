@@ -101,7 +101,7 @@ public class TeamStats {
 	 */
 	public boolean isEmpty() {
 		boolean noGoals = avgGF == 0 && avgGA == 0;
-		boolean noForm = last5Points == 0 && getLast5Count() == 0;
+		boolean noForm = getLast5Count() == 0;
 		boolean noRating = rating100 == 0;
 		return noGoals && noForm && noRating;
 	}

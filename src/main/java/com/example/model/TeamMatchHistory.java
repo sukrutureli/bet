@@ -330,20 +330,20 @@ public class TeamMatchHistory {
 
 		TeamStats homeStats = new TeamStats();
 		homeStats.setLast5Points(getPoints(sonMaclarHome, teamEv));
-		homeStats.setLast5Count(Math.min(5, sonMaclarHome.size()));
+		homeStats.setLast5Count(sonMaclarHome.size());
 		homeStats.setAvgGF(getGFandGA(sonMaclarHome, teamEv)[0]);
 		homeStats.setAvgGA(getGFandGA(sonMaclarHome, teamEv)[1]);
 		homeStats.setRating100(getRating(homeStats.getAvgGF(), homeStats.getAvgGA(), homeStats.getAvgPointsPerMatch()));
-		homeStats.setH2hCount(Math.min(5, rekabetGecmisi.size()));
+		homeStats.setH2hCount(rekabetGecmisi.size());
 		homeStats.setH2hWins(getWinCount(rekabetGecmisi, teamEv));
 
 		TeamStats awayStats = new TeamStats();
 		awayStats.setLast5Points(getPoints(sonMaclarAway, teamDep));
-		awayStats.setLast5Count(Math.min(5, sonMaclarAway.size()));
+		awayStats.setLast5Count(sonMaclarAway.size());
 		awayStats.setAvgGF(getGFandGA(sonMaclarAway, teamDep)[0]);
 		awayStats.setAvgGA(getGFandGA(sonMaclarAway, teamDep)[1]);
 		awayStats.setRating100(getRating(awayStats.getAvgGF(), awayStats.getAvgGA(), awayStats.getAvgPointsPerMatch()));
-		awayStats.setH2hCount(Math.min(5, rekabetGecmisi.size()));
+		awayStats.setH2hCount(rekabetGecmisi.size());
 		awayStats.setH2hWins(getWinCount(rekabetGecmisi, teamDep));
 
 		currentMatch.setHomeStats(homeStats);
@@ -355,7 +355,7 @@ public class TeamMatchHistory {
 	private int getWinCount(List<MatchResult> macResult, String teamName) {
 		int winCount = 0;
 
-		for (int i = 0; i < Math.min(5, macResult.size()); i++) {
+		for (int i = 0; i < macResult.size(); i++) {
 			if (macResult.get(i).getHomeTeam().contains(teamName) && macResult.get(i).getResult() == "H") {
 				winCount++;
 			} else if (macResult.get(i).getAwayTeam().contains(teamName) && macResult.get(i).getResult() == "A") {
@@ -369,7 +369,7 @@ public class TeamMatchHistory {
 	public int getPoints(List<MatchResult> macResult, String teamName) {
 		int points = 0;
 
-		for (int i = 0; i < Math.min(5, macResult.size()); i++) {
+		for (int i = 0; i < macResult.size(); i++) {
 			if (macResult.get(i).getHomeTeam().contains(teamName) && macResult.get(i).getResult() == "H") {
 				points += 3;
 			} else if (macResult.get(i).getAwayTeam().contains(teamName) && macResult.get(i).getResult() == "A") {

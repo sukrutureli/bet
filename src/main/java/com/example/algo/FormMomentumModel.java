@@ -22,8 +22,8 @@ public class FormMomentumModel implements BettingAlgorithm {
         if (h == null || a == null || h.isEmpty() || a.isEmpty())
             return neutralResult(match);
 
-        double homeForm = (h.getLast5Points() / Math.max(1, h.getLast5Count()));
-        double awayForm = (a.getLast5Points() / Math.max(1, a.getLast5Count()));
+        double homeForm = h.getAvgPointsPerMatch();
+        double awayForm = a.getAvgPointsPerMatch();
 
         // normalize 0–1 arası (puan/maç => 0–3)
         homeForm /= 3.0;
