@@ -16,7 +16,7 @@ public class EnsembleModel implements BettingAlgorithm {
 	}
 
 	public double[] weight() {
-		return new double[]{ 1.0, 1.0 };
+		return new double[] { 1.0, 1.0 };
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class EnsembleModel implements BettingAlgorithm {
 			pA += w1 * safe(r.getpAway());
 			pO += w2 * safe(r.getpOver25());
 			pB += w2 * safe(r.getpBttsYes());
-			
+
 			totW += w1;
 			totWOUBtts += w2;
 

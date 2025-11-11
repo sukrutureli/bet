@@ -49,22 +49,6 @@ public class MatchInfo {
 		this.mbs = mbs;
 	}
 
-	public boolean isClose(int nowHour) {
-		try {
-			// "Zaman hatası" string'ini parse etmeye çalışırsa hata verir
-			if (time.equals("Zaman bulunamadı") || time.equals("Zaman hatası")) {
-				return true; // Zaman bilinmiyorsa işle
-			}
-
-			int timeInHour = Integer.parseInt(time.split(":")[0]);
-			return nowHour + 2 >= timeInHour && nowHour <= timeInHour;
-
-		} catch (Exception e) {
-			System.out.println("isClose() hatası: " + e.getMessage() + " - time: " + time);
-			return true; // Hata varsa işle
-		}
-	}
-
 	public boolean hasDetailUrl() {
 		return detailUrl != null && !detailUrl.isEmpty() && detailUrl.contains("istatistik.nesine.com");
 	}

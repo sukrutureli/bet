@@ -90,7 +90,7 @@ public class Application {
 
 			HtmlReportGenerator.generateHtmlForSublist(lastPredictionManager.getLastPrediction(), "futboltahmin.html");
 			System.out.println("futboltahmin.html oluşturuldu.");
-			
+
 			PredictionSaver.saveTodayPredictions(lastPredictionManager.getPredictionData());
 
 		} catch (Exception e) {
