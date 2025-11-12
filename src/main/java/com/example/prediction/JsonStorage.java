@@ -14,38 +14,38 @@ import java.util.List;
 
 public class JsonStorage {
 
-    private static final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+	private static final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
-    /**
-     * Generic kaydetme metodu: herhangi bir tipte listeyi JSON’a yazar.
-     */
-    public static <T> void save(String folderName, String prefix, List<T> data) throws IOException {
-        String today = LocalDate.now(ZoneId.of("Europe/Istanbul"))
-                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	/**
+	 * Generic kaydetme metodu: herhangi bir tipte listeyi JSON’a yazar.
+	 */
+	public static <T> void save(String folderName, String prefix, List<T> data) throws IOException {
+		String today = LocalDate.now(ZoneId.of("Europe/Istanbul")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        File folder = new File("public/data/" + folderName);
-        if (!folder.exists()) folder.mkdirs();
+		File folder = new File("public/" + folderName + "/data");
+		if (!folder.exists())
+			folder.mkdirs();
 
-        File file = new File(folder, prefix + "-" + today + ".json");
-        mapper.writeValue(file, data);
+		File file = new File(folder, prefix + "-" + today + ".json");
+		mapper.writeValue(file, data);
 
-        System.out.println("✅ JSON kaydedildi: " + file.getAbsolutePath());
-    }
+		System.out.println("✅ JSON kaydedildi: " + file.getAbsolutePath());
+	}
 
-    /**
-     * Generic okuma metodu: JSON dosyasını belirtilen tipte nesnelere çevirir.
-     */
-    public static <T> List<T> read(String folderName, String prefix, String date, Class<T> clazz) {
-        File file = new File("public/data/" + folderName + "/" + prefix + "-" + date + ".json");
-        if (!file.exists()) {
-            System.out.println("⚠️ Dosya bulunamadı: " + file.getAbsolutePath());
-            return Collections.emptyList();
-        }
-        try {
-            return mapper.readerForListOf(clazz).readValue(Files.readAllBytes(file.toPath()));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return Collections.emptyList();
-        }
-    }
+	/**
+	 * Generic okuma metodu: JSON dosyasını belirtilen tipte nesnelere çevirir.
+	 */
+	public static <T> List<T> read(String folderName, String prefix, String date, Class<T> clazz) {
+		File file = new File("public/" + folderName + "/data/" + prefix + "-" + date + ".json");
+		if (!file.exists()) {
+			System.out.println("⚠️ Dosya bulunamadı: " + file.getAbsolutePath());
+			return Collections.emptyList();
+		}
+		try {
+			return mapper.readerForListOf(clazz).readValue(Files.readAllBytes(file.toPath()));
+		} catch (IOException e) {
+			e.printStackTrace();
+			return Collections.emptyList();
+		}
+	}
 }

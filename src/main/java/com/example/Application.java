@@ -88,7 +88,7 @@ public class Application {
 			lastPredictionManager.fillPredictions();
 
 			CombinedHtmlReportGenerator.generateCombinedHtml(lastPredictionManager.getLastPrediction(), matches,
-					historyManager, matchStats, results, "futbol.html");
+					historyManager, matchStats, results, "futbol/futbol.html");
 			System.out.println("futbol.html oluşturuldu.");
 
 			JsonStorage.save("futbol", "PredictionData", lastPredictionManager.getPredictionData());
