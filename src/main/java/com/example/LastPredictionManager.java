@@ -54,6 +54,8 @@ public class LastPredictionManager {
 				PredictionData tempPredictionData = new PredictionData(homeTeam, awayTeam,
 						tempLastPrediction.getPredictions());
 				predictionData.add(tempPredictionData);
+				predictionData.get(predictionData.size() - 1).getStatuses()
+						.put(tempLastPrediction.getPredictions().get(0), "pending");
 			}
 		}
 	}
