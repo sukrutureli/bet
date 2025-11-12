@@ -14,13 +14,12 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "Manuel çalışma modu (futbol / basketbol / kontrol)"
+        description: "Manuel çalışma modu (futbol / kontrol)"
         required: true
         default: "futbol"
         type: choice
         options:
           - futbol
-          - basketbol
           - kontrol
 
 jobs:
