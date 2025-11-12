@@ -85,13 +85,7 @@ public class CombinedHtmlReportGenerator {
 
 							// ikon + renk seçimi
 							String icon = st.equals("won") ? "✅" : st.equals("lost") ? "❌" : "⏳";
-							String color = st.equals("won") ? "#28a745" : st.equals("lost") ? "#dc3545" : "#6c757d";
-
-							fw.write("<div class='pick-line' style='display:flex;align-items:center;gap:6px;"
-									+ "margin-bottom:4px;color:" + color + ";font-weight:600;'>");
-							fw.write("<span class='pick-label' style='min-width:60px;'>" + pick + "</span>");
 							fw.write("<span class='status-icon'>" + icon + "</span>");
-							fw.write("</div>");
 						}
 					} else {
 						fw.write("<span style='color:#999;'>-</span>");
