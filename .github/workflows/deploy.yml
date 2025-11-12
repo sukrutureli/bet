@@ -2,9 +2,30 @@ name: Build and Deploy to GitHub Pages
 
 on:
   schedule:
-    # UTC zamanında, her gün saat 00:00
+    # ⚽ FUTBOL - Her gün Türkiye saati 03:00 (UTC 00:00)
     - cron: '0 21 * * *'
+      env:
+        MODE: futbol
+    # 🏀 BASKETBOL - Her gün Türkiye saati 04:00 (UTC 01:00)
+    - cron: '0 22 * * *'
+      env:
+        MODE: basketbol
+    # 🧩 KONTROL - Pazar 05:00 Türkiye (UTC 02:00)
+    - cron: '0 23 * * 0'
+      env:
+        MODE: kontrol
+
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "Manuel çalışma modu (futbol / basketbol / kontrol)"
+        required: true
+        default: "futbol"
+        type: choice
+        options:
+          - futbol
+          - basketbol
+          - kontrol
 
 jobs:
   scraper:
@@ -28,8 +49,24 @@ jobs:
           apt-get update
           apt-get install -y maven
 
-      - name: Build and Run Scraper
-        run: mvn clean compile exec:java
+      - name: Determine Mode
+        id: setmode
+        run: |
+          if [ -n "${{ github.event.inputs.mode }}" ]; then
+            echo "mode=${{ github.event.inputs.mode }}" >> $GITHUB_OUTPUT
+          elif [ -n "${{ github.event.schedule.env.MODE }}" ]; then
+            echo "mode=${{ github.event.schedule.env.MODE }}" >> $GITHUB_OUTPUT
+          else
+            echo "mode=futbol" >> $GITHUB_OUTPUT
+          fi
+          echo "🔹 Çalışma modu: $(cat $GITHUB_OUTPUT)"
+
+      - name: Run Scraper
+        run: |
+          echo "🚀 ${MODE} modu başlatılıyor..."
+          mvn clean compile exec:java -Dexec.args="${MODE}"
+        env:
+          MODE: ${{ steps.setmode.outputs.mode }}
 
       - name: Upload public directory as artifact
         uses: actions/upload-artifact@v4
@@ -63,7 +100,7 @@ jobs:
           git config user.name "Şükrü Türeli"
           git config user.email "sukrutureli@gmail.com"
           git add .
-          git commit -m "📦 Auto update public HTML $(date +'%Y-%m-%d %H:%M')" || echo "No changes to commit"
+          git commit -m "📦 Auto update public HTML ($(date +'%Y-%m-%d %H:%M'))" || echo "No changes to commit"
 
           echo "🔹 Pushing to main branch..."
           git push origin main
