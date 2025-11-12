@@ -2,14 +2,18 @@ package com.example.model;
 
 public class Odds {
 	// 1-X-2, Over2.5/Under2.5, BTTS Yes/No
-	private final Double ms1;
-	private final Double msX;
-	private final Double ms2;
-	private final Double over25;
-	private final Double under25;
-	private final Double bttsYes;
-	private final Double bttsNo;
-	private final int mbs;
+	private Double ms1;
+	private Double msX;
+	private Double ms2;
+	private Double over25;
+	private Double under25;
+	private Double bttsYes;
+	private Double bttsNo;
+	private int mbs;
+	
+	public Odds() {
+		
+	}
 
 	public Odds(Double ms1, Double msX, Double ms2, Double over25, Double under25, Double bttsYes, Double bttsNo,
 			int mbs) {

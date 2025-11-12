@@ -13,6 +13,10 @@ public class TeamMatchHistory {
 	private List<MatchResult> sonMaclarHome;
 	private List<MatchResult> sonMaclarAway;
 	private LocalDateTime lastUpdated;
+	
+	public TeamMatchHistory() {
+		
+	}
 
 	public TeamMatchHistory(String teamName, String teamEv, String teamDep, String originalMatchUrl) {
 		this.teamName = teamName;

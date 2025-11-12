@@ -9,7 +9,9 @@ import java.util.Optional;
 import com.example.model.Match;
 import com.example.model.MatchInfo;
 import com.example.model.TeamMatchHistory;
+import com.example.prediction.JsonStorage;
 import com.example.prediction.PredictionSaver;
+import com.example.report.CombinedHtmlReportGenerator;
 import com.example.report.HtmlReportGenerator;
 import com.example.algo.*;
 import com.example.model.PredictionResult;
@@ -21,6 +23,7 @@ public class Application {
 		List<MatchInfo> matches = null;
 		List<Match> matchStats = new ArrayList<Match>();
 		ZoneId istanbulZone = ZoneId.of("Europe/Istanbul");
+		List<PredictionResult> results = new ArrayList<>();
 
 		try {
 			System.out.println("=== İddaa Scraper Başlatılıyor ===");
@@ -77,21 +80,23 @@ public class Application {
 			BettingAlgorithm formMomentum = new FormMomentumModel();
 			EnsembleModel ensemble = new EnsembleModel(List.of(poisson, heur, formMomentum));
 
-			List<PredictionResult> results = new ArrayList<>();
 			for (Match m : matchStats) {
 				results.add(ensemble.predict(m, Optional.ofNullable(m.getOdds())));
 			}
 
-			HtmlReportGenerator.generateHtml(matches, historyManager, matchStats, results, "futbol.html");
-			System.out.println("futbol.html oluşturuldu.");
-
 			LastPredictionManager lastPredictionManager = new LastPredictionManager(historyManager, results, matches);
 			lastPredictionManager.fillPredictions();
 
-			HtmlReportGenerator.generateHtmlForSublist(lastPredictionManager.getLastPrediction(), "futboltahmin.html");
-			System.out.println("futboltahmin.html oluşturuldu.");
+			CombinedHtmlReportGenerator.generateCombinedHtml(lastPredictionManager.getLastPrediction(), matches,
+					historyManager, matchStats, results, "futbol.html");
+			System.out.println("futbol.html oluşturuldu.");
 
-			PredictionSaver.saveTodayPredictions(lastPredictionManager.getPredictionData());
+			JsonStorage.save("futbol", "PredictionData", lastPredictionManager.getPredictionData());
+			JsonStorage.save("futbol", "LastPrediction", lastPredictionManager.getLastPrediction());
+			JsonStorage.save("futbol", "MatchInfo", matches);
+			JsonStorage.save("futbol", "TeamMatchHistory", historyManager.getTeamHistories());
+			JsonStorage.save("futbol", "Match", matchStats);
+			JsonStorage.save("futbol", "PredictionResult", results);
 
 		} catch (Exception e) {
 			System.out.println("GENEL HATA: " + e.getMessage());

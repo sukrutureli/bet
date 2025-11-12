@@ -6,6 +6,10 @@ public class Match {
 	private TeamStats homeStats;
 	private TeamStats awayStats;
 	private Odds odds; // soccerstats’tan gelmez; sonra Nesine/Mackolik ile besleriz
+	
+	public Match() {
+		
+	}
 
 	public Match(String homeTeam, String awayTeam) {
 		this.homeTeam = homeTeam;

@@ -12,6 +12,10 @@ public class MatchResult {
 	private String matchType; // "rekabet-gecmisi" veya "son-maclar"
 	private String originalUrl;
 	private String status; // "finished", "cancelled", "postponed" etc.
+	
+	public MatchResult() {
+		
+	}
 
 	public MatchResult(String homeTeam, String awayTeam, int homeScore, int awayScore, String matchDate,
 			String tournament, String matchType, String originalUrl) {

@@ -1,20 +1,24 @@
 package com.example.model;
 
 public class PredictionResult {
-	private final String algorithm;
-	private final String homeTeam;
-	private final String awayTeam;
+	private String algorithm;
+	private String homeTeam;
+	private String awayTeam;
 
-	private final double pHome;
-	private final double pDraw;
-	private final double pAway;
+	private double pHome;
+	private double pDraw;
+	private double pAway;
 
-	private final double pOver25;
-	private final double pBttsYes;
+	private double pOver25;
+	private double pBttsYes;
 
-	private final String pick; // "MS1", "MS2", "X", "ALT", "UST", "VAR", "YOK" vb.
-	private final double confidence; // 0-1
-	private final String scoreline; // en olası skor (ör. 2-1)
+	private String pick; // "MS1", "MS2", "X", "ALT", "UST", "VAR", "YOK" vb.
+	private double confidence; // 0-1
+	private String scoreline; // en olası skor (ör. 2-1)
+
+	public PredictionResult() {
+
+	}
 
 	public PredictionResult(String algorithm, String homeTeam, String awayTeam, double pHome, double pDraw,
 			double pAway, double pOver25, double pBttsYes, String pick, double confidence, String scoreline) {
