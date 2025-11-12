@@ -12,7 +12,7 @@ public class TeamMatchHistory {
 	private List<MatchResult> rekabetGecmisi;
 	private List<MatchResult> sonMaclarHome;
 	private List<MatchResult> sonMaclarAway;
-	private LocalDateTime lastUpdated;
+//	private LocalDateTime lastUpdated;
 	
 	public TeamMatchHistory() {
 		
@@ -26,7 +26,7 @@ public class TeamMatchHistory {
 		this.rekabetGecmisi = new ArrayList<>();
 		this.sonMaclarHome = new ArrayList<>();
 		this.sonMaclarAway = new ArrayList<>();
-		this.lastUpdated = LocalDateTime.now();
+//		this.lastUpdated = LocalDateTime.now();
 	}
 
 	// Add methods
@@ -64,9 +64,9 @@ public class TeamMatchHistory {
 		return null;
 	}
 
-	public LocalDateTime getLastUpdated() {
-		return lastUpdated;
-	}
+//	public LocalDateTime getLastUpdated() {
+//		return lastUpdated;
+//	}
 
 	// Utility methods
 	public int getTotalMatches() {

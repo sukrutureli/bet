@@ -1,5 +1,6 @@
-package com.example;
+package com.example.scraper;
 
+import com.example.PageWaitUtils;
 import com.example.model.MatchInfo;
 import com.example.model.MatchResult;
 import com.example.model.Odds;

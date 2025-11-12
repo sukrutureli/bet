@@ -4,6 +4,7 @@ import com.example.MatchHistoryManager;
 import com.example.model.LastPrediction;
 import com.example.model.Match;
 import com.example.model.MatchInfo;
+import com.example.model.PredictionData;
 import com.example.model.PredictionResult;
 
 import java.io.File;
@@ -24,10 +25,11 @@ public class CombinedHtmlReportGenerator {
 			MatchHistoryManager historyManager,
 			List<Match> matchStats,
 			List<PredictionResult> results,
+			List<PredictionData> sublistPredictiondata,
 			String fileName) {
 
 		try {
-			File dir = new File("public");
+			File dir = new File("public/futbol");
 			if (!dir.exists()) dir.mkdirs();
 
 			File file = new File(dir, fileName);
@@ -54,8 +56,9 @@ public class CombinedHtmlReportGenerator {
 				// generateHtmlForSublist içeriğini çağırmadan, aynı HTML gövdesini inline üretelim:
 				fw.write("<table style='width:100%; border-collapse:collapse; background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); overflow:hidden;'>\n");
 				fw.write("<thead><tr style='background:#0077cc; color:white;'>"
-						+ "<th>🕒 Saat</th><th>MBS</th><th>⚽ Maç</th><th>🎯 Tahmin</th><th>📊 Skor Tahmini</th></tr></thead>\n<tbody>\n");
-
+						+ "<th>🕒 Saat</th><th>MBS</th><th>⚽ Maç</th><th>🎯 Tahmin</th><th>📊 Skor Tahmini</th><th>Skor</th><th>Durum</th></tr></thead>\n<tbody>\n");
+				
+				int index = 0;
 				for (LastPrediction p : sublistPredictions) {
 					String mbsClass = "match-mbs-" + p.getMbs();
 					fw.write("<tr style='border-bottom:1px solid #eee;'>");
@@ -64,7 +67,10 @@ public class CombinedHtmlReportGenerator {
 					fw.write("<td style='padding:8px; font-weight:bold;'>" + p.getName() + "</td>");
 					fw.write("<td style='padding:8px;'>" + p.preditionsToString() + "</td>");
 					fw.write("<td style='padding:8px; text-align:center;'>" + (p.getScore() != null ? p.getScore() : "-") + "</td>");
+					fw.write("<td style='padding:8px;'>" + sublistPredictiondata.get(index).getScore() + "</td>");
+					fw.write("<td style='padding:8px;'>" + sublistPredictiondata.get(index).getStatuses().get(p.preditionsToString()) + "</td>");
 					fw.write("</tr>\n");
+					index++;
 				}
 				fw.write("</tbody></table>\n");
 				fw.write("</section>\n");
