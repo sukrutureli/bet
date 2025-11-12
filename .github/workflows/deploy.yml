@@ -2,16 +2,12 @@ name: Build and Deploy to GitHub Pages
 
 on:
   schedule:
-    # ⚽ FUTBOL - Her gün Türkiye saati 03:00 (UTC 00:00)
+    # ⚽ FUTBOL
     - cron: '0 21 * * *'
       env:
         MODE: futbol
-    # 🏀 BASKETBOL - Her gün Türkiye saati 04:00 (UTC 01:00)
-    - cron: '0 22 * * *'
-      env:
-        MODE: basketbol
-    # 🧩 KONTROL - Pazar 05:00 Türkiye (UTC 02:00)
-    - cron: '0 23 * * 0'
+    # 🧩 KONTROL
+    - cron: '0 23,4,16,19 * * *'
       env:
         MODE: kontrol
 
