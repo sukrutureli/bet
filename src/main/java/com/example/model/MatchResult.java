@@ -1,5 +1,7 @@
 package com.example.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 // Tek maç sonucu
 public class MatchResult {
 	private String homeTeam;
@@ -89,6 +91,7 @@ public class MatchResult {
 		return "D"; // Draw
 	}
 
+	@JsonIgnore
 	public int getTotalGoals() {
 		return homeScore + awayScore;
 	}
