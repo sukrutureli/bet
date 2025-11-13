@@ -83,6 +83,7 @@ public class MatchResult {
 	}
 
 	// Utility methods
+	@JsonIgnore
 	public String getResult() {
 		if (homeScore > awayScore)
 			return "H"; // Home win
