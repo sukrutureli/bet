@@ -53,51 +53,58 @@ public class CombinedHtmlReportGenerator {
 				fw.write("<h1>💰 Hazır Kupon</h1>\n");
 				fw.write("<p style='text-align:center; color:#555;'>Sistemin oluşturduğu öneri kuponu</p>\n");
 
-				fw.write(
-						"<table style='width:100%; border-collapse:collapse; background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); overflow:hidden;'>\n");
-				fw.write("<thead><tr style='background:#0077cc; color:white;'>"
-						+ "<th>🕒 Saat</th><th>MBS</th><th>⚽ Maç</th><th>🎯 Tahmin</th><th>📊 Skor Tahmini</th><th>Skor</th><th>Durum</th></tr></thead>\n<tbody>\n");
+				// === Tablo başlangıcı ===
+				fw.write("<table style='width:100%; border-collapse:collapse; background:#fff; "
+				        + "border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); overflow:hidden; font-size:14px;'>\n");
+
+				fw.write("<thead>\n");
+				fw.write("<tr style='background:#0077cc; color:white; text-align:center;'>");
+				fw.write("<th style='padding:10px;'>🕒 Saat</th>");
+				fw.write("<th style='padding:10px;'>MBS</th>");
+				fw.write("<th style='padding:10px;'>⚽ Maç</th>");
+				fw.write("<th style='padding:10px;'>🎯 Tahmin</th>");
+				fw.write("<th style='padding:10px;'>📊 Skor Tahmini</th>");
+				fw.write("<th style='padding:10px;'>Skor</th>");
+				fw.write("<th style='padding:10px;'>Durum</th>");
+				fw.write("</tr>\n");
+				fw.write("</thead>\n<tbody>\n");
 
 				int index = 0;
 				for (LastPrediction p : sublistPredictions) {
-					String mbsClass = "match-mbs-" + p.getMbs();
-					fw.write("<tr style='border-bottom:1px solid #eee;'>");
-					fw.write("<td style='padding:8px;'>" + p.getTime() + "</td>");
-					fw.write("<td style='text-align:center;'><span class='" + mbsClass + "'>" + p.getMbs()
-							+ "</span></td>");
-					fw.write("<td style='padding:8px; font-weight:bold;'>" + p.getName() + "</td>");
-					fw.write("<td style='padding:8px;'>" + p.preditionsToString() + "</td>");
-					fw.write("<td style='padding:8px; text-align:center;'>"
-							+ (p.getScore() != null ? p.getScore() : "-") + "</td>");
-					fw.write("<td style='padding:8px;'>" + sublistPredictiondata.get(index).getScore() + "</td>");
+				    String mbsClass = "match-mbs-" + p.getMbs();
 
-					// --- 7. Durum hücresi ---
-					fw.write("<td style='padding:8px;'>");
+				    fw.write("<tr style='border-bottom:1px solid #eee; text-align:center;'>");
+				    fw.write("<td style='padding:10px; white-space:nowrap;'>" + p.getTime() + "</td>");
+				    fw.write("<td style='padding:10px;'>" + p.getMbs() + "</td>");
+				    fw.write("<td style='padding:10px; text-align:left; font-weight:500;'>" + p.getName() + "</td>");
+				    fw.write("<td style='padding:10px;'>" + p.preditionsToString() + "</td>");
+				    fw.write("<td style='padding:10px;'>" + (p.getScore() != null ? p.getScore() : "-") + "</td>");
+				    fw.write("<td style='padding:10px;'>" + sublistPredictiondata.get(index).getScore() + "</td>");
 
-					List<String> picks = p.getPredictions(); // tahmin listesi
-					if (picks != null && !picks.isEmpty()) {
-						for (String pick : picks) {
-							String st = "pending";
-							if (sublistPredictiondata.get(index).getStatuses() != null
-									&& sublistPredictiondata.get(index).getStatuses().containsKey(pick)) {
-								st = sublistPredictiondata.get(index).getStatuses().get(pick);
-							}
-
-							// ikon + renk seçimi
-							String icon = st.equals("won") ? "✅" : st.equals("lost") ? "❌" : "⏳";
-							fw.write("<span class='status-icon'>" + icon + "</span>");
-						}
-					} else {
-						fw.write("<span style='color:#999;'>-</span>");
-					}
-
-					fw.write("</td>");
-
-					fw.write("</tr>\n");
-					index++;
+				    // --- Durum hücresi ---
+				    fw.write("<td style='padding:10px;'>");
+				    List<String> picks = p.getPredictions();
+				    if (picks != null && !picks.isEmpty()) {
+				        for (String pick : picks) {
+				            String st = "pending";
+				            if (sublistPredictiondata.get(index).getStatuses() != null
+				                    && sublistPredictiondata.get(index).getStatuses().containsKey(pick)) {
+				                st = sublistPredictiondata.get(index).getStatuses().get(pick);
+				            }
+				            String icon = st.equals("won") ? "✅" : st.equals("lost") ? "❌" : "⏳";
+				            fw.write("<span style='margin:0 4px;'>" + icon + "</span>");
+				        }
+				    } else {
+				        fw.write("<span style='color:#999;'>-</span>");
+				    }
+				    fw.write("</td>");
+				    fw.write("</tr>\n");
+				    index++;
 				}
+
 				fw.write("</tbody></table>\n");
 				fw.write("</section>\n");
+
 
 				// === 3️⃣ Ayraç ===
 				fw.write("<hr>\n");
