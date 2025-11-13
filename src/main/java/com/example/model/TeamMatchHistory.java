@@ -331,20 +331,24 @@ public class TeamMatchHistory {
 		TeamStats homeStats = new TeamStats();
 		homeStats.setLast5Points(getPoints(sonMaclarHome, teamEv));
 		homeStats.setLast5Count(sonMaclarHome.size());
+		homeStats.calculateAvgPointsPerMatch();
 		homeStats.setAvgGF(getGFandGA(sonMaclarHome, teamEv)[0]);
 		homeStats.setAvgGA(getGFandGA(sonMaclarHome, teamEv)[1]);
 		homeStats.setRating100(getRating(homeStats.getAvgGF(), homeStats.getAvgGA(), homeStats.getAvgPointsPerMatch()));
 		homeStats.setH2hCount(rekabetGecmisi.size());
 		homeStats.setH2hWins(getWinCount(rekabetGecmisi, teamEv));
+		homeStats.calculateH2hWinRate();
 
 		TeamStats awayStats = new TeamStats();
 		awayStats.setLast5Points(getPoints(sonMaclarAway, teamDep));
 		awayStats.setLast5Count(sonMaclarAway.size());
+		awayStats.calculateAvgPointsPerMatch();
 		awayStats.setAvgGF(getGFandGA(sonMaclarAway, teamDep)[0]);
 		awayStats.setAvgGA(getGFandGA(sonMaclarAway, teamDep)[1]);
 		awayStats.setRating100(getRating(awayStats.getAvgGF(), awayStats.getAvgGA(), awayStats.getAvgPointsPerMatch()));
 		awayStats.setH2hCount(rekabetGecmisi.size());
 		awayStats.setH2hWins(getWinCount(rekabetGecmisi, teamDep));
+		awayStats.calculateH2hWinRate();
 
 		currentMatch.setHomeStats(homeStats);
 		currentMatch.setAwayStats(awayStats);

@@ -16,6 +16,8 @@ public class TeamStats {
 	// Rekabet (H2H) bilgileri
 	private int h2hWins; // bu rakibe karşı kazanılan maç sayısı
 	private int h2hCount; // bu rakibe karşı toplam maç sayısı
+	private double h2hWinRate;
+	private double avgPointsPerMatch;
 
 	// ----- Constructor -----
 	public TeamStats() {
@@ -95,6 +97,14 @@ public class TeamStats {
 
 	// ----- Derived or Safe Methods -----
 
+	public double getH2hWinRate() {
+		return h2hWinRate;
+	}
+
+	public double getAvgPointsPerMatch() {
+		return avgPointsPerMatch;
+	}
+
 	/**
 	 * Takım verisi eksik veya anlamsız mı? Eğer hem goller hem form hem rating
 	 * sıfırsa 'boş' kabul edilir.
@@ -109,15 +119,15 @@ public class TeamStats {
 	/**
 	 * Takımın ortalama puanını (puan / maç) verir.
 	 */
-	public double getAvgPointsPerMatch() {
-		return safeDiv(last5Points, Math.max(1, getLast5Count()));
+	public void calculateAvgPointsPerMatch() {
+		avgPointsPerMatch = safeDiv(last5Points, Math.max(1, getLast5Count()));
 	}
 
 	/**
 	 * Head-to-head kazanma oranı.
 	 */
-	public double getH2hWinRate() {
-		return safeDiv(h2hWins, Math.max(1, h2hCount));
+	public void calculateH2hWinRate() {
+		h2hWinRate = safeDiv(h2hWins, Math.max(1, h2hCount));
 	}
 
 	/**
