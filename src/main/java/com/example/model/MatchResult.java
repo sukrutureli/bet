@@ -96,10 +96,12 @@ public class MatchResult {
 		return homeScore + awayScore;
 	}
 
+	@JsonIgnore
 	public String getScoreString() {
 		return homeScore + "-" + awayScore;
 	}
 
+	@JsonIgnore
 	public String getMatchString() {
 		return homeTeam + " vs " + awayTeam;
 	}
