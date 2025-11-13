@@ -1,9 +1,11 @@
 package com.example.model;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TeamMatchHistory {
 	private String teamName;
 	private String teamEv;
@@ -13,9 +15,9 @@ public class TeamMatchHistory {
 	private List<MatchResult> sonMaclarHome;
 	private List<MatchResult> sonMaclarAway;
 //	private LocalDateTime lastUpdated;
-	
+
 	public TeamMatchHistory() {
-		
+
 	}
 
 	public TeamMatchHistory(String teamName, String teamEv, String teamDep, String originalMatchUrl) {
