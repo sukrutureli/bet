@@ -1,5 +1,8 @@
 name: Build and Deploy to GitHub Pages
 
+env:
+  GITHUB_TOKEN: ${{ secrets.ADMIN_USER }}
+
 on:
   schedule:
     # ⚽ FUTBOL
