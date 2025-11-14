@@ -5,6 +5,7 @@ import com.example.model.LastPrediction;
 import com.example.model.Match;
 import com.example.model.MatchInfo;
 import com.example.model.MatchResult;
+import com.example.model.PredictionData;
 import com.example.model.PredictionResult;
 import com.example.model.TeamMatchHistory;
 import com.example.util.MathUtils;
@@ -400,95 +401,79 @@ public class HtmlReportGenerator {
 		}
 	}
 
-	public static void generateHtmlForSublist(List<LastPrediction> predictions, String fileName) {
+	public static void generateHtmlForSublist(List<LastPrediction> predictions, List<PredictionData> predictionData,
+			String fileName) {
 		StringBuilder html = new StringBuilder();
 
-		html.append("<!DOCTYPE html>\n");
-		html.append("<html lang='tr'>\n");
-		html.append("<head>\n");
-		html.append("<meta charset='UTF-8'>\n");
+		html.append("<!DOCTYPE html>\n<html lang='tr'>\n<head>\n<meta charset='UTF-8'>\n");
 		html.append("<meta name='viewport' content='width=device-width, initial-scale=1.0'>\n");
 		html.append("<title>💰 Hazır Kupon</title>\n");
 		html.append(
 				"<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'>\n");
 		html.append("<style>\n");
 
-		/* --- Genel Stil --- */
 		html.append(
-				"body { font-family: Arial, sans-serif; background-color: #f7f8fa; margin: 0; padding: 20px; color: #222; }\n");
-		html.append("h1 { text-align: center; margin-bottom: 20px; color: #333; font-size: 22px; }\n");
-
-		/* --- Tablo --- */
-		html.append("table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; ");
-		html.append("box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden; }\n");
-		html.append("th, td { padding: 10px 12px; text-align: left; }\n");
-		html.append("th { background-color: #0077cc; color: white; font-size: 15px; }\n");
-		html.append("tr:nth-child(even) { background-color: #f3f6fa; }\n");
-		html.append("tr:hover { background-color: #eaf3ff; }\n");
-		html.append("td { font-size: 14px; border-bottom: 1px solid #ddd; }\n");
-
-		/* --- İkon hizalama --- */
+				"body { font-family: Arial, sans-serif; background:#f7f8fa; margin:0; padding:20px; color:#222; }\n");
+		html.append("h1 { text-align:center; margin-bottom:20px; color:#333; font-size:22px; }\n");
 		html.append(
-				"td i, td svg, td img { display:inline-block; vertical-align:middle; margin-right:4px; color:#0077cc; }\n");
-
-		/* --- Sütun oranları --- */
-		html.append("th:nth-child(1), td:nth-child(1) { width: 80px; text-align: left; white-space: nowrap; }\n"); // Saat
-		html.append("th:nth-child(2), td:nth-child(2) { width: 60px; text-align: center; white-space: nowrap; }\n"); // MBS
+				"table { width:100%; border-collapse:collapse; background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }\n");
+		html.append("th, td { padding:10px 12px; text-align:center; border-bottom:1px solid #ddd; }\n");
+		html.append("th { background:#0077cc; color:white; font-size:15px; }\n");
+		html.append("tr:nth-child(even) { background:#f3f6fa; }\n");
+		html.append("tr:hover { background:#eaf3ff; }\n");
 		html.append(
-				"th:nth-child(3), td:nth-child(3) { max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }\n"); // Maç
-		html.append("th:nth-child(4), td:nth-child(4) { width: auto; }\n");
-		html.append(
-				"th:nth-child(5), td:nth-child(5) { width: 120px; text-align: left; color: #333; font-weight: bold; }\n");
+				".match-mbs { font-weight:bold; border-radius:6px; padding:3px 8px; font-size:0.85em; min-width:40px; display:inline-block; }\n");
+		html.append(".match-mbs-1 { background:#dc3545; color:#fff; }\n");
+		html.append(".match-mbs-2 { background:#fd7e14; color:#fff; }\n");
+		html.append(".match-mbs-3 { background:#28a745; color:#fff; }\n");
+		html.append(".status-icon { font-size:1.2em; }\n");
+		html.append(".won { color:#28a745; }\n");
+		html.append(".lost { color:#dc3545; }\n");
+		html.append(".pending { color:#999; }\n");
+		html.append("</style>\n</head>\n<body>\n");
 
-		html.append(".match { font-weight: bold; color: #1a1a1a; }\n");
-		html.append(".prediction { color: #444; white-space: pre-line; }\n");
-
-		/* --- MBS renkleri --- */
-		html.append(
-				".match-mbs { font-weight: bold; border-radius: 6px; padding: 3px 8px; font-size: 0.85em; min-width: 40px; display:inline-block; text-align:center; }\n");
-		html.append(".match-mbs-1 { background: #dc3545; color: #fff; } /* kırmızı */\n");
-		html.append(".match-mbs-2 { background: #fd7e14; color: #fff; } /* turuncu */\n");
-		html.append(".match-mbs-3 { background: #28a745; color: #fff; } /* yeşil */\n");
-
-		/* --- Mobil görünüm (max 600px) --- */
-		html.append("@media (max-width: 600px) {\n");
-		html.append("  table, thead, tbody, th, td, tr { display: block; width: 100%; }\n");
-		html.append("  thead { display: none; }\n");
-		html.append(
-				"  tr { margin-bottom: 12px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); background: #fff; padding: 8px; }\n");
-		html.append("  td { border: none; padding: 6px 8px; }\n");
-		html.append("  td i { margin-right: 6px; }\n");
-		html.append("  td span.label { display:block; font-weight:bold; color:#0077cc; margin-bottom:3px; }\n");
-		html.append("  .match-mbs { display:inline-block; margin-left:8px; }\n");
-		html.append("}\n");
-
-		html.append("</style>\n");
-		html.append("</head>\n");
-		html.append("<body>\n");
 		html.append("<h1>💰 Hazır Kupon</h1>\n");
-		html.append("<table>\n");
-		html.append(
-				"<thead><tr><th>🕒 Saat</th><th>MBS</th><th>⚽ Maç</th><th>🎯 Tahmin</th><th>📊 Skor Tahmini</th></tr></thead>\n");
-		html.append("<tbody>\n");
+		html.append("<p style='text-align:center; color:#555;'>Sistemin oluşturduğu öneri kuponu</p>\n");
 
-		// --- TABLO SATIRLARI ---
-		for (LastPrediction p : predictions) {
-			String mbsClass = "match-mbs-" + p.getMbs(); // örn. match-mbs-1 / 2 / 3
+		html.append("<table>\n<thead><tr>");
+		html.append("<th>🕒 Saat</th><th>MBS</th><th>⚽ Maç</th><th>🎯 Tahmin</th>");
+		html.append("<th>📊 Skor Tahmini</th><th>📈 Gerçek Skor</th><th>Durum</th>");
+		html.append("</tr></thead>\n<tbody>\n");
+
+		for (int i = 0; i < predictions.size(); i++) {
+			LastPrediction p = predictions.get(i);
+			PredictionData d = (predictionData != null && i < predictionData.size()) ? predictionData.get(i) : null;
+
+			String mbsClass = "match-mbs-" + p.getMbs();
+			String actualScore = (d != null && d.getScore() != null) ? d.getScore() : "-";
+
+			// Durum ikonu
+			StringBuilder statusIcons = new StringBuilder();
+			if (d != null && p.getPredictions() != null) {
+				for (String pick : p.getPredictions()) {
+					String st = d.getStatuses() != null ? d.getStatuses().getOrDefault(pick, "pending") : "pending";
+					switch (st) {
+					case "won" -> statusIcons.append("<span class='status-icon won'>✅</span>");
+					case "lost" -> statusIcons.append("<span class='status-icon lost'>❌</span>");
+					default -> statusIcons.append("<span class='status-icon pending'>⏳</span>");
+					}
+				}
+			} else {
+				statusIcons.append("<span class='status-icon pending'>⏳</span>");
+			}
 
 			html.append("<tr>");
-			html.append("<td><i class='fa-regular fa-clock'></i>").append(p.getTime()).append("</td>");
-			html.append("<td><span class='match-mbs ").append(mbsClass).append("'>").append(String.valueOf(p.getMbs()))
-					.append("</span></td>");
-			html.append("<td class='match'><i class='fa-solid fa-futbol'></i>").append(p.getName()).append("</td>");
-			html.append("<td class='prediction'><i class='fa-solid fa-bullseye'></i>").append(p.preditionsToString())
-					.append("</td>");
-			html.append("<td class='score'><i class='fa-solid fa-chart-line'></i>")
-					.append(p.getScore() != null ? p.getScore() : "-").append("</td>");
+			html.append("<td>").append(p.getTime()).append("</td>");
+			html.append("<td><span class='").append(mbsClass).append("'>").append(p.getMbs()).append("</span></td>");
+			html.append("<td>").append(p.getName()).append("</td>");
+			html.append("<td>").append(p.preditionsToString()).append("</td>");
+			html.append("<td>").append(p.getScore() != null ? p.getScore() : "-").append("</td>");
+			html.append("<td>").append(actualScore).append("</td>");
+			html.append("<td>").append(statusIcons).append("</td>");
 			html.append("</tr>\n");
 		}
 
-		html.append("</tbody></table>\n");
-		html.append("</body>\n</html>");
+		html.append("</tbody></table>\n</body>\n</html>");
 
 		File dir = new File("public");
 		if (!dir.exists())
@@ -496,8 +481,6 @@ public class HtmlReportGenerator {
 
 		try (FileWriter fw = new FileWriter(new File(dir, fileName))) {
 			fw.write(html.toString());
-			html = null;
-			System.gc();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
