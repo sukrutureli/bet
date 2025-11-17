@@ -8,19 +8,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.example.algo.BettingAlgorithm;
+import com.example.algo.EnsembleModel;
+import com.example.algo.FormMomentumModel;
+import com.example.algo.PoissonGoalModel;
+import com.example.algo.SimpleHeuristicModel;
 import com.example.model.Match;
 import com.example.model.MatchInfo;
+import com.example.model.PredictionResult;
 import com.example.model.TeamMatchHistory;
 import com.example.prediction.JsonReader;
 import com.example.prediction.JsonStorage;
-import com.example.prediction.PredictionSaver;
+import com.example.prediction.PredictionUpdater;
 import com.example.report.CombinedHtmlReportGenerator;
-import com.example.report.HtmlReportGenerator;
 import com.example.scraper.ControlScraper;
 import com.example.scraper.MatchScraper;
-import com.example.prediction.PredictionUpdater;
-import com.example.algo.*;
-import com.example.model.PredictionResult;
 
 public class Application {
 
@@ -42,7 +44,7 @@ public class Application {
 
 		default:
 			System.out.println("⚠️ Geçersiz argüman: " + mode);
-			System.out.println("Kullanım: java -jar prediction.jar [futbol | basketbol | kontrol]");
+			System.out.println("Kullanım: java -jar prediction.jar [futbol | kontrol]");
 			break;
 		}
 
