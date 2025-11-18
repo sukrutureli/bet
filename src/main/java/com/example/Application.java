@@ -1,8 +1,11 @@
 package com.example;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -122,8 +125,8 @@ public class Application {
 			lastPredictionManager.fillPredictions();
 
 			CombinedHtmlReportGenerator.generateCombinedHtml(lastPredictionManager.getLastPrediction(), matches,
-					historyManager, matchStats, results, lastPredictionManager.getPredictionData(),
-					String.format("futbol%s.html", ""));
+					historyManager, matchStats, results, lastPredictionManager.getPredictionData(), "futbol.html",
+					getStringDay(false));
 			System.out.println("futbol.html oluşturuldu.");
 
 			JsonStorage.save("futbol", "PredictionData", lastPredictionManager.getPredictionData());
@@ -182,8 +185,8 @@ public class Application {
 			lastPredictionManager.fillPredictions();
 
 			CombinedHtmlReportGenerator.generateCombinedHtml(lastPredictionManager.getLastPrediction(), matches,
-					historyManager, matchStats, results, lastPredictionManager.getPredictionData(),
-					String.format("futbol%s.html", ""));
+					historyManager, matchStats, results, lastPredictionManager.getPredictionData(), "futbol.html",
+					getStringDay(true));
 			System.out.println("futbol.html oluşturuldu.");
 
 			JsonStorage.save("futbol", "PredictionData", lastPredictionManager.getPredictionData());
@@ -196,5 +199,21 @@ public class Application {
 				scraper.close();
 			}
 		}
+	}
+
+	public static String getStringDay(boolean minusDay) {
+		LocalTime now = LocalTime.now(ZoneId.of("Europe/Istanbul"));
+		String day = LocalDate.now(ZoneId.of("Europe/Istanbul")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+		if (minusDay) {
+			if (now.isAfter(LocalTime.MIDNIGHT) && now.isBefore(LocalTime.of(6, 0))) {
+				day = LocalDate.now(ZoneId.of("Europe/Istanbul")).minusDays(1)
+						.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			} else {
+				day = LocalDate.now(ZoneId.of("Europe/Istanbul")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			}
+		}
+
+		return day;
 	}
 }

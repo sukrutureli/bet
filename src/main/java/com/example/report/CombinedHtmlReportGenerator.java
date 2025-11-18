@@ -13,7 +13,7 @@ public class CombinedHtmlReportGenerator {
 
 	public static void generateCombinedHtml(List<LastPrediction> sublistPredictions, List<MatchInfo> matches,
 			MatchHistoryManager historyManager, List<Match> matchStats, List<PredictionResult> results,
-			List<PredictionData> sublistPredictionData, String fileName) {
+			List<PredictionData> sublistPredictionData, String fileName, String day) {
 		try {
 			// 1️⃣ Önce iki geçici HTML oluştur
 			HtmlReportGenerator.generateHtmlForSublist(sublistPredictions, sublistPredictionData, "TEMP_SUB.html");
@@ -45,11 +45,32 @@ public class CombinedHtmlReportGenerator {
 				fw.write("<meta name='viewport' content='width=device-width, initial-scale=1.0'>");
 				fw.write("<title>⚽ Futbol Tahminleri + 💰 Hazır Kupon</title>");
 				fw.write("<style>");
-				fw.write(subStyle);
-				fw.write(detailStyle);
+
+				//
+				// SUBLIST CSS → #sublist altında çalışsın
+				//
+				fw.write("#sublist {}\n");
+				fw.write(subStyle.replace("body", "#sublist body").replace("table", "#sublist table")
+						.replace("th", "#sublist th").replace("td", "#sublist td")
+						.replace(".match-mbs", "#sublist .match-mbs").replace(".won", "#sublist .won")
+						.replace(".lost", "#sublist .lost").replace(".pending", "#sublist .pending"));
+
+				//
+				// DETAIL CSS → #detailed altında çalışsın
+				//
+				fw.write("#detailed {}\n");
+				fw.write(detailStyle.replace("body", "#detailed body").replace(".match", "#detailed .match")
+						.replace(".odds", "#detailed .odds").replace(".quick-summary", "#detailed .quick-summary")
+						.replace("table", "#detailed table").replace("th", "#detailed th")
+						.replace("td", "#detailed td"));
+
 				fw.write(
 						"section{margin:30px auto; max-width:1200px;} hr{border:none;border-top:3px solid #0077cc;margin:40px 0;}");
-				fw.write("</style></head><body>");
+
+				fw.write("</style>");
+
+				fw.write("</head><body>");
+				fw.write("<h1>" + day + "</h1>");
 				fw.write("<section id='sublist'>");
 				fw.write(subBody);
 				fw.write("</section>");
