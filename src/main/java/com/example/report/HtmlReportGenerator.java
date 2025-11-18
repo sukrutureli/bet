@@ -241,8 +241,8 @@ public class HtmlReportGenerator {
 				html.append("</div>");
 
 				int rekabetMacCount = teamHistory.getRekabetGecmisi().size();
-				int sonMaclarHomeCount = teamHistory.getSonMaclar(1).size();
-				int sonMaclarAwayCount = teamHistory.getSonMaclar(2).size();
+				int sonMaclarHomeCount = teamHistory.getSonMaclarHome().size();
+				int sonMaclarAwayCount = teamHistory.getSonMaclarAway().size();
 
 				if (sonMaclarHomeCount > 0 && sonMaclarAwayCount > 0) { // herhangi biri NaN ise bu tabloyu ekleme
 					// stats eklendi

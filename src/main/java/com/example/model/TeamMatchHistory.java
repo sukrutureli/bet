@@ -58,13 +58,12 @@ public class TeamMatchHistory {
 		return rekabetGecmisi;
 	}
 
-	public List<MatchResult> getSonMaclar(int homeOrAway) {
-		if (homeOrAway == 1) {
-			return sonMaclarHome;
-		} else if (homeOrAway == 2) {
-			return sonMaclarAway;
-		}
-		return null;
+	public List<MatchResult> getSonMaclarAway() {
+		return sonMaclarAway;
+	}
+
+	public List<MatchResult> getSonMaclarHome() {
+		return sonMaclarHome;
 	}
 
 //	public LocalDateTime getLastUpdated() {

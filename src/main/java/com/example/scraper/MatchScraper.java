@@ -300,7 +300,7 @@ public class MatchScraper {
 			}
 
 			System.out.println("✅ " + title + " için geçmiş verisi: " + th.getRekabetGecmisi().size() + " rekabet, "
-					+ th.getSonMaclar(1).size() + "+" + th.getSonMaclar(2).size() + " son maç");
+					+ th.getSonMaclarHome().size() + "+" + th.getSonMaclarAway().size() + " son maç");
 		} catch (Exception e) {
 			System.out.println("⚠️ Geçmiş verisi hatası: " + e.getMessage());
 		}
