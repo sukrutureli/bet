@@ -464,7 +464,7 @@ public class HtmlReportGenerator {
 
 			html.append("<tr>");
 			html.append("<td>").append(p.getTime()).append("</td>");
-			html.append("<td><span class='").append(mbsClass).append("'>").append(p.getMbs()).append("</span></td>");
+			html.append("<td><span class='match-mbs ").append(mbsClass).append("'>").append(p.getMbs()).append("</span></td>");
 			html.append("<td>").append(p.getName()).append("</td>");
 			html.append("<td>").append(p.preditionsToString()).append("</td>");
 			html.append("<td>").append(p.getScore() != null ? p.getScore() : "-").append("</td>");
