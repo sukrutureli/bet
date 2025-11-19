@@ -388,7 +388,7 @@ public class CombinedHtmlReportGenerator {
 		html.append("</body></html>");
 
 		// === DOSYAYA YAZ ======================================================
-		File dir = new File("public");
+		File dir = new File("public/futbol");
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}
