@@ -1,29 +1,14 @@
-name: Build and Deploy to GitHub Pages
+name: Futbol – Build and Deploy to GitHub Pages
 
 env:
   GITHUB_TOKEN: ${{ secrets.ADMIN_USER }}
+  MODE: futbol
 
 on:
   schedule:
-    # ⚽ FUTBOL
+    # ⚽ FUTBOL – şu an için *UTC 21:00* (TSİ 00:00 civarı)
     - cron: '0 21 * * *'
-      env:
-        MODE: futbol
-    # 🧩 KONTROL
-    - cron: '0 23,4,16,19 * * *'
-      env:
-        MODE: kontrol
-
   workflow_dispatch:
-    inputs:
-      mode:
-        description: "Manuel çalışma modu (futbol / kontrol)"
-        required: true
-        default: "futbol"
-        type: choice
-        options:
-          - futbol
-          - kontrol
 
 jobs:
   scraper:
@@ -47,24 +32,10 @@ jobs:
           apt-get update
           apt-get install -y maven
 
-      - name: Determine Mode
-        id: setmode
+      - name: Run Futbol Scraper
         run: |
-          if [ -n "${{ github.event.inputs.mode }}" ]; then
-            echo "mode=${{ github.event.inputs.mode }}" >> $GITHUB_OUTPUT
-          elif [ -n "${{ github.event.schedule.env.MODE }}" ]; then
-            echo "mode=${{ github.event.schedule.env.MODE }}" >> $GITHUB_OUTPUT
-          else
-            echo "mode=futbol" >> $GITHUB_OUTPUT
-          fi
-          echo "🔹 Çalışma modu: $(cat $GITHUB_OUTPUT)"
-
-      - name: Run Scraper
-        run: |
-          echo "🚀 ${MODE} modu başlatılıyor..."
-          mvn clean compile exec:java -Dexec.args="${MODE}"
-        env:
-          MODE: ${{ steps.setmode.outputs.mode }}
+          echo "🚀 futbol modu başlatılıyor..."
+          mvn clean compile exec:java -Dexec.args="futbol"
 
       - name: Upload public directory as artifact
         uses: actions/upload-artifact@v4
@@ -98,7 +69,7 @@ jobs:
           git config user.name "Şükrü Türeli"
           git config user.email "sukrutureli@gmail.com"
           git add .
-          git commit -m "📦 Auto update public HTML ($(date +'%Y-%m-%d %H:%M'))" || echo "No changes to commit"
+          git commit -m "📦 [FUTBOL] Auto update public HTML ($(date +'%Y-%m-%d %H:%M'))" || echo "No changes to commit"
 
           echo "🔹 Pushing to main branch..."
           git push origin main
