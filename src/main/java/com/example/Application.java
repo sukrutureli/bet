@@ -161,7 +161,7 @@ public class Application {
 		List<TeamMatchHistory> teamHistoryList = JsonReader.readFromGithub("futbol", "TeamMatchHistory",
 				JsonReader.getToday(), TeamMatchHistory.class);
 		
-		List<RealScores> rsList = JsonReader.readFromGithub("basketbol", "RealScores",
+		List<RealScores> rsList = JsonReader.readFromGithub("futbol", "RealScores",
 				JsonReader.getToday(), RealScores.class);
 
 		try {
