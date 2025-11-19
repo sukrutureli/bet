@@ -70,6 +70,14 @@ public class TeamMatchHistory {
 //		return lastUpdated;
 //	}
 
+	public String getTeamEv() {
+		return teamEv;
+	}
+
+	public String getTeamDep() {
+		return teamDep;
+	}
+
 	// Utility methods
 	public int getTotalMatches() {
 		return rekabetGecmisi.size() + sonMaclarHome.size() + sonMaclarAway.size();
