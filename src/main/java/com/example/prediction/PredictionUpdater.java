@@ -17,7 +17,7 @@ public class PredictionUpdater {
 	 * GitHub Pages üzerindeki JSON'u indirir, skorları günceller, güncel
 	 * versiyonunu "data/2025-10-16-updated.json" olarak kaydeder.
 	 */
-	public static void updateFromGithub(Map<String, String> updatedScores, String prefix) throws IOException {
+	public static List<PredictionData> updateFromGithub(Map<String, String> updatedScores, String prefix) throws IOException {
 		String day;
 		LocalTime now = LocalTime.now(ZoneId.of("Europe/Istanbul"));
 		if (now.isAfter(LocalTime.MIDNIGHT) && now.isBefore(LocalTime.of(6, 0))) {
@@ -98,6 +98,8 @@ public class PredictionUpdater {
 		mapper.writerWithDefaultPrettyPrinter().writeValue(outFile, predictions);
 
 		System.out.println("✅ Güncellenmiş dosya: " + outFile.getAbsolutePath());
+
+		return predictions;
 	}
 
 	/**

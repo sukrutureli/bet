@@ -18,7 +18,9 @@ import com.example.algo.PoissonGoalModel;
 import com.example.algo.SimpleHeuristicModel;
 import com.example.model.Match;
 import com.example.model.MatchInfo;
+import com.example.model.PredictionData;
 import com.example.model.PredictionResult;
+import com.example.model.RealScores;
 import com.example.model.TeamMatchHistory;
 import com.example.prediction.JsonReader;
 import com.example.prediction.JsonStorage;
@@ -126,7 +128,7 @@ public class Application {
 
 			CombinedHtmlReportGenerator.generateCombinedHtml(lastPredictionManager.getLastPrediction(), matches,
 					historyManager, matchStats, results, lastPredictionManager.getPredictionData(), "futbol.html",
-					getStringDay(false));
+					getStringDay(false), null);
 			System.out.println("futbol.html oluşturuldu.");
 
 			JsonStorage.save("futbol", "PredictionData", lastPredictionManager.getPredictionData());
@@ -158,6 +160,9 @@ public class Application {
 
 		List<TeamMatchHistory> teamHistoryList = JsonReader.readFromGithub("futbol", "TeamMatchHistory",
 				JsonReader.getToday(), TeamMatchHistory.class);
+		
+		List<RealScores> rsList = JsonReader.readFromGithub("basketbol", "RealScores",
+				JsonReader.getToday(), RealScores.class);
 
 		try {
 			System.out.println("Zaman: " + LocalDateTime.now(istanbulZone));
@@ -165,9 +170,9 @@ public class Application {
 			// Scraper'ı başlat
 			scraper = new ControlScraper();
 
-			Map<String, String> updatedScores = scraper.fetchFinishedScores();
+			Map<String, String> updatedScores = scraper.fetchFinishedScores(rsList);
 
-			PredictionUpdater.updateFromGithub(updatedScores, "PredictionData-");
+			List<PredictionData> predictions = PredictionUpdater.updateFromGithub(updatedScores, "PredictionData-");
 
 			for (int i = 0; i < matches.size(); i++) {
 				MatchInfo match = matches.get(i);
@@ -185,11 +190,12 @@ public class Application {
 			lastPredictionManager.fillPredictions();
 
 			CombinedHtmlReportGenerator.generateCombinedHtml(lastPredictionManager.getLastPrediction(), matches,
-					historyManager, matchStats, results, lastPredictionManager.getPredictionData(), "futbol.html",
-					getStringDay(true));
+					historyManager, matchStats, results, predictions, "futbol.html",
+					getStringDay(true), scraper.getResults());
 			System.out.println("futbol.html oluşturuldu.");
 
-			JsonStorage.save("futbol", "PredictionData", lastPredictionManager.getPredictionData());
+			//JsonStorage.save("futbol", "PredictionData", lastPredictionManager.getPredictionData());
+			JsonStorage.save("futbol", "RealScores", scraper.getResults());
 
 		} catch (Exception e) {
 			System.out.println("GENEL HATA: " + e.getMessage());

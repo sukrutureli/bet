@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.example.model.RealScores;
+
 import java.time.*;
 import java.util.*;
 
@@ -19,9 +21,11 @@ public class ControlScraper {
 
 	private WebDriver driver;
 	private WebDriverWait wait;
+	private List<RealScores> results;
 
 	public ControlScraper() {
 		setupDriver();
+		results = new ArrayList<RealScores>();
 	}
 
 	private void setupDriver() {
@@ -39,8 +43,11 @@ public class ControlScraper {
 	// =============================================================
 	// ⚽ FUTBOL: Bitmiş maç skorlarını çek
 	// =============================================================
-	public Map<String, String> fetchFinishedScores() {
+	public Map<String, String> fetchFinishedScores(List<RealScores> rsList) {
 		Map<String, String> scores = new HashMap<>();
+		if (rsList != null && !rsList.isEmpty()) {
+			results.addAll(rsList);
+		}
 		try {
 			String url = "https://www.nesine.com/iddaa/canli-skor/futbol";
 			driver.get(url);
@@ -83,6 +90,25 @@ public class ControlScraper {
 					String homeScore = safeText(board.findElement(By.cssSelector(".home-score")), driver);
 					String awayScore = safeText(board.findElement(By.cssSelector(".away-score")), driver);
 					String score = homeScore + "-" + awayScore;
+					
+					RealScores tempRealScores = new RealScores();
+					tempRealScores.setHomeTeam(home);
+					tempRealScores.setAwayTeam(away);
+					tempRealScores.setScore(score);
+					int count = 0;
+					for (RealScores rs : results) {
+						if (rs.getHomeTeam().equals(tempRealScores.getHomeTeam())
+								&& rs.getAwayTeam().equals(tempRealScores.getAwayTeam())) {
+							if (rs.getScore().equals("-")) {
+								rs.setScore(score);
+							}
+							count++;
+							break;
+						}
+					}
+					if (count == 0) {
+						results.add(tempRealScores);
+					}
 
 					scores.put(home + " - " + away, score);
 					System.out.println("✅ " + home + " - " + away + " → " + score);
@@ -177,5 +203,9 @@ public class ControlScraper {
 		new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
 				.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState")
 						.equals("complete"));
+	}
+
+	public List<RealScores> getResults() {
+		return results;
 	}
 }

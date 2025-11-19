@@ -7,6 +7,7 @@ import com.example.model.MatchInfo;
 import com.example.model.MatchResult;
 import com.example.model.PredictionData;
 import com.example.model.PredictionResult;
+import com.example.model.RealScores;
 import com.example.model.TeamMatchHistory;
 import com.example.util.MathUtils;
 
@@ -20,7 +21,7 @@ import java.util.*;
 public class HtmlReportGenerator {
 
 	public static void generateHtml(List<MatchInfo> matches, MatchHistoryManager historyManager, List<Match> matchStats,
-			List<PredictionResult> results, String fileName) {
+			List<PredictionResult> results, String fileName, List<RealScores> realScores) {
 
 		ZoneId istanbulZone = ZoneId.of("Europe/Istanbul");
 
@@ -158,13 +159,17 @@ public class HtmlReportGenerator {
 			html.append("<div class='match").append(insufficient ? " insufficient" : "").append("'>");
 			// html.append("<div class='match'>");
 
+			String homeStr = match.getName().split(" - ")[0];
+			String awayStr = match.getName().split(" - ")[1];
+
 			String mbsClass = "match-mbs-" + match.getOdds().getMbs();
 
 			html.append("<div class='match-header'>");
 			html.append("  <div class='match-info'>");
 			html.append("    <span class='match-time'>" + match.getTime() + "</span>");
 			html.append("    <span class='match-separator'>•</span>");
-			html.append("    <span class='match-name'>" + match.getName() + "</span>");
+			html.append("    <span class='match-name'>" + match.getName() + getRealScore(realScores, homeStr, awayStr)
+					+ "</span>");
 			html.append("    <span class='match-separator'>•</span>");
 			html.append("    <span class='match-mbs " + mbsClass + "'>" + match.getOdds().getMbs() + "</span>");
 			html.append("  </div>");
@@ -464,7 +469,8 @@ public class HtmlReportGenerator {
 
 			html.append("<tr>");
 			html.append("<td>").append(p.getTime()).append("</td>");
-			html.append("<td><span class='match-mbs ").append(mbsClass).append("'>").append(p.getMbs()).append("</span></td>");
+			html.append("<td><span class='match-mbs ").append(mbsClass).append("'>").append(p.getMbs())
+					.append("</span></td>");
 			html.append("<td>").append(p.getName()).append("</td>");
 			html.append("<td>").append(p.preditionsToString()).append("</td>");
 			html.append("<td>").append(p.getScore() != null ? p.getScore() : "-").append("</td>");
@@ -499,5 +505,25 @@ public class HtmlReportGenerator {
 		} else {
 			return "loss";
 		}
+	}
+
+	private static String getRealScore(List<RealScores> rsList, String home, String away) {
+		String score = " (⏳)";
+		int count = 0;
+
+		for (RealScores rs : rsList) {
+			if (home.equals(rs.getHomeTeam()) && away.equals(rs.getAwayTeam())) {
+				score = " (" + rs.getScore() + ")";
+				count = 1;
+				break;
+			}
+			if (home.equals(rs.getHomeTeam()) || away.equals(rs.getAwayTeam())) {
+				score = " (" + rs.getScore() + ")";
+				count++;
+			}
+		}
+		if (count != 1)
+			score = " (⏳)";
+		return score;
 	}
 }
