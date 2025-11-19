@@ -187,6 +187,52 @@ public class CombinedHtmlReportGenerator {
 
 		html.append("</tbody></table>");
 		html.append("</div>"); // .table-wrapper
+		
+		// === Kupon Win Rate Hesabı ===
+		int won = 0;
+		int lost = 0;
+		int pending = 0;
+
+		for (int i = 0; i < sublistPredictions.size(); i++) {
+			PredictionData d = (sublistPredictionData != null && i < sublistPredictionData.size())
+					? sublistPredictionData.get(i)
+					: null;
+
+			if (d != null && d.getStatuses() != null) {
+				for (String pick : sublistPredictions.get(i).getPredictions()) {
+					String st = d.getStatuses().getOrDefault(pick, "pending");
+					if (st.equals("won"))
+						won++;
+					else if (st.equals("lost"))
+						lost++;
+					else
+						pending++;
+				}
+			} else {
+				pending++;
+			}
+		}
+
+		// Win-rate: Sadece sonuçlanmışlar arasında hesaplanır
+		double winRate = (won + lost) > 0 ? (won * 100.0 / (won + lost)) : 0.0;
+
+		html.append("<div style='margin-top:12px; text-align:center;'>");
+		html.append("<div style='display:inline-block; background:#fff; padding:12px 18px; border-radius:10px;");
+		html.append("box-shadow:0 2px 8px rgba(0,0,0,0.10); border-left:5px solid #0077cc;'>");
+
+		html.append("<p style='margin:0; font-size:1rem; color:#004d80; font-weight:700;'>Kupon Win Rate</p>");
+		html.append("<p style='margin:4px 0 0 0; font-size:0.95rem; color:#333;'>");
+		html.append("Kazanan Tahmin: ").append(won);
+		html.append(" • Kaybeden: ").append(lost);
+		html.append(" • Bekleyen: ").append(pending);
+		html.append("</p>");
+
+		html.append("<p style='margin:6px 0 0 0; font-size:1.1rem; font-weight:700; color:#0077cc;'>");
+		html.append(String.format("%.1f%%", winRate)).append("</p>");
+
+		html.append("</div>");
+		html.append("</div>");
+
 		html.append("</section>");
 
 		// Ayrım çizgisi
