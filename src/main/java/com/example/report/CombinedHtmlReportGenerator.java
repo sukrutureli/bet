@@ -299,24 +299,24 @@ public class CombinedHtmlReportGenerator {
 
 				// MS1
 				html.append("<div class='odds-cell' style='")
-						.append(teamHistory.getStyle(teamHistory.getMs1(), "MS1", match.getOdds().getMs1()))
-						.append("'>").append("<div class='odds-line'><span class='odds-label'>MS1:</span>")
+						.append(teamHistory.getStyle("MS1", match.getOdds().getMs1())).append("'>")
+						.append("<div class='odds-line'><span class='odds-label'>MS1:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getMs1()).append("</span></div>")
 						.append("<span class='odds-pct'>").append(MathUtils.fmtPct(teamHistory.getMs1()))
 						.append("</span>").append("</div>");
 
 				// MSX
 				html.append("<div class='odds-cell' style='")
-						.append(teamHistory.getStyle(teamHistory.getMs0(), "MSX", match.getOdds().getMsX()))
-						.append("'>").append("<div class='odds-line'><span class='odds-label'>MSX:</span>")
+						.append(teamHistory.getStyle("MSX", match.getOdds().getMsX())).append("'>")
+						.append("<div class='odds-line'><span class='odds-label'>MSX:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getMsX()).append("</span></div>")
 						.append("<span class='odds-pct'>").append(MathUtils.fmtPct(teamHistory.getMs0()))
 						.append("</span>").append("</div>");
 
 				// MS2
 				html.append("<div class='odds-cell' style='")
-						.append(teamHistory.getStyle(teamHistory.getMs2(), "MS2", match.getOdds().getMs2()))
-						.append("'>").append("<div class='odds-line'><span class='odds-label'>MS2:</span>")
+						.append(teamHistory.getStyle("MS2", match.getOdds().getMs2())).append("'>")
+						.append("<div class='odds-line'><span class='odds-label'>MS2:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getMs2()).append("</span></div>")
 						.append("<span class='odds-pct'>").append(MathUtils.fmtPct(teamHistory.getMs2()))
 						.append("</span>").append("</div>");
@@ -328,32 +328,32 @@ public class CombinedHtmlReportGenerator {
 
 				// ALT
 				html.append("<div class='odds-cell' style='")
-						.append(teamHistory.getStyle(teamHistory.getAlt(), "Alt", match.getOdds().getUnder25()))
-						.append("'>").append("<div class='odds-line'><span class='odds-label'>Alt:</span>")
+						.append(teamHistory.getStyle("Alt", match.getOdds().getUnder25())).append("'>")
+						.append("<div class='odds-line'><span class='odds-label'>Alt:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getUnder25())
 						.append("</span></div>").append("<span class='odds-pct'>")
 						.append(MathUtils.fmtPct(teamHistory.getAlt())).append("</span>").append("</div>");
 
 				// ÜST
 				html.append("<div class='odds-cell' style='")
-						.append(teamHistory.getStyle(teamHistory.getUst(), "Üst", match.getOdds().getOver25()))
-						.append("'>").append("<div class='odds-line'><span class='odds-label'>Üst:</span>")
+						.append(teamHistory.getStyle("Üst", match.getOdds().getOver25())).append("'>")
+						.append("<div class='odds-line'><span class='odds-label'>Üst:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getOver25()).append("</span></div>")
 						.append("<span class='odds-pct'>").append(MathUtils.fmtPct(teamHistory.getUst()))
 						.append("</span>").append("</div>");
 
 				// VAR
 				html.append("<div class='odds-cell' style='")
-						.append(teamHistory.getStyle(teamHistory.getVar(), "Var", match.getOdds().getBttsYes()))
-						.append("'>").append("<div class='odds-line'><span class='odds-label'>KG Var:</span>")
+						.append(teamHistory.getStyle("Var", match.getOdds().getBttsYes())).append("'>")
+						.append("<div class='odds-line'><span class='odds-label'>KG Var:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getBttsYes())
 						.append("</span></div>").append("<span class='odds-pct'>")
 						.append(MathUtils.fmtPct(teamHistory.getVar())).append("</span>").append("</div>");
 
 				// YOK
 				html.append("<div class='odds-cell' style='")
-						.append(teamHistory.getStyle(teamHistory.getYok(), "Yok", match.getOdds().getBttsNo()))
-						.append("'>").append("<div class='odds-line'><span class='odds-label'>KG Yok:</span>")
+						.append(teamHistory.getStyle("Yok", match.getOdds().getBttsNo())).append("'>")
+						.append("<div class='odds-line'><span class='odds-label'>KG Yok:</span>")
 						.append("<span class='odds-value'>").append(match.getOdds().getBttsNo()).append("</span></div>")
 						.append("<span class='odds-pct'>").append(MathUtils.fmtPct(teamHistory.getYok()))
 						.append("</span>").append("</div>");

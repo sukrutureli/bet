@@ -160,9 +160,9 @@ public class Application {
 
 		List<TeamMatchHistory> teamHistoryList = JsonReader.readFromGithub("futbol", "TeamMatchHistory",
 				JsonReader.getToday(), TeamMatchHistory.class);
-		
-		List<RealScores> rsList = JsonReader.readFromGithub("futbol", "RealScores",
-				JsonReader.getToday(), RealScores.class);
+
+		List<RealScores> rsList = JsonReader.readFromGithub("futbol", "RealScores", JsonReader.getToday(),
+				RealScores.class);
 
 		try {
 			System.out.println("Zaman: " + LocalDateTime.now(istanbulZone));
@@ -190,11 +190,12 @@ public class Application {
 			lastPredictionManager.fillPredictions();
 
 			CombinedHtmlReportGenerator.generateCombinedHtml(lastPredictionManager.getLastPrediction(), matches,
-					historyManager, matchStats, results, predictions, "futbol.html",
-					getStringDay(true), scraper.getResults());
+					historyManager, matchStats, results, predictions, "futbol.html", getStringDay(true),
+					scraper.getResults());
 			System.out.println("futbol.html oluşturuldu.");
 
-			//JsonStorage.save("futbol", "PredictionData", lastPredictionManager.getPredictionData());
+			// JsonStorage.save("futbol", "PredictionData",
+			// lastPredictionManager.getPredictionData());
 			JsonStorage.save("futbol", "RealScores", scraper.getResults());
 
 		} catch (Exception e) {

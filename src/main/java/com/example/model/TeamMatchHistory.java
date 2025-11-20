@@ -314,7 +314,7 @@ public class TeamMatchHistory {
 		return false;
 	}
 
-	public String getStyle(double value, String type, Double oddValue) {
+	public String getStyle(String type, Double oddValue) {
 		String color = "background-color:#e8fbe8; border:1px solid #6ecf6e;";
 
 		if (!isInfoEnough() && !isInfoEnoughWithoutRekabet()) {
@@ -322,14 +322,8 @@ public class TeamMatchHistory {
 		}
 
 		if (oddValue > 1.0) {
-			if (type.startsWith("MS")) {
-				if (value > 0.55) {
-					return color;
-				}
-			} else {
-				if (value > 0.7) {
-					return color;
-				}
+			if (type.equals(getMax())) {
+				return color;
 			}
 		}
 		return "";
