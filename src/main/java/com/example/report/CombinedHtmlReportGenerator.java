@@ -220,7 +220,7 @@ public class CombinedHtmlReportGenerator {
 		html.append("<div style='display:inline-block; background:#fff; padding:12px 18px; border-radius:10px;");
 		html.append("box-shadow:0 2px 8px rgba(0,0,0,0.10); border-left:5px solid #0077cc;'>");
 
-		html.append("<p style='margin:0; font-size:1rem; color:#004d80; font-weight:700;'>Kupon Win Rate</p>");
+		html.append("<p style='margin:0; font-size:1rem; color:#004d80; font-weight:700;'>Kupon Kazanma Yüzdesi</p>");
 		html.append("<p style='margin:4px 0 0 0; font-size:0.95rem; color:#333;'>");
 		html.append("Kazanan Tahmin: ").append(won);
 		html.append(" • Kaybeden: ").append(lost);
