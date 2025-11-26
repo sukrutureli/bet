@@ -19,14 +19,14 @@ public class JsonStorage {
 	/**
 	 * Generic kaydetme metodu: herhangi bir tipte listeyi JSON’a yazar.
 	 */
-	public static <T> void save(String folderName, String prefix, List<T> data) throws IOException {
-		String today = LocalDate.now(ZoneId.of("Europe/Istanbul")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	public static <T> void save(String folderName, String prefix, String date, List<T> data) throws IOException {
+		//String today = LocalDate.now(ZoneId.of("Europe/Istanbul")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
 		File folder = new File("public/" + folderName + "/data");
 		if (!folder.exists())
 			folder.mkdirs();
 
-		File file = new File(folder, prefix + "-" + today + ".json");
+		File file = new File(folder, prefix + "-" + date + ".json");
 		mapper.writeValue(file, data);
 
 		System.out.println("✅ JSON kaydedildi: " + file.getAbsolutePath());

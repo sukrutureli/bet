@@ -131,12 +131,12 @@ public class Application {
 					getStringDay(false), null);
 			System.out.println("futbol.html oluşturuldu.");
 
-			JsonStorage.save("futbol", "PredictionData", lastPredictionManager.getPredictionData());
-			JsonStorage.save("futbol", "LastPrediction", lastPredictionManager.getLastPrediction());
-			JsonStorage.save("futbol", "MatchInfo", matches);
-			JsonStorage.save("futbol", "TeamMatchHistory", historyManager.getTeamHistories());
-			JsonStorage.save("futbol", "Match", matchStats);
-			JsonStorage.save("futbol", "PredictionResult", results);
+			JsonStorage.save("futbol", "PredictionData", getStringDay(false), lastPredictionManager.getPredictionData());
+			JsonStorage.save("futbol", "LastPrediction", getStringDay(false), lastPredictionManager.getLastPrediction());
+			JsonStorage.save("futbol", "MatchInfo", getStringDay(false), matches);
+			JsonStorage.save("futbol", "TeamMatchHistory", getStringDay(false), historyManager.getTeamHistories());
+			JsonStorage.save("futbol", "Match", getStringDay(false), matchStats);
+			JsonStorage.save("futbol", "PredictionResult", getStringDay(false), results);
 
 		} catch (Exception e) {
 			System.out.println("GENEL HATA: " + e.getMessage());
@@ -196,7 +196,7 @@ public class Application {
 
 			// JsonStorage.save("futbol", "PredictionData",
 			// lastPredictionManager.getPredictionData());
-			JsonStorage.save("futbol", "RealScores", scraper.getResults());
+			JsonStorage.save("futbol", "RealScores", JsonReader.getToday(), scraper.getResults());
 
 		} catch (Exception e) {
 			System.out.println("GENEL HATA: " + e.getMessage());
